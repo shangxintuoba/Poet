@@ -14,5 +14,10 @@ public class Player : MonoBehaviour
 
 
     //Organ
+    public Organ Gland;
+    public Organ Receptor;
+    public Organ Annus;
+    public Organ Septum;
+    public Organ Heart;
 
 }

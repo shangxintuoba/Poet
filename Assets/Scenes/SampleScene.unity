@@ -696,6 +696,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8db5e5033d9cc4591071e5134f5130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
+  Name: {fileID: 0}
+  Description: {fileID: 0}
+  Icon: {fileID: 0}
+  canEquiped: 0
+  Perception: 0
+  Penetration: 0
+  tenacity: 0
+  Caliber: 0
 --- !u!1 &1193098545
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1709458301
 RectTransform:
   m_ObjectHideFlags: 0

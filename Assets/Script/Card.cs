@@ -23,4 +23,7 @@ public class Card : MonoBehaviour
     public int Caliber;
 
 
+
+
+    //add a function that make the card Draggable.
 }
