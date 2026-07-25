@@ -1,16 +1,32 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CardSlot : MonoBehaviour
+public class CardSlot : MonoBehaviour, IDropHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Card CurrentCard { get; protected set; }
+
+    public void OnDrop(PointerEventData eventData)
     {
-        
+        Card card = eventData.pointerDrag != null
+            ? eventData.pointerDrag.GetComponent<Card>()
+            : null;
+
+        if (card != null)
+            TryPlace(card);
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual bool TryPlace(Card card)
     {
-        
+        if (card == null || CurrentCard != null)
+            return false;
+
+        CurrentCard = card;
+        card.PlaceIn(transform);
+        return true;
+    }
+
+    protected void ClearCard()
+    {
+        CurrentCard = null;
     }
 }

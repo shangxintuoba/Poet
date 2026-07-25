@@ -1,29 +1,36 @@
-using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public List<Card> CardsOwbned;
-
+    public List<Card> CardsOwbned = new List<Card>();
+    [SerializeField] private Transform cardContainer;
 
     public void CreateCards(List<Card> cards)
     {
-        foreach (var card in cards)
-        {
+        if (cards == null)
+            return;
 
-            //generate a card and add it to the List of CardsOwbned
+        Transform parent = cardContainer != null ? cardContainer : transform;
+        foreach (Card card in cards)
+        {
+            if (card == null)
+                continue;
+
+            Card createdCard = Instantiate(card, parent);
+            CardsOwbned.Add(createdCard);
         }
     }
-
 
     public void DestroyCards(List<Card> cards)
     {
-        foreach (var card in cards)
-        {
+        if (cards == null)
+            return;
 
-            //destroy the card and remove it from the List of CardsOwbned
+        foreach (Card card in new List<Card>(cards))
+        {
+            if (card != null && CardsOwbned.Remove(card))
+                Destroy(card.gameObject);
         }
     }
-
 }
