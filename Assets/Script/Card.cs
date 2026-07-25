@@ -1,16 +1,26 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public TextMeshProUGUI Name;
+    public TextMeshProUGUI Description;
+    public Image Icon;
+
+    public enum Type
     {
-        
+        Raw,
+        Material,
+        Work,
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool canEquiped;
+    //Attribute when Equiped
+    public int Perception;
+    public int Penetration;
+    public int tenacity;
+    public int Caliber;
+
+
 }
