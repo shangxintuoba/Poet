@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,14 +14,15 @@ public class MaterialLibrary : MonoBehaviour
 
 
 
-    public List<Material> Decompose(Material material)
+    public List<Material> Decompose(Material material, int type)
     {
-        // new List<Material> Result = 
-
-        //return Result;
+        if (type ==1)
+            return material.Composition;
+        else
+            return material.Composition2;
     }
 
-    public Material Compose_2(Material material1, Material material2)
+    public void Compose_2(Material material1, Material material2)
     {
         // new Material Result = 
 
@@ -28,7 +30,7 @@ public class MaterialLibrary : MonoBehaviour
 
     }
 
-    public Material Compose_3(Material material1, Material material2, Material material3)
+    public void Compose_3(Material material1, Material material2, Material material3)
     {
 
         // new Material Result = 

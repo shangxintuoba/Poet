@@ -8,13 +8,6 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI Description;
     public Image Icon;
 
-    public enum Type
-    {
-        Raw,
-        Material,
-        Work,
-    }
-
     public bool canEquiped;
     //Attribute when Equiped
     public int Perception;
