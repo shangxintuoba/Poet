@@ -51,8 +51,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         canvasGroup.blocksRaycasts = true;
 
-        if (rootCanvas != null && transform.parent == rootCanvas.transform)
-            ReturnToPreviousParent();
+        if (rootCanvas != null && transform.parent == rootCanvas.transform && previousParent != null)
+            transform.SetParent(previousParent, true);
     }
 
     public void PlaceIn(Transform parent)
