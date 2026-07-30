@@ -25,8 +25,9 @@ public class CardSlot : MonoBehaviour, IDropHandler
         return true;
     }
 
-    protected void ClearCard()
+    public void RemoveCard(Card card)
     {
-        CurrentCard = null;
+        if (CurrentCard == card)
+            CurrentCard = null;
     }
 }

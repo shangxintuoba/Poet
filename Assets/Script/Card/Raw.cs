@@ -1,3 +1,8 @@
-public class Raw : Material
+public class Raw : Card
 {
+
+
+
+
+
 }

@@ -19,6 +19,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private CanvasGroup canvasGroup;
     private Transform previousParent;
     private Vector2 previousPosition;
+    [SerializeField] private RectTransform cardContainer;
 
     private void Awake()
     {
@@ -26,6 +27,13 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+        if (cardContainer == null)
+        {
+            GameObject container = GameObject.Find("CardContainer");
+            if (container != null)
+                cardContainer = container.GetComponent<RectTransform>();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -51,8 +59,58 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         canvasGroup.blocksRaycasts = true;
 
-        if (rootCanvas != null && transform.parent == rootCanvas.transform && previousParent != null)
+        if (rootCanvas == null || transform.parent != rootCanvas.transform)
+            return;
+
+        if (IsOverCardContainer(eventData))
+        {
+            Transform nearestSlot = FindNearestTaggedSlot(eventData);
+            if (nearestSlot != null)
+            {
+                PlaceIn(nearestSlot);
+                return;
+            }
+        }
+
+        if (previousParent != null)
             transform.SetParent(previousParent, true);
+    }
+
+    private bool IsOverCardContainer(PointerEventData eventData)
+    {
+        return cardContainer != null &&
+            RectTransformUtility.RectangleContainsScreenPoint(
+                cardContainer,
+                eventData.position,
+                eventData.pressEventCamera);
+    }
+
+    private Transform FindNearestTaggedSlot(PointerEventData eventData)
+    {
+        if (cardContainer == null)
+            return null;
+
+        Transform nearestSlot = null;
+        float shortestDistance = float.PositiveInfinity;
+
+        foreach (Transform slot in cardContainer.GetComponentsInChildren<Transform>(true))
+        {
+            if (!slot.CompareTag("Slot"))
+                continue;
+
+            Vector2 slotScreenPosition = RectTransformUtility.WorldToScreenPoint(
+                eventData.pressEventCamera,
+                slot.position);
+            float distance = (slotScreenPosition - eventData.position).sqrMagnitude;
+
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                nearestSlot = slot;
+            }
+        }
+
+        return nearestSlot;
     }
 
     public void PlaceIn(Transform parent)
