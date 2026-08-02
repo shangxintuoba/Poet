@@ -3,7 +3,7 @@ using UnityEngine;
 public sealed class GameManager : MonoBehaviour
 {
 
-    public enum Scene_Large
+    public enum Location
     {
         BookStore,
         Home,
@@ -47,7 +47,7 @@ public sealed class GameManager : MonoBehaviour
 
 
 
-    public void SwitchScene()
+    public void SwitchLocation()
     {
 
     }
