@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
 using TMPro;
@@ -11,9 +12,12 @@ public class TextPanelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textBlockPrefab;
     [SerializeField] private Button choiceButtonPrefab;
     [SerializeField] private ScrollRect scrollRect;
+    [SerializeField, Min(1f)] private float charactersPerSecond = 30f;
 
     private readonly List<GameObject> choiceObjects = new List<GameObject>();
+    private readonly Queue<string> textQueue = new Queue<string>();
     private TextMeshProUGUI currentTextBlock;
+    private bool isTyping;
 
     private void Awake()
     {
@@ -34,14 +38,33 @@ public class TextPanelUI : MonoBehaviour
             currentTextBlock = Instantiate(textBlockPrefab, content);
             currentTextBlock.gameObject.SetActive(true);
             currentTextBlock.name = "TextBlock";
-            currentTextBlock.text = text;
-        }
-        else
-        {
-            currentTextBlock.text += "\n\n" + text;
+            currentTextBlock.text = string.Empty;
         }
 
-        ScrollToBottom();
+        textQueue.Enqueue(text);
+
+        if (!isTyping)
+            StartCoroutine(TypeQueuedText());
+    }
+
+    private IEnumerator TypeQueuedText()
+    {
+        isTyping = true;
+
+        while (textQueue.Count > 0)
+        {
+            string nextText = textQueue.Dequeue();
+            string textToType = currentTextBlock.text.Length > 0 ? "\n\n" + nextText : nextText;
+
+            foreach (char character in textToType)
+            {
+                currentTextBlock.text += character;
+                ScrollToBottom();
+                yield return new WaitForSeconds(1f / charactersPerSecond);
+            }
+        }
+
+        isTyping = false;
     }
 
     public void ShowChoices(List<Choice> choices, Action<Choice> onChoiceSelected)

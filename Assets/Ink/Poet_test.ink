@@ -206,6 +206,10 @@ VAR barD1_3Finished = false
 + {barD1_2Finished == false} [你的工作] -> Bar_D1_2
 + {barD1_3Finished == false} [腐蚀腺] -> Bar_D1_3
 
+
+{barD1_1Finished && barD1_2Finished && barD1_3Finished:
+-> END
+}
 === Bar_D1_3 ===
 
 “你不会真的相信刚才那个神棍的鬼话吧？”老板有些诧异。
