@@ -13,11 +13,15 @@ public class TextPanelUI : MonoBehaviour
     [SerializeField] private Button choiceButtonPrefab;
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField, Min(1f)] private float charactersPerSecond = 30f;
+    [SerializeField, Min(0f)] private float choiceDelay = 0.4f;
 
     private readonly List<GameObject> choiceObjects = new List<GameObject>();
     private readonly Queue<string> textQueue = new Queue<string>();
     private TextMeshProUGUI currentTextBlock;
+    private List<Choice> pendingChoices;
+    private Action<Choice> pendingChoiceSelected;
     private bool isTyping;
+    private Coroutine choiceDelayCoroutine;
 
     private void Awake()
     {
@@ -44,13 +48,14 @@ public class TextPanelUI : MonoBehaviour
         textQueue.Enqueue(text);
 
         if (!isTyping)
+        {
+            isTyping = true;
             StartCoroutine(TypeQueuedText());
+        }
     }
 
     private IEnumerator TypeQueuedText()
     {
-        isTyping = true;
-
         while (textQueue.Count > 0)
         {
             string nextText = textQueue.Dequeue();
@@ -65,16 +70,42 @@ public class TextPanelUI : MonoBehaviour
         }
 
         isTyping = false;
+        StartChoiceDelay();
     }
 
     public void ShowChoices(List<Choice> choices, Action<Choice> onChoiceSelected)
     {
         ClearChoices();
+        pendingChoices = new List<Choice>(choices);
+        pendingChoiceSelected = onChoiceSelected;
 
-        if (content == null || choiceButtonPrefab == null)
+        if (!isTyping)
+            StartChoiceDelay();
+    }
+
+    private void StartChoiceDelay()
+    {
+        if (choiceDelayCoroutine != null)
+            StopCoroutine(choiceDelayCoroutine);
+
+        choiceDelayCoroutine = StartCoroutine(ShowChoicesAfterDelay());
+    }
+
+    private IEnumerator ShowChoicesAfterDelay()
+    {
+        yield return new WaitForSeconds(choiceDelay);
+        choiceDelayCoroutine = null;
+        ShowPendingChoices();
+    }
+
+    private void ShowPendingChoices()
+    {
+        if (content == null || choiceButtonPrefab == null || pendingChoices == null)
             return;
 
-        foreach (Choice choice in choices)
+        Action<Choice> choiceSelected = pendingChoiceSelected;
+
+        foreach (Choice choice in pendingChoices)
         {
             Choice selectedChoice = choice;
             Button button = Instantiate(choiceButtonPrefab, content);
@@ -86,10 +117,12 @@ public class TextPanelUI : MonoBehaviour
                 label.text = selectedChoice.text;
 
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => onChoiceSelected?.Invoke(selectedChoice));
+            button.onClick.AddListener(() => choiceSelected?.Invoke(selectedChoice));
             choiceObjects.Add(button.gameObject);
         }
 
+        pendingChoices = null;
+        pendingChoiceSelected = null;
         ScrollToBottom();
     }
 

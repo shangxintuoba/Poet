@@ -1,9 +1,10 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public TextMeshProUGUI Name;
     public TextMeshProUGUI Description;
@@ -20,9 +21,25 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Transform previousParent;
     private Vector2 previousPosition;
     [SerializeField] private RectTransform cardContainer;
+    [SerializeField, Min(1f)] private float dragScale = 1.08f;
+    [SerializeField, Min(0f)] private float scaleDuration = 0.12f;
+    [SerializeField] private RectTransform shadow;
+    [SerializeField] private Vector2 dragShadowOffset = new Vector2(-8f, -8f);
+
+    private Vector3 restingScale;
+    private Vector2 restingShadowPosition;
+    private Tween scaleTween;
+    private Tween shadowTween;
+    private bool isDragging;
 
     private void Awake()
     {
+        restingScale = transform.localScale;
+        if (shadow == null)
+            shadow = transform.Find("Shadow") as RectTransform;
+        if (shadow != null)
+            restingShadowPosition = shadow.anchoredPosition;
+
         rootCanvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
@@ -36,14 +53,27 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        StartDragFeedback();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (!isDragging)
+            ResetDragFeedback();
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        isDragging = true;
         if (rootCanvas == null)
             rootCanvas = GetComponentInParent<Canvas>();
 
         previousParent = transform.parent;
         previousPosition = ((RectTransform)transform).anchoredPosition;
         canvasGroup.blocksRaycasts = false;
+        StartDragFeedback();
 
         if (rootCanvas != null)
             transform.SetParent(rootCanvas.transform, true);
@@ -58,21 +88,21 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
+        isDragging = false;
 
         if (rootCanvas == null || transform.parent != rootCanvas.transform)
             return;
 
-        if (IsOverCardContainer(eventData))
-        {
+ 
             Transform nearestSlot = FindNearestTaggedSlot(eventData);
             if (nearestSlot != null)
             {
                 PlaceIn(nearestSlot);
                 return;
             }
-        }
 
-        ReturnToPreviousParent();
+
+        //ReturnToPreviousParent();
     }
 
     private bool IsOverCardContainer(PointerEventData eventData)
@@ -121,6 +151,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         transform.SetParent(parent, false);
         ((RectTransform)transform).anchoredPosition = Vector2.zero;
+        ResetDragFeedback();
     }
 
     public void ReturnToPreviousParent()
@@ -130,5 +161,39 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         transform.SetParent(previousParent, false);
         ((RectTransform)transform).anchoredPosition = previousPosition;
+        ResetDragFeedback();
+    }
+
+    private void StartDragFeedback()
+    {
+        ScaleTo(restingScale * dragScale);
+        MoveShadowTo(restingShadowPosition + dragShadowOffset);
+    }
+
+    private void ResetDragFeedback()
+    {
+        ScaleTo(restingScale);
+        MoveShadowTo(restingShadowPosition);
+    }
+
+    private void ScaleTo(Vector3 targetScale)
+    {
+        scaleTween?.Kill();
+        scaleTween = transform.DOScale(targetScale, scaleDuration).SetEase(Ease.OutQuad);
+    }
+
+    private void MoveShadowTo(Vector2 targetPosition)
+    {
+        if (shadow == null)
+            return;
+
+        shadowTween?.Kill();
+        shadowTween = shadow.DOAnchorPos(targetPosition, scaleDuration).SetEase(Ease.OutQuad);
+    }
+
+    private void OnDestroy()
+    {
+        scaleTween?.Kill();
+        shadowTween?.Kill();
     }
 }
