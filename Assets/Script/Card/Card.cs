@@ -72,8 +72,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             }
         }
 
-        if (previousParent != null)
-            transform.SetParent(previousParent, true);
+        ReturnToPreviousParent();
     }
 
     private bool IsOverCardContainer(PointerEventData eventData)
@@ -95,7 +94,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         foreach (Transform slot in cardContainer.GetComponentsInChildren<Transform>(true))
         {
-            if (!slot.CompareTag("Slot"))
+            if (!slot.CompareTag("Slot") || IsOccupied(slot))
                 continue;
 
             Vector2 slotScreenPosition = RectTransformUtility.WorldToScreenPoint(
@@ -111,6 +110,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
 
         return nearestSlot;
+    }
+
+    private bool IsOccupied(Transform slot)
+    {
+        return slot.GetComponentInChildren<Card>(true) != null;
     }
 
     public void PlaceIn(Transform parent)
