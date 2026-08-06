@@ -43,7 +43,7 @@ public class MaterialLibrary : MonoBehaviour
     {
         foreach (Material material in materials)
         {
-            if (material == null || material is Raw)
+            if (material == null)
                 return null;
         }
 

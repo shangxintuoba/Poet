@@ -10,12 +10,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
     public TextMeshProUGUI Description;
     public Image Icon;
 
-    public bool canEquiped;
-    public int Perception;
-    public int Penetration;
-    public int tenacity;
-    public int Caliber;
-
     private Canvas rootCanvas;
     private CanvasGroup canvasGroup;
     private Transform previousParent;
@@ -23,6 +17,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
     [SerializeField] private RectTransform cardContainer;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
     [SerializeField, Min(0f)] private float scaleDuration = 0.12f;
+    [SerializeField, Min(0f)] private float snapDuration = 0.15f;
     [SerializeField] private RectTransform shadow;
     [SerializeField] private Vector2 dragShadowOffset = new Vector2(-8f, -8f);
 
@@ -30,6 +25,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
     private Vector2 restingShadowPosition;
     private Tween scaleTween;
     private Tween shadowTween;
+    private Tween positionTween;
     private bool isDragging;
 
     private void Awake()
@@ -149,8 +145,10 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
 
     public void PlaceIn(Transform parent)
     {
-        transform.SetParent(parent, false);
-        ((RectTransform)transform).anchoredPosition = Vector2.zero;
+        RectTransform cardRect = (RectTransform)transform;
+        positionTween?.Kill();
+        transform.SetParent(parent, true);
+        positionTween = cardRect.DOAnchorPos(Vector2.zero, snapDuration).SetEase(Ease.OutQuad);
         ResetDragFeedback();
     }
 
@@ -195,5 +193,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
     {
         scaleTween?.Kill();
         shadowTween?.Kill();
+        positionTween?.Kill();
     }
 }

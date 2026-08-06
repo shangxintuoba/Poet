@@ -31,9 +31,5 @@ public class Player : MonoBehaviour
         if (card == null)
             return;
 
-        Perception += card.Perception * multiplier;
-        Penetration += card.Penetration * multiplier;
-        tenacity += card.tenacity * multiplier;
-        Caliber += card.Caliber * multiplier;
     }
 }
