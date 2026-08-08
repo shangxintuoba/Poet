@@ -23,6 +23,8 @@ public class TextPanelUI : MonoBehaviour
     private bool isTyping;
     private Coroutine choiceDelayCoroutine;
 
+
+
     private void Awake()
     {
         if (textBlockPrefab != null)

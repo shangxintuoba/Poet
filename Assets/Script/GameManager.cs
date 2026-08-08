@@ -3,31 +3,7 @@ using UnityEngine;
 public sealed class GameManager : MonoBehaviour
 {
 
-    public enum Location
-    {
-        BookStore,
-        Home,
-        Park,
-        Restaurant,
-        McDonald,
-        Bar,
-        Club,
-        Cinema,
-        Street_Home,
-        Street_Book,
-        Street_Downtown,
-        Street_NewDistrict,
-        Sea,
-        Supermarket,
-        CBDMarket,
-        EditorOffice,
-        HerHome,
-        Gallery,
-        Museum,
-        Subway,
-    }
 
-    public int Date;
 
 
 
@@ -45,16 +21,4 @@ public sealed class GameManager : MonoBehaviour
     }
 
 
-
-
-    public void SwitchLocation()
-    {
-
-    }
-    
-
-    public void TimeProgress()
-    {
-
-    }
 }
