@@ -10,7 +10,7 @@ public class Map : MonoBehaviour
     //player cannot clicked and go to other node when the text is typing.
     //the state of that textblock will be saved when player goto other node
 
-    private node CurrentNode;
+    private Node CurrentNode;
     public GameObject NodePrefab;
     public GameObject LinePrefab;
 
@@ -18,7 +18,7 @@ public class Map : MonoBehaviour
 
 
 
-    public void GoTo(node destination)
+    public void GoTo(Node destination)
     {
         //if destination is a nearbynodes to current node
 
@@ -27,13 +27,3 @@ public class Map : MonoBehaviour
 
 }
 
-public class node
-{
-    public bool isUnlocked;
-    public string name;
-    public node[] NearbyNodes;
-    public node[] Children;
-    public node[] Parents;
-
-
-}
