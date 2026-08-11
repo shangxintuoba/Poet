@@ -2,161 +2,186 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Card : MonoBehaviour,
+    IPointerDownHandler, IPointerUpHandler, IPointerClickHandler,
+    IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public TextMeshProUGUI Name;
-    public TextMeshProUGUI Description;
+    public TextMeshProUGUI NameText;
     public Image Icon;
+    public string Description;
+    public string Name;
 
-    private Canvas rootCanvas;
-    private CanvasGroup canvasGroup;
-    private Transform previousParent;
-    private Vector2 previousPosition;
     [SerializeField] private RectTransform cardContainer;
+    [SerializeField] protected TextPanelUI textPanel;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
+    [SerializeField, Min(1f)] private float selectionScale = 1.08f;
     [SerializeField, Min(0f)] private float scaleDuration = 0.12f;
     [SerializeField, Min(0f)] private float snapDuration = 0.15f;
     [SerializeField] private RectTransform shadow;
     [SerializeField] private Vector2 dragShadowOffset = new Vector2(-8f, -8f);
 
+    private Canvas rootCanvas;
+    private CanvasGroup canvasGroup;
+    private Transform previousParent;
+    private Vector2 previousPosition;
     private Vector3 restingScale;
     private Vector2 restingShadowPosition;
     private Tween scaleTween;
     private Tween shadowTween;
     private Tween positionTween;
     private bool isDragging;
+    private RectTransform selectedCardOverlay;
+    private Transform selectionOriginalParent;
+    private Vector2 selectionOriginalPosition;
+
+    private static Card selectedCard;
 
     private void Awake()
     {
-        restingScale = transform.localScale;
-        if (shadow == null)
-            shadow = transform.Find("Shadow") as RectTransform;
-        if (shadow != null)
-            restingShadowPosition = shadow.anchoredPosition;
-
         rootCanvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-
+        if (canvasGroup == null) canvasGroup = gameObject.AddComponent<CanvasGroup>();
         if (cardContainer == null)
         {
             GameObject container = GameObject.Find("CardContainer");
-            if (container != null)
-                cardContainer = container.GetComponent<RectTransform>();
+            if (container != null) cardContainer = container.GetComponent<RectTransform>();
         }
+        if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
+        restingScale = transform.localScale;
+        if (shadow != null) restingShadowPosition = shadow.anchoredPosition;
+        ResolveTextPanel();
+        ResolveSelectedCardOverlay();
+    }
+
+    private void Update()
+    {
+        if (selectedCard != this || Mouse.current == null) return;
+        bool clicked = Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame;
+        if (clicked && !IsPointerOverThisCard(Mouse.current.position.ReadValue())) DeselectCard();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        StartDragFeedback();
+        if (eventData.button == PointerEventData.InputButton.Left) StartDragFeedback();
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!isDragging)
-            ResetDragFeedback();
+        if (eventData.button == PointerEventData.InputButton.Left && !isDragging) ResetDragFeedback();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left && selectedCard == this)
+        {
+            DeselectCard();
+            return;
+        }
+        if (eventData.button != PointerEventData.InputButton.Right) return;
+        if (selectedCard == this)
+        {
+            DeselectCard();
+            return;
+        }
+        if (selectedCard != null) selectedCard.DeselectCard();
+
+        selectedCard = this;
+        MoveToSelectedOverlay();
+        ScaleTo(restingScale * selectionScale);
+        ShowCardDetails();
+    }
+
+    protected virtual void ShowCardDetails()
+    {
+        ResolveTextPanel();
+        string cardName = string.IsNullOrWhiteSpace(Name)
+            ? (NameText != null ? NameText.text : gameObject.name)
+            : Name;
+        string details = string.IsNullOrWhiteSpace(Description)
+            ? cardName
+            : cardName + "\n\n" + Description;
+        textPanel?.ShowCardDescription(details);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        isDragging = true;
-        if (rootCanvas == null)
-            rootCanvas = GetComponentInParent<Canvas>();
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (selectedCard == this) DeselectCard();
 
+        isDragging = true;
         previousParent = transform.parent;
         previousPosition = ((RectTransform)transform).anchoredPosition;
+        transform.SetParent(rootCanvas.transform, true);
         canvasGroup.blocksRaycasts = false;
         StartDragFeedback();
-
-        if (rootCanvas != null)
-            transform.SetParent(rootCanvas.transform, true);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (rootCanvas != null)
-            ((RectTransform)transform).anchoredPosition += eventData.delta / rootCanvas.scaleFactor;
+        if (!isDragging || eventData.button != PointerEventData.InputButton.Left) return;
+        ((RectTransform)transform).anchoredPosition += eventData.delta / rootCanvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!isDragging || eventData.button != PointerEventData.InputButton.Left) return;
         canvasGroup.blocksRaycasts = true;
         isDragging = false;
+        if (rootCanvas == null || transform.parent != rootCanvas.transform) return;
 
-        if (rootCanvas == null || transform.parent != rootCanvas.transform)
-            return;
-
- 
-            Transform nearestSlot = FindNearestTaggedSlot(eventData);
-            if (nearestSlot != null)
-            {
-                PlaceIn(nearestSlot);
-                return;
-            }
-
-
-        //ReturnToPreviousParent();
+        RectTransform nearestSlot = FindNearestFreeSlot();
+        if (nearestSlot != null) { PlaceInSlot(nearestSlot); return; }
+        ReturnToPreviousPosition();
     }
 
-    private bool IsOverCardContainer(PointerEventData eventData)
+    private RectTransform FindNearestFreeSlot()
     {
-        return cardContainer != null &&
-            RectTransformUtility.RectangleContainsScreenPoint(
-                cardContainer,
-                eventData.position,
-                eventData.pressEventCamera);
-    }
-
-    private Transform FindNearestTaggedSlot(PointerEventData eventData)
-    {
-        if (cardContainer == null)
-            return null;
-
-        Transform nearestSlot = null;
-        float shortestDistance = float.PositiveInfinity;
-
-        foreach (Transform slot in cardContainer.GetComponentsInChildren<Transform>(true))
+        GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
+        RectTransform nearestSlot = null;
+        float nearestDistance = float.MaxValue;
+        foreach (GameObject slot in slots)
         {
-            if (!slot.CompareTag("Slot") || IsOccupied(slot))
-                continue;
-
-            Vector2 slotScreenPosition = RectTransformUtility.WorldToScreenPoint(
-                eventData.pressEventCamera,
-                slot.position);
-            float distance = (slotScreenPosition - eventData.position).sqrMagnitude;
-
-            if (distance < shortestDistance)
-            {
-                shortestDistance = distance;
-                nearestSlot = slot;
-            }
+            RectTransform slotRect = slot.GetComponent<RectTransform>();
+            if (slotRect == null || IsOccupied(slot)) continue;
+            float distance = Vector3.Distance(transform.position, slotRect.position);
+            if (distance < nearestDistance) { nearestDistance = distance; nearestSlot = slotRect; }
         }
-
         return nearestSlot;
     }
 
-    private bool IsOccupied(Transform slot)
+    private bool IsOccupied(GameObject slot)
     {
-        return slot.GetComponentInChildren<Card>(true) != null;
+        CardSlot cardSlot = slot.GetComponent<CardSlot>();
+        if (cardSlot != null && cardSlot.CurrentCard != null && cardSlot.CurrentCard != this) return true;
+        Card cardInSlot = slot.GetComponentInChildren<Card>(true);
+        return cardInSlot != null && cardInSlot != this;
     }
 
-    public void PlaceIn(Transform parent)
+    private void PlaceInSlot(RectTransform slot)
     {
-        RectTransform cardRect = (RectTransform)transform;
         positionTween?.Kill();
-        transform.SetParent(parent, true);
-        positionTween = cardRect.DOAnchorPos(Vector2.zero, snapDuration).SetEase(Ease.OutQuad);
+        transform.SetParent(slot, true);
+        positionTween = ((RectTransform)transform).DOAnchorPos(Vector2.zero, snapDuration).SetEase(Ease.OutQuad);
         ResetDragFeedback();
     }
 
-    public void ReturnToPreviousParent()
+    public void PlaceIn(Transform targetParent)
     {
-        if (previousParent == null)
-            return;
+        RectTransform slot = targetParent as RectTransform;
+        if (slot != null) PlaceInSlot(slot);
+    }
 
+    public void PlaceIn(CardSlot slot)
+    {
+        if (slot != null) PlaceIn(slot.transform);
+    }
+
+    private void ReturnToPreviousPosition()
+    {
+        positionTween?.Kill();
         transform.SetParent(previousParent, false);
         ((RectTransform)transform).anchoredPosition = previousPosition;
         ResetDragFeedback();
@@ -165,13 +190,51 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
     private void StartDragFeedback()
     {
         ScaleTo(restingScale * dragScale);
-        MoveShadowTo(restingShadowPosition + dragShadowOffset);
+        if (shadow == null) return;
+        shadowTween?.Kill();
+        shadowTween = shadow.DOAnchorPos(restingShadowPosition + dragShadowOffset, scaleDuration).SetEase(Ease.OutQuad);
     }
 
     private void ResetDragFeedback()
     {
         ScaleTo(restingScale);
-        MoveShadowTo(restingShadowPosition);
+        if (shadow == null) return;
+        shadowTween?.Kill();
+        shadowTween = shadow.DOAnchorPos(restingShadowPosition, scaleDuration).SetEase(Ease.OutQuad);
+    }
+
+    private void DeselectCard()
+    {
+        if (selectedCard != this) return;
+        ResolveTextPanel();
+        textPanel?.RestoreDialogueAfterCardDescription();
+        ReturnFromSelectedOverlay();
+        ScaleTo(restingScale);
+        selectedCard = null;
+    }
+
+    private void MoveToSelectedOverlay()
+    {
+        ResolveSelectedCardOverlay();
+        if (selectedCardOverlay == null) return;
+        selectionOriginalParent = transform.parent;
+        selectionOriginalPosition = ((RectTransform)transform).anchoredPosition;
+        transform.SetParent(selectedCardOverlay, true);
+    }
+
+    private void ReturnFromSelectedOverlay()
+    {
+        if (selectionOriginalParent == null) return;
+        transform.SetParent(selectionOriginalParent, false);
+        ((RectTransform)transform).anchoredPosition = selectionOriginalPosition;
+        selectionOriginalParent = null;
+    }
+
+    private void ResolveSelectedCardOverlay()
+    {
+        if (selectedCardOverlay != null) return;
+        GameObject overlay = GameObject.Find("SelectedCardOverlay");
+        if (overlay != null) selectedCardOverlay = overlay.GetComponent<RectTransform>();
     }
 
     private void ScaleTo(Vector3 targetScale)
@@ -180,13 +243,17 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
         scaleTween = transform.DOScale(targetScale, scaleDuration).SetEase(Ease.OutQuad);
     }
 
-    private void MoveShadowTo(Vector2 targetPosition)
+    private bool IsPointerOverThisCard(Vector2 screenPosition)
     {
-        if (shadow == null)
-            return;
+        Camera eventCamera = rootCanvas != null && rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay ? rootCanvas.worldCamera : null;
+        return RectTransformUtility.RectangleContainsScreenPoint((RectTransform)transform, screenPosition, eventCamera);
+    }
 
-        shadowTween?.Kill();
-        shadowTween = shadow.DOAnchorPos(targetPosition, scaleDuration).SetEase(Ease.OutQuad);
+    protected void ResolveTextPanel()
+    {
+        if (textPanel != null) return;
+        GameObject manager = GameObject.Find("TextManager");
+        if (manager != null) textPanel = manager.GetComponent<TextPanelUI>();
     }
 
     private void OnDestroy()
@@ -194,5 +261,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBegi
         scaleTween?.Kill();
         shadowTween?.Kill();
         positionTween?.Kill();
+        if (selectedCard == this) selectedCard = null;
     }
 }

@@ -5,6 +5,11 @@ public class CardSlot : MonoBehaviour, IDropHandler
 {
     public Card CurrentCard { get; protected set; }
 
+    private void Awake()
+    {
+        CurrentCard = GetComponentInChildren<Card>(true);
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         Card card = eventData.pointerDrag != null
