@@ -385,7 +385,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 2132730865}
+  - {fileID: 1765242636}
+  - {fileID: 1811316614}
+  - {fileID: 1370647651}
+  - {fileID: 306679055}
   Children: []
   Parents: []
 --- !u!222 &30582656
@@ -1345,7 +1350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 2052209930}
   Children: []
   Parents: []
 --- !u!222 &119617611
@@ -2012,7 +2018,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 376428118}
+  - {fileID: 1915880928}
+  - {fileID: 1532193055}
   Children: []
   Parents: []
 --- !u!222 &265325303
@@ -2160,7 +2169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 30582655}
   Children: []
   Parents: []
 --- !u!1 &326216826
@@ -2341,7 +2351,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 265325302}
+  - {fileID: 998127087}
+  - {fileID: 1321174388}
+  - {fileID: 2132730865}
   Children: []
   Parents: []
 --- !u!222 &376428119
@@ -6328,7 +6342,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 376428118}
+  - {fileID: 2132730865}
+  - {fileID: 1321174388}
+  - {fileID: 1175388429}
   Children: []
   Parents: []
 --- !u!222 &998127088
@@ -6512,7 +6530,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 2052209930}
   Children: []
   Parents: []
 --- !u!222 &1080834131
@@ -6789,7 +6808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 1175388429}
   Children: []
   Parents: []
 --- !u!222 &1143505951
@@ -7061,7 +7081,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 1470488080}
+  - {fileID: 1143505950}
+  - {fileID: 1687502003}
+  - {fileID: 998127087}
   Children: []
   Parents: []
 --- !u!222 &1175388430
@@ -7841,7 +7865,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 2052209930}
+  - {fileID: 2132730865}
+  - {fileID: 998127087}
+  - {fileID: 376428118}
   Children: []
   Parents: []
 --- !u!222 &1321174389
@@ -8405,7 +8433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 30582655}
   Children: []
   Parents: []
 --- !u!222 &1370647652
@@ -8867,7 +8896,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 1175388429}
   Children: []
   Parents: []
 --- !u!222 &1470488081
@@ -9334,7 +9364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 265325302}
   Children: []
   Parents: []
 --- !u!222 &1532193056
@@ -10522,7 +10553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 1175388429}
   Children: []
   Parents: []
 --- !u!222 &1687502004
@@ -10869,7 +10901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 30582655}
   Children: []
   Parents: []
 --- !u!222 &1765242637
@@ -11005,7 +11038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 2052209930}
   Children: []
   Parents: []
 --- !u!222 &1807119407
@@ -11070,7 +11104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 30582655}
   Children: []
   Parents: []
 --- !u!222 &1811316615
@@ -11425,7 +11460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 265325302}
   Children: []
   Parents: []
 --- !u!222 &1915880929
@@ -11445,8 +11481,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1917551381}
-  - component: {fileID: 1917551383}
   - component: {fileID: 1917551382}
+  - component: {fileID: 1917551383}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -11499,13 +11535,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917551380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 632b8528895c2414aa70cb0342a83c36, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f2ebb5d5dd9d95448096e538682be86, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Material
+  m_EditorClassIdentifier: Assembly-CSharp::Raw
   NameText: {fileID: 0}
   Icon: {fileID: 0}
-  Description: Money description
-  Name: Money
+  Description: 
+  Name: 
   cardContainer: {fileID: 0}
   textPanel: {fileID: 0}
   dragScale: 1.08
@@ -11514,12 +11550,10 @@ MonoBehaviour:
   snapDuration: 0.15
   shadow: {fileID: 0}
   dragShadowOffset: {x: -8, y: -8}
-  materialLibrary: {fileID: 0}
-  Composition:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Composition2: []
+  Useable: 0
+  isUsed: 0
+  choices: []
+  cardManager: {fileID: 0}
 --- !u!114 &1920044489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11949,17 +11983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2f9f6b92a0aaa4081d78aca278ae3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  Perception: 0
-  Penetration: 0
-  tenacity: 0
-  Caliber: 0
-  Money: 0
-  WillPower: 0
-  Gland: {fileID: 0}
-  Receptor: {fileID: 0}
-  Annus: {fileID: 0}
-  Septum: {fileID: 0}
-  Heart: {fileID: 0}
 --- !u!1 &1982180082
 GameObject:
   m_ObjectHideFlags: 0
@@ -12226,7 +12249,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 1080834130}
+  - {fileID: 1321174388}
+  - {fileID: 119617610}
+  - {fileID: 1807119406}
   Children: []
   Parents: []
 --- !u!222 &2052209931
@@ -12573,7 +12600,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   isUnlocked: 0
   NodeName: 
-  NearbyNodes: []
+  NearbyNodes:
+  - {fileID: 30582655}
+  - {fileID: 1321174388}
+  - {fileID: 998127087}
+  - {fileID: 376428118}
   Children: []
   Parents: []
 --- !u!222 &2132730866
@@ -12989,12 +13020,6 @@ MonoBehaviour:
   snapDuration: 0.15
   shadow: {fileID: 0}
   dragShadowOffset: {x: -8, y: -8}
-  materialLibrary: {fileID: 0}
-  Composition:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Composition2: []
 --- !u!222 &3544887096645785314
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13424,12 +13449,6 @@ MonoBehaviour:
   snapDuration: 0.15
   shadow: {fileID: 0}
   dragShadowOffset: {x: -8, y: -8}
-  materialLibrary: {fileID: 0}
-  Composition:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Composition2: []
 --- !u!224 &8192104139235394330
 RectTransform:
   m_ObjectHideFlags: 0
