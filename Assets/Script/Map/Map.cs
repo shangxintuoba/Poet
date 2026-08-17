@@ -1,29 +1,94 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    //The map is a group of nodes connected to each other, it shows on UI as some blocks connected to each other with lines.
-    //when that block is clicked, it will expand and shows its childs ( also nodes, which are subnode/ subdestination of that)
-    //if the node does not have any Children, when clicked, that node will be set as current node (meaning player will go to that position)
-    //all children of one parents are nearby node of each other
-    //player can only go to nearby node. If player clicked a non-nearby node, there will be no response
-    //player cannot clicked and go to other node when the text is typing.
-    //the state of that textblock will be saved when player goto other node
+    [SerializeField] private Node startingNode;
+    [SerializeField] private TextManager textManager;
 
-    private Node CurrentNode;
-    public GameObject NodePrefab;
-    public GameObject LinePrefab;
+    private Node currentNode;
+    private readonly Dictionary<Node, NodeState> nodeStates = new Dictionary<Node, NodeState>();
+    private Node[] allNodes;
 
-
-
-
-
-    public void GoTo(Node destination)
+    private class NodeState
     {
-        //if destination is a nearbynodes to current node
-
-        CurrentNode = destination;
+        public string storyState;
+        public string displayedText;
     }
 
-}
+    private void Start()
+    {
+        if (textManager == null)
+            textManager = FindFirstObjectByType<TextManager>();
 
+        allNodes = GetComponentsInChildren<Node>(true);
+        currentNode = startingNode;
+        if (currentNode != null)
+        {
+            currentNode.isUnlocked = true;
+            currentNode.SetCurrent(true);
+            RefreshVisibleNodes();
+        }
+    }
+
+    public void TryGoTo(Node destination)
+    {
+        if (destination == null || destination == currentNode)
+            return;
+        if (textManager != null && textManager.IsTyping)
+            return;
+        if (!IsNearby(destination))
+            return;
+
+        SaveCurrentNodeState();
+        currentNode.SetCurrent(false);
+        currentNode = destination;
+        currentNode.isUnlocked = true;
+        currentNode.SetCurrent(true);
+        RefreshVisibleNodes();
+
+        if (currentNode.InkFile != null && textManager != null)
+        {
+            nodeStates.TryGetValue(currentNode, out NodeState state);
+            textManager.LoadStory(
+                currentNode.InkFile,
+                state != null ? state.storyState : null,
+                state != null ? state.displayedText : string.Empty);
+        }
+    }
+
+    private bool IsNearby(Node destination)
+    {
+        if (currentNode == null)
+            return destination == startingNode;
+
+        foreach (Node nearby in currentNode.NearbyNodes)
+        {
+            if (nearby == destination)
+                return true;
+        }
+        return false;
+    }
+
+    private void RefreshVisibleNodes()
+    {
+        foreach (Node node in allNodes)
+        {
+            if (node == null) continue;
+            bool visible = node == currentNode || IsNearby(node);
+            node.gameObject.SetActive(visible);
+        }
+    }
+
+    private void SaveCurrentNodeState()
+    {
+        if (currentNode == null || textManager == null)
+            return;
+
+        nodeStates[currentNode] = new NodeState
+        {
+            storyState = textManager.SaveStoryState(),
+            displayedText = textManager.SaveDisplayedText()
+        };
+    }
+}

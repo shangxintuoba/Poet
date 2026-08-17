@@ -31,6 +31,19 @@ public class TextPanelUI : MonoBehaviour
     private string savedDialogueText;
     private Coroutine cardChoiceCoroutine;
 
+    public bool IsTyping => isTyping;
+    public string DisplayedText => currentTextBlock != null ? currentTextBlock.text : string.Empty;
+
+    public void SetDisplayedText(string text)
+    {
+        StopTyping();
+        StopChoiceDelay();
+        ClearChoices();
+        EnsureTextBlock();
+        currentTextBlock.text = text ?? string.Empty;
+        ScrollToBottom();
+    }
+
     private void Awake()
     {
         if (textBlockPrefab != null)

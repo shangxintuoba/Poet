@@ -15,6 +15,10 @@ public class Card : MonoBehaviour,
     public string Name;
 
     [SerializeField] private RectTransform cardContainer;
+    [SerializeField] private RectTransform cardPanel;
+    [SerializeField] private RectTransform mapContent;
+    [SerializeField] private RectTransform mapViewport;
+    [SerializeField, Min(0f)] private float cardPanelDropPadding = 80f;
     [SerializeField] protected TextPanelUI textPanel;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
     [SerializeField, Min(1f)] private float selectionScale = 1.08f;
@@ -27,6 +31,7 @@ public class Card : MonoBehaviour,
     private CanvasGroup canvasGroup;
     private Transform previousParent;
     private Vector2 previousPosition;
+    private CardSlot previousSlot;
     private Vector3 restingScale;
     private Vector2 restingShadowPosition;
     private Tween scaleTween;
@@ -49,6 +54,9 @@ public class Card : MonoBehaviour,
             GameObject container = GameObject.Find("CardContainer");
             if (container != null) cardContainer = container.GetComponent<RectTransform>();
         }
+        if (cardPanel == null) cardPanel = GameObject.Find("CardPanel")?.GetComponent<RectTransform>();
+        if (mapContent == null) mapContent = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport/Content")?.GetComponent<RectTransform>();
+        if (mapViewport == null) mapViewport = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport")?.GetComponent<RectTransform>();
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
         restingScale = transform.localScale;
         if (shadow != null) restingShadowPosition = shadow.anchoredPosition;
@@ -114,6 +122,8 @@ public class Card : MonoBehaviour,
         isDragging = true;
         previousParent = transform.parent;
         previousPosition = ((RectTransform)transform).anchoredPosition;
+        previousSlot = previousParent.GetComponent<CardSlot>();
+        if (previousSlot != null) previousSlot.RemoveCard(this);
         transform.SetParent(rootCanvas.transform, true);
         canvasGroup.blocksRaycasts = false;
         StartDragFeedback();
@@ -132,9 +142,53 @@ public class Card : MonoBehaviour,
         isDragging = false;
         if (rootCanvas == null || transform.parent != rootCanvas.transform) return;
 
-        RectTransform nearestSlot = FindNearestFreeSlot();
-        if (nearestSlot != null) { PlaceInSlot(nearestSlot); return; }
+        if (IsOverCardPanel(eventData.position))
+        {
+            RectTransform nearestSlot = FindNearestFreeSlot();
+            if (nearestSlot != null)
+            {
+                CardSlot slot = nearestSlot.GetComponent<CardSlot>();
+                if (slot != null) slot.TryPlace(this);
+                else PlaceInSlot(nearestSlot);
+                return;
+            }
+        }
+
+        if (IsOverMapContent(eventData.position))
+        {
+            transform.SetParent(mapContent, true);
+            transform.SetAsLastSibling();
+            ResetDragFeedback();
+            return;
+        }
+
         ReturnToPreviousPosition();
+    }
+
+    private bool IsOverMapContent(Vector2 screenPosition)
+    {
+        if (mapViewport == null) return false;
+        Camera camera = rootCanvas != null && rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay ? rootCanvas.worldCamera : null;
+        return RectTransformUtility.RectangleContainsScreenPoint(mapViewport, screenPosition, camera);
+    }
+
+    private bool IsOverCardPanel(Vector2 screenPosition)
+    {
+        if (cardPanel == null) return false;
+
+        Camera camera = rootCanvas != null && rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? rootCanvas.worldCamera
+            : null;
+
+        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(cardPanel, screenPosition, camera, out Vector2 localPoint))
+            return false;
+
+        Rect rect = cardPanel.rect;
+        rect.xMin -= cardPanelDropPadding;
+        rect.xMax += cardPanelDropPadding;
+        rect.yMin -= cardPanelDropPadding;
+        rect.yMax += cardPanelDropPadding;
+        return rect.Contains(localPoint);
     }
 
     private RectTransform FindNearestFreeSlot()
