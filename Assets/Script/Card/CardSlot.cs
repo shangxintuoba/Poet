@@ -22,7 +22,7 @@ public class CardSlot : MonoBehaviour, IDropHandler
 
     public virtual bool TryPlace(Card card)
     {
-        if (card == null || CurrentCard != null)
+        if (card == null || CurrentCard != null || !Accepts(card))
             return false;
 
         CurrentCard = card;
@@ -34,5 +34,26 @@ public class CardSlot : MonoBehaviour, IDropHandler
     {
         if (CurrentCard == card)
             CurrentCard = null;
+    }
+
+    private bool Accepts(Card card)
+    {
+        bool isEmotionSlot = IsInsideEmotionContainer();
+        if (card is Emotion)
+            return isEmotionSlot;
+
+        return !isEmotionSlot;
+    }
+
+    private bool IsInsideEmotionContainer()
+    {
+        Transform current = transform;
+        while (current != null)
+        {
+            if (current.name == "EmotionCardContainer")
+                return true;
+            current = current.parent;
+        }
+        return false;
     }
 }

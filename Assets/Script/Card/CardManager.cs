@@ -3,34 +3,56 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public List<Card> CardsOwbned = new List<Card>();
+    public List<Card> CardsOwned = new List<Card>();
+    public Queue<Emotion> EmotionsOwned = new Queue<Emotion>();
+
     [SerializeField] private Transform cardContainer;
+    [SerializeField] private Transform emotionContainer;
+    [SerializeField, Min(1)] private int emotionCapacity = 5;
 
     public void CreateCards(List<Card> cards)
     {
         if (cards == null)
             return;
 
-        Transform parent = cardContainer != null ? cardContainer : transform;
         foreach (Card card in cards)
         {
             if (card == null)
                 continue;
 
-            Card createdCard = Instantiate(card, parent);
-            PlaceAtBottomLeft(createdCard, parent);
-            CardsOwbned.Add(createdCard);
-
-            Transform firstFreeSlot = FindFirstFreeSlot();
-            if (firstFreeSlot == null)
-                continue;
-
-            CardSlot cardSlot = firstFreeSlot.GetComponent<CardSlot>();
-            if (cardSlot != null)
-                cardSlot.TryPlace(createdCard);
+            if (card is Emotion emotion)
+                CreateEmotion(emotion);
             else
-                createdCard.PlaceIn(firstFreeSlot);
+                CreateCard(card);
         }
+    }
+
+    public void CreateEmotion(Emotion emotionPrefab)
+    {
+        if (emotionPrefab == null)
+            return;
+
+        ResolveEmotionContainer();
+        if (emotionContainer == null)
+        {
+            Debug.LogWarning("Emotion Card Container was not found.");
+            return;
+        }
+
+        while (EmotionsOwned.Count >= emotionCapacity)
+            DestroyEmotion(EmotionsOwned.Dequeue());
+
+        Transform slot = FindFirstFreeSlot(emotionContainer);
+        if (slot == null)
+        {
+            Debug.LogWarning("Emotion Card Container has no free Slot.");
+            return;
+        }
+
+        Emotion createdEmotion = Instantiate(emotionPrefab, emotionContainer);
+        PlaceAtBottomLeft(createdEmotion, emotionContainer);
+        EmotionsOwned.Enqueue(createdEmotion);
+        PlaceInSlot(createdEmotion, slot);
     }
 
     public void DestroyCards(List<Card> cards)
@@ -43,13 +65,60 @@ public class CardManager : MonoBehaviour
             if (card == null)
                 continue;
 
-            CardSlot cardSlot = card.GetComponentInParent<CardSlot>();
-            if (cardSlot != null)
-                cardSlot.RemoveCard(card);
+            if (card is Emotion emotion)
+            {
+                RemoveEmotionFromQueue(emotion);
+                DestroyEmotion(emotion);
+                continue;
+            }
 
-            CardsOwbned.Remove(card);
+            RemoveFromSlot(card);
+            CardsOwned.Remove(card);
             Destroy(card.gameObject);
         }
+    }
+
+    private void CreateCard(Card cardPrefab)
+    {
+        Transform parent = cardContainer != null ? cardContainer : transform;
+        Card createdCard = Instantiate(cardPrefab, parent);
+        PlaceAtBottomLeft(createdCard, parent);
+        CardsOwned.Add(createdCard);
+
+        Transform firstFreeSlot = FindFirstFreeSlot(cardContainer);
+        if (firstFreeSlot != null)
+            PlaceInSlot(createdCard, firstFreeSlot);
+    }
+
+    private void DestroyEmotion(Emotion emotion)
+    {
+        if (emotion == null)
+            return;
+
+        RemoveFromSlot(emotion);
+        Destroy(emotion.gameObject);
+    }
+
+    private void RemoveEmotionFromQueue(Emotion emotion)
+    {
+        if (emotion == null || EmotionsOwned.Count == 0)
+            return;
+
+        Queue<Emotion> remaining = new Queue<Emotion>();
+        while (EmotionsOwned.Count > 0)
+        {
+            Emotion queuedEmotion = EmotionsOwned.Dequeue();
+            if (queuedEmotion != emotion)
+                remaining.Enqueue(queuedEmotion);
+        }
+        EmotionsOwned = remaining;
+    }
+
+    private void RemoveFromSlot(Card card)
+    {
+        CardSlot cardSlot = card.GetComponentInParent<CardSlot>();
+        if (cardSlot != null)
+            cardSlot.RemoveCard(card);
     }
 
     private void PlaceAtBottomLeft(Card card, Transform parent)
@@ -59,19 +128,26 @@ public class CardManager : MonoBehaviour
         if (containerRect == null || cardRect == null)
             return;
 
-        Vector3 bottomLeft = containerRect.TransformPoint(new Vector3(containerRect.rect.xMin, containerRect.rect.yMin, 0f));
-        cardRect.position = bottomLeft;
+        cardRect.position = containerRect.TransformPoint(new Vector3(containerRect.rect.xMin, containerRect.rect.yMin, 0f));
     }
 
-    private Transform FindFirstFreeSlot()
+    private void PlaceInSlot(Card card, Transform slot)
     {
-        if (cardContainer == null)
+        CardSlot cardSlot = slot.GetComponent<CardSlot>();
+        if (cardSlot != null)
+            cardSlot.TryPlace(card);
+        else
+            card.PlaceIn(slot);
+    }
+
+    private Transform FindFirstFreeSlot(Transform container)
+    {
+        if (container == null)
             return null;
 
-        // Direct child order matches the visible Grid Layout order.
-        for (int i = 0; i < cardContainer.childCount; i++)
+        for (int i = 0; i < container.childCount; i++)
         {
-            Transform slot = cardContainer.GetChild(i);
+            Transform slot = container.GetChild(i);
             if (!slot.CompareTag("Slot"))
                 continue;
 
@@ -84,5 +160,15 @@ public class CardManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void ResolveEmotionContainer()
+    {
+        if (emotionContainer != null)
+            return;
+
+        GameObject container = GameObject.Find("EmotionCardContainer");
+        if (container != null)
+            emotionContainer = container.transform;
     }
 }

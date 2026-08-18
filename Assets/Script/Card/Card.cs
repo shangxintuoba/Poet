@@ -18,6 +18,7 @@ public class Card : MonoBehaviour,
     private RectTransform cardPanel;
     private RectTransform mapContent;
     private RectTransform mapViewport;
+    private RectTransform emotionCardContainer;
     [SerializeField, Min(0f)] private float cardPanelDropPadding = 80f;
     protected TextPanelUI textPanel;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
@@ -57,6 +58,7 @@ public class Card : MonoBehaviour,
         if (cardPanel == null) cardPanel = GameObject.Find("CardPanel")?.GetComponent<RectTransform>();
         if (mapContent == null) mapContent = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport/Content")?.GetComponent<RectTransform>();
         if (mapViewport == null) mapViewport = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport")?.GetComponent<RectTransform>();
+        if (emotionCardContainer == null) emotionCardContainer = GameObject.Find("EmotionCardContainer")?.GetComponent<RectTransform>();
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
         restingScale = transform.localScale;
         if (shadow != null) restingShadowPosition = shadow.anchoredPosition;
@@ -139,6 +141,12 @@ public class Card : MonoBehaviour,
         isDragging = false;
         if (rootCanvas == null || transform.parent != rootCanvas.transform) return;
 
+        if (this is Emotion)
+        {
+            HandleEmotionDrop(eventData.position);
+            return;
+        }
+
         if (IsOverCardPanel(eventData.position))
         {
             RectTransform nearestSlot = FindNearestFreeSlot();
@@ -160,6 +168,60 @@ public class Card : MonoBehaviour,
         }
 
         ReturnToPreviousPosition();
+    }
+
+
+    private void HandleEmotionDrop(Vector2 screenPosition)
+    {
+        RectTransform nearestEmotionSlot = FindNearestFreeEmotionSlot();
+        if (nearestEmotionSlot == null)
+        {
+            ReturnToPreviousPosition();
+            return;
+        }
+
+        CardSlot slot = nearestEmotionSlot.GetComponent<CardSlot>();
+        if (slot != null)
+            slot.TryPlace(this);
+        else
+            PlaceInSlot(nearestEmotionSlot);
+    }
+
+    private RectTransform FindNearestFreeEmotionSlot()
+    {
+        if (emotionCardContainer == null)
+            return null;
+
+        RectTransform nearestSlot = null;
+        float nearestDistance = float.MaxValue;
+        for (int i = 0; i < emotionCardContainer.childCount; i++)
+        {
+            Transform child = emotionCardContainer.GetChild(i);
+            if (!child.CompareTag("Slot"))
+                continue;
+
+            GameObject slotObject = child.gameObject;
+            if (IsOccupied(slotObject))
+                continue;
+
+            RectTransform slot = child as RectTransform;
+            if (slot == null)
+                continue;
+
+            float distance = Vector3.Distance(transform.position, slot.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestSlot = slot;
+            }
+        }
+
+        return nearestSlot;
+    }
+
+    private bool IsEmotionSlot(Transform slot)
+    {
+        return emotionCardContainer != null && slot.IsChildOf(emotionCardContainer);
     }
 
     private bool IsOverMapContent(Vector2 screenPosition)
@@ -196,7 +258,7 @@ public class Card : MonoBehaviour,
         foreach (GameObject slot in slots)
         {
             RectTransform slotRect = slot.GetComponent<RectTransform>();
-            if (slotRect == null || IsOccupied(slot)) continue;
+            if (slotRect == null || IsEmotionSlot(slot.transform) || IsOccupied(slot)) continue;
             float distance = Vector3.Distance(transform.position, slotRect.position);
             if (distance < nearestDistance) { nearestDistance = distance; nearestSlot = slotRect; }
         }
