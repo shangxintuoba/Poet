@@ -66,6 +66,10 @@ public class Card : MonoBehaviour,
         ResolveSelectedCardOverlay();
     }
 
+    private void Start()
+    {
+        if(NameText != null) NameText.text = Name;
+    }
     private void Update()
     {
         if (selectedCard != this || Mouse.current == null) return;
@@ -147,6 +151,12 @@ public class Card : MonoBehaviour,
             return;
         }
 
+        if (IsOverEmotionCardContainer(eventData.position))
+        {
+            ReturnToPreviousPosition();
+            return;
+        }
+
         if (IsOverCardPanel(eventData.position))
         {
             RectTransform nearestSlot = FindNearestFreeSlot();
@@ -222,6 +232,17 @@ public class Card : MonoBehaviour,
     private bool IsEmotionSlot(Transform slot)
     {
         return emotionCardContainer != null && slot.IsChildOf(emotionCardContainer);
+    }
+
+    private bool IsOverEmotionCardContainer(Vector2 screenPosition)
+    {
+        if (emotionCardContainer == null)
+            return false;
+
+        Camera camera = rootCanvas != null && rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? rootCanvas.worldCamera
+            : null;
+        return RectTransformUtility.RectangleContainsScreenPoint(emotionCardContainer, screenPosition, camera);
     }
 
     private bool IsOverMapContent(Vector2 screenPosition)
