@@ -14,12 +14,12 @@ public class Card : MonoBehaviour,
     public string Description;
     public string Name;
 
-    [SerializeField] private RectTransform cardContainer;
-    [SerializeField] private RectTransform cardPanel;
-    [SerializeField] private RectTransform mapContent;
-    [SerializeField] private RectTransform mapViewport;
+    private RectTransform cardContainer;
+    private RectTransform cardPanel;
+    private RectTransform mapContent;
+    private RectTransform mapViewport;
     [SerializeField, Min(0f)] private float cardPanelDropPadding = 80f;
-    [SerializeField] protected TextPanelUI textPanel;
+    protected TextPanelUI textPanel;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
     [SerializeField, Min(1f)] private float selectionScale = 1.08f;
     [SerializeField, Min(0f)] private float scaleDuration = 0.12f;
@@ -67,8 +67,10 @@ public class Card : MonoBehaviour,
     private void Update()
     {
         if (selectedCard != this || Mouse.current == null) return;
-        bool clicked = Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame;
-        if (clicked && !IsPointerOverThisCard(Mouse.current.position.ReadValue())) DeselectCard();
+
+        // Only a right click away from this card closes its selected state.
+        if (Mouse.current.rightButton.wasPressedThisFrame && !IsPointerOverThisCard(Mouse.current.position.ReadValue()))
+            DeselectCard();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -83,11 +85,6 @@ public class Card : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left && selectedCard == this)
-        {
-            DeselectCard();
-            return;
-        }
         if (eventData.button != PointerEventData.InputButton.Right) return;
         if (selectedCard == this)
         {
@@ -98,7 +95,7 @@ public class Card : MonoBehaviour,
 
         selectedCard = this;
         MoveToSelectedOverlay();
-        ScaleTo(restingScale * selectionScale);
+        ApplySelectedFeedback();
         ShowCardDetails();
     }
 
@@ -117,7 +114,7 @@ public class Card : MonoBehaviour,
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (selectedCard == this) DeselectCard();
+        if (selectedCard == this) ReturnFromSelectedOverlay();
 
         isDragging = true;
         previousParent = transform.parent;
@@ -251,10 +248,24 @@ public class Card : MonoBehaviour,
 
     private void ResetDragFeedback()
     {
+        if (selectedCard == this)
+        {
+            ApplySelectedFeedback();
+            return;
+        }
+
         ScaleTo(restingScale);
         if (shadow == null) return;
         shadowTween?.Kill();
         shadowTween = shadow.DOAnchorPos(restingShadowPosition, scaleDuration).SetEase(Ease.OutQuad);
+    }
+
+    private void ApplySelectedFeedback()
+    {
+        ScaleTo(restingScale * selectionScale);
+        if (shadow == null) return;
+        shadowTween?.Kill();
+        shadowTween = shadow.DOAnchorPos(restingShadowPosition + dragShadowOffset, scaleDuration).SetEase(Ease.OutQuad);
     }
 
     private void DeselectCard()
@@ -263,8 +274,8 @@ public class Card : MonoBehaviour,
         ResolveTextPanel();
         textPanel?.RestoreDialogueAfterCardDescription();
         ReturnFromSelectedOverlay();
-        ScaleTo(restingScale);
         selectedCard = null;
+        ResetDragFeedback();
     }
 
     private void MoveToSelectedOverlay()

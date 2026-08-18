@@ -5,6 +5,7 @@ using Ink.Runtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TextPanelUI : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class TextPanelUI : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField, Min(1f)] private float charactersPerSecond = 30f;
     [SerializeField, Min(0f)] private float choiceDelay = 0.4f;
+    [SerializeField] private RectTransform paper;
+    [SerializeField, Min(0f)] private float paperMoveUpDistance = 120f;
+    [SerializeField, Min(0f)] private float paperMoveDuration = 0.35f;
 
     private readonly List<GameObject> choiceObjects = new List<GameObject>();
     private readonly Queue<string> textQueue = new Queue<string>();
@@ -30,6 +34,8 @@ public class TextPanelUI : MonoBehaviour
     private bool isShowingCardDescription;
     private string savedDialogueText;
     private Coroutine cardChoiceCoroutine;
+    private Vector2 paperInitialPosition;
+    private Tween paperTween;
 
     public bool IsTyping => isTyping;
     public string DisplayedText => currentTextBlock != null ? currentTextBlock.text : string.Empty;
@@ -41,6 +47,7 @@ public class TextPanelUI : MonoBehaviour
         ClearChoices();
         EnsureTextBlock();
         currentTextBlock.text = text ?? string.Empty;
+        SetPaperRaised(!string.IsNullOrWhiteSpace(currentTextBlock.text));
         ScrollToBottom();
     }
 
@@ -50,6 +57,7 @@ public class TextPanelUI : MonoBehaviour
             textBlockPrefab.gameObject.SetActive(false);
         if (choiceButtonPrefab != null)
             choiceButtonPrefab.gameObject.SetActive(false);
+        ResolvePaper();
     }
 
     public void ShowDialogueUI(string text)
@@ -59,6 +67,7 @@ public class TextPanelUI : MonoBehaviour
 
         EnsureTextBlock();
         textQueue.Enqueue(text);
+        SetPaperRaised(true);
 
         if (!isTyping)
         {
@@ -136,6 +145,7 @@ public class TextPanelUI : MonoBehaviour
         currentTextBlock.text = savedDialogueText;
         savedDialogueText = string.Empty;
         isShowingCardDescription = false;
+        SetPaperRaised(!string.IsNullOrWhiteSpace(currentTextBlock.text));
 
         RestoreSavedChoices();
         ScrollToBottom();
@@ -293,6 +303,39 @@ public class TextPanelUI : MonoBehaviour
         }
 
         choiceObjects.Clear();
+    }
+
+
+    private void ResolvePaper()
+    {
+        if (paper != null)
+            return;
+
+        GameObject paperObject = GameObject.Find("Canvas/Typer/Paper");
+        if (paperObject == null)
+            return;
+
+        paper = paperObject.GetComponent<RectTransform>();
+        if (paper != null)
+            paperInitialPosition = paper.anchoredPosition;
+    }
+
+    private void SetPaperRaised(bool hasText)
+    {
+        ResolvePaper();
+        if (paper == null)
+            return;
+
+        paperTween?.Kill();
+        Vector2 targetPosition = hasText
+            ? paperInitialPosition + Vector2.up * paperMoveUpDistance
+            : paperInitialPosition;
+        paperTween = paper.DOAnchorPos(targetPosition, paperMoveDuration).SetEase(Ease.OutQuad);
+    }
+
+    private void OnDestroy()
+    {
+        paperTween?.Kill();
     }
 
     private void ScrollToBottom()

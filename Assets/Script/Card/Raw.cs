@@ -42,11 +42,14 @@ public class Raw : Card
         textPanel.ShowCardDescription(string.IsNullOrWhiteSpace(choice.UsedText) ? Description : choice.UsedText);
 
         ResolveCardManager();
-        if (cardManager != null)
-        {
-            cardManager.DestroyCards(new List<Card>(choice.CardsDestroyed));
-            cardManager.CreateCards(new List<Card>(choice.CardsAdded));
-        }
+        if (cardManager == null)
+            return;
+
+        cardManager.DestroyCards(new List<Card>(choice.CardsDestroyed));
+        cardManager.CreateCards(new List<Card>(choice.CardsAdded));
+
+        if (choice.DestroyWhenUsed)
+            cardManager.DestroyCards(new List<Card> { this });
     }
 
     private void ResolveCardManager()
@@ -54,5 +57,4 @@ public class Raw : Card
         if (cardManager == null)
             cardManager = FindFirstObjectByType<CardManager>();
     }
-
 }
