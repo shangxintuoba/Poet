@@ -9,52 +9,130 @@ public class Raw : Card
     {
         public string ChoiceText;
         [TextArea] public string UsedText;
-        public bool DestroyWhenUsed;
-        public Card[] CardsAdded;
+        [Tooltip("Enter JSON card IDs, subtype IDs, or card names.")]
+        [TextArea] public string[] CardsAdded;
+        [Tooltip("Optional card prefab references. Their Card Name is used to find JSON data.")]
+        public Card[] CardsAddedPrefabs;
         public Card[] CardsDestroyed;
+        public bool HideOtherChoices;
+        public bool DestroyWhenUsed;
     }
 
     public bool Useable;
     [SerializeField] private bool isUsed;
     [SerializeField] private UseChoice[] choices;
+    [SerializeField] private bool[] usedChoices;
+    [SerializeField] private int lockedChoiceIndex = -1;
     [SerializeField] private CardManager cardManager;
 
     protected override void ShowCardDetails()
     {
         base.ShowCardDetails();
-        if (!Useable || isUsed || choices == null || choices.Length == 0 || textPanel == null)
+        if (!Useable || choices == null || choices.Length == 0 || textPanel == null)
             return;
 
-        List<string> choiceTexts = new List<string>();
-        foreach (UseChoice choice in choices)
-            choiceTexts.Add(choice.ChoiceText);
-
-        textPanel.ShowCardChoices(choiceTexts, UseChoiceAt);
+        EnsureChoiceState();
+        ShowAvailableChoices();
     }
 
     private void UseChoiceAt(int index)
     {
-        if (isUsed || index < 0 || index >= choices.Length)
+        EnsureChoiceState();
+        if (index < 0 || index >= choices.Length || usedChoices[index])
             return;
 
         UseChoice choice = choices[index];
+        usedChoices[index] = true;
         isUsed = true;
+
+        if (choice.HideOtherChoices)
+            lockedChoiceIndex = index;
+
         textPanel.ShowCardDescription(string.IsNullOrWhiteSpace(choice.UsedText) ? Description : choice.UsedText);
 
         ResolveCardManager();
-        if (cardManager == null)
-            return;
-
-        cardManager.DestroyCards(new List<Card>(choice.CardsDestroyed));
-        cardManager.CreateCards(new List<Card>(choice.CardsAdded));
+        if (cardManager != null)
+        {
+            cardManager.DestroyCards(new List<Card>(choice.CardsDestroyed));
+            cardManager.CreateCards(choice.CardsAdded != null
+                ? new List<string>(choice.CardsAdded)
+                : new List<string>());
+            cardManager.CreateCardsFromPrefabs(choice.CardsAddedPrefabs != null
+                ? new List<Card>(choice.CardsAddedPrefabs)
+                : new List<Card>());
+        }
 
         if (choice.DestroyWhenUsed)
-            cardManager.DestroyCards(new List<Card> { this });
+        {
+            cardManager?.DestroyCards(new List<Card> { this });
+            return;
+        }
+
+        ShowAvailableChoices();
+    }
+
+    private void ShowAvailableChoices()
+    {
+        List<string> labels = new List<string>();
+        List<int> choiceIndices = new List<int>();
+
+        if (lockedChoiceIndex >= 0 && lockedChoiceIndex < choices.Length)
+        {
+            labels.Add(choices[lockedChoiceIndex].ChoiceText);
+            choiceIndices.Add(lockedChoiceIndex);
+        }
+        else
+        {
+            for (int i = 0; i < choices.Length; i++)
+            {
+                if (usedChoices[i])
+                    continue;
+
+                labels.Add(choices[i].ChoiceText);
+                choiceIndices.Add(i);
+            }
+        }
+
+        textPanel.ClearChoices();
+        if (labels.Count == 0)
+            return;
+
+        textPanel.ShowCardChoices(labels, visibleIndex =>
+        {
+            if (visibleIndex >= 0 && visibleIndex < choiceIndices.Count)
+                UseChoiceAt(choiceIndices[visibleIndex]);
+        });
+    }
+
+    private void EnsureChoiceState()
+    {
+        if (choices == null)
+        {
+            usedChoices = Array.Empty<bool>();
+            return;
+        }
+
+        if (usedChoices != null && usedChoices.Length == choices.Length)
+            return;
+
+        bool[] previousState = usedChoices;
+        usedChoices = new bool[choices.Length];
+        if (previousState == null)
+            return;
+
+        Array.Copy(previousState, usedChoices, Mathf.Min(previousState.Length, usedChoices.Length));
     }
 
     private void ResolveCardManager()
     {
         if (cardManager == null)
             cardManager = FindFirstObjectByType<CardManager>();
+    }
+
+    private void OnValidate()
+    {
+        EnsureChoiceState();
+        if (choices == null || lockedChoiceIndex >= choices.Length)
+            lockedChoiceIndex = -1;
     }
 }

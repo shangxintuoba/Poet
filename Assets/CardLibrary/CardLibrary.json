@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 2,
+  "sourceSheets": [
+    "FullLibrary",
+    "Raw_Choice"
+  ],
+  "cards": [
+    {
+      "id": "f1",
+      "name": "EmotionCreatorTest",
+      "type": "Raw",
+      "description": "Raw Card Test",
+      "useable": true,
+      "choices": [
+        {
+          "id": "c1",
+          "choiceText": "Create Hapiness",
+          "usedText": "e1 Created",
+          "cardsAdded": [
+            "e1",
+            "e1"
+          ],
+          "cardsDestroyed": [],
+          "hideOtherChoices": false,
+          "destroyWhenUsed": false
+        },
+        {
+          "id": "c2",
+          "choiceText": "CreatePain",
+          "usedText": "e2 Created",
+          "cardsAdded": [
+            "e2"
+          ],
+          "cardsDestroyed": [
+            "e1"
+          ],
+          "hideOtherChoices": false,
+          "destroyWhenUsed": false
+        },
+        {
+          "id": "c3",
+          "choiceText": "HideOther Choice",
+          "usedText": "Hided",
+          "cardsAdded": [],
+          "cardsDestroyed": [],
+          "hideOtherChoices": true,
+          "destroyWhenUsed": false
+        },
+        {
+          "id": "c4",
+          "choiceText": "Destroy",
+          "usedText": "",
+          "cardsAdded": [],
+          "cardsDestroyed": [],
+          "hideOtherChoices": false,
+          "destroyWhenUsed": true
+        }
+      ]
+    },
+    {
+      "id": "f2",
+      "name": "Pain",
+      "type": "Emotion",
+      "description": "Eternal",
+      "willPowerDelta": -2
+    },
+    {
+      "id": "f3",
+      "name": "Hapiness",
+      "type": "Emotion",
+      "description": "A mirracle",
+      "willPowerDelta": 2
+    },
+    {
+      "id": "f4",
+      "name": "Island",
+      "type": "Material",
+      "description": "land in the sea",
+      "materialType": "Nature"
+    },
+    {
+      "id": "f5",
+      "name": "Empire",
+      "type": "Material",
+      "description": "Everything you saw belongs to it",
+      "materialType": "Politics"
+    }
+  ]
+}

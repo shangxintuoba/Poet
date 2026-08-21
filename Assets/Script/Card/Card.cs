@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -10,9 +11,30 @@ public class Card : MonoBehaviour,
     IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public TextMeshProUGUI NameText;
-    public Image Icon;
+    public GameObject NaureOutline;
+    public GameObject PoliticsOutline;
+    public GameObject EmotionOutline;
+    public GameObject UniversalOutline;
     public string Description;
     public string Name;
+
+    public CardLibrary.CardData Data { get; private set; }
+    public bool IsEmotionCard => Data != null && Data.type == "Emotion";
+
+    private bool[] usedRawChoices;
+    private int lockedRawChoiceIndex = -1;
+    private CardManager cardManager;
+
+    public enum CardOutlineType
+    {
+        OEmotion,
+        OPolitics,
+        ONature,
+        ONone,
+        OUniversal,
+    }
+
+    public CardOutlineType OutlineType;
 
     private RectTransform cardContainer;
     private RectTransform cardPanel;
@@ -68,8 +90,74 @@ public class Card : MonoBehaviour,
 
     private void Start()
     {
-        if(NameText != null) NameText.text = Name;
+        if (NameText != null)
+            NameText.text = Name;
+
+        AssignOutlineType();
     }
+
+    public void Initialize(CardLibrary.CardData data)
+    {
+        Data = data;
+        Name = data != null ? data.name : string.Empty;
+        Description = data != null ? data.description : string.Empty;
+
+        if (NameText != null)
+            NameText.text = Name;
+
+        ResetRawChoiceState();
+        AssignOutlineType();
+    }
+
+    public void AssignOutlineType()
+    {
+        OutlineType = CardOutlineType.ONone;
+
+        if (Data != null)
+        {
+            switch (Data.type)
+            {
+                case "Emotion":
+                    OutlineType = CardOutlineType.OEmotion;
+                    break;
+
+                case "Material":
+                    switch (Data.materialType)
+                    {
+                        case "Nature":
+                            OutlineType = CardOutlineType.ONature;
+                            break;
+
+                        case "Politics":
+                            OutlineType = CardOutlineType.OPolitics;
+                            break;
+
+                        case "Universal":
+                            OutlineType = CardOutlineType.OUniversal;
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        SetActiveOutline();
+    }
+
+    private void SetActiveOutline()
+    {
+        if (NaureOutline != null)
+            NaureOutline.SetActive(OutlineType == CardOutlineType.ONature);
+
+        if (PoliticsOutline != null)
+            PoliticsOutline.SetActive(OutlineType == CardOutlineType.OPolitics);
+
+        if (EmotionOutline != null)
+            EmotionOutline.SetActive(OutlineType == CardOutlineType.OEmotion);
+
+        if (UniversalOutline != null)
+            UniversalOutline.SetActive(OutlineType == CardOutlineType.OUniversal);
+    }
+
     private void Update()
     {
         if (selectedCard != this || Mouse.current == null) return;
@@ -115,6 +203,95 @@ public class Card : MonoBehaviour,
             ? cardName
             : cardName + "\n\n" + Description;
         textPanel?.ShowCardDescription(details);
+        ShowRawChoices();
+    }
+
+    private void ShowRawChoices()
+    {
+        if (Data == null || Data.type != "Raw" || !Data.useable ||
+            Data.choices == null || Data.choices.Length == 0 || textPanel == null)
+            return;
+
+        ResetRawChoiceState();
+
+        List<string> labels = new List<string>();
+        List<int> choiceIndices = new List<int>();
+
+        if (lockedRawChoiceIndex >= 0 && lockedRawChoiceIndex < Data.choices.Length)
+        {
+            labels.Add(Data.choices[lockedRawChoiceIndex].choiceText);
+            choiceIndices.Add(lockedRawChoiceIndex);
+        }
+        else
+        {
+            for (int i = 0; i < Data.choices.Length; i++)
+            {
+                if (usedRawChoices[i])
+                    continue;
+
+                labels.Add(Data.choices[i].choiceText);
+                choiceIndices.Add(i);
+            }
+        }
+
+        textPanel.ClearChoices();
+        if (labels.Count == 0)
+            return;
+
+        textPanel.ShowCardChoices(labels, visibleIndex =>
+        {
+            if (visibleIndex >= 0 && visibleIndex < choiceIndices.Count)
+                UseRawChoiceAt(choiceIndices[visibleIndex]);
+        });
+    }
+
+    private void UseRawChoiceAt(int index)
+    {
+        if (Data == null || Data.choices == null)
+            return;
+
+        ResetRawChoiceState();
+        if (index < 0 || index >= Data.choices.Length || usedRawChoices[index])
+            return;
+
+        CardLibrary.RawChoiceData choice = Data.choices[index];
+        usedRawChoices[index] = true;
+
+        if (choice.hideOtherChoices)
+            lockedRawChoiceIndex = index;
+
+        textPanel?.ShowCardDescription(string.IsNullOrWhiteSpace(choice.usedText) ? Description : choice.usedText);
+
+        ResolveCardManager();
+        if (cardManager != null)
+        {
+            cardManager.DestroyCardsByDataIds(new List<string>(choice.cardsDestroyed ?? new string[0]));
+            cardManager.CreateCards(new List<string>(choice.cardsAdded ?? new string[0]));
+        }
+
+        if (choice.destroyWhenUsed)
+        {
+            cardManager?.DestroyCards(new List<Card> { this });
+            return;
+        }
+
+        ShowRawChoices();
+    }
+
+    private void ResetRawChoiceState()
+    {
+        int choiceCount = Data != null && Data.choices != null ? Data.choices.Length : 0;
+        if (usedRawChoices == null || usedRawChoices.Length != choiceCount)
+        {
+            usedRawChoices = new bool[choiceCount];
+            lockedRawChoiceIndex = -1;
+        }
+    }
+
+    private void ResolveCardManager()
+    {
+        if (cardManager == null)
+            cardManager = FindFirstObjectByType<CardManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -145,7 +322,7 @@ public class Card : MonoBehaviour,
         isDragging = false;
         if (rootCanvas == null || transform.parent != rootCanvas.transform) return;
 
-        if (this is Emotion)
+        if (IsEmotionCard)
         {
             HandleEmotionDrop(eventData.position);
             return;

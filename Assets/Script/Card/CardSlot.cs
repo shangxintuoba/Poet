@@ -39,7 +39,7 @@ public class CardSlot : MonoBehaviour, IDropHandler
     private bool Accepts(Card card)
     {
         bool isEmotionSlot = IsInsideEmotionContainer();
-        if (card is Emotion)
+        if (card.IsEmotionCard)
             return isEmotionSlot;
 
         return !isEmotionSlot;

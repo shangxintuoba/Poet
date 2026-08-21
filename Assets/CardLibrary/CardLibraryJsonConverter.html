@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Card Library XLSX → JSON</title>
+  <style>
+    :root { color-scheme: light; --ink:#000000; --paper:#fffde0; --accent:#39543d; --muted:#69706a; --line:#9ba098; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background:var(--paper); color:var(--ink); font:16px/1.5 system-ui, sans-serif; }
+    main { width:min(680px, 100%); }
+    h1 { margin:0 0 8px; font-size:clamp(26px, 5vw, 38px); line-height:1.1; }
+    .lead { margin:0 0 24px; color:#3e443f; }
+    #dropZone { min-height:250px; display:grid; place-items:center; text-align:center; padding:32px; border:3px dashed var(--ink); background:#fff; cursor:pointer; transition:.15s ease; }
+    #dropZone.dragging { transform:translateY(-3px); background:#eef3e5; border-color:var(--accent); }
+    #dropZone strong { display:block; margin-bottom:6px; font-size:20px; }
+    #fileInput { display:none; }
+    button { appearance:none; border:2px solid var(--ink); background:var(--accent); color:var(--paper); padding:11px 18px; font:inherit; font-weight:700; cursor:pointer; }
+    button:disabled { opacity:.45; cursor:not-allowed; }
+    #actions { display:flex; gap:12px; align-items:center; margin-top:16px; }
+    #status { min-height:24px; margin:16px 0 0; font-weight:600; }
+    #status.error { color:#a30000; }
+    #summary { display:none; margin-top:20px; padding:16px; border:2px solid var(--ink); background:#fff; }
+    #summary.visible { display:block; }
+    #summary ul { margin:8px 0 0; padding-left:20px; }
+    code { background:#e9e7d0; padding:1px 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Card Library XLSX → JSON</h1>
+    <p class="lead">Offline converter for the <code>FullLibrary</code> and <code>Raw_Choice</code> workbook structure.</p>
+
+    <label id="dropZone" for="fileInput">
+      <div>
+        <strong>Drop CardLibrary.xlsx here</strong>
+        <span>or click to select the file</span>
+      </div>
+    </label>
+    <input id="fileInput" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+
+    <div id="actions">
+      <button id="convertButton" type="button" disabled>Convert and download JSON</button>
+      <span id="fileName">No file selected</span>
+    </div>
+    <p id="status" aria-live="polite"></p>
+    <section id="summary" aria-live="polite"></section>
+  </main>
+
+  <script>
+    (() => {
+      const REQUIRED_SHEETS = ["FullLibrary", "Raw_Choice"];
+      const input = document.getElementById("fileInput");
+      const dropZone = document.getElementById("dropZone");
+      const convertButton = document.getElementById("convertButton");
+      const fileName = document.getElementById("fileName");
+      const status = document.getElementById("status");
+      const summary = document.getElementById("summary");
+      let selectedFile = null;
+
+      function setStatus(message, error = false) {
+        status.textContent = message;
+        status.className = error ? "error" : "";
+      }
+
+      function chooseFile(file) {
+        if (!file) return;
+        if (!file.name.toLowerCase().endsWith(".xlsx")) {
+          selectedFile = null;
+          convertButton.disabled = true;
+          fileName.textContent = "Please select an .xlsx file";
+          setStatus("Only .xlsx files are supported.", true);
+          return;
+        }
+        selectedFile = file;
+        fileName.textContent = file.name;
+        convertButton.disabled = false;
+        summary.classList.remove("visible");
+        setStatus("Ready to convert.");
+      }
+
+      input.addEventListener("change", () => chooseFile(input.files[0]));
+      ["dragenter", "dragover"].forEach(type => dropZone.addEventListener(type, event => {
+        event.preventDefault();
+        dropZone.classList.add("dragging");
+      }));
+      ["dragleave", "drop"].forEach(type => dropZone.addEventListener(type, event => {
+        event.preventDefault();
+        dropZone.classList.remove("dragging");
+      }));
+      dropZone.addEventListener("drop", event => chooseFile(event.dataTransfer.files[0]));
+
+      convertButton.addEventListener("click", async () => {
+        if (!selectedFile) return;
+        convertButton.disabled = true;
+        setStatus("Reading workbook…");
+        try {
+          const sheets = await readXlsx(selectedFile);
+          const output = buildCardLibrary(sheets);
+          await saveJson(output, selectedFile.name.replace(/\.xlsx$/i, "") + ".json");
+          showSummary(output);
+          setStatus("Converted and downloaded successfully.");
+        } catch (error) {
+          console.error(error);
+          setStatus(error.message || "The workbook could not be converted.", true);
+        } finally {
+          convertButton.disabled = !selectedFile;
+        }
+      });
+
+      function showSummary(output) {
+        const totals = output.cards.reduce((result, card) => {
+          result[card.type] = (result[card.type] || 0) + 1;
+          return result;
+        }, {});
+        summary.innerHTML = `<strong>JSON created</strong><ul>
+          <li>${output.cards.length} cards (${Object.entries(totals).map(([type, count]) => `${count} ${escapeHtml(type)}`).join(", ")})</li>
+          <li>${output.cards.filter(card => card.type === "Raw").reduce((n, card) => n + card.choices.length, 0)} Raw choices</li>
+          <li>Source sheets: ${output.sourceSheets.map(escapeHtml).join(", ")}</li>
+        </ul>`;
+        summary.classList.add("visible");
+      }
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"]/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;" })[char]);
+      }
+
+      function buildCardLibrary(sheets) {
+        const missing = REQUIRED_SHEETS.filter(name => !sheets[name]);
+        if (missing.length) throw new Error(`Missing required sheet: ${missing.join(", ")}`);
+
+        const fullLibrary = asRows(sheets.FullLibrary, [
+          "Index", "Name", "type", "Description", "WillPowerDelta", "MaterialType", "Useable", "Choices"
+        ]);
+        const choices = indexBy(asRows(sheets.Raw_Choice, ["Index", "ChoiceText", "UsedText", "CardsAdded", "CardsDestroyed", "HideOtherChoices", "DestroyWhenUsed"]), "Index");
+
+        const cards = fullLibrary.map(base => {
+          const card = { id: String(base.Index), name: stringValue(base.Name), type: stringValue(base.type), description: stringValue(base.Description) };
+          if (card.type === "Emotion") {
+            card.willPowerDelta = numberValue(base.WillPowerDelta);
+          } else if (card.type === "Material") {
+            card.materialType = stringValue(base.MaterialType);
+          } else if (card.type === "Raw") {
+            const choiceIds = splitIds(base.Choices);
+            card.useable = booleanValue(base.Useable);
+            card.choices = choiceIds.map(choiceId => {
+              const choice = choices[choiceId];
+              if (!choice) throw new Error(`Raw card '${card.id}' references missing choice '${choiceId}'.`);
+              return {
+                id: choiceId,
+                choiceText: stringValue(choice.ChoiceText),
+                usedText: stringValue(choice.UsedText),
+                cardsAdded: splitIds(choice.CardsAdded),
+                cardsDestroyed: splitIds(choice.CardsDestroyed),
+                hideOtherChoices: booleanValue(choice.HideOtherChoices),
+                destroyWhenUsed: booleanValue(choice.DestroyWhenUsed)
+              };
+            });
+          }
+          return card;
+        });
+
+        return {
+          schemaVersion: 2,
+          sourceSheets: REQUIRED_SHEETS,
+          cards
+        };
+      }
+
+      function asRows(rows, requiredHeaders) {
+        if (!rows.length) throw new Error("A required sheet is empty.");
+        const headers = rows[0].map(value => String(value ?? "").trim());
+        const missing = requiredHeaders.filter(header => !headers.includes(header));
+        if (missing.length) throw new Error(`Missing required column: ${missing.join(", ")}`);
+        return rows.slice(1).filter(row => row.some(value => value !== "" && value != null)).map(row =>
+          Object.fromEntries(headers.map((header, index) => [header, row[index] ?? ""]))
+        );
+      }
+
+      function indexBy(rows, key) {
+        return Object.fromEntries(rows.map(row => [String(row[key]), row]));
+      }
+      function splitIds(value) { return stringValue(value).split(",").map(id => id.trim()).filter(Boolean); }
+      function stringValue(value) { return value == null ? "" : String(value); }
+      function numberValue(value) { const number = Number(value); return Number.isFinite(number) ? number : 0; }
+      function booleanValue(value) { return value === true || value === 1 || String(value).toLowerCase() === "true" || String(value) === "1"; }
+
+      async function saveJson(data, name) {
+        const json = JSON.stringify(data, null, 2);
+
+        // Local pages cannot silently write next to themselves. The save picker
+        // lets you save directly into the CardLibrary folder without downloading.
+        if (window.showSaveFilePicker) {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: name,
+            types: [{
+              description: "JSON file",
+              accept: { "application/json": [".json"] }
+            }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(json);
+          await writable.close();
+          return;
+        }
+
+        const blob = new Blob([json], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = name;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      // Minimal XLSX reader: XLSX is a ZIP containing XML. It supports the two
+      // compression modes used by Excel workbooks: stored and deflate-raw.
+      async function readXlsx(file) {
+        if (!("DecompressionStream" in window)) {
+          throw new Error("This browser does not support offline XLSX decompression. Please use a current version of Chrome, Edge, or Firefox.");
+        }
+        const zip = new ZipReader(await file.arrayBuffer());
+        const sharedStringsXml = await zip.text("xl/sharedStrings.xml");
+        const sharedStrings = sharedStringsXml ? readSharedStrings(sharedStringsXml) : [];
+        const workbookXml = await zip.text("xl/workbook.xml");
+        const relationshipsXml = await zip.text("xl/_rels/workbook.xml.rels");
+        if (!workbookXml || !relationshipsXml) throw new Error("This is not a valid XLSX workbook.");
+
+        const relationshipMap = new Map();
+        xml(relationshipsXml).querySelectorAll("Relationship").forEach(node => relationshipMap.set(node.getAttribute("Id"), node.getAttribute("Target")));
+        const result = {};
+        const sheetNodes = xml(workbookXml).querySelectorAll("sheet");
+        for (const node of sheetNodes) {
+          const name = node.getAttribute("name");
+          const relationId = node.getAttribute("r:id") || node.getAttribute("id");
+          const target = relationshipMap.get(relationId);
+          if (!target) continue;
+          const path = target.startsWith("/") ? target.slice(1) : `xl/${target.replace(/^\.\//, "")}`;
+          const sheetXml = await zip.text(path);
+          if (sheetXml) result[name] = readSheet(sheetXml, sharedStrings);
+        }
+        return result;
+      }
+
+      function xml(text) { return new DOMParser().parseFromString(text, "application/xml"); }
+      function readSharedStrings(text) {
+        return [...xml(text).querySelectorAll("si")].map(node => [...node.querySelectorAll("t")].map(t => t.textContent).join(""));
+      }
+      function readSheet(text, sharedStrings) {
+        const result = [];
+        for (const rowNode of xml(text).querySelectorAll("sheetData > row")) {
+          const rowIndex = Number(rowNode.getAttribute("r")) - 1;
+          const row = result[rowIndex] || [];
+          for (const cell of rowNode.querySelectorAll(":scope > c")) {
+            const reference = cell.getAttribute("r") || "A1";
+            const columnIndex = columnToIndex(reference.replace(/\d+/g, ""));
+            const type = cell.getAttribute("t");
+            const raw = cell.querySelector("v")?.textContent ?? cell.querySelector("is t")?.textContent ?? "";
+            row[columnIndex] = type === "s" ? (sharedStrings[Number(raw)] ?? "") : type === "b" ? raw === "1" : raw;
+          }
+          result[rowIndex] = row;
+        }
+        return result.map(row => row || []);
+      }
+      function columnToIndex(column) {
+        return [...column].reduce((index, char) => index * 26 + char.charCodeAt(0) - 64, 0) - 1;
+      }
+
+      class ZipReader {
+        constructor(buffer) { this.bytes = new Uint8Array(buffer); this.view = new DataView(buffer); this.files = this.readDirectory(); }
+        readDirectory() {
+          const end = this.findEndOfCentralDirectory();
+          const count = this.view.getUint16(end + 10, true);
+          let offset = this.view.getUint32(end + 16, true);
+          const files = new Map();
+          for (let i = 0; i < count; i++) {
+            if (this.view.getUint32(offset, true) !== 0x02014b50) throw new Error("Invalid ZIP directory.");
+            const method = this.view.getUint16(offset + 10, true);
+            const compressedSize = this.view.getUint32(offset + 20, true);
+            const uncompressedSize = this.view.getUint32(offset + 24, true);
+            const nameLength = this.view.getUint16(offset + 28, true);
+            const extraLength = this.view.getUint16(offset + 30, true);
+            const commentLength = this.view.getUint16(offset + 32, true);
+            const localOffset = this.view.getUint32(offset + 42, true);
+            const name = new TextDecoder().decode(this.bytes.slice(offset + 46, offset + 46 + nameLength));
+            files.set(name, { method, compressedSize, uncompressedSize, localOffset });
+            offset += 46 + nameLength + extraLength + commentLength;
+          }
+          return files;
+        }
+        findEndOfCentralDirectory() {
+          for (let i = this.bytes.length - 22; i >= Math.max(0, this.bytes.length - 65557); i--) {
+            if (this.view.getUint32(i, true) === 0x06054b50) return i;
+          }
+          throw new Error("Invalid ZIP file.");
+        }
+        async text(name) {
+          const entry = this.files.get(name);
+          if (!entry) return null;
+          const offset = entry.localOffset;
+          if (this.view.getUint32(offset, true) !== 0x04034b50) throw new Error("Invalid ZIP entry.");
+          const nameLength = this.view.getUint16(offset + 26, true);
+          const extraLength = this.view.getUint16(offset + 28, true);
+          const data = this.bytes.slice(offset + 30 + nameLength + extraLength, offset + 30 + nameLength + extraLength + entry.compressedSize);
+          let output;
+          if (entry.method === 0) output = data;
+          else if (entry.method === 8) {
+            const stream = new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+            output = new Uint8Array(await new Response(stream).arrayBuffer());
+          } else throw new Error(`Unsupported XLSX compression method (${entry.method}).`);
+          return new TextDecoder().decode(output);
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

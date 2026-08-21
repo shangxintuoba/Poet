@@ -184,8 +184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1.3419037, y: 134.20438}
-  m_SizeDelta: {x: -19.9166, y: 28.4908}
+  m_AnchoredPosition: {x: 1.7551994, y: 134.20438}
+  m_SizeDelta: {x: -13.7224, y: 28.4908}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &626820201889575312
 CanvasRenderer:
@@ -504,27 +504,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Resource
   NameText: {fileID: 4512816174034348166}
-  Icon: {fileID: 0}
-  Description: "\u6CA1\u6709\u53EF\u4E0D\u884C\u3002 \u4F60\u8EAB\u4F53\u7684\u6BCF\u4E00\u4E2A\u7EC6\u80DE\u90FD\u5BF9\u5176\u8FC7\u654F\uFF0C\u6216\u8BB8\u4F60\u60B2\u60E8\u7684\u547D\u8FD0\u4ECE5000\u5E74\u524D\u4EBA\u4EEC\u6361\u8D77\u7B2C\u4E00\u679A\u8D1D\u58F3\u65F6\u5C31\u5DF2\u88AB\u5B9A\u4E0B\u4E86\u3002"
+  NaureOutline: {fileID: 0}
+  PoliticsOutline: {fileID: 0}
+  EmotionOutline: {fileID: 0}
+  Description: "\u6CA1\u6709\u53EF\u4E0D\u884C\u3002 \\n\u4F60\u8EAB\u4F53\u7684\u6BCF\u4E00\u4E2A\u7EC6\u80DE\u90FD\u5BF9\u5176\u8FC7\u654F\uFF0C\u6216\u8BB8\u4F60\u60B2\u60E8\u7684\u547D\u8FD0\u4ECE5000\u5E74\u524D\u4EBA\u4EEC\u6361\u8D77\u7B2C\u4E00\u679A\u8D1D\u58F3\u65F6\u5C31\u5DF2\u88AB\u5B9A\u4E0B\u4E86\u3002"
   Name: "\u94B1"
+  OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08
   selectionScale: 1.08
   scaleDuration: 0.12
   snapDuration: 0.15
-  shadow: {fileID: 0}
+  shadow: {fileID: 2565466363994885794}
   dragShadowOffset: {x: -8, y: -8}
   resourceType: 0
   value: 6
   changingText:
-  - "\u65E0\u4EA7\u9636\u7EA7"
-  - "\u65E0\u4EA7\u9636\u7EA7"
-  - "\u8D2B\u4E0B\u4E2D\u519C"
-  - "\u8D2B\u4E0B\u4E2D\u519C"
-  - "\u8D2B\u4E0B\u4E2D\u519C"
-  - "\u5C0F\u8D44\u4EA7\u9636\u7EA7\uFF08\u8FD8\u80FD\u559D\u4E0A\u4E00\u987F\uFF09"
-  - "\u5C0F\u8D44\u4EA7\u9636\u7EA7\uFF08\u8FD8\u80FD\u559D\u4E0A\u4E00\u987F\uFF09"
-  - "\u8D44\u672C\u5BB6"
-  - "\u8D44\u672C\u5BB6"
-  - "\u5BCC\u53EF\u654C\u56FD\uFF08\u80FD\u559D\u4E0A\u4E94\u516D\u4E2A\u901A\u5BB5\uFF09"
-  - "\u5BCC\u53EF\u654C\u56FD\uFF08\u80FD\u559D\u4E0A\u4E94\u516D\u4E2A\u901A\u5BB5\uFF09"
+  - "*\u771F\u6B63\u7684*\u65E0\u4EA7\u9636\u7EA7"
+  - "1/10 \u65E0\u4EA7\u9636\u7EA7"
+  - "2/10 \u8D2B\u4E0B\u4E2D\u519C"
+  - "3/10 \u8D2B\u4E0B\u4E2D\u519C"
+  - "4/10 \u8D2B\u4E0B\u4E2D\u519C"
+  - "5/10 \u5C0F\u8D44\u4EA7\u9636\u7EA7\uFF08\u8FD8\u80FD\u559D\u4E0A\u4E00\u987F\uFF09"
+  - "6/10 \u5C0F\u8D44\u4EA7\u9636\u7EA7\uFF08\u8FD8\u80FD\u559D\u4E0A\u4E00\u987F\uFF09"
+  - "7/10 \u8D44\u672C\u5BB6"
+  - "8 /10 \u8D44\u672C\u5BB6"
+  - "9/10 \u5BCC\u53EF\u654C\u56FD\uFF08\u80FD\u559D\u4E0A\u4E94\u516D\u4E2A\u901A\u5BB5\uFF09"
+  - "10/10 \u5BCC\u53EF\u654C\u56FD\uFF08\u80FD\u559D\u4E0A\u4E94\u516D\u4E2A\u901A\u5BB5\uFF09"

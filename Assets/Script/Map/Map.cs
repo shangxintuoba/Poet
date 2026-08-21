@@ -37,7 +37,8 @@ public class Map : MonoBehaviour
             return;
         if (textManager != null && textManager.IsTyping)
             return;
-        if (!IsNearby(destination))
+        int travelDistance = GetTravelDistance(destination);
+        if (travelDistance <= 0)
             return;
 
         SaveCurrentNodeState();
@@ -46,6 +47,7 @@ public class Map : MonoBehaviour
         currentNode.isUnlocked = true;
         currentNode.SetCurrent(true);
         RefreshVisibleNodes();
+        ProgressTime(travelDistance);
 
         if (currentNode.InkFile != null && textManager != null)
         {
@@ -57,17 +59,33 @@ public class Map : MonoBehaviour
         }
     }
 
-    private bool IsNearby(Node destination)
+    private void ProgressTime(int travelDistance)
+    {
+        Time timeCard = GameManager.Instance != null
+            ? GameManager.Instance.TimeCard
+            : FindFirstObjectByType<Time>();
+
+        timeCard?.TimeProgress(travelDistance);
+    }
+
+    private int GetTravelDistance(Node destination)
     {
         if (currentNode == null)
-            return destination == startingNode;
+            return destination == startingNode ? 1 : 0;
 
         foreach (Node nearby in currentNode.NearbyNodes)
         {
             if (nearby == destination)
-                return true;
+                return 1;
         }
-        return false;
+
+        foreach (Node.FarConnectedNodes farNode in currentNode.FarNodes)
+        {
+            if (farNode != null && farNode.node == destination)
+                return Mathf.Max(1, farNode.distance);
+        }
+
+        return 0;
     }
 
     private void RefreshVisibleNodes()
@@ -75,7 +93,7 @@ public class Map : MonoBehaviour
         foreach (Node node in allNodes)
         {
             if (node == null) continue;
-            bool visible = node == currentNode || IsNearby(node);
+            bool visible = node == currentNode || GetTravelDistance(node) > 0;
             node.gameObject.SetActive(visible);
         }
     }

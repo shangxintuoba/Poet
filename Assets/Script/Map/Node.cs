@@ -8,6 +8,13 @@ public class Node : MonoBehaviour, IPointerClickHandler
     public bool isUnlocked;
     public string NodeName;
     public Node[] NearbyNodes;
+    [System.Serializable]
+    public class FarConnectedNodes
+    {
+        public Node node;
+        [Min(1)] public int distance = 1;
+    }
+    public FarConnectedNodes[] FarNodes;
     [SerializeField] private InkFile inkFile;
     [SerializeField, Min(1f)] private float currentScale = 1.08f;
     [SerializeField, Min(0f)] private float scaleDuration = 0.12f;
