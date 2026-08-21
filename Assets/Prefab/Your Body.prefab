@@ -431,6 +431,7 @@ MonoBehaviour:
   NaureOutline: {fileID: 0}
   PoliticsOutline: {fileID: 0}
   EmotionOutline: {fileID: 0}
+  UniversalOutline: {fileID: 0}
   Description: 
   Name: Your Body
   OutlineType: 3
@@ -441,7 +442,7 @@ MonoBehaviour:
   snapDuration: 0.15
   shadow: {fileID: 0}
   dragShadowOffset: {x: -8, y: -8}
-  Useable: 0
+  Useable: 1
   isUsed: 0
   choices:
   - ChoiceText: 'Touch your inside  '
@@ -456,10 +457,11 @@ MonoBehaviour:
   - ChoiceText: Touch Your Skin
     UsedText: 
     CardsAdded:
-    - Your Diploma
-    - Your Job
+    - "\u4F60\u7684\u6587\u51ED"
+    - "\u4F60\u7684\u5DE5\u4F5C"
     CardsAddedPrefabs: []
-    CardsDestroyed: []
+    CardsDestroyed:
+    - {fileID: 0}
     HideOtherChoices: 0
     DestroyWhenUsed: 0
   usedChoices: 0000

@@ -68,7 +68,7 @@ public class Raw : Card
             return;
         }
 
-        ShowAvailableChoices();
+        DeselectCard();
     }
 
     private void ShowAvailableChoices()

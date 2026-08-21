@@ -10,6 +10,7 @@ public class CardLibrary : MonoBehaviour
         public int schemaVersion;
         public string[] sourceSheets;
         public CardData[] cards;
+        public ForgeLibraryData[] forgeLibraries;
     }
 
     [Serializable]
@@ -37,12 +38,42 @@ public class CardLibrary : MonoBehaviour
         public bool destroyWhenUsed;
     }
 
+    [System.Serializable]
+    public class ForgeLibraryData
+    {
+        public string type;
+        public string sourceSheet;
+        public ForgeIngredientData[] ingredients;
+        public ForgeFormulaData[] formulas;
+    }
+
+    [System.Serializable]
+    public class ForgeIngredientData
+    {
+        public string id;
+        public string name;
+    }
+
+    [System.Serializable]
+    public class ForgeFormulaData
+    {
+        public string firstIngredientId;
+        public string firstIngredientName;
+        public string secondIngredientId;
+        public string secondIngredientName;
+        public string resultCardName;
+    }
+
     [SerializeField] private TextAsset cardLibraryJson;
 
     public CardLibraryData Data { get; private set; }
     public IReadOnlyList<CardData> Cards => Data != null && Data.cards != null
         ? Data.cards
         : Array.Empty<CardData>();
+
+    public IReadOnlyList<ForgeLibraryData> ForgeLibraries => Data != null && Data.forgeLibraries != null
+        ? Data.forgeLibraries
+        : Array.Empty<ForgeLibraryData>();
 
     private readonly Dictionary<string, CardData> cardsByReference = new Dictionary<string, CardData>();
 

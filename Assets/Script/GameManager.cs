@@ -5,7 +5,7 @@ public sealed class GameManager : MonoBehaviour
     //player state
     public Resource Money;
     public Resource WillPower;
-    public Time TimeCard;
+    public GameTime TimeCard;
 
 
     //GameState

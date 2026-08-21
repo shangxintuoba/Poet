@@ -1,8 +1,12 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "sourceSheets": [
     "FullLibrary",
-    "Raw_Choice"
+    "Raw_Choice",
+    "ForgeLibrary_Universal",
+    "ForgeLibrary_Nature",
+    "ForgeLibrary_Politics",
+    "ForgeLibrary_Emotion"
   ],
   "cards": [
     {
@@ -17,8 +21,8 @@
           "choiceText": "Create Hapiness",
           "usedText": "e1 Created",
           "cardsAdded": [
-            "e1",
-            "e1"
+            "f2",
+            "f3"
           ],
           "cardsDestroyed": [],
           "hideOtherChoices": false,
@@ -29,10 +33,10 @@
           "choiceText": "CreatePain",
           "usedText": "e2 Created",
           "cardsAdded": [
-            "e2"
+            "f2"
           ],
           "cardsDestroyed": [
-            "e1"
+            "f3"
           ],
           "hideOtherChoices": false,
           "destroyWhenUsed": false
@@ -59,31 +63,308 @@
     },
     {
       "id": "f2",
-      "name": "Pain",
+      "name": "PainTest",
       "type": "Emotion",
       "description": "Eternal",
       "willPowerDelta": -2
     },
     {
       "id": "f3",
-      "name": "Hapiness",
+      "name": "HapinessTest",
       "type": "Emotion",
       "description": "A mirracle",
       "willPowerDelta": 2
     },
     {
-      "id": "f4",
-      "name": "Island",
-      "type": "Material",
-      "description": "land in the sea",
-      "materialType": "Nature"
+      "id": "f6",
+      "name": "你的文凭",
+      "type": "Raw",
+      "description": "你的大学文凭，全世界最没用的东西\\n你学的是什么？",
+      "useable": true,
+      "choices": [
+        {
+          "id": "c5",
+          "choiceText": "哲学",
+          "usedText": "",
+          "cardsAdded": [
+            "f8"
+          ],
+          "cardsDestroyed": [],
+          "hideOtherChoices": true,
+          "destroyWhenUsed": true
+        },
+        {
+          "id": "c6",
+          "choiceText": "比较文学",
+          "usedText": "",
+          "cardsAdded": [
+            "f9"
+          ],
+          "cardsDestroyed": [],
+          "hideOtherChoices": true,
+          "destroyWhenUsed": true
+        },
+        {
+          "id": "c7",
+          "choiceText": "社会学",
+          "usedText": "",
+          "cardsAdded": [
+            "f10"
+          ],
+          "cardsDestroyed": [],
+          "hideOtherChoices": true,
+          "destroyWhenUsed": true
+        }
+      ]
     },
     {
-      "id": "f5",
-      "name": "Empire",
+      "id": "f7",
+      "name": "你的工作",
+      "type": "Raw",
+      "description": "一份勉强能糊口的编剧工作，为一部庸俗短片攥写剧本。",
+      "useable": false,
+      "choices": []
+    },
+    {
+      "id": "f8",
+      "name": "哲学学位",
+      "type": "Raw",
+      "description": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\\n显然这对找到一份工作没有什么帮助。",
+      "useable": false,
+      "choices": []
+    },
+    {
+      "id": "f9",
+      "name": "比较文学学位",
+      "type": "Raw",
+      "description": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\\n显然这对找到一份工作没有什么帮助。",
+      "useable": false,
+      "choices": []
+    },
+    {
+      "id": "f10",
+      "name": "社会学学位",
+      "type": "Raw",
+      "description": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\\n显然这对找到一份工作没有什么帮助。",
+      "useable": false,
+      "choices": []
+    },
+    {
+      "id": "f11",
+      "name": "火",
       "type": "Material",
-      "description": "Everything you saw belongs to it",
-      "materialType": "Politics"
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f12",
+      "name": "冬",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f13",
+      "name": "铁",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f14",
+      "name": "空气",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f15",
+      "name": "世界",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f16",
+      "name": "大地",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f17",
+      "name": "熵",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f18",
+      "name": "死亡",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f19",
+      "name": "理性",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f20",
+      "name": "帝国",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f21",
+      "name": "罪",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f22",
+      "name": "谜",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f23",
+      "name": "奇迹",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f24",
+      "name": "爱",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f25",
+      "name": "辩证法",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f26",
+      "name": "零",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f27",
+      "name": "沙漠",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    },
+    {
+      "id": "f28",
+      "name": "冻土",
+      "type": "Material",
+      "description": "",
+      "materialType": "Universal"
+    }
+  ],
+  "forgeLibraries": [
+    {
+      "type": "Universal",
+      "sourceSheet": "ForgeLibrary_Universal",
+      "ingredients": [
+        {
+          "id": "u1",
+          "name": "火"
+        },
+        {
+          "id": "u2",
+          "name": "冬"
+        },
+        {
+          "id": "u3",
+          "name": "铁"
+        },
+        {
+          "id": "u4",
+          "name": "空气"
+        },
+        {
+          "id": "u5",
+          "name": "世界"
+        },
+        {
+          "id": "u6",
+          "name": "大地"
+        },
+        {
+          "id": "u7",
+          "name": "熵"
+        },
+        {
+          "id": "u8",
+          "name": "死亡"
+        },
+        {
+          "id": "u9",
+          "name": "理性"
+        },
+        {
+          "id": "u10",
+          "name": "帝国"
+        },
+        {
+          "id": "u11",
+          "name": "罪"
+        },
+        {
+          "id": "u12",
+          "name": "谜"
+        },
+        {
+          "id": "u13",
+          "name": "奇迹"
+        },
+        {
+          "id": "u14",
+          "name": "爱"
+        },
+        {
+          "id": "u15",
+          "name": "辩证法"
+        },
+        {
+          "id": "u16",
+          "name": "零"
+        }
+      ],
+      "formulas": []
+    },
+    {
+      "type": "Nature",
+      "sourceSheet": "ForgeLibrary_Nature",
+      "ingredients": [],
+      "formulas": []
+    },
+    {
+      "type": "Politics",
+      "sourceSheet": "ForgeLibrary_Politics",
+      "ingredients": [],
+      "formulas": []
+    },
+    {
+      "type": "Emotion",
+      "sourceSheet": "ForgeLibrary_Emotion",
+      "ingredients": [],
+      "formulas": []
     }
   ]
 }

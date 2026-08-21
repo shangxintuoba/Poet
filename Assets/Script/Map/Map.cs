@@ -61,9 +61,9 @@ public class Map : MonoBehaviour
 
     private void ProgressTime(int travelDistance)
     {
-        Time timeCard = GameManager.Instance != null
+        GameTime timeCard = GameManager.Instance != null
             ? GameManager.Instance.TimeCard
-            : FindFirstObjectByType<Time>();
+            : FindFirstObjectByType<GameTime>();
 
         timeCard?.TimeProgress(travelDistance);
     }

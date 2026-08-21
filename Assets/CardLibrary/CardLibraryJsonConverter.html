@@ -29,7 +29,7 @@
 <body>
   <main>
     <h1>Card Library XLSX → JSON</h1>
-    <p class="lead">Offline converter for the <code>FullLibrary</code> and <code>Raw_Choice</code> workbook structure.</p>
+    <p class="lead">Offline converter for card data, Raw choices, and ForgeLibrary recipe sheets.</p>
 
     <label id="dropZone" for="fileInput">
       <div>
@@ -40,7 +40,7 @@
     <input id="fileInput" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
 
     <div id="actions">
-      <button id="convertButton" type="button" disabled>Convert and download JSON</button>
+      <button id="convertButton" type="button" disabled>Convert and save JSON</button>
       <span id="fileName">No file selected</span>
     </div>
     <p id="status" aria-live="polite"></p>
@@ -49,7 +49,9 @@
 
   <script>
     (() => {
-      const REQUIRED_SHEETS = ["FullLibrary", "Raw_Choice"];
+      const BASE_SHEETS = ["FullLibrary", "Raw_Choice"];
+      const FORGE_SHEETS = ["ForgeLibrary_Universal", "ForgeLibrary_Nature", "ForgeLibrary_Politics", "ForgeLibrary_Emotion"];
+      const REQUIRED_SHEETS = [...BASE_SHEETS, ...FORGE_SHEETS];
       const input = document.getElementById("fileInput");
       const dropZone = document.getElementById("dropZone");
       const convertButton = document.getElementById("convertButton");
@@ -99,7 +101,7 @@
           const output = buildCardLibrary(sheets);
           await saveJson(output, selectedFile.name.replace(/\.xlsx$/i, "") + ".json");
           showSummary(output);
-          setStatus("Converted and downloaded successfully.");
+          setStatus("Converted and saved successfully.");
         } catch (error) {
           console.error(error);
           setStatus(error.message || "The workbook could not be converted.", true);
@@ -123,6 +125,49 @@
 
       function escapeHtml(value) {
         return String(value).replace(/[&<>"]/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;" })[char]);
+      }
+
+      function buildForgeLibrary(sheetName, rows) {
+        if (!Array.isArray(rows) || rows.length < 2) {
+          throw new Error("Forge sheet '" + sheetName + "' must contain an index row and a name row.");
+        }
+
+        const forgeType = sheetName.replace("ForgeLibrary_", "");
+        const ingredientIds = (rows[0] || []).slice(2).map(stringValue);
+        const ingredientNames = (rows[1] || []).slice(2).map(stringValue);
+        const ingredients = ingredientIds.map((id, index) => ({
+          id,
+          name: ingredientNames[index] || ""
+        })).filter(ingredient => ingredient.id && ingredient.name);
+
+        const formulas = [];
+        for (let rowIndex = 2; rowIndex < rows.length; rowIndex++) {
+          const row = rows[rowIndex] || [];
+          const secondIngredientId = stringValue(row[0]).trim();
+          const secondIngredientName = stringValue(row[1]).trim();
+          if (!secondIngredientId || !secondIngredientName) continue;
+
+          ingredientIds.forEach((firstIngredientId, columnIndex) => {
+            const firstIngredientName = stringValue(ingredientNames[columnIndex]).trim();
+            const resultCardName = stringValue(row[columnIndex + 2]).trim();
+            if (!firstIngredientId || !firstIngredientName || !resultCardName) return;
+
+            formulas.push({
+              firstIngredientId,
+              firstIngredientName,
+              secondIngredientId,
+              secondIngredientName,
+              resultCardName
+            });
+          });
+        }
+
+        return {
+          type: forgeType,
+          sourceSheet: sheetName,
+          ingredients,
+          formulas
+        };
       }
 
       function buildCardLibrary(sheets) {
@@ -160,10 +205,13 @@
           return card;
         });
 
-        return {
-          schemaVersion: 2,
+                const forgeLibraries = FORGE_SHEETS.map(sheetName => buildForgeLibrary(sheetName, sheets[sheetName]));
+
+return {
+          schemaVersion: 3,
           sourceSheets: REQUIRED_SHEETS,
-          cards
+          cards,
+          forgeLibraries
         };
       }
 

@@ -26,18 +26,19 @@ public class CardManager : MonoBehaviour
         if (cardPrefabs == null)
             return;
 
+        Transform parent = cardContainer != null ? cardContainer : transform;
         foreach (Card prefab in cardPrefabs)
         {
             if (prefab == null)
                 continue;
 
-            string cardReference = prefab.Data != null && !string.IsNullOrWhiteSpace(prefab.Data.id)
-                ? prefab.Data.id
-                : !string.IsNullOrWhiteSpace(prefab.Name)
-                    ? prefab.Name
-                    : prefab.gameObject.name;
+            Card card = Instantiate(prefab, parent);
+            PlaceAtBottomLeft(card, parent);
+            CardsOwned.Add(card);
 
-            CreateCardByReference(cardReference);
+            Transform firstFreeSlot = FindFirstFreeSlot(cardContainer);
+            if (firstFreeSlot != null)
+                PlaceInSlot(card, firstFreeSlot);
         }
     }
 

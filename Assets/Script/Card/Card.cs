@@ -61,6 +61,7 @@ public class Card : MonoBehaviour,
     private Tween shadowTween;
     private Tween positionTween;
     private bool isDragging;
+    private LiquidAmountIndicator liquidAmountIndicator;
     private RectTransform selectedCardOverlay;
     private Transform selectionOriginalParent;
     private Vector2 selectionOriginalPosition;
@@ -82,6 +83,7 @@ public class Card : MonoBehaviour,
         if (mapViewport == null) mapViewport = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport")?.GetComponent<RectTransform>();
         if (emotionCardContainer == null) emotionCardContainer = GameObject.Find("EmotionCardContainer")?.GetComponent<RectTransform>();
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
+        liquidAmountIndicator = GetComponentInChildren<LiquidAmountIndicator>(true);
         restingScale = transform.localScale;
         if (shadow != null) restingShadowPosition = shadow.anchoredPosition;
         ResolveTextPanel();
@@ -275,7 +277,7 @@ public class Card : MonoBehaviour,
             return;
         }
 
-        ShowRawChoices();
+        DeselectCard();
     }
 
     private void ResetRawChoiceState()
@@ -307,12 +309,14 @@ public class Card : MonoBehaviour,
         transform.SetParent(rootCanvas.transform, true);
         canvasGroup.blocksRaycasts = false;
         StartDragFeedback();
+        liquidAmountIndicator?.BeginSway();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging || eventData.button != PointerEventData.InputButton.Left) return;
         ((RectTransform)transform).anchoredPosition += eventData.delta / rootCanvas.scaleFactor;
+        liquidAmountIndicator?.SetDragDelta(eventData.delta, rootCanvas != null ? rootCanvas.scaleFactor : 1f);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -508,6 +512,7 @@ public class Card : MonoBehaviour,
 
     private void ResetDragFeedback()
     {
+        liquidAmountIndicator?.StopSway();
         if (selectedCard == this)
         {
             ApplySelectedFeedback();
@@ -528,7 +533,7 @@ public class Card : MonoBehaviour,
         shadowTween = shadow.DOAnchorPos(restingShadowPosition + dragShadowOffset, scaleDuration).SetEase(Ease.OutQuad);
     }
 
-    private void DeselectCard()
+    protected void DeselectCard()
     {
         if (selectedCard != this) return;
         ResolveTextPanel();
@@ -586,6 +591,11 @@ public class Card : MonoBehaviour,
         scaleTween?.Kill();
         shadowTween?.Kill();
         positionTween?.Kill();
-        if (selectedCard == this) selectedCard = null;
+        if (selectedCard == this)
+        {
+            ResolveTextPanel();
+            textPanel?.RestoreDialogueAfterCardDescription();
+            selectedCard = null;
+        }
     }
 }
