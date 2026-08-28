@@ -87,7 +87,8 @@
           "choiceText": "哲学",
           "usedText": "",
           "cardsAdded": [
-            "f8"
+            "f12",
+            "f13"
           ],
           "cardsDestroyed": [],
           "hideOtherChoices": true,
@@ -98,7 +99,8 @@
           "choiceText": "比较文学",
           "usedText": "",
           "cardsAdded": [
-            "f9"
+            "f14",
+            "f15"
           ],
           "cardsDestroyed": [],
           "hideOtherChoices": true,
@@ -109,7 +111,8 @@
           "choiceText": "社会学",
           "usedText": "",
           "cardsAdded": [
-            "f10"
+            "f16",
+            "f17"
           ],
           "cardsDestroyed": [],
           "hideOtherChoices": true,
@@ -151,129 +154,52 @@
     },
     {
       "id": "f11",
-      "name": "火",
-      "type": "Material",
+      "name": "烦躁",
+      "type": "Emotion",
       "description": "",
-      "materialType": "Universal"
+      "willPowerDelta": -1
     },
     {
       "id": "f12",
-      "name": "冬",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f13",
-      "name": "铁",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f14",
-      "name": "空气",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f15",
-      "name": "世界",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f16",
-      "name": "大地",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f17",
-      "name": "熵",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f18",
-      "name": "死亡",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f19",
-      "name": "理性",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f20",
-      "name": "帝国",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f21",
-      "name": "罪",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f22",
-      "name": "谜",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f23",
-      "name": "奇迹",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f24",
-      "name": "爱",
-      "type": "Material",
-      "description": "",
-      "materialType": "Universal"
-    },
-    {
-      "id": "f25",
       "name": "辩证法",
       "type": "Material",
       "description": "",
-      "materialType": "Universal"
+      "materialType": ""
     },
     {
-      "id": "f26",
-      "name": "零",
+      "id": "f13",
+      "name": "谜",
       "type": "Material",
       "description": "",
-      "materialType": "Universal"
+      "materialType": ""
     },
     {
-      "id": "f27",
+      "id": "f14",
       "name": "沙漠",
       "type": "Material",
       "description": "",
-      "materialType": "Universal"
+      "materialType": ""
     },
     {
-      "id": "f28",
+      "id": "f15",
+      "name": "战争",
+      "type": "Material",
+      "description": "",
+      "materialType": ""
+    },
+    {
+      "id": "f16",
       "name": "冻土",
       "type": "Material",
       "description": "",
-      "materialType": "Universal"
+      "materialType": ""
+    },
+    {
+      "id": "f17",
+      "name": "罪",
+      "type": "Material",
+      "description": "",
+      "materialType": ""
     }
   ],
   "forgeLibraries": [

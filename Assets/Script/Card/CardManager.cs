@@ -80,6 +80,41 @@ public class CardManager : MonoBehaviour
             CreateRegularCard(data);
     }
 
+    public Card CreateCardInSlot(string cardReference, CardSlot targetSlot)
+    {
+        if (targetSlot == null || targetSlot.CurrentCard != null)
+            return null;
+
+        ResolveCardLibrary();
+        if (cardLibrary == null || !cardLibrary.LoadJson() && cardLibrary.Data == null || universalCardPrefab == null)
+            return null;
+
+        CardLibrary.CardData data = cardLibrary.FindCardData(cardReference);
+        if (data == null)
+            return null;
+
+        Card card = Instantiate(universalCardPrefab, targetSlot.transform);
+        card.Initialize(data);
+        if (!targetSlot.ForcePlace(card))
+        {
+            Destroy(card.gameObject);
+            return null;
+        }
+
+        if (data.type == "Emotion")
+        {
+            while (EmotionsOwned.Count >= emotionCapacity)
+                DestroyEmotion(EmotionsOwned.Dequeue());
+            EmotionsOwned.Enqueue(card);
+        }
+        else
+        {
+            CardsOwned.Add(card);
+        }
+
+        return card;
+    }
+
     public void DestroyCards(List<Card> cards)
     {
         if (cards == null)

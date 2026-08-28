@@ -22,7 +22,28 @@ public class CardSlot : MonoBehaviour, IDropHandler
 
     public virtual bool TryPlace(Card card)
     {
+        Forge forge = GetComponentInParent<Forge>();
+        if (forge != null)
+        {
+            if (!forge.TryPlaceComponentCard(this, card))
+                return false;
+
+            CurrentCard = card;
+            card.PlaceIn(transform);
+            return true;
+        }
+
         if (card == null || CurrentCard != null || !Accepts(card))
+            return false;
+
+        CurrentCard = card;
+        card.PlaceIn(transform);
+        return true;
+    }
+
+    public bool ForcePlace(Card card)
+    {
+        if (card == null || CurrentCard != null)
             return false;
 
         CurrentCard = card;
