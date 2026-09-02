@@ -1357,7 +1357,7 @@ GameObject:
   - component: {fileID: 125316315}
   - component: {fileID: 125316314}
   m_Layer: 5
-  m_Name: Node_small
+  m_Name: YourBed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7116,7 +7116,7 @@ GameObject:
   - component: {fileID: 998127088}
   - component: {fileID: 998127087}
   m_Layer: 5
-  m_Name: Underground
+  m_Name: Underground_Downtown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8418,7 +8418,7 @@ GameObject:
   - component: {fileID: 1321174389}
   - component: {fileID: 1321174388}
   m_Layer: 5
-  m_Name: Underground (2)
+  m_Name: Underground_Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13758,7 +13758,7 @@ GameObject:
   - component: {fileID: 2132730866}
   - component: {fileID: 2132730865}
   m_Layer: 5
-  m_Name: Underground (1)
+  m_Name: Underground_Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

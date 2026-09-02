@@ -11,6 +11,7 @@ public class TextManager : MonoBehaviour
     private Story story;
 
     public bool IsTyping => textPanel != null && textPanel.IsTyping;
+    public bool IsStoryEnded => story != null && !story.canContinue && story.currentChoices.Count == 0;
 
     private void Start()
     {

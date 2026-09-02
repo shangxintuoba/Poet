@@ -149,6 +149,12 @@ public class Map : MonoBehaviour
         if (currentNode == null || textManager == null)
             return;
 
+        if (textManager.IsStoryEnded)
+        {
+            nodeStates.Remove(currentNode);
+            return;
+        }
+
         nodeStates[currentNode] = new NodeState
         {
             storyState = textManager.SaveStoryState(),
