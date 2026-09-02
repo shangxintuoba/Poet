@@ -47,16 +47,14 @@ public class TextManager : MonoBehaviour
     {
         story.BindExternalFunction("GetTime", () =>
         {
-            return GameManager.Instance != null && GameManager.Instance.TimeCard != null
+            return GameManager.Instance.TimeCard != null
                 ? GameManager.Instance.TimeCard.CurrentTime
                 : 0;
         });
 
         story.BindExternalFunction("GetBradPitProgress", () =>
         {
-            return GameManager.Instance != null
-                ? GameManager.Instance.BradPit_progress
-                : 0;
+            return GameManager.Instance.BradPit_progress;
         });
 
         story.BindExternalFunction<string>("CreateCard", cardId =>
@@ -67,13 +65,22 @@ public class TextManager : MonoBehaviour
 
         story.BindExternalFunction<int>("ChangeMoney", amount =>
         {
-            GameManager.Instance?.Money?.ChangeValue(amount);
+            GameManager.Instance.Money.ChangeValue(amount);
         });
 
         story.BindExternalFunction<int>("ChangeWillPower", amount =>
         {
-            GameManager.Instance?.WillPower?.ChangeValue(amount);
+            GameManager.Instance.WillPower.ChangeValue(amount);
         });
+        story.BindExternalFunction<string>(
+            "CanUseToday",
+            key => GameManager.Instance.CanUseToday(key)
+        );
+
+        story.BindExternalFunction<string>(
+            "MarkUsedToday",
+            key => GameManager.Instance.MarkUsedToday(key)
+        );
     }
 
     private void ContinueStory()

@@ -10,8 +10,7 @@ public class GameTime : Card
 
     private void OnEnable()
     {
-        if (GameManager.Instance != null)
-            GameManager.Instance.TimeCard = this;
+        GameManager.Instance.TimeCard = this;
     }
 
     public int CurrentTime => currentTime;

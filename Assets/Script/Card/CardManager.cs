@@ -222,11 +222,9 @@ public class CardManager : MonoBehaviour
         if (emotion == null)
             return;
 
-        GameManager gameManager = GameManager.Instance != null
-            ? GameManager.Instance
-            : FindFirstObjectByType<GameManager>();
+        GameManager gameManager = GameManager.Instance;
 
-        if (gameManager != null && gameManager.WillPower != null && emotion.Data != null)
+        if (gameManager.WillPower != null && emotion.Data != null)
             gameManager.WillPower.ChangeValue(emotion.Data.willPowerDelta);
 
         RemoveFromSlot(emotion);

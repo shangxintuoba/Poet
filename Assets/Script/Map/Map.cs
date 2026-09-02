@@ -90,9 +90,7 @@ public class Map : MonoBehaviour
     }
     private void ProgressTime(int travelDistance)
     {
-        GameTime timeCard = GameManager.Instance != null
-            ? GameManager.Instance.TimeCard
-            : null;
+        GameTime timeCard = GameManager.Instance.TimeCard;
 
         if (timeCard == null)
             timeCard = FindFirstObjectByType<GameTime>();

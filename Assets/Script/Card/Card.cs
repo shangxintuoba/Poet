@@ -323,9 +323,7 @@ public class Card : MonoBehaviour,
         if (minutes <= 0)
             return;
 
-        GameTime timeCard = GameManager.Instance != null
-            ? GameManager.Instance.TimeCard
-            : null;
+        GameTime timeCard = GameManager.Instance.TimeCard;
 
         if (timeCard == null)
             timeCard = FindFirstObjectByType<GameTime>();

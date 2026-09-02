@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class GameManager : MonoBehaviour
@@ -15,6 +16,7 @@ public sealed class GameManager : MonoBehaviour
     public int Lawyer_progress;
     public int Bar_Progress;
 
+    private readonly Dictionary<string, int> lastUsedDay = new();
 
 
     public static GameManager Instance { get; private set; }
@@ -29,6 +31,23 @@ public sealed class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+
+    public bool CanUseToday(string key)
+    {
+        int currentDay =TimeCard.Date;
+
+        return !lastUsedDay.TryGetValue(key, out int usedDay)
+            || usedDay != currentDay;
+    }
+
+    public void MarkUsedToday(string key)
+    {
+        int currentDay =TimeCard.Date;
+        lastUsedDay[key] = currentDay;
+    }
+
+
 
 
 

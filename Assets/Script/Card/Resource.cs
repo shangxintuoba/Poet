@@ -33,12 +33,7 @@ public class Resource : Card
 
     private void RegisterWithGameManager()
     {
-        GameManager gameManager = GameManager.Instance != null
-            ? GameManager.Instance
-            : FindFirstObjectByType<GameManager>();
-
-        if (gameManager == null)
-            return;
+        GameManager gameManager = GameManager.Instance;
 
         if (resourceType == ResourceType.Money)
             gameManager.Money = this;
@@ -114,9 +109,6 @@ public class Resource : Card
     private void OnDestroy()
     {
         indicatorHeightTween?.Kill();
-
-        if (GameManager.Instance == null)
-            return;
 
         if (resourceType == ResourceType.Money && GameManager.Instance.Money == this)
             GameManager.Instance.Money = null;
