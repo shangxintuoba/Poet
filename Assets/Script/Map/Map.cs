@@ -60,6 +60,34 @@ public class Map : MonoBehaviour
         }
     }
 
+    public void UnlockNodes(IEnumerable<string> nodeIndices)
+    {
+        if (nodeIndices == null)
+            return;
+
+        if (allNodes == null)
+            allNodes = GetComponentsInChildren<Node>(true);
+
+        bool changed = false;
+        foreach (string nodeIndex in nodeIndices)
+        {
+            if (string.IsNullOrWhiteSpace(nodeIndex))
+                continue;
+
+            foreach (Node node in allNodes)
+            {
+                if (node != null && node.Index == nodeIndex)
+                {
+                    node.isUnlocked = true;
+                    changed = true;
+                    break;
+                }
+            }
+        }
+
+        if (changed && currentNode != null)
+            RefreshVisibleNodes();
+    }
     private void ProgressTime(int travelDistance)
     {
         GameTime timeCard = GameManager.Instance != null

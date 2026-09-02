@@ -280,6 +280,7 @@ public class Card : MonoBehaviour,
         }
 
         ConsumeTime(choice.timeConsumed);
+        UnlockNodes(choice.unlockNodes);
 
         if (choice.destroyWhenUsed)
         {
@@ -309,6 +310,14 @@ public class Card : MonoBehaviour,
         }
     }
 
+    protected void UnlockNodes(IEnumerable<string> nodeIndices)
+    {
+        if (nodeIndices == null)
+            return;
+
+        Map map = FindFirstObjectByType<Map>();
+        map?.UnlockNodes(nodeIndices);
+    }
     protected void ConsumeTime(int minutes)
     {
         if (minutes <= 0)

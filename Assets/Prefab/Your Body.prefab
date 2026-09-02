@@ -434,6 +434,8 @@ MonoBehaviour:
   UniversalOutline: {fileID: 0}
   Description: 
   Name: Your Body
+  Location: {fileID: 0}
+  CanBeDropped: 0
   OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08
@@ -452,6 +454,10 @@ MonoBehaviour:
     - {fileID: 2009180069343757963, guid: 985cde11873c6074c8239fd6372a9ef9, type: 3}
     - {fileID: 5350834661324277761, guid: df12ab842488cf34f904d7b205be33e3, type: 3}
     CardsDestroyed: []
+    RandomCardList: []
+    RandomCardNumber: 0
+    TimeConsumed: 0
+    NodesUnlocked: []
     HideOtherChoices: 0
     DestroyWhenUsed: 0
   - ChoiceText: Touch Your Skin
@@ -459,11 +465,15 @@ MonoBehaviour:
     CardsAdded:
     - "\u4F60\u7684\u6587\u51ED"
     - "\u4F60\u7684\u5DE5\u4F5C"
-    CardsAddedPrefabs: []
+    CardsAddedPrefabs:
+    - {fileID: 5350834661324277761, guid: d89bdad6a4054cc4d91b285304a5488c, type: 3}
     CardsDestroyed:
     - {fileID: 0}
+    RandomCardList: []
+    RandomCardNumber: 0
+    TimeConsumed: 0
+    NodesUnlocked: []
     HideOtherChoices: 0
     DestroyWhenUsed: 0
   usedChoices: 0000
   lockedChoiceIndex: -3
-  cardManager: {fileID: 0}

@@ -17,6 +17,7 @@ public class Raw : Card
         public string[] RandomCardList;
         [Min(0)] public int RandomCardNumber;
         [Min(0)] public int TimeConsumed;
+        public string[] NodesUnlocked;
         public bool HideOtherChoices;
         public bool DestroyWhenUsed;
     }
@@ -70,6 +71,7 @@ public class Raw : Card
         }
 
         ConsumeTime(choice.TimeConsumed);
+        UnlockNodes(choice.NodesUnlocked);
 
         if (choice.DestroyWhenUsed)
         {

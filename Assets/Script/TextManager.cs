@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ink.Runtime;
 using Ink.UnityIntegration;
 using UnityEngine;
@@ -33,11 +34,45 @@ public class TextManager : MonoBehaviour
 
         inkFile = newInkFile;
         story = new Story(inkFile.storyJson);
+        BindExternalFunctions();
         if (!string.IsNullOrEmpty(savedState))
             story.state.LoadJson(savedState);
 
         textPanel.SetDisplayedText(savedText);
         ContinueStory();
+    }
+
+    private void BindExternalFunctions()
+    {
+        story.BindExternalFunction("GetTime", () =>
+        {
+            return GameManager.Instance != null && GameManager.Instance.TimeCard != null
+                ? GameManager.Instance.TimeCard.CurrentTime
+                : 0;
+        });
+
+        story.BindExternalFunction("GetBradPitProgress", () =>
+        {
+            return GameManager.Instance != null
+                ? GameManager.Instance.BradPit_progress
+                : 0;
+        });
+
+        story.BindExternalFunction<string>("CreateCard", cardId =>
+        {
+            FindFirstObjectByType<CardManager>()?
+                .CreateCards(new List<string> { cardId });
+        });
+
+        story.BindExternalFunction<int>("ChangeMoney", amount =>
+        {
+            GameManager.Instance?.Money?.ChangeValue(amount);
+        });
+
+        story.BindExternalFunction<int>("ChangeWillPower", amount =>
+        {
+            GameManager.Instance?.WillPower?.ChangeValue(amount);
+        });
     }
 
     private void ContinueStory()
@@ -55,8 +90,10 @@ public class TextManager : MonoBehaviour
 
     private void SelectChoice(Choice choice)
     {
+        if (story == null || choice == null || !story.currentChoices.Contains(choice))
+            return;
+
         textPanel.ClearChoices();
-        textPanel.ShowDialogueUI(choice.text);
         story.ChooseChoiceIndex(choice.index);
         ContinueStory();
     }

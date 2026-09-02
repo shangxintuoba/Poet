@@ -49,7 +49,7 @@
 
   <script>
     (() => {
-      const BASE_SHEETS = ["FullLibrary", "Raw_Choice"];
+      const BASE_SHEETS = ["FullLibrary", "Raw_Choice", "Node"];
       const FORGE_SHEETS = ["ForgeLibrary_Universal", "ForgeLibrary_Nature", "ForgeLibrary_Politics", "ForgeLibrary_Emotion"];
       const REQUIRED_SHEETS = [...BASE_SHEETS, ...FORGE_SHEETS];
       const input = document.getElementById("fileInput");
@@ -177,7 +177,9 @@
         const fullLibrary = asRows(sheets.FullLibrary, [
           "Index", "Name", "type", "Description", "WillPowerDelta", "MaterialType", "Useable", "CanBeDropped", "Choices"
         ]);
-        const choices = indexBy(asRows(sheets.Raw_Choice, ["Index", "ChoiceText", "UsedText", "CardsAdded", "CardsDestroyed", "RandomCardList", "RandomCardNumber", "TimeConsumed", "HideOtherChoices", "DestroyWhenUsed"]), "Index");
+        const choices = indexBy(asRows(sheets.Raw_Choice, ["Index", "ChoiceText", "UsedText", "CardsAdded", "CardsDestroyed", "RandomCardList", "RandomCardNumber", "TimeConsumed", "UnolockNode", "HideOtherChoices", "DestroyWhenUsed"]), "Index");
+
+        const nodes = asRows(sheets.Node, ["Index", "NodeName"]).map(node => ({ id: stringValue(node.Index), name: stringValue(node.NodeName) }));
 
         const cards = fullLibrary.map(base => {
           const card = { id: String(base.Index), name: stringValue(base.Name), type: stringValue(base.type), description: stringValue(base.Description), canBeDropped: booleanValue(base.CanBeDropped) };
@@ -200,6 +202,7 @@
                 randomCardList: splitIds(choice.RandomCardList),
                 randomCardNumber: numberValue(choice.RandomCardNumber),
                 timeConsumed: numberValue(choice.TimeConsumed),
+                unlockNodes: splitIds(choice.UnolockNode),
                 hideOtherChoices: booleanValue(choice.HideOtherChoices),
                 destroyWhenUsed: booleanValue(choice.DestroyWhenUsed)
               };
@@ -211,9 +214,10 @@
                 const forgeLibraries = FORGE_SHEETS.map(sheetName => buildForgeLibrary(sheetName, sheets[sheetName]));
 
 return {
-          schemaVersion: 5,
+          schemaVersion: 6,
           sourceSheets: REQUIRED_SHEETS,
           cards,
+          nodes,
           forgeLibraries
         };
       }

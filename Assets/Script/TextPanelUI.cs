@@ -44,7 +44,19 @@ public class TextPanelUI : MonoBehaviour
     {
         StopTyping();
         StopChoiceDelay();
+        if (cardChoiceCoroutine != null)
+            StopCoroutine(cardChoiceCoroutine);
+
+        cardChoiceCoroutine = null;
         ClearChoices();
+        pendingChoices = null;
+        pendingChoiceSelected = null;
+        visibleChoices = null;
+        visibleChoiceSelected = null;
+        savedChoices = null;
+        savedChoiceSelected = null;
+        savedDialogueText = string.Empty;
+        isShowingCardDescription = false;
         EnsureTextBlock();
         currentTextBlock.text = text ?? string.Empty;
         SetPaperRaised(!string.IsNullOrWhiteSpace(currentTextBlock.text));

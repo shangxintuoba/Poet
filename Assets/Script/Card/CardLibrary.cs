@@ -10,6 +10,7 @@ public class CardLibrary : MonoBehaviour
         public int schemaVersion;
         public string[] sourceSheets;
         public CardData[] cards;
+        public NodeData[] nodes;
         public ForgeLibraryData[] forgeLibraries;
     }
 
@@ -38,10 +39,17 @@ public class CardLibrary : MonoBehaviour
         public string[] randomCardList;
         public int randomCardNumber;
         public int timeConsumed;
+        public string[] unlockNodes;
         public bool hideOtherChoices;
         public bool destroyWhenUsed;
     }
 
+    [Serializable]
+    public class NodeData
+    {
+        public string id;
+        public string name;
+    }
     [System.Serializable]
     public class ForgeLibraryData
     {
