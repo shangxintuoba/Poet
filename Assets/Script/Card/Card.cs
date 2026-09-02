@@ -17,13 +17,15 @@ public class Card : MonoBehaviour,
     public GameObject UniversalOutline;
     public string Description;
     public string Name;
+    [HideInInspector]public Node Location;
+    public bool CanBeDropped;
 
     public CardLibrary.CardData Data { get; private set; }
     public bool IsEmotionCard => Data != null && Data.type == "Emotion";
 
     private bool[] usedRawChoices;
     private int lockedRawChoiceIndex = -1;
-    private CardManager cardManager;
+    protected CardManager cardManager;
 
     public enum CardOutlineType
     {
@@ -67,6 +69,7 @@ public class Card : MonoBehaviour,
     private Vector2 selectionOriginalPosition;
 
     private static Card selectedCard;
+    protected bool IsSelected => selectedCard == this;
 
     private void Awake()
     {
@@ -103,6 +106,8 @@ public class Card : MonoBehaviour,
         Data = data;
         Name = data != null ? data.name : string.Empty;
         Description = data != null ? data.description : string.Empty;
+        if (data != null)
+            CanBeDropped = data.canBeDropped;
 
         if (NameText != null)
             NameText.text = Name;
@@ -269,7 +274,12 @@ public class Card : MonoBehaviour,
         {
             cardManager.DestroyCardsByDataIds(new List<string>(choice.cardsDestroyed ?? new string[0]));
             cardManager.CreateCards(new List<string>(choice.cardsAdded ?? new string[0]));
+
+            for (int i = 0; i < Mathf.Max(0, choice.randomCardNumber); i++)
+                cardManager.CreateRandomCard(new List<string>(choice.randomCardList ?? new string[0]));
         }
+
+        ConsumeTime(choice.timeConsumed);
 
         if (choice.destroyWhenUsed)
         {
@@ -279,7 +289,16 @@ public class Card : MonoBehaviour,
 
         DeselectCard();
     }
+    public bool ShouldBeVisibleAt(Node currentNode)
+    {
+        if (cardPanel != null && transform.IsChildOf(cardPanel))
+            return true;
 
+        if (GetComponentInParent<CardSlot>() != null)
+            return true;
+
+        return Location == currentNode;
+    }
     private void ResetRawChoiceState()
     {
         int choiceCount = Data != null && Data.choices != null ? Data.choices.Length : 0;
@@ -290,7 +309,21 @@ public class Card : MonoBehaviour,
         }
     }
 
-    private void ResolveCardManager()
+    protected void ConsumeTime(int minutes)
+    {
+        if (minutes <= 0)
+            return;
+
+        GameTime timeCard = GameManager.Instance != null
+            ? GameManager.Instance.TimeCard
+            : null;
+
+        if (timeCard == null)
+            timeCard = FindFirstObjectByType<GameTime>();
+
+        timeCard?.AdvanceMinutes(minutes);
+    }
+    protected void ResolveCardManager()
     {
         if (cardManager == null)
             cardManager = FindFirstObjectByType<CardManager>();
@@ -334,29 +367,29 @@ public class Card : MonoBehaviour,
 
         if (IsOverEmotionCardContainer(eventData.position))
         {
+            if (!CanBeDropped && TryPlaceInNearestFreeSlot())
+                return;
+
             ReturnToPreviousPosition();
             return;
         }
 
-        if (IsOverCardPanel(eventData.position))
-        {
-            RectTransform nearestSlot = FindNearestFreeSlot();
-            if (nearestSlot != null)
-            {
-                CardSlot slot = nearestSlot.GetComponent<CardSlot>();
-                if (slot != null) slot.TryPlace(this);
-                else PlaceInSlot(nearestSlot);
-                return;
-            }
-        }
+        if (IsOverCardPanel(eventData.position) && TryPlaceInNearestFreeSlot())
+            return;
 
-        if (IsOverMapContent(eventData.position))
+        if (CanBeDropped && IsOverMapContent(eventData.position))
         {
             transform.SetParent(mapContent, true);
             transform.SetAsLastSibling();
+            Map map = FindFirstObjectByType<Map>();
+            if (map != null)
+                Location = map.CurrentNode;
             ResetDragFeedback();
             return;
         }
+
+        if (!CanBeDropped && TryPlaceInNearestFreeSlot())
+            return;
 
         ReturnToPreviousPosition();
     }
@@ -452,6 +485,19 @@ public class Card : MonoBehaviour,
         return rect.Contains(localPoint);
     }
 
+    private bool TryPlaceInNearestFreeSlot()
+    {
+        RectTransform nearestSlot = FindNearestFreeSlot();
+        if (nearestSlot == null)
+            return false;
+
+        CardSlot slot = nearestSlot.GetComponent<CardSlot>();
+        if (slot != null)
+            return slot.TryPlace(this);
+
+        PlaceInSlot(nearestSlot);
+        return true;
+    }
     private RectTransform FindNearestFreeSlot()
     {
         GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");

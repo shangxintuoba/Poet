@@ -14,6 +14,9 @@ public class Raw : Card
         [Tooltip("Optional card prefab references. Their Card Name is used to find JSON data.")]
         public Card[] CardsAddedPrefabs;
         public Card[] CardsDestroyed;
+        public string[] RandomCardList;
+        [Min(0)] public int RandomCardNumber;
+        [Min(0)] public int TimeConsumed;
         public bool HideOtherChoices;
         public bool DestroyWhenUsed;
     }
@@ -23,7 +26,6 @@ public class Raw : Card
     [SerializeField] private UseChoice[] choices;
     [SerializeField] private bool[] usedChoices;
     [SerializeField] private int lockedChoiceIndex = -1;
-    [SerializeField] private CardManager cardManager;
 
     protected override void ShowCardDetails()
     {
@@ -60,7 +62,14 @@ public class Raw : Card
             cardManager.CreateCardsFromPrefabs(choice.CardsAddedPrefabs != null
                 ? new List<Card>(choice.CardsAddedPrefabs)
                 : new List<Card>());
+
+            for (int i = 0; i < Mathf.Max(0, choice.RandomCardNumber); i++)
+                cardManager.CreateRandomCard(choice.RandomCardList != null
+                    ? new List<string>(choice.RandomCardList)
+                    : new List<string>());
         }
+
+        ConsumeTime(choice.TimeConsumed);
 
         if (choice.DestroyWhenUsed)
         {
@@ -70,7 +79,6 @@ public class Raw : Card
 
         DeselectCard();
     }
-
     private void ShowAvailableChoices()
     {
         List<string> labels = new List<string>();
@@ -123,11 +131,6 @@ public class Raw : Card
         Array.Copy(previousState, usedChoices, Mathf.Min(previousState.Length, usedChoices.Length));
     }
 
-    private void ResolveCardManager()
-    {
-        if (cardManager == null)
-            cardManager = FindFirstObjectByType<CardManager>();
-    }
 
     private void OnValidate()
     {

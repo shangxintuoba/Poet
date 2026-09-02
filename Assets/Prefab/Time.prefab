@@ -434,6 +434,7 @@ MonoBehaviour:
   UniversalOutline: {fileID: 0}
   Description: 
   Name: Time
+  Location: {fileID: 0}
   OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08
@@ -442,5 +443,5 @@ MonoBehaviour:
   snapDuration: 0.15
   shadow: {fileID: 4411531688873802770}
   dragShadowOffset: {x: -8, y: -8}
-  currentTime: 0
+  currentTime: 1232
   date: 1

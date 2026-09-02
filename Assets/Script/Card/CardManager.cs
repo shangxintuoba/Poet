@@ -21,6 +21,24 @@ public class CardManager : MonoBehaviour
             CreateCardByReference(cardReference);
     }
 
+    public void CreateRandomCard(List<string> cardReferences)
+    {
+        if (cardReferences == null || cardReferences.Count == 0)
+            return;
+
+        List<string> validReferences = new List<string>();
+        foreach (string cardReference in cardReferences)
+        {
+            if (!string.IsNullOrWhiteSpace(cardReference))
+                validReferences.Add(cardReference);
+        }
+
+        if (validReferences.Count == 0)
+            return;
+
+        CreateCardByReference(validReferences[Random.Range(0, validReferences.Count)]);
+    }
+
     public void CreateCardsFromPrefabs(List<Card> cardPrefabs)
     {
         if (cardPrefabs == null)

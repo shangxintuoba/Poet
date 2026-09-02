@@ -23,6 +23,7 @@ public class CardLibrary : MonoBehaviour
         public int willPowerDelta;
         public string materialType;
         public bool useable;
+        public bool canBeDropped;
         public RawChoiceData[] choices;
     }
 
@@ -34,6 +35,9 @@ public class CardLibrary : MonoBehaviour
         [TextArea] public string usedText;
         public string[] cardsAdded;
         public string[] cardsDestroyed;
+        public string[] randomCardList;
+        public int randomCardNumber;
+        public int timeConsumed;
         public bool hideOtherChoices;
         public bool destroyWhenUsed;
     }

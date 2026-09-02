@@ -7,6 +7,7 @@ public class Map : MonoBehaviour
     [SerializeField] private TextManager textManager;
 
     private Node currentNode;
+    public Node CurrentNode => currentNode;
     private readonly Dictionary<Node, NodeState> nodeStates = new Dictionary<Node, NodeState>();
     private Node[] allNodes;
 
@@ -63,7 +64,10 @@ public class Map : MonoBehaviour
     {
         GameTime timeCard = GameManager.Instance != null
             ? GameManager.Instance.TimeCard
-            : FindFirstObjectByType<GameTime>();
+            : null;
+
+        if (timeCard == null)
+            timeCard = FindFirstObjectByType<GameTime>();
 
         timeCard?.TimeProgress(travelDistance);
     }
@@ -93,8 +97,22 @@ public class Map : MonoBehaviour
         foreach (Node node in allNodes)
         {
             if (node == null) continue;
-            bool visible = node == currentNode || GetTravelDistance(node) > 0;
+            bool visible = node == currentNode || (node.isUnlocked && GetTravelDistance(node) > 0);
             node.gameObject.SetActive(visible);
+        }
+
+        RefreshVisibleCards();
+    }
+
+    private void RefreshVisibleCards()
+    {
+        Card[] cards = FindObjectsByType<Card>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Card card in cards)
+        {
+            if (card == null || !card.gameObject.scene.IsValid())
+                continue;
+
+            card.gameObject.SetActive(card.ShouldBeVisibleAt(currentNode));
         }
     }
 

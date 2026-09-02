@@ -8,6 +8,12 @@ public class GameTime : Card
     [SerializeField, Range(0, MinutesPerDay - 1)] private int currentTime;
     [SerializeField, Range(1, LastDate)] private int date = 1;
 
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.TimeCard = this;
+    }
+
     public int CurrentTime => currentTime;
     public int Date => date;
     public string DisplayTime => $"Day {date} — {currentTime / 60:00}:{currentTime % 60:00}";
@@ -22,12 +28,23 @@ public class GameTime : Card
         if (travelDistance <= 0)
             return;
 
+        AdvanceMinutes(10 * travelDistance);
+    }
+
+    public void AdvanceMinutes(int minutes)
+    {
+        if (minutes <= 0)
+            return;
+
         int totalMinutes = (date - 1) * MinutesPerDay + currentTime;
         int finalMinute = (LastDate - 1) * MinutesPerDay + (MinutesPerDay - 1);
-        totalMinutes = Mathf.Min(totalMinutes + 10 * travelDistance, finalMinute);
+        totalMinutes = Mathf.Min(totalMinutes + minutes, finalMinute);
 
         date = totalMinutes / MinutesPerDay + 1;
         currentTime = totalMinutes % MinutesPerDay;
+
+        if (IsSelected)
+            ShowCardDetails();
     }
 
     // Keeps compatibility with the original method name.

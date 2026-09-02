@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour, IPointerClickHandler
 {
     public bool isUnlocked;
+    public string Index;
     public string NodeName;
     public Node[] NearbyNodes;
     [System.Serializable]
