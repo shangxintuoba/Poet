@@ -17,7 +17,12 @@ public class CardSlot : MonoBehaviour, IDropHandler
             : null;
 
         if (card != null)
-            TryPlace(card);
+        {
+            if (card.IsEmotionCard && CurrentCard != null && CurrentCard.IsEmotionCard)
+                card.TrySwapEmotionSlot(this);
+            else
+                TryPlace(card);
+        }
     }
 
     public virtual bool TryPlace(Card card)

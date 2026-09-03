@@ -81,6 +81,20 @@ public class TextManager : MonoBehaviour
             "MarkUsedToday",
             key => GameManager.Instance.MarkUsedToday(key)
         );
+
+        story.BindExternalFunction<string>(
+            "CanUseOnce",
+            key => GameManager.Instance.CanUseOnce(key)
+        );
+
+        story.BindExternalFunction<string>(
+              "MarkUsedOnce",
+              key => GameManager.Instance.MarkUsedOnce(key)
+        );
+
+
+
+
     }
 
     private void ContinueStory()

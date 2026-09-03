@@ -15,8 +15,11 @@ public sealed class GameManager : MonoBehaviour
     public int Editor_progress;
     public int Lawyer_progress;
     public int Bar_Progress;
+    public int ParkKids_Progress;
 
     private readonly Dictionary<string, int> lastUsedDay = new();
+    private readonly HashSet<string> usedOnce = new();
+
 
 
     public static GameManager Instance { get; private set; }
@@ -48,7 +51,15 @@ public sealed class GameManager : MonoBehaviour
     }
 
 
+    public bool CanUseOnce(string key)
+    {
+        return !usedOnce.Contains(key);
+    }
 
+    public void MarkUsedOnce(string key)
+    {
+        usedOnce.Add(key);
+    }
 
 
 

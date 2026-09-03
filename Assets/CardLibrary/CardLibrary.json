@@ -256,7 +256,7 @@
             "id": "f12",
             "name": "辩证法",
             "type": "Material",
-            "description": "正题：你能用它来解决任何问题。\\n 反题：解决完之后那些问题会变得没用。\\n 合题：但是你能用它来解决任何问题",
+            "description": "正题：你能用它来解决任何问题。 \n反题：解决完之后那些问题会变得没用。\n合题：但是你能用它来解决任何问题",
             "willPowerDelta": 0,
             "materialType": "Universal",
             "useable": false,
@@ -326,7 +326,7 @@
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": [
                 {
                     "id": "c9",
@@ -353,7 +353,7 @@
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": [
                 {
                     "id": "c10",
@@ -380,7 +380,7 @@
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": [
                 {
                     "id": "c11",
@@ -420,7 +420,7 @@
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": [
                 {
                     "id": "c13",
@@ -471,11 +471,11 @@
             "id": "f22",
             "name": "酒",
             "type": "Raw",
-            "description": "",
+            "description": "\\n\\n每天不能喝太多。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": [
                 {
                     "id": "c16",
@@ -505,7 +505,7 @@
             "willPowerDelta": 3,
             "materialType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": []
         },
         {
@@ -516,18 +516,18 @@
             "willPowerDelta": -2,
             "materialType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": []
         },
         {
             "id": "f25",
             "name": "幸福",
             "type": "Emotion",
-            "description": "或许在不久的将来你会意识到这不过是一种幻觉，但至少此刻它还不是，现在它正坚实地躺在你的胃的下方，像个安睡的孩子。 \\n 消耗：意志力+5",
+            "description": "或许在不久的将来你会意识到这不过是一种幻觉，但至少此刻它还不是。它正坚实地躺在你的胃的下方，像个安睡的孩子。 \\n 消耗：意志力+5",
             "willPowerDelta": 5,
             "materialType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": []
         },
         {
@@ -538,7 +538,7 @@
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": [
                 {
                     "id": "c17",
@@ -554,6 +554,149 @@
                     "destroyWhenUsed": true
                 }
             ]
+        },
+        {
+            "id": "f27",
+            "name": "烟",
+            "type": "Raw",
+            "description": "可以让你清醒一点，但对身体不太好。\\n\\n每天不能抽太多。",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "choices": [
+                {
+                    "id": "c18",
+                    "choiceText": "抽烟",
+                    "usedText": "",
+                    "cardsAdded": [
+                        "f29",
+                        "f30"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": true,
+                    "destroyWhenUsed": true
+                }
+            ]
+        },
+        {
+            "id": "f28",
+            "name": "维他柠檬茶",
+            "type": "Raw",
+            "description": "上学的时候，你最幸福的事情就是翻墙到学校后面的超市买柠檬茶喝。\\n\\n对于成年人来说有些太甜了。",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "choices": [
+                {
+                    "id": "c19",
+                    "choiceText": "喝",
+                    "usedText": "",
+                    "cardsAdded": [
+                        "f25"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": true,
+                    "destroyWhenUsed": true
+                }
+            ]
+        },
+        {
+            "id": "f29",
+            "name": "理性",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "choices": []
+        },
+        {
+            "id": "f30",
+            "name": "灰",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "choices": []
+        },
+        {
+            "id": "f31",
+            "name": "",
+            "type": "",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "choices": []
+        },
+        {
+            "id": "f32",
+            "name": "",
+            "type": "",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "choices": []
+        },
+        {
+            "id": "f33",
+            "name": "",
+            "type": "",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "choices": []
+        },
+        {
+            "id": "f34",
+            "name": "",
+            "type": "",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "choices": []
+        },
+        {
+            "id": "f35",
+            "name": "",
+            "type": "",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "choices": []
+        },
+        {
+            "id": "f36",
+            "name": "",
+            "type": "",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "choices": []
         }
     ],
     "nodes": [

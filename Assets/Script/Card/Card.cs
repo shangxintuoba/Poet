@@ -418,6 +418,21 @@ public class Card : MonoBehaviour,
             PlaceInSlot(nearestEmotionSlot);
     }
 
+    public bool TrySwapEmotionSlot(CardSlot targetSlot)
+    {
+        if (!IsEmotionCard || previousSlot == null || targetSlot == previousSlot)
+            return false;
+
+        Card otherCard = targetSlot.CurrentCard;
+        if (otherCard == null || !otherCard.IsEmotionCard)
+            return false;
+
+        targetSlot.RemoveCard(otherCard);
+        previousSlot.ForcePlace(otherCard);
+        targetSlot.ForcePlace(this);
+        return true;
+    }
+
     private RectTransform FindNearestFreeEmotionSlot()
     {
         if (emotionCardContainer == null)
