@@ -42,6 +42,7 @@ public class Card : MonoBehaviour,
     private RectTransform mapContent;
     private RectTransform mapViewport;
     private RectTransform emotionCardContainer;
+    private Forge forge;
     [SerializeField, Min(0f)] private float cardPanelDropPadding = 80f;
     protected TextPanelUI textPanel;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
@@ -56,6 +57,7 @@ public class Card : MonoBehaviour,
     private Transform previousParent;
     private Vector2 previousPosition;
     private CardSlot previousSlot;
+    private CardSlot assignedSlot;
     private Vector3 restingScale;
     private Vector2 restingShadowPosition;
     private Tween scaleTween;
@@ -84,6 +86,7 @@ public class Card : MonoBehaviour,
         if (mapContent == null) mapContent = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport/Content")?.GetComponent<RectTransform>();
         if (mapViewport == null) mapViewport = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport")?.GetComponent<RectTransform>();
         if (emotionCardContainer == null) emotionCardContainer = GameObject.Find("EmotionCardContainer")?.GetComponent<RectTransform>();
+        forge = FindFirstObjectByType<Forge>();
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
         liquidAmountIndicator = GetComponentInChildren<LiquidAmountIndicator>(true);
         restingScale = transform.localScale;
@@ -333,8 +336,12 @@ public class Card : MonoBehaviour,
         isDragging = true;
         previousParent = transform.parent;
         previousPosition = ((RectTransform)transform).anchoredPosition;
-        previousSlot = previousParent.GetComponent<CardSlot>();
-        if (previousSlot != null) previousSlot.RemoveCard(this);
+        previousSlot = assignedSlot != null ? assignedSlot : previousParent.GetComponent<CardSlot>();
+        if (previousSlot != null)
+        {
+            previousSlot.RemoveCard(this);
+            assignedSlot = null;
+        }
         transform.SetParent(rootCanvas.transform, true);
         canvasGroup.blocksRaycasts = false;
         StartDragFeedback();
@@ -354,6 +361,9 @@ public class Card : MonoBehaviour,
         canvasGroup.blocksRaycasts = true;
         isDragging = false;
         if (rootCanvas == null || transform.parent != rootCanvas.transform) return;
+
+        if (TryPlaceInForge(eventData.position))
+            return;
 
         if (IsEmotionCard)
         {
@@ -377,6 +387,8 @@ public class Card : MonoBehaviour,
         {
             transform.SetParent(mapContent, true);
             transform.SetAsLastSibling();
+            if (selectedCard == this)
+                MoveToSelectedOverlay();
             ResetDragFeedback();
             return;
         }
@@ -467,6 +479,17 @@ public class Card : MonoBehaviour,
         return RectTransformUtility.RectangleContainsScreenPoint(emotionCardContainer, screenPosition, camera);
     }
 
+    private bool TryPlaceInForge(Vector2 screenPosition)
+    {
+        if (forge == null)
+            forge = FindFirstObjectByType<Forge>();
+
+        Camera eventCamera = rootCanvas != null && rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? rootCanvas.worldCamera
+            : null;
+        return forge != null && forge.TryPlaceNearestComponentCard(this, screenPosition, eventCamera);
+    }
+
     private bool IsOverMapContent(Vector2 screenPosition)
     {
         if (mapViewport == null) return false;
@@ -533,7 +556,14 @@ public class Card : MonoBehaviour,
     {
         positionTween?.Kill();
         transform.SetParent(slot, true);
-        positionTween = ((RectTransform)transform).DOAnchorPos(Vector2.zero, snapDuration).SetEase(Ease.OutQuad);
+        assignedSlot = slot.GetComponent<CardSlot>();
+        positionTween = ((RectTransform)transform).DOAnchorPos(Vector2.zero, snapDuration)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() =>
+            {
+                if (selectedCard == this)
+                    MoveToSelectedOverlay();
+            });
         ResetDragFeedback();
     }
 
@@ -551,8 +581,16 @@ public class Card : MonoBehaviour,
     private void ReturnToPreviousPosition()
     {
         positionTween?.Kill();
+
+        if (previousSlot != null && previousSlot.CurrentCard == null)
+        {
+            previousSlot.ForcePlace(this);
+            return;
+        }
+
         transform.SetParent(previousParent, false);
         ((RectTransform)transform).anchoredPosition = previousPosition;
+        assignedSlot = previousParent.GetComponent<CardSlot>();
         ResetDragFeedback();
     }
 
@@ -594,7 +632,12 @@ public class Card : MonoBehaviour,
         textPanel?.RestoreDialogueAfterCardDescription();
         ReturnFromSelectedOverlay();
         selectedCard = null;
+        OnCardDeselected();
         ResetDragFeedback();
+    }
+
+    protected virtual void OnCardDeselected()
+    {
     }
 
     private void MoveToSelectedOverlay()
@@ -604,6 +647,7 @@ public class Card : MonoBehaviour,
         selectionOriginalParent = transform.parent;
         selectionOriginalPosition = ((RectTransform)transform).anchoredPosition;
         transform.SetParent(selectedCardOverlay, true);
+        transform.SetAsLastSibling();
     }
 
     private void ReturnFromSelectedOverlay()
@@ -645,6 +689,7 @@ public class Card : MonoBehaviour,
         scaleTween?.Kill();
         shadowTween?.Kill();
         positionTween?.Kill();
+        assignedSlot?.RemoveCard(this);
         if (selectedCard == this)
         {
             ResolveTextPanel();

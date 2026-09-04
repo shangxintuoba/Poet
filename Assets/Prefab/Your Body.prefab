@@ -462,8 +462,8 @@ MonoBehaviour:
   - ChoiceText: Touch Your Skin
     UsedText: 
     CardsAdded:
-    - "\u4F60\u7684\u6587\u51ED"
-    - "\u4F60\u7684\u5DE5\u4F5C"
+    - f6
+    - f7
     CardsAddedPrefabs:
     - {fileID: 5350834661324277761, guid: d89bdad6a4054cc4d91b285304a5488c, type: 3}
     CardsDestroyed:

@@ -180,10 +180,10 @@
                     "id": "c8",
                     "choiceText": "开始干活",
                     "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [
+                    "cardsAdded": [
                         "f18"
                     ],
+                    "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
                     "timeConsumed": 0,
@@ -332,10 +332,10 @@
                     "id": "c9",
                     "choiceText": "干活",
                     "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [
+                    "cardsAdded": [
                         "f19"
                     ],
+                    "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
                     "timeConsumed": 0,
@@ -359,10 +359,10 @@
                     "id": "c10",
                     "choiceText": "干活！！",
                     "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [
+                    "cardsAdded": [
                         "f20"
                     ],
+                    "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
                     "timeConsumed": 0,
@@ -386,10 +386,10 @@
                     "id": "c11",
                     "choiceText": "去喝一杯吧",
                     "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [
+                    "cardsAdded": [
                         "f21"
                     ],
+                    "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
                     "timeConsumed": 0,
