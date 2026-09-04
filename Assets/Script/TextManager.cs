@@ -13,6 +13,16 @@ public class TextManager : MonoBehaviour
     public bool IsTyping => textPanel != null && textPanel.IsTyping;
     public bool IsStoryEnded => story != null && !story.canContinue && story.currentChoices.Count == 0;
 
+    public void ShowDescription(string description)
+    {
+        textPanel?.ShowCardDescription(description);
+    }
+
+    public void HideDescription()
+    {
+        textPanel?.RestoreDialogueAfterCardDescription();
+    }
+
     private void Start()
     {
         LoadStory(inkFile, null, string.Empty);
