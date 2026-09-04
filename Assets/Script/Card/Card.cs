@@ -17,7 +17,6 @@ public class Card : MonoBehaviour,
     public GameObject UniversalOutline;
     public string Description;
     public string Name;
-    [HideInInspector]public Node Location;
     public bool CanBeDropped;
 
     public CardLibrary.CardData Data { get; private set; }
@@ -290,16 +289,6 @@ public class Card : MonoBehaviour,
 
         DeselectCard();
     }
-    public bool ShouldBeVisibleAt(Node currentNode)
-    {
-        if (cardPanel != null && transform.IsChildOf(cardPanel))
-            return true;
-
-        if (GetComponentInParent<CardSlot>() != null)
-            return true;
-
-        return Location == currentNode;
-    }
     private void ResetRawChoiceState()
     {
         int choiceCount = Data != null && Data.choices != null ? Data.choices.Length : 0;
@@ -388,9 +377,6 @@ public class Card : MonoBehaviour,
         {
             transform.SetParent(mapContent, true);
             transform.SetAsLastSibling();
-            Map map = FindFirstObjectByType<Map>();
-            if (map != null)
-                Location = map.CurrentNode;
             ResetDragFeedback();
             return;
         }

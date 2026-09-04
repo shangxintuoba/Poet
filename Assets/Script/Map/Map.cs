@@ -127,19 +127,6 @@ public class Map : MonoBehaviour
             node.gameObject.SetActive(visible);
         }
 
-        RefreshVisibleCards();
-    }
-
-    private void RefreshVisibleCards()
-    {
-        Card[] cards = FindObjectsByType<Card>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (Card card in cards)
-        {
-            if (card == null || !card.gameObject.scene.IsValid())
-                continue;
-
-            card.gameObject.SetActive(card.ShouldBeVisibleAt(currentNode));
-        }
     }
 
     private void SaveCurrentNodeState()
