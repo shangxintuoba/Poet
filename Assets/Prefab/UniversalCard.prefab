@@ -587,6 +587,7 @@ MonoBehaviour:
   UniversalOutline: {fileID: 203503769501399468}
   Description: have no use
   Name: Test Material
+  CanBeDropped: 1
   OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08

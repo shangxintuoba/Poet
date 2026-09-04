@@ -434,8 +434,7 @@ MonoBehaviour:
   UniversalOutline: {fileID: 0}
   Description: 
   Name: Your Body
-  Location: {fileID: 0}
-  CanBeDropped: 0
+  CanBeDropped: 1
   OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08

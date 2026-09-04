@@ -1,28 +1,12 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class CardSlot : MonoBehaviour, IDropHandler
+public class CardSlot : MonoBehaviour
 {
     public Card CurrentCard { get; protected set; }
 
     private void Awake()
     {
         CurrentCard = GetComponentInChildren<Card>(true);
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        Card card = eventData.pointerDrag != null
-            ? eventData.pointerDrag.GetComponent<Card>()
-            : null;
-
-        if (card != null)
-        {
-            if (card.IsEmotionCard && CurrentCard != null && CurrentCard.IsEmotionCard)
-                card.TrySwapEmotionSlot(this);
-            else
-                TryPlace(card);
-        }
     }
 
     public virtual bool TryPlace(Card card)

@@ -89,7 +89,7 @@
             "willPowerDelta": -2,
             "materialType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": []
         },
         {
@@ -100,7 +100,7 @@
             "willPowerDelta": 2,
             "materialType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": []
         },
         {
@@ -174,7 +174,7 @@
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": [
                 {
                     "id": "c8",
@@ -212,7 +212,7 @@
             "id": "f8",
             "name": "哲学学位",
             "type": "Raw",
-            "description": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\\n\\n显然这对找到一份工作没有什么帮助。",
+            "description": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": false,
@@ -223,7 +223,7 @@
             "id": "f9",
             "name": "比较文学学位",
             "type": "Raw",
-            "description": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\\n\\n显然这对找到一份工作没有什么帮助。",
+            "description": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": false,
@@ -249,7 +249,7 @@
             "willPowerDelta": -1,
             "materialType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": []
         },
         {
@@ -349,7 +349,7 @@
             "id": "f19",
             "name": "你的工作!!",
             "type": "Raw",
-            "description": "你写不出来，缪斯今晚显然并不眷顾你。\\n\\n可能也不止今晚。",
+            "description": "你写不出来，缪斯今晚显然并不眷顾你。\n\n可能也不止今晚。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
@@ -640,7 +640,7 @@
             "willPowerDelta": 0,
             "materialType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "choices": []
         },
         {

@@ -42,6 +42,7 @@ public class Card : MonoBehaviour,
     private RectTransform mapContent;
     private RectTransform mapViewport;
     private RectTransform emotionCardContainer;
+    private Forge forge;
     [SerializeField, Min(0f)] private float cardPanelDropPadding = 80f;
     protected TextPanelUI textPanel;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
@@ -84,6 +85,7 @@ public class Card : MonoBehaviour,
         if (mapContent == null) mapContent = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport/Content")?.GetComponent<RectTransform>();
         if (mapViewport == null) mapViewport = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport")?.GetComponent<RectTransform>();
         if (emotionCardContainer == null) emotionCardContainer = GameObject.Find("EmotionCardContainer")?.GetComponent<RectTransform>();
+        forge = FindFirstObjectByType<Forge>();
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
         liquidAmountIndicator = GetComponentInChildren<LiquidAmountIndicator>(true);
         restingScale = transform.localScale;
@@ -355,6 +357,9 @@ public class Card : MonoBehaviour,
         isDragging = false;
         if (rootCanvas == null || transform.parent != rootCanvas.transform) return;
 
+        if (TryPlaceInForge(eventData.position))
+            return;
+
         if (IsEmotionCard)
         {
             HandleEmotionDrop(eventData.position);
@@ -390,7 +395,7 @@ public class Card : MonoBehaviour,
 
     private void HandleEmotionDrop(Vector2 screenPosition)
     {
-        RectTransform nearestEmotionSlot = FindNearestFreeEmotionSlot();
+        RectTransform nearestEmotionSlot = FindNearestEmotionSlot();
         if (nearestEmotionSlot == null)
         {
             ReturnToPreviousPosition();
@@ -398,7 +403,12 @@ public class Card : MonoBehaviour,
         }
 
         CardSlot slot = nearestEmotionSlot.GetComponent<CardSlot>();
-        if (slot != null)
+        if (slot != null && slot.CurrentCard != null)
+        {
+            if (!TrySwapEmotionSlot(slot))
+                ReturnToPreviousPosition();
+        }
+        else if (slot != null)
             slot.TryPlace(this);
         else
             PlaceInSlot(nearestEmotionSlot);
@@ -419,7 +429,7 @@ public class Card : MonoBehaviour,
         return true;
     }
 
-    private RectTransform FindNearestFreeEmotionSlot()
+    private RectTransform FindNearestEmotionSlot()
     {
         if (emotionCardContainer == null)
             return null;
@@ -430,10 +440,6 @@ public class Card : MonoBehaviour,
         {
             Transform child = emotionCardContainer.GetChild(i);
             if (!child.CompareTag("Slot"))
-                continue;
-
-            GameObject slotObject = child.gameObject;
-            if (IsOccupied(slotObject))
                 continue;
 
             RectTransform slot = child as RectTransform;
@@ -505,6 +511,17 @@ public class Card : MonoBehaviour,
 
         PlaceInSlot(nearestSlot);
         return true;
+    }
+
+    private bool TryPlaceInForge(Vector2 screenPosition)
+    {
+        if (forge == null)
+            forge = FindFirstObjectByType<Forge>();
+
+        Camera eventCamera = rootCanvas != null && rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? rootCanvas.worldCamera
+            : null;
+        return forge != null && forge.TryPlaceNearestComponentCard(this, screenPosition, eventCamera);
     }
     private RectTransform FindNearestFreeSlot()
     {

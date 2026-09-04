@@ -416,9 +416,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Material
   NameText: {fileID: 797042336863281754}
-  Icon: {fileID: 0}
+  NaureOutline: {fileID: 0}
+  PoliticsOutline: {fileID: 0}
+  EmotionOutline: {fileID: 0}
+  UniversalOutline: {fileID: 0}
   Description: have no use
   Name: Test Material
+  CanBeDropped: 1
+  OutlineType: 0
   cardPanelDropPadding: 80
   dragScale: 1.08
   selectionScale: 1.08
@@ -426,6 +431,7 @@ MonoBehaviour:
   snapDuration: 0.15
   shadow: {fileID: 0}
   dragShadowOffset: {x: -8, y: -8}
+  type: 0
 --- !u!225 &863784752617839323
 CanvasGroup:
   m_ObjectHideFlags: 0

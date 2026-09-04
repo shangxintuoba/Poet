@@ -10,6 +10,16 @@ public class Forge : MonoBehaviour
 
     [SerializeField] private CardLibrary cardLibrary;
     [SerializeField] private CardManager cardManager;
+    [SerializeField, Min(0f)] private float dropPadding = 40f;
+
+    public bool TryPlaceNearestComponentCard(Card card, Vector2 screenPosition, Camera eventCamera)
+    {
+        if (card == null || !IsForgeIngredient(card) || !IsInsideDropArea(screenPosition, eventCamera))
+            return false;
+
+        CardSlot nearestSlot = FindNearestEmptyComponentSlot(card.transform.position);
+        return nearestSlot != null && nearestSlot.TryPlace(card);
+    }
 
     public bool TryPlaceComponentCard(CardSlot slot, Card card)
     {
@@ -54,6 +64,41 @@ public class Forge : MonoBehaviour
     private bool IsForgeIngredient(Card card)
     {
         return IsEmotion(card) || TryGetMaterialType(card, out _);
+    }
+
+    private CardSlot FindNearestEmptyComponentSlot(Vector3 cardPosition)
+    {
+        CardSlot nearestSlot = null;
+        float nearestDistance = float.MaxValue;
+
+        foreach (CardSlot slot in new[] { ComponentSlot1, ComponentSlot2 })
+        {
+            if (slot == null || slot.CurrentCard != null)
+                continue;
+
+            float distance = Vector3.Distance(cardPosition, slot.transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestSlot = slot;
+            }
+        }
+
+        return nearestSlot;
+    }
+
+    private bool IsInsideDropArea(Vector2 screenPosition, Camera eventCamera)
+    {
+        RectTransform panel = transform as RectTransform;
+        if (panel == null || !RectTransformUtility.ScreenPointToLocalPointInRectangle(panel, screenPosition, eventCamera, out Vector2 localPoint))
+            return false;
+
+        Rect rect = panel.rect;
+        rect.xMin -= dropPadding;
+        rect.xMax += dropPadding;
+        rect.yMin -= dropPadding;
+        rect.yMax += dropPadding;
+        return rect.Contains(localPoint);
     }
 
     private string GetForgeType(Card card1, Card card2)

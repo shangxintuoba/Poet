@@ -607,6 +607,7 @@ MonoBehaviour:
   UniversalOutline: {fileID: 0}
   Description: "\u4E16\u754C\u7684\u71C3\u6599"
   Name: "\u610F\u5FD7\u529B"
+  CanBeDropped: 1
   OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08
