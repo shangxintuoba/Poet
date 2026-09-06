@@ -43,6 +43,7 @@ public class Card : MonoBehaviour,
     private RectTransform mapViewport;
     private RectTransform emotionCardContainer;
     private Forge forge;
+    private MissionManager missionManager;
     [SerializeField, Min(0f)] private float cardPanelDropPadding = 80f;
     protected TextPanelUI textPanel;
     [SerializeField, Min(1f)] private float dragScale = 1.08f;
@@ -87,6 +88,7 @@ public class Card : MonoBehaviour,
         if (mapViewport == null) mapViewport = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport")?.GetComponent<RectTransform>();
         if (emotionCardContainer == null) emotionCardContainer = GameObject.Find("EmotionCardContainer")?.GetComponent<RectTransform>();
         forge = FindFirstObjectByType<Forge>();
+        missionManager = FindFirstObjectByType<MissionManager>();
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
         liquidAmountIndicator = GetComponentInChildren<LiquidAmountIndicator>(true);
         restingScale = transform.localScale;
@@ -365,6 +367,9 @@ public class Card : MonoBehaviour,
         if (TryPlaceInForge(eventData.position))
             return;
 
+        if (TryPlaceInMission(eventData.position))
+            return;
+
         if (IsEmotionCard)
         {
             HandleEmotionDrop(eventData.position);
@@ -490,6 +495,14 @@ public class Card : MonoBehaviour,
         return forge != null && forge.TryPlaceNearestComponentCard(this, screenPosition, eventCamera);
     }
 
+    private bool TryPlaceInMission(Vector2 screenPosition)
+    {
+        Camera eventCamera = rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? rootCanvas.worldCamera
+            : null;
+        return missionManager.TryPlaceCard(this, screenPosition, eventCamera);
+    }
+
     private bool IsOverMapContent(Vector2 screenPosition)
     {
         if (mapViewport == null) return false;
@@ -537,11 +550,16 @@ public class Card : MonoBehaviour,
         foreach (GameObject slot in slots)
         {
             RectTransform slotRect = slot.GetComponent<RectTransform>();
-            if (slotRect == null || IsEmotionSlot(slot.transform) || IsOccupied(slot)) continue;
+            if (slotRect == null || IsEmotionSlot(slot.transform) || IsMissionSlot(slot.transform) || IsOccupied(slot)) continue;
             float distance = Vector3.Distance(transform.position, slotRect.position);
             if (distance < nearestDistance) { nearestDistance = distance; nearestSlot = slotRect; }
         }
         return nearestSlot;
+    }
+
+    private bool IsMissionSlot(Transform slot)
+    {
+        return slot.GetComponentInParent<MissionManager>() != null;
     }
 
     private bool IsOccupied(GameObject slot)

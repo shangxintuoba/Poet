@@ -121,7 +121,8 @@
                     "cardsAdded": [
                         "f12",
                         "f13",
-                        "f8"
+                        "f8",
+                        "f31"
                     ],
                     "cardsDestroyed": [],
                     "randomCardList": [],
@@ -628,76 +629,41 @@
             "type": "Material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Nature",
+            "materialType": "Universal",
             "useable": false,
             "canBeDropped": true,
             "choices": []
         },
         {
             "id": "f31",
-            "name": "",
-            "type": "",
-            "description": "",
+            "name": "test",
+            "type": "Raw",
+            "description": "testCard",
             "willPowerDelta": 0,
             "materialType": "",
-            "useable": false,
+            "useable": true,
             "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f32",
-            "name": "",
-            "type": "",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": false,
-            "choices": []
-        },
-        {
-            "id": "f33",
-            "name": "",
-            "type": "",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": false,
-            "choices": []
-        },
-        {
-            "id": "f34",
-            "name": "",
-            "type": "",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": false,
-            "choices": []
-        },
-        {
-            "id": "f35",
-            "name": "",
-            "type": "",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": false,
-            "choices": []
-        },
-        {
-            "id": "f36",
-            "name": "",
-            "type": "",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": false,
-            "choices": []
+            "choices": [
+                {
+                    "id": "c20",
+                    "choiceText": "test",
+                    "usedText": "",
+                    "cardsAdded": [
+                        "f12",
+                        "f13",
+                        "f29",
+                        "f30",
+                        "f31"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": true,
+                    "destroyWhenUsed": true
+                }
+            ]
         }
     ],
     "nodes": [
@@ -789,11 +755,38 @@
     "dailyMissions": [
         {
             "id": "dm1",
-            "name": "A Vampire Story",
-            "moneyReward": 3,
+            "name": "理性灰",
+            "moneyReward": 1,
             "requiredCards": [
                 "f29",
                 "f30"
+            ]
+        },
+        {
+            "id": "dm2",
+            "name": "冻土沙漠",
+            "moneyReward": 2,
+            "requiredCards": [
+                "f14",
+                "f16"
+            ]
+        },
+        {
+            "id": "dm3",
+            "name": "辩证法理性",
+            "moneyReward": 3,
+            "requiredCards": [
+                "f29",
+                "f12"
+            ]
+        },
+        {
+            "id": "dm4",
+            "name": "理性沙漠",
+            "moneyReward": 4,
+            "requiredCards": [
+                "f29",
+                "f14"
             ]
         }
     ],
@@ -803,121 +796,141 @@
             "sourceSheet": "ForgeLibrary_Universal",
             "ingredients": [
                 {
-                    "id": "u1",
-                    "name": "火"
-                },
-                {
-                    "id": "u2",
-                    "name": "冬"
-                },
-                {
-                    "id": "u3",
-                    "name": "铁"
-                },
-                {
-                    "id": "u4",
-                    "name": "空气"
-                },
-                {
-                    "id": "u5",
-                    "name": "世界"
-                },
-                {
-                    "id": "u6",
-                    "name": "大地"
-                },
-                {
-                    "id": "u7",
-                    "name": "熵"
-                },
-                {
-                    "id": "u8",
-                    "name": "死亡"
-                },
-                {
-                    "id": "u9",
-                    "name": "理性"
-                },
-                {
-                    "id": "u10",
-                    "name": "帝国"
-                },
-                {
-                    "id": "u11",
-                    "name": "罪"
-                },
-                {
-                    "id": "u12",
-                    "name": "谜"
-                },
-                {
-                    "id": "u13",
-                    "name": "奇迹"
-                },
-                {
-                    "id": "u14",
-                    "name": "爱"
-                },
-                {
-                    "id": "u15",
+                    "id": "f12",
                     "name": "辩证法"
                 },
                 {
-                    "id": "u16",
-                    "name": "零"
+                    "id": "f13",
+                    "name": "谜"
+                },
+                {
+                    "id": "f29",
+                    "name": "理性"
+                },
+                {
+                    "id": "f30",
+                    "name": "灰"
                 }
             ],
-            "formulas": []
+            "formulas": [
+                {
+                    "firstIngredientId": "f12",
+                    "firstIngredientName": "辩证法",
+                    "secondIngredientId": "f12",
+                    "secondIngredientName": "辩证法",
+                    "resultCardName": "辩证法"
+                },
+                {
+                    "firstIngredientId": "f13",
+                    "firstIngredientName": "谜",
+                    "secondIngredientId": "f12",
+                    "secondIngredientName": "辩证法",
+                    "resultCardName": "沙漠"
+                },
+                {
+                    "firstIngredientId": "f29",
+                    "firstIngredientName": "理性",
+                    "secondIngredientId": "f12",
+                    "secondIngredientName": "辩证法",
+                    "resultCardName": "战争"
+                },
+                {
+                    "firstIngredientId": "f30",
+                    "firstIngredientName": "灰",
+                    "secondIngredientId": "f12",
+                    "secondIngredientName": "辩证法",
+                    "resultCardName": "冻土"
+                },
+                {
+                    "firstIngredientId": "f12",
+                    "firstIngredientName": "辩证法",
+                    "secondIngredientId": "f13",
+                    "secondIngredientName": "谜",
+                    "resultCardName": "沙漠"
+                },
+                {
+                    "firstIngredientId": "f13",
+                    "firstIngredientName": "谜",
+                    "secondIngredientId": "f13",
+                    "secondIngredientName": "谜",
+                    "resultCardName": "谜"
+                },
+                {
+                    "firstIngredientId": "f29",
+                    "firstIngredientName": "理性",
+                    "secondIngredientId": "f13",
+                    "secondIngredientName": "谜",
+                    "resultCardName": "辩证法"
+                },
+                {
+                    "firstIngredientId": "f30",
+                    "firstIngredientName": "灰",
+                    "secondIngredientId": "f13",
+                    "secondIngredientName": "谜",
+                    "resultCardName": "痛苦"
+                },
+                {
+                    "firstIngredientId": "f12",
+                    "firstIngredientName": "辩证法",
+                    "secondIngredientId": "f29",
+                    "secondIngredientName": "理性",
+                    "resultCardName": "战争"
+                },
+                {
+                    "firstIngredientId": "f13",
+                    "firstIngredientName": "谜",
+                    "secondIngredientId": "f29",
+                    "secondIngredientName": "理性",
+                    "resultCardName": "辩证法"
+                },
+                {
+                    "firstIngredientId": "f29",
+                    "firstIngredientName": "理性",
+                    "secondIngredientId": "f29",
+                    "secondIngredientName": "理性",
+                    "resultCardName": "理性"
+                },
+                {
+                    "firstIngredientId": "f30",
+                    "firstIngredientName": "灰",
+                    "secondIngredientId": "f29",
+                    "secondIngredientName": "理性",
+                    "resultCardName": "烦躁"
+                },
+                {
+                    "firstIngredientId": "f12",
+                    "firstIngredientName": "辩证法",
+                    "secondIngredientId": "f30",
+                    "secondIngredientName": "灰",
+                    "resultCardName": "冻土"
+                },
+                {
+                    "firstIngredientId": "f13",
+                    "firstIngredientName": "谜",
+                    "secondIngredientId": "f30",
+                    "secondIngredientName": "灰",
+                    "resultCardName": "痛苦"
+                },
+                {
+                    "firstIngredientId": "f29",
+                    "firstIngredientName": "理性",
+                    "secondIngredientId": "f30",
+                    "secondIngredientName": "灰",
+                    "resultCardName": "烦躁"
+                },
+                {
+                    "firstIngredientId": "f30",
+                    "firstIngredientName": "灰",
+                    "secondIngredientId": "f30",
+                    "secondIngredientName": "灰",
+                    "resultCardName": "灰"
+                }
+            ]
         },
         {
             "type": "Nature",
             "sourceSheet": "ForgeLibrary_Nature",
-            "ingredients": [
-                {
-                    "id": "n1",
-                    "name": "沙漠"
-                },
-                {
-                    "id": "n2",
-                    "name": "冻土"
-                },
-                {
-                    "id": "n3",
-                    "name": "平原"
-                },
-                {
-                    "id": "n4",
-                    "name": "海"
-                },
-                {
-                    "id": "n5",
-                    "name": "高原"
-                },
-                {
-                    "id": "n6",
-                    "name": "山"
-                },
-                {
-                    "id": "n7",
-                    "name": "岛"
-                },
-                {
-                    "id": "n8",
-                    "name": "大陆"
-                },
-                {
-                    "id": "n9",
-                    "name": "荒原"
-                },
-                {
-                    "id": "n10",
-                    "name": "丛林"
-                },
-                {
-                    "id": "n11",
-                    "name": "城市"
-                }
-            ],
+            "ingredients": [],
             "formulas": []
         },
         {
