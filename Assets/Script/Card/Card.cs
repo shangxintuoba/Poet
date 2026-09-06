@@ -366,31 +366,181 @@ public class Card : MonoBehaviour,
         isDragging = false;
         if (rootCanvas == null || transform.parent != rootCanvas.transform) return;
 
-        if (TryPlaceInForge(eventData.position))
-            return;
+        Vector2 screenPosition = eventData.position;
+        Camera eventCamera = rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? rootCanvas.worldCamera
+            : null;
 
-        if (TryPlaceInMission(eventData.position))
-            return;
-
-        if (IsEmotionCard)
+        ResolveTextPanel();
+        CardSlot eventChoiceSlot = textPanel.EventCardChoiceSlot;
+        if (eventChoiceSlot != null && RectTransformUtility.RectangleContainsScreenPoint(
+                (RectTransform)eventChoiceSlot.transform,
+                screenPosition,
+                eventCamera))
         {
-            HandleEmotionDrop(eventData.position);
+            EventCard eventCard = textPanel.ActiveEventCard;
+            int matchingChoiceIndex = -1;
+            for (int i = 0; i < eventCard.Choices.Count; i++)
+            {
+                if ((eventCard.LockedChoiceIndex == -1 || eventCard.LockedChoiceIndex == i) &&
+                    eventCard.Choices[i].TargetCardID == Data.id)
+                {
+                    matchingChoiceIndex = i;
+                    break;
+                }
+            }
+
+            ReturnToPreviousPosition();
+            if (matchingChoiceIndex != -1)
+                eventCard.ExecuteChoice(matchingChoiceIndex);
             return;
         }
 
-        if (IsOverEmotionCardContainer(eventData.position))
+        RectTransform forgePanel = (RectTransform)forge.transform;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            forgePanel,
+            screenPosition,
+            eventCamera,
+            out Vector2 forgeLocalPoint);
+        Rect forgeDropRect = forgePanel.rect;
+        forgeDropRect.xMin -= forge.DropPadding;
+        forgeDropRect.xMax += forge.DropPadding;
+        forgeDropRect.yMin -= forge.DropPadding;
+        forgeDropRect.yMax += forge.DropPadding;
+        if (forgeDropRect.Contains(forgeLocalPoint))
         {
-            if (!CanBeDropped && TryPlaceInNearestFreeSlot())
+            bool isForgeIngredient = IsEmotionCard ||
+                                     Data.type == "Material" && !string.IsNullOrWhiteSpace(Data.materialType) ||
+                                     this is Material;
+            CardSlot forgeSlot = null;
+            if (isForgeIngredient)
+            {
+                CardSlot[] forgeSlots = { forge.ComponentSlot1, forge.ComponentSlot2 };
+                float nearestDistance = float.MaxValue;
+                for (int i = 0; i < forgeSlots.Length; i++)
+                {
+                    CardSlot slot = forgeSlots[i];
+                    if (slot.CurrentCard != null)
+                        continue;
+
+                    float distance = Vector3.Distance(transform.position, slot.transform.position);
+                    if (distance < nearestDistance)
+                    {
+                        nearestDistance = distance;
+                        forgeSlot = slot;
+                    }
+                }
+            }
+
+            if (forgeSlot != null)
+                forgeSlot.PlaceCard(this);
+            else
+                ReturnToPreviousPosition();
+            return;
+        }
+
+        CardSlot missionSlot = null;
+        GameObject[] missionRoots = { missionManager.FinalMission, missionManager.DailyMission };
+        for (int rootIndex = 0; rootIndex < missionRoots.Length && missionSlot == null; rootIndex++)
+        {
+            GameObject missionRoot = missionRoots[rootIndex];
+            if (!missionRoot.activeInHierarchy)
+                continue;
+
+            CardSlot[] slots = missionRoot.GetComponentsInChildren<CardSlot>(false);
+            for (int slotIndex = 0; slotIndex < slots.Length; slotIndex++)
+            {
+                if (RectTransformUtility.RectangleContainsScreenPoint(
+                        (RectTransform)slots[slotIndex].transform,
+                        screenPosition,
+                        eventCamera))
+                {
+                    missionSlot = slots[slotIndex];
+                    break;
+                }
+            }
+        }
+
+        if (missionSlot != null)
+        {
+            bool isMissionCard = Data.type == "Material" || Data.type == "Emotion";
+            if (isMissionCard && missionSlot.CurrentCard == null)
+                missionSlot.PlaceCard(this);
+            else
+                ReturnToPreviousPosition();
+            return;
+        }
+
+        if (IsEmotionCard)
+        {
+            CardSlot nearestEmotionSlot = null;
+            float nearestEmotionDistance = float.MaxValue;
+            for (int i = 0; i < emotionCardContainer.childCount; i++)
+            {
+                Transform child = emotionCardContainer.GetChild(i);
+                if (!child.CompareTag("Slot"))
+                    continue;
+
+                CardSlot slot = child.GetComponent<CardSlot>();
+                if (slot.CurrentCard != null)
+                    continue;
+
+                float distance = Vector3.Distance(transform.position, slot.transform.position);
+                if (distance < nearestEmotionDistance)
+                {
+                    nearestEmotionDistance = distance;
+                    nearestEmotionSlot = slot;
+                }
+            }
+
+            if (nearestEmotionSlot == null)
+                ReturnToPreviousPosition();
+            else
+                nearestEmotionSlot.PlaceCard(this);
+            return;
+        }
+
+        CardSlot nearestNormalSlot = null;
+        float nearestNormalDistance = float.MaxValue;
+        GameObject[] allSlots = GameObject.FindGameObjectsWithTag("Slot");
+        for (int i = 0; i < allSlots.Length; i++)
+        {
+            CardSlot slot = allSlots[i].GetComponent<CardSlot>();
+            Transform slotTransform = slot.transform;
+            if (slotTransform.IsChildOf(emotionCardContainer) ||
+                slotTransform.GetComponentInParent<MissionManager>() != null ||
+                slotTransform.GetComponentInParent<Forge>() != null ||
+                slot == eventChoiceSlot ||
+                slot.CurrentCard != null)
+                continue;
+
+            float distance = Vector3.Distance(transform.position, slotTransform.position);
+            if (distance < nearestNormalDistance)
+            {
+                nearestNormalDistance = distance;
+                nearestNormalSlot = slot;
+            }
+        }
+
+        if (IsOverEmotionCardContainer(screenPosition))
+        {
+            if (!CanBeDropped && nearestNormalSlot != null)
+            {
+                nearestNormalSlot.PlaceCard(this);
                 return;
+            }
 
             ReturnToPreviousPosition();
             return;
         }
 
-        if (IsOverCardPanel(eventData.position) && TryPlaceInNearestFreeSlot())
+        if (IsOverCardPanel(screenPosition) && nearestNormalSlot != null)
+        {
+            nearestNormalSlot.PlaceCard(this);
             return;
+        }
 
-        if (CanBeDropped && IsOverMapContent(eventData.position))
+        if (CanBeDropped && IsOverMapContent(screenPosition))
         {
             transform.SetParent(mapContent, true);
             transform.SetAsLastSibling();
@@ -400,28 +550,15 @@ public class Card : MonoBehaviour,
             return;
         }
 
-        if (!CanBeDropped && TryPlaceInNearestFreeSlot())
+        if (!CanBeDropped && nearestNormalSlot != null)
+        {
+            nearestNormalSlot.PlaceCard(this);
             return;
+        }
 
         ReturnToPreviousPosition();
     }
 
-
-    private void HandleEmotionDrop(Vector2 screenPosition)
-    {
-        RectTransform nearestEmotionSlot = FindNearestFreeEmotionSlot();
-        if (nearestEmotionSlot == null)
-        {
-            ReturnToPreviousPosition();
-            return;
-        }
-
-        CardSlot slot = nearestEmotionSlot.GetComponent<CardSlot>();
-        if (slot != null)
-            slot.TryPlace(this);
-        else
-            PlaceInSlot(nearestEmotionSlot);
-    }
 
     public bool TrySwapEmotionSlot(CardSlot targetSlot)
     {
@@ -433,46 +570,9 @@ public class Card : MonoBehaviour,
             return false;
 
         targetSlot.RemoveCard(otherCard);
-        previousSlot.ForcePlace(otherCard);
-        targetSlot.ForcePlace(this);
+        previousSlot.PlaceCard(otherCard);
+        targetSlot.PlaceCard(this);
         return true;
-    }
-
-    private RectTransform FindNearestFreeEmotionSlot()
-    {
-        if (emotionCardContainer == null)
-            return null;
-
-        RectTransform nearestSlot = null;
-        float nearestDistance = float.MaxValue;
-        for (int i = 0; i < emotionCardContainer.childCount; i++)
-        {
-            Transform child = emotionCardContainer.GetChild(i);
-            if (!child.CompareTag("Slot"))
-                continue;
-
-            GameObject slotObject = child.gameObject;
-            if (IsOccupied(slotObject))
-                continue;
-
-            RectTransform slot = child as RectTransform;
-            if (slot == null)
-                continue;
-
-            float distance = Vector3.Distance(transform.position, slot.position);
-            if (distance < nearestDistance)
-            {
-                nearestDistance = distance;
-                nearestSlot = slot;
-            }
-        }
-
-        return nearestSlot;
-    }
-
-    private bool IsEmotionSlot(Transform slot)
-    {
-        return emotionCardContainer != null && slot.IsChildOf(emotionCardContainer);
     }
 
     private bool IsOverEmotionCardContainer(Vector2 screenPosition)
@@ -484,25 +584,6 @@ public class Card : MonoBehaviour,
             ? rootCanvas.worldCamera
             : null;
         return RectTransformUtility.RectangleContainsScreenPoint(emotionCardContainer, screenPosition, camera);
-    }
-
-    private bool TryPlaceInForge(Vector2 screenPosition)
-    {
-        if (forge == null)
-            forge = FindFirstObjectByType<Forge>();
-
-        Camera eventCamera = rootCanvas != null && rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
-            ? rootCanvas.worldCamera
-            : null;
-        return forge != null && forge.TryPlaceNearestComponentCard(this, screenPosition, eventCamera);
-    }
-
-    private bool TryPlaceInMission(Vector2 screenPosition)
-    {
-        Camera eventCamera = rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
-            ? rootCanvas.worldCamera
-            : null;
-        return missionManager.TryPlaceCard(this, screenPosition, eventCamera);
     }
 
     private bool IsOverMapContent(Vector2 screenPosition)
@@ -529,47 +610,6 @@ public class Card : MonoBehaviour,
         rect.yMin -= cardPanelDropPadding;
         rect.yMax += cardPanelDropPadding;
         return rect.Contains(localPoint);
-    }
-
-    private bool TryPlaceInNearestFreeSlot()
-    {
-        RectTransform nearestSlot = FindNearestFreeSlot();
-        if (nearestSlot == null)
-            return false;
-
-        CardSlot slot = nearestSlot.GetComponent<CardSlot>();
-        if (slot != null)
-            return slot.TryPlace(this);
-
-        PlaceInSlot(nearestSlot);
-        return true;
-    }
-    private RectTransform FindNearestFreeSlot()
-    {
-        GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
-        RectTransform nearestSlot = null;
-        float nearestDistance = float.MaxValue;
-        foreach (GameObject slot in slots)
-        {
-            RectTransform slotRect = slot.GetComponent<RectTransform>();
-            if (slotRect == null || IsEmotionSlot(slot.transform) || IsMissionSlot(slot.transform) || IsOccupied(slot)) continue;
-            float distance = Vector3.Distance(transform.position, slotRect.position);
-            if (distance < nearestDistance) { nearestDistance = distance; nearestSlot = slotRect; }
-        }
-        return nearestSlot;
-    }
-
-    private bool IsMissionSlot(Transform slot)
-    {
-        return slot.GetComponentInParent<MissionManager>() != null;
-    }
-
-    private bool IsOccupied(GameObject slot)
-    {
-        CardSlot cardSlot = slot.GetComponent<CardSlot>();
-        if (cardSlot != null && cardSlot.CurrentCard != null && cardSlot.CurrentCard != this) return true;
-        Card cardInSlot = slot.GetComponentInChildren<Card>(true);
-        return cardInSlot != null && cardInSlot != this;
     }
 
     private void PlaceInSlot(RectTransform slot)
@@ -604,7 +644,7 @@ public class Card : MonoBehaviour,
 
         if (previousSlot != null && previousSlot.CurrentCard == null)
         {
-            previousSlot.ForcePlace(this);
+            previousSlot.PlaceCard(this);
             return;
         }
 
@@ -612,6 +652,11 @@ public class Card : MonoBehaviour,
         ((RectTransform)transform).anchoredPosition = previousPosition;
         assignedSlot = previousParent.GetComponent<CardSlot>();
         ResetDragFeedback();
+    }
+
+    public void ReturnAfterEventChoice()
+    {
+        ReturnToPreviousPosition();
     }
 
     private void StartDragFeedback()

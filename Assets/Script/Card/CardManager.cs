@@ -113,11 +113,7 @@ public class CardManager : MonoBehaviour
 
         Card card = Instantiate(universalCardPrefab, targetSlot.transform);
         card.Initialize(data);
-        if (!targetSlot.ForcePlace(card))
-        {
-            Destroy(card.gameObject);
-            return null;
-        }
+        targetSlot.PlaceCard(card);
 
         if (data.type == "Emotion")
         {
@@ -282,7 +278,7 @@ public class CardManager : MonoBehaviour
     {
         CardSlot cardSlot = slot.GetComponent<CardSlot>();
         if (cardSlot != null)
-            cardSlot.TryPlace(card);
+            cardSlot.PlaceCard(card);
         else
             card.PlaceIn(slot);
     }

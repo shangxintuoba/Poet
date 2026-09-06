@@ -35,11 +35,15 @@ public class TextPanelUI : MonoBehaviour
     private bool isShowingCardDescription;
     private string savedDialogueText;
     private Coroutine cardChoiceCoroutine;
+    private CardSlot eventCardChoiceSlot;
+    private EventCard activeEventCard;
     private Vector2 paperInitialPosition;
     private Tween paperTween;
 
     public bool IsTyping => isTyping;
     public string DisplayedText => currentTextBlock != null ? currentTextBlock.text : string.Empty;
+    public CardSlot EventCardChoiceSlot => eventCardChoiceSlot;
+    public EventCard ActiveEventCard => activeEventCard;
 
     public void SetDisplayedText(string text)
     {
@@ -118,6 +122,30 @@ public class TextPanelUI : MonoBehaviour
         if (cardChoiceCoroutine != null)
             StopCoroutine(cardChoiceCoroutine);
         cardChoiceCoroutine = StartCoroutine(ShowCardChoicesAfterTyping(choices, onSelected));
+    }
+
+    public void ShowEventCardChoiceSlot(EventCard eventCard)
+    {
+        if (cardChoiceCoroutine != null)
+            StopCoroutine(cardChoiceCoroutine);
+
+        cardChoiceCoroutine = StartCoroutine(ShowEventCardChoiceSlotAfterTyping(eventCard));
+    }
+
+    private IEnumerator ShowEventCardChoiceSlotAfterTyping(EventCard eventCard)
+    {
+        while (isTyping)
+            yield return null;
+
+        GameObject slotObject = Instantiate(choiceSlotPrefab, content);
+        slotObject.SetActive(true);
+        slotObject.name = "EventCardChoiceSlot";
+        eventCardChoiceSlot = slotObject.GetComponent<CardSlot>();
+        activeEventCard = eventCard;
+        eventCard.ChoiceSlot = slotObject;
+        choiceObjects.Add(slotObject);
+        cardChoiceCoroutine = null;
+        ScrollToBottom();
     }
 
     private IEnumerator ShowCardChoicesAfterTyping(List<string> choices, Action<int> onSelected)
@@ -309,6 +337,9 @@ public class TextPanelUI : MonoBehaviour
 
     public void ClearChoices()
     {
+        eventCardChoiceSlot = null;
+        activeEventCard = null;
+
         foreach (GameObject choiceObject in choiceObjects)
         {
             if (choiceObject != null)

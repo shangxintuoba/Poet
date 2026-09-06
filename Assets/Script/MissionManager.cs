@@ -69,52 +69,6 @@ public class MissionManager : MonoBehaviour
         return cardLibrary.FindCardData(mission.requiredCards[index]).name;
     }
 
-    public bool TryPlaceCard(Card card, Vector2 screenPosition, Camera eventCamera)
-    {
-        if (card.Data.type != "Material" && card.Data.type != "Emotion")
-            return false;
-
-        Transform missionRoot;
-        if (FinalMission.activeInHierarchy && IsPointerOverMission(FinalMission, screenPosition, eventCamera))
-            missionRoot = FinalMission.transform;
-        else if (DailyMission.activeInHierarchy && IsPointerOverMission(DailyMission, screenPosition, eventCamera))
-            missionRoot = DailyMission.transform;
-        else
-            return false;
-
-        CardSlot[] missionSlots = missionRoot.GetComponentsInChildren<CardSlot>(false);
-        CardSlot nearestSlot = null;
-        float nearestDistance = float.MaxValue;
-
-        for (int i = 0; i < missionSlots.Length; i++)
-        {
-            CardSlot slot = missionSlots[i];
-            if (slot.CurrentCard != null)
-                continue;
-
-            float distance = Vector3.Distance(card.transform.position, slot.transform.position);
-            if (distance < nearestDistance)
-            {
-                nearestDistance = distance;
-                nearestSlot = slot;
-            }
-        }
-
-        if (nearestSlot == null)
-            return false;
-
-        return nearestSlot.ForcePlace(card);
-    }
-
-    private bool IsPointerOverMission(GameObject mission, Vector2 screenPosition, Camera eventCamera)
-    {
-        return RectTransformUtility.RectangleContainsScreenPoint(
-            (RectTransform)mission.transform,
-            screenPosition,
-            eventCamera);
-    }
-
-
     public void TryCalculateResult()
     {
         //calculate if the result of 
