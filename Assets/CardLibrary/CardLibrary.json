@@ -1,9 +1,10 @@
 {
-    "schemaVersion": 6,
+    "schemaVersion": 7,
     "sourceSheets": [
         "FullLibrary",
         "Raw_Choice",
         "Node",
+        "DailyMission",
         "ForgeLibrary_Universal",
         "ForgeLibrary_Nature",
         "ForgeLibrary_Politics",
@@ -783,6 +784,17 @@
         {
             "id": "m21",
             "name": "OverGround"
+        }
+    ],
+    "dailyMissions": [
+        {
+            "id": "dm1",
+            "name": "A Vampire Story",
+            "moneyReward": 3,
+            "requiredCards": [
+                "f29",
+                "f30"
+            ]
         }
     ],
     "forgeLibraries": [

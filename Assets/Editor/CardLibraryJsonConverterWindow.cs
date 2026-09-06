@@ -11,7 +11,7 @@ using UnityEngine;
 
 public sealed class CardLibraryJsonConverterWindow : EditorWindow
 {
-    private static readonly string[] BaseSheets = { "FullLibrary", "Raw_Choice", "Node" };
+    private static readonly string[] BaseSheets = { "FullLibrary", "Raw_Choice", "Node", "DailyMission" };
     private static readonly string[] ForgeSheets =
     {
         "ForgeLibrary_Universal", "ForgeLibrary_Nature", "ForgeLibrary_Politics", "ForgeLibrary_Emotion"
@@ -83,7 +83,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             EditorGUILayout.HelpBox(status, statusType);
     }
 
-    private void ConvertWorkbook()
+    public void ConvertWorkbook()
     {
         string assetPath = AssetDatabase.GetAssetPath(workbookAsset);
         if (!assetPath.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
@@ -107,7 +107,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             int rawChoiceCount = library.cards
                 .Where(card => card != null && card.type == "Raw" && card.choices != null)
                 .Sum(card => card.choices.Length);
-            SetStatus($"Created {OutputJsonPath}: {library.cards.Length} cards, {rawChoiceCount} Raw choices, {library.nodes.Length} nodes.", MessageType.Info);
+            SetStatus($"Created {OutputJsonPath}: {library.cards.Length} cards, {rawChoiceCount} Raw choices, {library.nodes.Length} nodes, {library.dailyMissions.Length} daily missions.", MessageType.Info);
             Selection.activeObject = AssetDatabase.LoadAssetAtPath<TextAsset>(OutputJsonPath);
         }
         catch (Exception exception)
@@ -133,6 +133,10 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             "TimeConsumed", "UnolockNode", "HideOtherChoices", "DestroyWhenUsed"
         });
         List<Dictionary<string, string>> nodeRows = AsRows(sheets["Node"], new[] { "Index", "NodeName" });
+        List<Dictionary<string, string>> dailyMissionRows = AsRows(sheets["DailyMission"], new[]
+        {
+            "Index", "Name", "MoneyReward", "RequiredCards"
+        });
 
         Dictionary<string, Dictionary<string, string>> choicesById = rawChoices.ToDictionary(
             row => Value(row, "Index"), row => row);
@@ -193,16 +197,25 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             name = Value(row, "NodeName")
         }).ToArray();
 
+        CardLibrary.DailyMissionData[] dailyMissions = dailyMissionRows.Select(row => new CardLibrary.DailyMissionData
+        {
+            id = Value(row, "Index"),
+            name = Value(row, "Name"),
+            moneyReward = IntValue(Value(row, "MoneyReward")),
+            requiredCards = SplitIds(Value(row, "RequiredCards")).ToArray()
+        }).ToArray();
+
         CardLibrary.ForgeLibraryData[] forgeLibraries = ForgeSheets
             .Select(sheetName => BuildForgeLibrary(sheetName, sheets[sheetName]))
             .ToArray();
 
         return new CardLibrary.CardLibraryData
         {
-            schemaVersion = 6,
+            schemaVersion = 7,
             sourceSheets = RequiredSheets,
             cards = cards.ToArray(),
             nodes = nodes,
+            dailyMissions = dailyMissions,
             forgeLibraries = forgeLibraries
         };
     }
@@ -347,7 +360,8 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
 
         public static Dictionary<string, List<List<string>>> Read(string workbookPath)
         {
-            using (ZipArchive archive = ZipFile.OpenRead(workbookPath))
+            using (FileStream stream = new FileStream(workbookPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (ZipArchive archive = new ZipArchive(stream, ZipArchiveMode.Read))
             {
                 List<string> sharedStrings = ReadSharedStrings(archive);
                 XDocument workbook = ReadXml(archive, "xl/workbook.xml");

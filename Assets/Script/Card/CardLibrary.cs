@@ -11,6 +11,7 @@ public class CardLibrary : MonoBehaviour
         public string[] sourceSheets;
         public CardData[] cards;
         public NodeData[] nodes;
+        public DailyMissionData[] dailyMissions;
         public ForgeLibraryData[] forgeLibraries;
     }
 
@@ -50,6 +51,16 @@ public class CardLibrary : MonoBehaviour
         public string id;
         public string name;
     }
+
+    [Serializable]
+    public class DailyMissionData
+    {
+        public string id;
+        public string name;
+        public int moneyReward;
+        public string[] requiredCards;
+    }
+
     [System.Serializable]
     public class ForgeLibraryData
     {
@@ -86,6 +97,8 @@ public class CardLibrary : MonoBehaviour
     public IReadOnlyList<ForgeLibraryData> ForgeLibraries => Data != null && Data.forgeLibraries != null
         ? Data.forgeLibraries
         : Array.Empty<ForgeLibraryData>();
+
+    public IReadOnlyList<DailyMissionData> DailyMissions => Data.dailyMissions;
 
     private readonly Dictionary<string, CardData> cardsByReference = new Dictionary<string, CardData>();
 

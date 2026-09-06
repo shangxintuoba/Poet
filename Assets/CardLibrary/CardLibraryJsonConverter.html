@@ -49,7 +49,7 @@
 
   <script>
     (() => {
-      const BASE_SHEETS = ["FullLibrary", "Raw_Choice", "Node"];
+      const BASE_SHEETS = ["FullLibrary", "Raw_Choice", "Node", "DailyMission"];
       const FORGE_SHEETS = ["ForgeLibrary_Universal", "ForgeLibrary_Nature", "ForgeLibrary_Politics", "ForgeLibrary_Emotion"];
       const REQUIRED_SHEETS = [...BASE_SHEETS, ...FORGE_SHEETS];
       const input = document.getElementById("fileInput");
@@ -118,6 +118,7 @@
         summary.innerHTML = `<strong>JSON created</strong><ul>
           <li>${output.cards.length} cards (${Object.entries(totals).map(([type, count]) => `${count} ${escapeHtml(type)}`).join(", ")})</li>
           <li>${output.cards.filter(card => card.type === "Raw").reduce((n, card) => n + card.choices.length, 0)} Raw choices</li>
+          <li>${output.dailyMissions.length} daily missions</li>
           <li>Source sheets: ${output.sourceSheets.map(escapeHtml).join(", ")}</li>
         </ul>`;
         summary.classList.add("visible");
@@ -180,6 +181,12 @@
         const choices = indexBy(asRows(sheets.Raw_Choice, ["Index", "ChoiceText", "UsedText", "CardsAdded", "CardsDestroyed", "RandomCardList", "RandomCardNumber", "TimeConsumed", "UnolockNode", "HideOtherChoices", "DestroyWhenUsed"]), "Index");
 
         const nodes = asRows(sheets.Node, ["Index", "NodeName"]).map(node => ({ id: stringValue(node.Index), name: stringValue(node.NodeName) }));
+        const dailyMissions = asRows(sheets.DailyMission, ["Index", "Name", "MoneyReward", "RequiredCards"]).map(mission => ({
+          id: stringValue(mission.Index),
+          name: stringValue(mission.Name),
+          moneyReward: numberValue(mission.MoneyReward),
+          requiredCards: splitIds(mission.RequiredCards)
+        }));
 
         const cards = fullLibrary.map(base => {
           const card = { id: String(base.Index), name: stringValue(base.Name), type: stringValue(base.type), description: stringValue(base.Description), canBeDropped: booleanValue(base.CanBeDropped) };
@@ -214,10 +221,11 @@
                 const forgeLibraries = FORGE_SHEETS.map(sheetName => buildForgeLibrary(sheetName, sheets[sheetName]));
 
 return {
-          schemaVersion: 6,
+          schemaVersion: 7,
           sourceSheets: REQUIRED_SHEETS,
           cards,
           nodes,
+          dailyMissions,
           forgeLibraries
         };
       }
