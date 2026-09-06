@@ -12,6 +12,7 @@ public class TextPanelUI : MonoBehaviour
     [SerializeField] private Transform content;
     [SerializeField] private TextMeshProUGUI textBlockPrefab;
     [SerializeField] private Button choiceButtonPrefab;
+    [SerializeField] private GameObject choiceSlotPrefab;
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField, Min(1f)] private float charactersPerSecond = 30f;
     [SerializeField, Min(0f)] private float choiceDelay = 0.4f;

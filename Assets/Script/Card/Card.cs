@@ -15,6 +15,7 @@ public class Card : MonoBehaviour,
     public GameObject PoliticsOutline;
     public GameObject EmotionOutline;
     public GameObject UniversalOutline;
+    public GameObject EventOutline;
     public string Description;
     public string Name;
     public bool CanBeDropped;
@@ -33,6 +34,7 @@ public class Card : MonoBehaviour,
         ONature,
         ONone,
         OUniversal,
+        OEvent
     }
 
     public CardOutlineType OutlineType;
