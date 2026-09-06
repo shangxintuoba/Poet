@@ -12,6 +12,8 @@ public class SettingPanel : MonoBehaviour
     public GameObject ToggleButton;
     private bool Opened;
 
+    public GameObject TextPanel;
+    public GameObject CardPanel;
 
 
     public void TogglePanel()
@@ -20,20 +22,37 @@ public class SettingPanel : MonoBehaviour
         QuitButton.SetActive(!Opened);
         BackButton.SetActive(!Opened);
         ToggleButton.SetActive(Opened);
-
+        ShowOtherUI();
         Opened = !Opened;
         
     }
 
-    public void ShowOtherUI(bool panelState)
+    public void ShowOtherUI()
     {
-        if (panelState == true) return;
+        if (Opened)
+        {
+            //move the typer
+        }
         else
         {
 
         }
 
-    }    
+    }
 
+    public void Quit()
+    {
+        //quitGame
+    }
 
+    public void Restart()
+    {
+        //reset the gamaestate
+        Start();
+    }
+
+    public void Start()
+    {
+        
+    }
 }
