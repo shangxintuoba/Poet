@@ -61,6 +61,9 @@ public sealed class GameManager : MonoBehaviour
         usedOnce.Add(key);
     }
 
+    public void HandleGameOver()
+    {
 
+    }
 
 }
