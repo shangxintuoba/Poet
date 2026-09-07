@@ -120,6 +120,7 @@ public class CardManager : MonoBehaviour
             while (EmotionsOwned.Count >= emotionCapacity)
                 DestroyEmotion(EmotionsOwned.Dequeue());
             EmotionsOwned.Enqueue(card);
+            ApplyEmotionWillPower(data);
         }
         else
         {
@@ -211,6 +212,7 @@ public class CardManager : MonoBehaviour
         PlaceAtBottomLeft(emotion, emotionContainer);
         EmotionsOwned.Enqueue(emotion);
         PlaceInSlot(emotion, slot);
+        ApplyEmotionWillPower(data);
     }
 
     private void DestroyEmotion(Card emotion)
@@ -218,13 +220,13 @@ public class CardManager : MonoBehaviour
         if (emotion == null)
             return;
 
-        GameManager gameManager = GameManager.Instance;
-
-        if (gameManager.WillPower != null && emotion.Data != null)
-            gameManager.WillPower.ChangeValue(emotion.Data.willPowerDelta);
-
         RemoveFromSlot(emotion);
         Destroy(emotion.gameObject);
+    }
+
+    private void ApplyEmotionWillPower(CardLibrary.CardData data)
+    {
+        GameManager.Instance.WillPower.ChangeValue(data.willPowerDelta);
     }
 
     private void RemoveEmotionFromQueue(Card emotion)
