@@ -39,10 +39,13 @@ public class TextPanelUI : MonoBehaviour
     private EventCard activeEventCard;
     private Vector2 paperInitialPosition;
     private bool hasResolvedPaperInitialPosition;
+    private bool isPaperRaised;
     private Tween paperTween;
 
     public bool IsTyping => isTyping;
     public string DisplayedText => currentTextBlock != null ? currentTextBlock.text : string.Empty;
+    public bool HasDisplayedText => !string.IsNullOrWhiteSpace(DisplayedText);
+    public bool IsExpanded => isPaperRaised;
     public CardSlot EventCardChoiceSlot => eventCardChoiceSlot;
     public EventCard ActiveEventCard => activeEventCard;
 
@@ -392,11 +395,18 @@ public class TextPanelUI : MonoBehaviour
         if (paper == null)
             return;
 
+        isPaperRaised = hasText;
         paperTween?.Kill();
         Vector2 targetPosition = hasText
             ? paperInitialPosition + Vector2.up * paperMoveUpDistance
             : paperInitialPosition;
         paperTween = paper.DOAnchorPos(targetPosition, paperMoveDuration).SetEase(Ease.OutQuad);
+    }
+
+    public float SetExpandedWithoutClearingText(bool expanded)
+    {
+        SetPaperRaised(expanded);
+        return paperMoveDuration;
     }
 
     private void OnDestroy()

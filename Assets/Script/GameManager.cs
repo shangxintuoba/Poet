@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public sealed class GameManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public sealed class GameManager : MonoBehaviour
 
     private readonly List<Card> breakDownCards = new();
     private bool isGameOver;
+    private bool isRestarting;
 
 
     public static GameManager Instance { get; private set; }
@@ -36,12 +38,26 @@ public sealed class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            if (Instance.isRestarting)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+                return;
+            }
+
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void RestartGame()
+    {
+        isRestarting = true;
+        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
