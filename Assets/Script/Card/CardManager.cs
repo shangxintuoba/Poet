@@ -44,20 +44,32 @@ public class CardManager : MonoBehaviour
         if (cardPrefabs == null)
             return;
 
-        Transform parent = cardContainer != null ? cardContainer : transform;
         foreach (Card prefab in cardPrefabs)
-        {
-            if (prefab == null)
-                continue;
+            CreateCardFromPrefab(prefab);
+    }
 
-            Card card = Instantiate(prefab, parent);
-            PlaceAtBottomLeft(card, parent);
-            CardsOwned.Add(card);
+    public Card CreateCardFromPrefab(Card prefab)
+    {
+        if (prefab == null)
+            return null;
 
-            Transform firstFreeSlot = FindFirstFreeSlot(cardContainer);
-            if (firstFreeSlot != null)
-                PlaceInSlot(card, firstFreeSlot);
-        }
+        Transform parent = cardContainer != null ? cardContainer : transform;
+        Card card = Instantiate(prefab, parent);
+        PlaceAtBottomLeft(card, parent);
+        CardsOwned.Add(card);
+
+        Transform firstFreeSlot = FindFirstFreeSlot(cardContainer);
+        if (firstFreeSlot != null)
+            PlaceInSlot(card, firstFreeSlot);
+
+        return card;
+    }
+
+    public void ClearAllCards()
+    {
+        List<Card> allCards = new List<Card>(CardsOwned);
+        allCards.AddRange(EmotionsOwned);
+        DestroyCards(allCards);
     }
 
     public void CreateCardById(string cardId)
@@ -94,8 +106,42 @@ public class CardManager : MonoBehaviour
 
         if (data.type == "Emotion")
             CreateEmotion(data);
+        else if (data.type == "Character")
+        {
+            GameManager.Instance.GetCharacterState(data);
+            Map map = FindFirstObjectByType<Map>();
+            if (map != null && map.CurrentNode != null)
+                RefreshCharactersAtNode(map.CurrentNode);
+        }
         else
             CreateRegularCard(data);
+    }
+
+    public void RefreshCharactersAtNode(Node currentNode)
+    {
+        ResolveCardLibrary();
+        if (cardLibrary.Data == null)
+            cardLibrary.LoadJson();
+
+        foreach (Card ownedCard in new List<Card>(CardsOwned))
+        {
+            if (ownedCard.Data != null && ownedCard.Data.type == "Character")
+            {
+                GameManager.CharacterState state = GameManager.Instance.GetCharacterState(ownedCard.Data);
+                if (state.CurrentNodeIndex != currentNode.Index)
+                    DestroyCards(new List<Card> { ownedCard });
+            }
+        }
+
+        foreach (CardLibrary.CardData data in cardLibrary.Cards)
+        {
+            if (data.type != "Character")
+                continue;
+
+            GameManager.CharacterState state = GameManager.Instance.GetCharacterState(data);
+            if (state.CurrentNodeIndex == currentNode.Index && !HasCharacterCard(data.id))
+                CreateRegularCard(data);
+        }
     }
 
     public Card CreateCardInSlot(string cardReference, CardSlot targetSlot)
@@ -186,6 +232,17 @@ public class CardManager : MonoBehaviour
         Transform firstFreeSlot = FindFirstFreeSlot(cardContainer);
         if (firstFreeSlot != null)
             PlaceInSlot(card, firstFreeSlot);
+    }
+
+    private bool HasCharacterCard(string cardId)
+    {
+        foreach (Card card in CardsOwned)
+        {
+            if (card.Data != null && card.Data.type == "Character" && card.Data.id == cardId)
+                return true;
+        }
+
+        return false;
     }
 
     private void CreateEmotion(CardLibrary.CardData data)

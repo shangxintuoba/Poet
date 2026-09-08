@@ -65,6 +65,7 @@ public class TextPanelUI : MonoBehaviour
         isShowingCardDescription = false;
         EnsureTextBlock();
         currentTextBlock.text = text ?? string.Empty;
+        currentTextBlock.maxVisibleCharacters = int.MaxValue;
         SetPaperRaised(!string.IsNullOrWhiteSpace(currentTextBlock.text));
         ScrollToBottom();
     }
@@ -187,6 +188,7 @@ public class TextPanelUI : MonoBehaviour
         cardChoiceCoroutine = null;
         ClearChoices();
         currentTextBlock.text = savedDialogueText;
+        currentTextBlock.maxVisibleCharacters = int.MaxValue;
         savedDialogueText = string.Empty;
         isShowingCardDescription = false;
         SetPaperRaised(!string.IsNullOrWhiteSpace(currentTextBlock.text));
@@ -257,14 +259,29 @@ public class TextPanelUI : MonoBehaviour
             string nextText = textQueue.Dequeue();
             string textToType = currentTextBlock.text.Length > 0 ? "\n\n" + nextText : nextText;
 
-            foreach (char character in textToType)
+            currentTextBlock.maxVisibleCharacters = int.MaxValue;
+            currentTextBlock.ForceMeshUpdate();
+            int previousCharacterCount = currentTextBlock.textInfo.characterCount;
+
+            currentTextBlock.text += textToType;
+            currentTextBlock.ForceMeshUpdate();
+            int totalCharacterCount = currentTextBlock.textInfo.characterCount;
+            currentTextBlock.maxVisibleCharacters = previousCharacterCount;
+
+            if (content is RectTransform contentRect)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(contentRect);
+            ScrollToBottom();
+
+            for (int visibleCharacterCount = previousCharacterCount + 1;
+                 visibleCharacterCount <= totalCharacterCount;
+                 visibleCharacterCount++)
             {
-                currentTextBlock.text += character;
-                ScrollToBottom();
+                currentTextBlock.maxVisibleCharacters = visibleCharacterCount;
                 yield return new WaitForSeconds(1f / charactersPerSecond);
             }
         }
 
+        currentTextBlock.maxVisibleCharacters = int.MaxValue;
         isTyping = false;
         typingCoroutine = null;
         StartChoiceDelay();
@@ -274,6 +291,9 @@ public class TextPanelUI : MonoBehaviour
     {
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
+
+        if (currentTextBlock != null)
+            currentTextBlock.maxVisibleCharacters = int.MaxValue;
 
         typingCoroutine = null;
         isTyping = false;
@@ -390,6 +410,7 @@ public class TextPanelUI : MonoBehaviour
             return;
 
         Canvas.ForceUpdateCanvases();
+        scrollRect.StopMovement();
         scrollRect.verticalNormalizedPosition = 0f;
     }
 }

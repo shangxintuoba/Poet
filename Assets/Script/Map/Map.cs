@@ -5,6 +5,7 @@ public class Map : MonoBehaviour
 {
     [SerializeField] private Node startingNode;
     [SerializeField] private TextManager textManager;
+    [SerializeField] private CardManager cardManager;
 
     private Node currentNode;
     public Node CurrentNode => currentNode;
@@ -21,6 +22,8 @@ public class Map : MonoBehaviour
     {
         if (textManager == null)
             textManager = FindFirstObjectByType<TextManager>();
+        if (cardManager == null)
+            cardManager = FindFirstObjectByType<CardManager>();
 
         allNodes = GetComponentsInChildren<Node>(true);
         currentNode = startingNode;
@@ -29,6 +32,7 @@ public class Map : MonoBehaviour
             currentNode.isUnlocked = true;
             currentNode.SetCurrent(true);
             RefreshVisibleNodes();
+            cardManager.RefreshCharactersAtNode(currentNode);
         }
     }
 
@@ -48,6 +52,7 @@ public class Map : MonoBehaviour
         currentNode.isUnlocked = true;
         currentNode.SetCurrent(true);
         RefreshVisibleNodes();
+        cardManager.RefreshCharactersAtNode(currentNode);
         ProgressTime(travelDistance);
 
         if (currentNode.InkFile != null && textManager != null)

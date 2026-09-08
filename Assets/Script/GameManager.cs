@@ -3,6 +3,12 @@ using UnityEngine;
 
 public sealed class GameManager : MonoBehaviour
 {
+    public sealed class CharacterState
+    {
+        public int Progress;
+        public string CurrentNodeIndex;
+    }
+
     //player state
     public Resource Money;
     public Resource WillPower;
@@ -10,16 +16,19 @@ public sealed class GameManager : MonoBehaviour
 
 
     //GameState
-    public int BradPit_progress;
-    public int Her_progress;
-    public int Editor_progress;
-    public int Lawyer_progress;
-    public int Bar_Progress;
-    public int ParkKids_Progress;
-
     private readonly Dictionary<string, int> lastUsedDay = new();
     private readonly HashSet<string> usedOnce = new();
+    private readonly Dictionary<string, CharacterState> characterStates = new();
 
+    public GameObject BreakDownPrefab;
+    public GameObject[] GameOverCards;
+    public GameObject[] WinCards;
+    [SerializeField] private GameObject mapPanel;
+    [SerializeField] private GameObject forgePanel;
+    [SerializeField] private GameObject missionPanel;
+
+    private readonly List<Card> breakDownCards = new();
+    private bool isGameOver;
 
 
     public static GameManager Instance { get; private set; }
@@ -61,9 +70,80 @@ public sealed class GameManager : MonoBehaviour
         usedOnce.Add(key);
     }
 
+    public CharacterState GetCharacterState(CardLibrary.CardData characterData)
+    {
+        if (characterStates.TryGetValue(characterData.id, out CharacterState state))
+            return state;
+
+        CardLibrary.CharacterProgressData initialProgress = null;
+        if (characterData.characterProgress != null)
+        {
+            foreach (CardLibrary.CharacterProgressData progressData in characterData.characterProgress)
+            {
+                if (initialProgress == null || progressData.progress < initialProgress.progress)
+                    initialProgress = progressData;
+            }
+        }
+
+        state = new CharacterState
+        {
+            Progress = initialProgress != null ? initialProgress.progress : 0,
+            CurrentNodeIndex = initialProgress != null ? initialProgress.node : string.Empty
+        };
+        characterStates[characterData.id] = state;
+        return state;
+    }
+
+    public void SetCharacterProgress(CardLibrary.CardData characterData, int progress)
+    {
+        CharacterState state = GetCharacterState(characterData);
+        state.Progress = progress;
+
+        if (characterData.characterProgress == null)
+            return;
+
+        foreach (CardLibrary.CharacterProgressData progressData in characterData.characterProgress)
+        {
+            if (progressData.progress == progress)
+            {
+                state.CurrentNodeIndex = progressData.node;
+                return;
+            }
+        }
+    }
+
+    public int GetCharacterProgress(string characterId)
+    {
+        return characterStates.TryGetValue(characterId, out CharacterState state)
+            ? state.Progress
+            : 0;
+    }
+
     public void HandleGameOver()
     {
+        if (isGameOver)
+            return;
+
+        CardManager cardManager = FindFirstObjectByType<CardManager>();
+        breakDownCards.RemoveAll(card => card == null || !cardManager.CardsOwned.Contains(card));
+
+        Card breakDownCard = cardManager.CreateCardFromPrefab(BreakDownPrefab.GetComponent<Card>());
+        breakDownCards.Add(breakDownCard);
+
+        if (breakDownCards.Count < 3)
+            return;
+
+        isGameOver = true;
+        cardManager.ClearAllCards();
+
+        Destroy(mapPanel);
+        Destroy(forgePanel);
+        Destroy(missionPanel);
+
+        foreach (GameObject gameOverCardPrefab in GameOverCards)
+            cardManager.CreateCardFromPrefab(gameOverCardPrefab.GetComponent<Card>());
 
     }
+
 
 }

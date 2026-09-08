@@ -11,7 +11,10 @@ using UnityEngine;
 
 public sealed class CardLibraryJsonConverterWindow : EditorWindow
 {
-    private static readonly string[] BaseSheets = { "FullLibrary", "Raw_Choice", "Node", "DailyMission" };
+    private static readonly string[] BaseSheets =
+    {
+        "FullLibrary", "Raw_Choice", "Character", "CharacterChoices", "Node", "DailyMission"
+    };
     private static readonly string[] ForgeSheets =
     {
         "ForgeLibrary_Universal", "ForgeLibrary_Nature", "ForgeLibrary_Politics", "ForgeLibrary_Emotion"
@@ -132,6 +135,14 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             "Index", "ChoiceText", "UsedText", "CardsAdded", "CardsDestroyed", "RandomCardList", "RandomCardNumber",
             "TimeConsumed", "UnolockNode", "HideOtherChoices", "DestroyWhenUsed"
         });
+        List<Dictionary<string, string>> characterRows = AsRows(sheets["Character"], new[]
+        {
+            "CardIndex", "Progress", "Text", "Node", "choices"
+        });
+        List<Dictionary<string, string>> characterChoiceRows = AsRows(sheets["CharacterChoices"], new[]
+        {
+            "Index", "Text", "Targetprogress", "CardAdded", "CardRemoved", "DeltaWillPower", "DeltaMoney"
+        });
         List<Dictionary<string, string>> nodeRows = AsRows(sheets["Node"], new[] { "Index", "NodeName" });
         List<Dictionary<string, string>> dailyMissionRows = AsRows(sheets["DailyMission"], new[]
         {
@@ -139,6 +150,8 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
         });
 
         Dictionary<string, Dictionary<string, string>> choicesById = rawChoices.ToDictionary(
+            row => Value(row, "Index"), row => row);
+        Dictionary<string, Dictionary<string, string>> characterChoicesById = characterChoiceRows.ToDictionary(
             row => Value(row, "Index"), row => row);
 
         List<CardLibrary.CardData> cards = new List<CardLibrary.CardData>();
@@ -189,6 +202,42 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
                 }
                 card.choices = choices.ToArray();
             }
+            else if (card.type == "Character")
+            {
+                List<CardLibrary.CharacterProgressData> progressEntries = new List<CardLibrary.CharacterProgressData>();
+                foreach (Dictionary<string, string> characterRow in characterRows.Where(
+                             characterRow => Value(characterRow, "CardIndex") == card.id))
+                {
+                    List<CardLibrary.CharacterChoiceData> choices = new List<CardLibrary.CharacterChoiceData>();
+                    foreach (string choiceId in SplitIds(Value(characterRow, "choices")))
+                    {
+                        if (!characterChoicesById.TryGetValue(choiceId, out Dictionary<string, string> choice))
+                            throw new InvalidDataException(
+                                $"Character card '{card.id}' references missing choice '{choiceId}'.");
+
+                        choices.Add(new CardLibrary.CharacterChoiceData
+                        {
+                            id = choiceId,
+                            text = Value(choice, "Text"),
+                            targetProgress = IntValue(Value(choice, "Targetprogress")),
+                            cardsAdded = SplitIds(Value(choice, "CardAdded")).ToArray(),
+                            cardsRemoved = SplitIds(Value(choice, "CardRemoved")).ToArray(),
+                            deltaWillPower = IntValue(Value(choice, "DeltaWillPower")),
+                            deltaMoney = IntValue(Value(choice, "DeltaMoney"))
+                        });
+                    }
+
+                    progressEntries.Add(new CardLibrary.CharacterProgressData
+                    {
+                        progress = IntValue(Value(characterRow, "Progress")),
+                        text = Value(characterRow, "Text"),
+                        node = Value(characterRow, "Node"),
+                        choices = choices.ToArray()
+                    });
+                }
+
+                card.characterProgress = progressEntries.OrderBy(entry => entry.progress).ToArray();
+            }
 
             cards.Add(card);
         }
@@ -213,7 +262,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
 
         return new CardLibrary.CardLibraryData
         {
-            schemaVersion = 7,
+            schemaVersion = 8,
             sourceSheets = RequiredSheets,
             cards = cards.ToArray(),
             nodes = nodes,

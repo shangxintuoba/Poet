@@ -29,6 +29,7 @@ public class CardLibrary : MonoBehaviour
         public bool refreshChoice;
         public int maximumUse;
         public RawChoiceData[] choices;
+        public CharacterProgressData[] characterProgress;
     }
 
     [Serializable]
@@ -45,6 +46,27 @@ public class CardLibrary : MonoBehaviour
         public string[] unlockNodes;
         public bool hideOtherChoices;
         public bool destroyWhenUsed;
+    }
+
+    [Serializable]
+    public class CharacterProgressData
+    {
+        public int progress;
+        [TextArea] public string text;
+        public string node;
+        public CharacterChoiceData[] choices;
+    }
+
+    [Serializable]
+    public class CharacterChoiceData
+    {
+        public string id;
+        public string text;
+        public int targetProgress;
+        public string[] cardsAdded;
+        public string[] cardsRemoved;
+        public int deltaWillPower;
+        public int deltaMoney;
     }
 
     [Serializable]

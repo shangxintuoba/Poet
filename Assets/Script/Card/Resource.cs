@@ -43,8 +43,12 @@ public class Resource : Card
 
     public void SetValue(int newValue)
     {
+        int previousValue = value;
         value = Mathf.Clamp(newValue, 0, 10);
         RefreshAmountIndicator(true);
+
+        if (resourceType == ResourceType.WillPower && previousValue > 0 && value == 0)
+            GameManager.Instance.HandleGameOver();
     }
 
     public void ChangeValue(int amount)

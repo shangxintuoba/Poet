@@ -1,8 +1,10 @@
 {
-    "schemaVersion": 7,
+    "schemaVersion": 8,
     "sourceSheets": [
         "FullLibrary",
         "Raw_Choice",
+        "Character",
+        "CharacterChoices",
         "Node",
         "DailyMission",
         "ForgeLibrary_Universal",
@@ -82,7 +84,8 @@
                     "hideOtherChoices": false,
                     "destroyWhenUsed": true
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "f2",
@@ -95,7 +98,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "f3",
@@ -108,7 +112,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Diploma",
@@ -125,7 +130,7 @@
                 {
                     "id": "c5",
                     "choiceText": "哲学",
-                    "usedText": "",
+                    "usedText": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。\n(今天已经回忆过了)",
                     "cardsAdded": [
                         "Philosophy"
                     ],
@@ -140,7 +145,7 @@
                 {
                     "id": "c6",
                     "choiceText": "比较文学",
-                    "usedText": "",
+                    "usedText": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\n\n显然这对找到一份工作没有什么帮助。\n(今天已经回忆过了)",
                     "cardsAdded": [
                         "Literature"
                     ],
@@ -155,7 +160,7 @@
                 {
                     "id": "c7",
                     "choiceText": "社会学",
-                    "usedText": "",
+                    "usedText": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\n\n显然这对找到一份工作没有什么帮助。\n(今天已经回忆过了)",
                     "cardsAdded": [
                         "Sociology"
                     ],
@@ -167,7 +172,8 @@
                     "hideOtherChoices": true,
                     "destroyWhenUsed": true
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "Work",
@@ -180,7 +186,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Philosophy",
@@ -189,7 +196,7 @@
             "description": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
-            "useable": false,
+            "useable": true,
             "canBeDropped": true,
             "refreshChoice": true,
             "maximumUse": 0,
@@ -210,7 +217,8 @@
                     "hideOtherChoices": false,
                     "destroyWhenUsed": false
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "Literature",
@@ -219,7 +227,7 @@
             "description": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
-            "useable": false,
+            "useable": true,
             "canBeDropped": true,
             "refreshChoice": true,
             "maximumUse": 0,
@@ -240,7 +248,8 @@
                     "hideOtherChoices": false,
                     "destroyWhenUsed": false
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "Sociology",
@@ -249,7 +258,7 @@
             "description": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
-            "useable": false,
+            "useable": true,
             "canBeDropped": true,
             "refreshChoice": true,
             "maximumUse": 0,
@@ -270,7 +279,8 @@
                     "hideOtherChoices": false,
                     "destroyWhenUsed": false
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "Alcohol",
@@ -302,7 +312,8 @@
                     "hideOtherChoices": true,
                     "destroyWhenUsed": true
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "Chat",
@@ -329,7 +340,8 @@
                     "hideOtherChoices": true,
                     "destroyWhenUsed": true
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "Cigarette",
@@ -340,8 +352,8 @@
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
+            "refreshChoice": true,
+            "maximumUse": 3,
             "choices": [
                 {
                     "id": "c18",
@@ -359,7 +371,8 @@
                     "hideOtherChoices": true,
                     "destroyWhenUsed": true
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "Icetea",
@@ -388,7 +401,8 @@
                     "hideOtherChoices": true,
                     "destroyWhenUsed": true
                 }
-            ]
+            ],
+            "characterProgress": []
         },
         {
             "id": "FanZao",
@@ -401,7 +415,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "FengKuang",
@@ -414,7 +429,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "YiWang",
@@ -427,7 +443,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "TongKu",
@@ -440,7 +457,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "XingFu",
@@ -453,7 +471,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "LiXing",
@@ -466,7 +485,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Hui",
@@ -479,7 +499,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "ZhaoZe",
@@ -492,7 +513,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "HuangYuan",
@@ -505,7 +527,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "DongTu",
@@ -518,7 +541,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Hai",
@@ -531,7 +555,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "PingYuan",
@@ -544,7 +569,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Shan",
@@ -557,7 +583,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "QunDao",
@@ -570,7 +597,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "CongLin",
@@ -583,7 +611,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "ShaMo",
@@ -596,7 +625,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "HuanJue",
@@ -609,7 +639,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Zhai",
@@ -622,7 +653,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "BianZhengFa",
@@ -635,7 +667,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Guang",
@@ -648,7 +681,8 @@
             "canBeDropped": false,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "FuChou",
@@ -661,7 +695,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "QiJi",
@@ -674,7 +709,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "DiGuo",
@@ -687,7 +723,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Shang",
@@ -700,7 +737,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "LvFa",
@@ -713,7 +751,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "GeMing",
@@ -726,7 +765,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "JiQi",
@@ -739,7 +779,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "DongTu",
@@ -752,7 +793,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Mi",
@@ -765,7 +807,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "ZhanZheng",
@@ -778,7 +821,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Huo",
@@ -791,7 +835,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         },
         {
             "id": "Zui",
@@ -804,7 +849,8 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": []
+            "choices": [],
+            "characterProgress": []
         }
     ],
     "nodes": [
@@ -842,7 +888,7 @@
         },
         {
             "id": "m9",
-            "name": "Club"
+            "name": "Abyss Club"
         },
         {
             "id": "m10",
@@ -866,7 +912,7 @@
         },
         {
             "id": "m15",
-            "name": "EdditorOffice"
+            "name": "Edditor‘s Office"
         },
         {
             "id": "m16",
@@ -898,37 +944,25 @@
             "id": "dm1",
             "name": "理性灰",
             "moneyReward": 1,
-            "requiredCards": [
-                "f29",
-                "f30"
-            ]
+            "requiredCards": []
         },
         {
             "id": "dm2",
             "name": "冻土沙漠",
             "moneyReward": 2,
-            "requiredCards": [
-                "f14",
-                "f16"
-            ]
+            "requiredCards": []
         },
         {
             "id": "dm3",
             "name": "辩证法理性",
             "moneyReward": 3,
-            "requiredCards": [
-                "f29",
-                "f12"
-            ]
+            "requiredCards": []
         },
         {
             "id": "dm4",
             "name": "理性沙漠",
             "moneyReward": 4,
-            "requiredCards": [
-                "f29",
-                "f14"
-            ]
+            "requiredCards": []
         }
     ],
     "forgeLibraries": [

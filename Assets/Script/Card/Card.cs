@@ -123,6 +123,14 @@ public class Card : MonoBehaviour,
         if (raw != null && data != null)
             raw.MaximumUse = data.maximumUse;
 
+        if (data != null && data.type == "Character")
+        {
+            Character character = GetComponent<Character>();
+            if (character == null)
+                character = gameObject.AddComponent<Character>();
+            character.Initialize(this, data);
+        }
+
         usedRawTimes = 0;
         ResetRawChoiceState();
         AssignOutlineType();
@@ -214,6 +222,12 @@ public class Card : MonoBehaviour,
 
     protected virtual void ShowCardDetails()
     {
+        if (Data != null && Data.type == "Character")
+        {
+            GetComponent<Character>().ShowDetails();
+            return;
+        }
+
         ResolveTextPanel();
         string cardName = string.IsNullOrWhiteSpace(Name)
             ? (NameText != null ? NameText.text : gameObject.name)

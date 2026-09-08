@@ -442,7 +442,7 @@ MonoBehaviour:
   selectionScale: 1.08
   scaleDuration: 0.12
   snapDuration: 0.15
-  shadow: {fileID: 0}
+  shadow: {fileID: 4411531688873802770}
   dragShadowOffset: {x: -8, y: -8}
   Useable: 1
   RefreshChoice: 0

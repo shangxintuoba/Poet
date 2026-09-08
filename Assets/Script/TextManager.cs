@@ -61,11 +61,6 @@ public class TextManager : MonoBehaviour
                 : 0;
         });
 
-        story.BindExternalFunction("GetBradPitProgress", () =>
-        {
-            return GameManager.Instance.BradPit_progress;
-        });
-
         story.BindExternalFunction<string>("CreateCard", cardId =>
         {
             FindFirstObjectByType<CardManager>()?
