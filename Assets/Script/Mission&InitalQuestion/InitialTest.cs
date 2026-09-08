@@ -85,7 +85,7 @@ public class InitialTest : MonoBehaviour
     [Serializable]
     public class ThemeResults
     {
-        public string Sin;
+        public string ethics;
         public string Love;
         public string Truth;
     }
@@ -301,7 +301,7 @@ public class InitialTest : MonoBehaviour
 
         string themeCard = selectedAnswers[6] switch
         {
-            0 => ThemeCards.Sin,
+            0 => ThemeCards.ethics,
             1 => ThemeCards.Love,
             _ => ThemeCards.Truth
         };

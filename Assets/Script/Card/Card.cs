@@ -11,6 +11,7 @@ public class Card : MonoBehaviour,
     IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public TextMeshProUGUI NameText;
+    [SerializeField] private RectTransform shadow;
     public GameObject NaureOutline;
     public GameObject PoliticsOutline;
     public GameObject EmotionOutline;
@@ -53,7 +54,7 @@ public class Card : MonoBehaviour,
     [SerializeField, Min(1f)] private float selectionScale = 1.08f;
     [SerializeField, Min(0f)] private float scaleDuration = 0.12f;
     [SerializeField, Min(0f)] private float snapDuration = 0.15f;
-    [SerializeField] private RectTransform shadow;
+
     [SerializeField] private Vector2 dragShadowOffset = new Vector2(-8f, -8f);
 
     private Canvas rootCanvas;

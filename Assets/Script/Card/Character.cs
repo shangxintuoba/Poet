@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     private GameManager.CharacterState state;
     private TextPanelUI textPanel;
     private CardManager cardManager;
+    private readonly List<CardLibrary.CharacterChoiceData> visibleChoices = new();
 
     public int Progress => state.Progress;
     public string CurrentNodeIndex => state.CurrentNodeIndex;
@@ -40,25 +41,34 @@ public class Character : MonoBehaviour
 
     private void ShowChoices(CardLibrary.CharacterProgressData progressData)
     {
+        visibleChoices.Clear();
+
         if (progressData == null || progressData.choices == null || progressData.choices.Length == 0)
             return;
 
         List<string> labels = new List<string>();
         foreach (CardLibrary.CharacterChoiceData choice in progressData.choices)
+        {
+            if (choice.reusable && !GameManager.Instance.CanUseOnce(GetChoiceUsageKey(choice)))
+                continue;
+
+            visibleChoices.Add(choice);
             labels.Add(choice.text);
+        }
 
         textPanel.ShowCardChoices(labels, UseChoice);
     }
 
     private void UseChoice(int choiceIndex)
     {
-        CardLibrary.CharacterProgressData progressData = GetCurrentProgressData();
-        if (progressData == null || progressData.choices == null ||
-            choiceIndex < 0 || choiceIndex >= progressData.choices.Length)
+        if (choiceIndex < 0 || choiceIndex >= visibleChoices.Count)
             return;
 
-        CardLibrary.CharacterChoiceData choice = progressData.choices[choiceIndex];
-        GameManager.Instance.SetCharacterProgress(data, choice.targetProgress);
+        CardLibrary.CharacterChoiceData choice = visibleChoices[choiceIndex];
+        if (choice.reusable)
+            GameManager.Instance.MarkUsedOnce(GetChoiceUsageKey(choice));
+        else
+            GameManager.Instance.SetCharacterProgress(data, choice.targetProgress);
 
         cardManager.DestroyCardsByDataIds(new List<string>(choice.cardsRemoved));
         cardManager.CreateCards(new List<string>(choice.cardsAdded));
@@ -70,6 +80,11 @@ public class Character : MonoBehaviour
 
         if (gameObject.activeInHierarchy)
             ShowDetails();
+    }
+
+    private string GetChoiceUsageKey(CardLibrary.CharacterChoiceData choice)
+    {
+        return $"CharacterChoice:{data.id}:{choice.id}";
     }
 
     private CardLibrary.CharacterProgressData GetCurrentProgressData()

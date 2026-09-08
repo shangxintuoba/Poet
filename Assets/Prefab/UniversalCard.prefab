@@ -259,8 +259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1.4888992, y: 89.492}
-  m_SizeDelta: {x: -19.5682, y: 40.5079}
+  m_AnchoredPosition: {x: 1.0908012, y: -2.3799973}
+  m_SizeDelta: {x: -14.4089, y: 132.38}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3932448876031071871
 CanvasRenderer:
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Card
+  m_text: Memories of the Neolithic era
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bbdf487596ec0840821977141b329eb, type: 2}
   m_sharedMaterial: {fileID: -8891481282619641425, guid: 8bbdf487596ec0840821977141b329eb, type: 2}
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
+  m_fontSize: 22.15
   m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_fontSizeMax: 25
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   NameText: {fileID: 797042336863281754}
+  shadow: {fileID: 1950097325829217044}
   NaureOutline: {fileID: 4236326866780487142}
   PoliticsOutline: {fileID: 8342387328677769228}
   EmotionOutline: {fileID: 1527899212745890303}
@@ -671,7 +672,6 @@ MonoBehaviour:
   selectionScale: 1.08
   scaleDuration: 0.12
   snapDuration: 0.15
-  shadow: {fileID: 0}
   dragShadowOffset: {x: -8, y: -8}
 --- !u!1 &8342387328677769228
 GameObject:

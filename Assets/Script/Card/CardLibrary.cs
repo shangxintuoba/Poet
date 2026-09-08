@@ -62,6 +62,7 @@ public class CardLibrary : MonoBehaviour
     {
         public string id;
         public string text;
+        public bool reusable;
         public int targetProgress;
         public string[] cardsAdded;
         public string[] cardsRemoved;

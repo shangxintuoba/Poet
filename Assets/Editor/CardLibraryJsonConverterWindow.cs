@@ -219,6 +219,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
                         {
                             id = choiceId,
                             text = Value(choice, "Text"),
+                            reusable = BoolValue(Value(choice, "Reusable")),
                             targetProgress = IntValue(Value(choice, "Targetprogress")),
                             cardsAdded = SplitIds(Value(choice, "CardAdded")).ToArray(),
                             cardsRemoved = SplitIds(Value(choice, "CardRemoved")).ToArray(),
