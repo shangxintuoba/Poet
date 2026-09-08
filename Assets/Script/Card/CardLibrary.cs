@@ -26,6 +26,8 @@ public class CardLibrary : MonoBehaviour
         public string materialType;
         public bool useable;
         public bool canBeDropped;
+        public bool refreshChoice;
+        public int maximumUse;
         public RawChoiceData[] choices;
     }
 

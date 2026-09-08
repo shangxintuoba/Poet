@@ -432,6 +432,7 @@ MonoBehaviour:
   PoliticsOutline: {fileID: 0}
   EmotionOutline: {fileID: 0}
   UniversalOutline: {fileID: 0}
+  EventOutline: {fileID: 0}
   Description: 
   Name: Your Body
   CanBeDropped: 1
@@ -444,6 +445,9 @@ MonoBehaviour:
   shadow: {fileID: 0}
   dragShadowOffset: {x: -8, y: -8}
   Useable: 1
+  RefreshChoice: 0
+  MaximumUse: 0
+  UsedTimes: 0
   isUsed: 0
   choices:
   - ChoiceText: 'Touch your inside  '
@@ -462,8 +466,8 @@ MonoBehaviour:
   - ChoiceText: Touch Your Skin
     UsedText: 
     CardsAdded:
-    - f6
-    - f7
+    - Work
+    - Diploma
     CardsAddedPrefabs:
     - {fileID: 5350834661324277761, guid: d89bdad6a4054cc4d91b285304a5488c, type: 3}
     CardsDestroyed:

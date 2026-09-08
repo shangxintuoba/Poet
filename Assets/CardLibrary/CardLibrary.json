@@ -20,6 +20,8 @@
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c1",
@@ -91,6 +93,8 @@
             "materialType": "",
             "useable": false,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": []
         },
         {
@@ -102,27 +106,28 @@
             "materialType": "",
             "useable": false,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": []
         },
         {
-            "id": "f6",
+            "id": "Diploma",
             "name": "你的文凭",
             "type": "Raw",
-            "description": "你的大学文凭，全世界最没用的东西\\n你学的是什么？",
+            "description": "你的大学文凭，全世界最没用的东西\n\n你学的是什么？",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c5",
                     "choiceText": "哲学",
                     "usedText": "",
                     "cardsAdded": [
-                        "f12",
-                        "f13",
-                        "f8",
-                        "f31"
+                        "Philosophy"
                     ],
                     "cardsDestroyed": [],
                     "randomCardList": [],
@@ -137,9 +142,7 @@
                     "choiceText": "比较文学",
                     "usedText": "",
                     "cardsAdded": [
-                        "f14",
-                        "f15",
-                        "f9"
+                        "Literature"
                     ],
                     "cardsDestroyed": [],
                     "randomCardList": [],
@@ -154,9 +157,7 @@
                     "choiceText": "社会学",
                     "usedText": "",
                     "cardsAdded": [
-                        "f16",
-                        "f17",
-                        "f10"
+                        "Sociology"
                     ],
                     "cardsDestroyed": [],
                     "randomCardList": [],
@@ -169,49 +170,20 @@
             ]
         },
         {
-            "id": "f7",
+            "id": "Work",
             "name": "你的工作",
             "type": "Raw",
-            "description": "一份勉强能糊口的编剧工作，为一部庸俗短片攥写剧本。明天下午就要交稿了，你还剩最后半天。",
+            "description": "为短片攥写剧本,  一份勉强能糊口的编剧工作，自然也谈不上什么文学追求。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
-            "choices": [
-                {
-                    "id": "c8",
-                    "choiceText": "开始干活",
-                    "usedText": "",
-                    "cardsAdded": [
-                        "f18"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                },
-                {
-                    "id": "c13",
-                    "choiceText": "我写了多少了？",
-                    "usedText": "只有一个大纲，内容基本没有。简单来说：你完了",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [
-                        "m1"
-                    ],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": false
-                }
-            ]
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
         },
         {
-            "id": "f8",
+            "id": "Philosophy",
             "name": "哲学学位",
             "type": "Raw",
             "description": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。",
@@ -219,10 +191,29 @@
             "materialType": "",
             "useable": false,
             "canBeDropped": true,
-            "choices": []
+            "refreshChoice": true,
+            "maximumUse": 0,
+            "choices": [
+                {
+                    "id": "c8",
+                    "choiceText": "Recall what you have learned",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [
+                        "BianZhengFa",
+                        "Mi"
+                    ],
+                    "randomCardNumber": 1,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ]
         },
         {
-            "id": "f9",
+            "id": "Literature",
             "name": "比较文学学位",
             "type": "Raw",
             "description": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\n\n显然这对找到一份工作没有什么帮助。",
@@ -230,183 +221,50 @@
             "materialType": "",
             "useable": false,
             "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f10",
-            "name": "社会学学位",
-            "type": "Raw",
-            "description": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\\n\\n显然这对找到一份工作没有什么帮助。",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f11",
-            "name": "烦躁",
-            "type": "Emotion",
-            "description": "",
-            "willPowerDelta": -1,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f12",
-            "name": "辩证法",
-            "type": "Material",
-            "description": "正题：你能用它来解决任何问题。 \n反题：解决完之后那些问题会变得没用。\n合题：但是你能用它来解决任何问题",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f13",
-            "name": "谜",
-            "type": "Material",
-            "description": "？！？",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f14",
-            "name": "沙漠",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Nature",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f15",
-            "name": "战争",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Politics",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f16",
-            "name": "冻土",
-            "type": "Material",
-            "description": "那些冰冷而坚硬的泥土总是让你想到冻得太过的冰激凌。",
-            "willPowerDelta": 0,
-            "materialType": "Nature",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f17",
-            "name": "罪",
-            "type": "Material",
-            "description": "10岁的时候你找到了妈妈藏在衣柜里的1万块钱。100张颜色鲜艳的纸片，每次想吃麦当劳了你就会偷偷去拿出来几张。\\n一个暑假过去，你也不知道你到底偷拿了多少张。不过你清晰地记得妈妈发现时看着你的眼神。",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f18",
-            "name": "你的工作!",
-            "type": "Raw",
-            "description": "你写不出来",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": true,
-            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c9",
-                    "choiceText": "干活",
+                    "choiceText": "Recall what you have learned",
                     "usedText": "",
-                    "cardsAdded": [
-                        "f19"
-                    ],
+                    "cardsAdded": [],
                     "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
+                    "randomCardList": [
+                        "DongTu",
+                        "Zui"
+                    ],
+                    "randomCardNumber": 1,
                     "timeConsumed": 0,
                     "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
                 }
             ]
         },
         {
-            "id": "f19",
-            "name": "你的工作!!",
+            "id": "Sociology",
+            "name": "社会学学位",
             "type": "Raw",
-            "description": "你写不出来，缪斯今晚显然并不眷顾你。\n\n可能也不止今晚。",
+            "description": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
-            "useable": true,
+            "useable": false,
             "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c10",
-                    "choiceText": "干活！！",
+                    "choiceText": "Recall what you have learned",
                     "usedText": "",
-                    "cardsAdded": [
-                        "f20"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                }
-            ]
-        },
-        {
-            "id": "f20",
-            "name": "你的工作!!!",
-            "type": "Raw",
-            "description": "你写不出来",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": true,
-            "canBeDropped": true,
-            "choices": [
-                {
-                    "id": "c11",
-                    "choiceText": "去喝一杯吧",
-                    "usedText": "",
-                    "cardsAdded": [
-                        "f21"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                },
-                {
-                    "id": "c12",
-                    "choiceText": "干活！！！",
-                    "usedText": "不，你意识到你今晚肯定是写不出来了",
                     "cardsAdded": [],
                     "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
+                    "randomCardList": [
+                        "ShaMo",
+                        "ZhanZheng"
+                    ],
+                    "randomCardNumber": 1,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -415,69 +273,16 @@
             ]
         },
         {
-            "id": "f21",
-            "name": "你的工作",
-            "type": "Raw",
-            "description": "是的，你写不出来了，你不得不承认这个事实。",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "useable": true,
-            "canBeDropped": true,
-            "choices": [
-                {
-                    "id": "c13",
-                    "choiceText": "我写了多少了？",
-                    "usedText": "只有一个大纲，内容基本没有。简单来说：你完了",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [
-                        "m1"
-                    ],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": false
-                },
-                {
-                    "id": "c14",
-                    "choiceText": "我完了。",
-                    "usedText": "不管写了多少，你明天下午三点前一点得去一趟那个胖子的办公室，如果你还想要这份工作的话。\\n\\n从这儿过去得两个小时，你最好早点出门。",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [
-                        "m1"
-                    ],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": false
-                },
-                {
-                    "id": "c15",
-                    "choiceText": "还有一个上午，我早上能写的出来的。",
-                    "usedText": "好吧，祝你好运，明天下午三点交稿。那之前你得到那个胖子的办公室。\\n\\n从这儿过去得两个小时，你最好早点出门。",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": false
-                }
-            ]
-        },
-        {
-            "id": "f22",
+            "id": "Alcohol",
             "name": "酒",
             "type": "Raw",
-            "description": "\\n\\n每天不能喝太多。",
+            "description": "每天不能喝太多。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c16",
@@ -486,10 +291,10 @@
                     "cardsAdded": [],
                     "cardsDestroyed": [],
                     "randomCardList": [
-                        "f23",
-                        "f23",
-                        "f24",
-                        "f25"
+                        "YiWang",
+                        "YiWang",
+                        "TongKu",
+                        "XingFu"
                     ],
                     "randomCardNumber": 2,
                     "timeConsumed": 0,
@@ -500,47 +305,16 @@
             ]
         },
         {
-            "id": "f23",
-            "name": "遗忘",
-            "type": "Emotion",
-            "description": "世界上唯一的万能药 \\n 消耗：意志力+3",
-            "willPowerDelta": 3,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f24",
-            "name": "痛苦",
-            "type": "Emotion",
-            "description": "我们必须想象西西弗斯是幸福的 \\n 消耗：意志力-2",
-            "willPowerDelta": -2,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f25",
-            "name": "幸福",
-            "type": "Emotion",
-            "description": "或许在不久的将来你会意识到这不过是一种幻觉，但至少此刻它还不是。它正坚实地躺在你的胃的下方，像个安睡的孩子。 \\n 消耗：意志力+5",
-            "willPowerDelta": 5,
-            "materialType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "choices": []
-        },
-        {
-            "id": "f26",
+            "id": "Chat",
             "name": "闲言",
             "type": "Raw",
-            "description": "世界局势，蔬菜价格，失业，指甲颜色，新电影，婚外情。\\n\\n 你可以试着将它压缩成灵感,但请不要抱有太多期待",
+            "description": "世界局势，蔬菜价格，失业，指甲颜色，新电影，婚外情。\n\n你可以试着将它压缩成灵感,但请不要抱有太多期待",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c17",
@@ -558,22 +332,24 @@
             ]
         },
         {
-            "id": "f27",
+            "id": "Cigarette",
             "name": "烟",
             "type": "Raw",
-            "description": "可以让你清醒一点，但对身体不太好。\\n\\n每天不能抽太多。",
+            "description": "可以让你清醒一点，但对身体不太好。\n\n每天不能抽太多。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c18",
                     "choiceText": "抽烟",
                     "usedText": "",
                     "cardsAdded": [
-                        "f29",
-                        "f30"
+                        "LiXing",
+                        "Hui"
                     ],
                     "cardsDestroyed": [],
                     "randomCardList": [],
@@ -586,21 +362,23 @@
             ]
         },
         {
-            "id": "f28",
+            "id": "Icetea",
             "name": "维他柠檬茶",
             "type": "Raw",
-            "description": "上学的时候，你最幸福的事情就是翻墙到学校后面的超市买柠檬茶喝。\\n\\n对于成年人来说有些太甜了。",
+            "description": "上学的时候，你最幸福的事情就是翻墙到学校后面的超市买柠檬茶喝。\n对于成年人来说有些太甜了。",
             "willPowerDelta": 0,
             "materialType": "",
             "useable": true,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": [
                 {
                     "id": "c19",
                     "choiceText": "喝",
                     "usedText": "",
                     "cardsAdded": [
-                        "f25"
+                        "XingFu"
                     ],
                     "cardsDestroyed": [],
                     "randomCardList": [],
@@ -613,7 +391,72 @@
             ]
         },
         {
-            "id": "f29",
+            "id": "FanZao",
+            "name": "烦躁",
+            "type": "Emotion",
+            "description": "",
+            "willPowerDelta": -1,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "FengKuang",
+            "name": "疯狂",
+            "type": "Emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "YiWang",
+            "name": "遗忘",
+            "type": "Emotion",
+            "description": "世界上唯一的万能药。\n意志力+3",
+            "willPowerDelta": 3,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "TongKu",
+            "name": "痛苦",
+            "type": "Emotion",
+            "description": "我们必须想象西西弗斯是幸福的。\n意志力-2",
+            "willPowerDelta": -2,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "XingFu",
+            "name": "幸福",
+            "type": "Emotion",
+            "description": "或许在不久的将来你会意识到这不过是一种幻觉，但至少此刻它还不是。它正坚实地躺在你的胃的下方，像个安睡的孩子。\n意志力+5",
+            "willPowerDelta": 5,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "LiXing",
             "name": "理性",
             "type": "Material",
             "description": "",
@@ -621,10 +464,12 @@
             "materialType": "Universal",
             "useable": false,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": []
         },
         {
-            "id": "f30",
+            "id": "Hui",
             "name": "灰",
             "type": "Material",
             "description": "",
@@ -632,44 +477,340 @@
             "materialType": "Universal",
             "useable": false,
             "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
             "choices": []
         },
         {
-            "id": "f31",
-            "name": "test",
-            "type": "Raw",
-            "description": "testCard",
+            "id": "ZhaoZe",
+            "name": "沼泽",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "HuangYuan",
+            "name": "荒原",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "DongTu",
+            "name": "冻土",
+            "type": "Material",
+            "description": "那些冰冷而坚硬的泥土总是让你想到冻得太过的冰激凌。",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Hai",
+            "name": "海",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "PingYuan",
+            "name": "平原",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Shan",
+            "name": "山",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "QunDao",
+            "name": "群岛",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "CongLin",
+            "name": "丛林",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "ShaMo",
+            "name": "沙漠",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Nature",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "HuanJue",
+            "name": "幻觉",
+            "type": "Emotion",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
-            "useable": true,
+            "useable": false,
             "canBeDropped": true,
-            "choices": [
-                {
-                    "id": "c20",
-                    "choiceText": "test",
-                    "usedText": "",
-                    "cardsAdded": [
-                        "f12",
-                        "f13",
-                        "f29",
-                        "f30",
-                        "f31"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                }
-            ]
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Zhai",
+            "name": "债",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Politics",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "BianZhengFa",
+            "name": "辩证法",
+            "type": "Material",
+            "description": "正题：你能用它来解决任何问题。\n反题：解决完之后那些问题会变得没用。\n合题：但是你能用它来解决任何问题",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Guang",
+            "name": "光",
+            "type": "",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "FuChou",
+            "name": "复仇",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Politics",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "QiJi",
+            "name": "奇迹",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "DiGuo",
+            "name": "帝国",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Politics",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Shang",
+            "name": "熵",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "LvFa",
+            "name": "律法",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Politics",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "GeMing",
+            "name": "革命",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Politics",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "JiQi",
+            "name": "机器",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Politics",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "DongTu",
+            "name": "冬",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Mi",
+            "name": "谜",
+            "type": "Material",
+            "description": "？！？",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "ZhanZheng",
+            "name": "战争",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Politics",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Huo",
+            "name": "火",
+            "type": "Material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
+        },
+        {
+            "id": "Zui",
+            "name": "罪",
+            "type": "Material",
+            "description": "10岁的时候你找到了妈妈藏在衣柜里的1万块钱。100张颜色鲜艳的纸片，每次想吃麦当劳了你就会偷偷去拿出来几张。\\n一个暑假过去，你也不知道你到底偷拿了多少张。不过你清晰地记得妈妈发现时看着你的眼神。",
+            "willPowerDelta": 0,
+            "materialType": "Universal",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": []
         }
     ],
     "nodes": [
         {
             "id": "m1",
-            "name": "Home_Street"
+            "name": "WestHill"
         },
         {
             "id": "m2",
@@ -717,7 +858,7 @@
         },
         {
             "id": "m13",
-            "name": "Street_Book"
+            "name": "Oak Rd"
         },
         {
             "id": "m14",
@@ -737,7 +878,7 @@
         },
         {
             "id": "m18",
-            "name": "Street_NewDistrict"
+            "name": "NewDistrict"
         },
         {
             "id": "m19",

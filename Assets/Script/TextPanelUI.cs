@@ -38,6 +38,7 @@ public class TextPanelUI : MonoBehaviour
     private CardSlot eventCardChoiceSlot;
     private EventCard activeEventCard;
     private Vector2 paperInitialPosition;
+    private bool hasResolvedPaperInitialPosition;
     private Tween paperTween;
 
     public bool IsTyping => isTyping;
@@ -70,13 +71,15 @@ public class TextPanelUI : MonoBehaviour
 
     private void Awake()
     {
-        if (textBlockPrefab != null)
-            textBlockPrefab.gameObject.SetActive(false);
+        currentTextBlock = textBlockPrefab;
+        if (currentTextBlock != null)
+            currentTextBlock.gameObject.SetActive(true);
+
         if (choiceButtonPrefab != null)
             choiceButtonPrefab.gameObject.SetActive(false);
+
         ResolvePaper();
     }
-
     public void ShowDialogueUI(string text)
     {
         if (content == null || textBlockPrefab == null || string.IsNullOrWhiteSpace(text))
@@ -241,15 +244,12 @@ public class TextPanelUI : MonoBehaviour
 
     private void EnsureTextBlock()
     {
+        if (currentTextBlock == null)
+            currentTextBlock = textBlockPrefab;
+
         if (currentTextBlock != null)
-            return;
-
-        currentTextBlock = Instantiate(textBlockPrefab, content);
-        currentTextBlock.gameObject.SetActive(true);
-        currentTextBlock.name = "TextBlock";
-        currentTextBlock.text = string.Empty;
+            currentTextBlock.gameObject.SetActive(true);
     }
-
     private IEnumerator TypeQueuedText()
     {
         while (textQueue.Count > 0)
@@ -352,16 +352,18 @@ public class TextPanelUI : MonoBehaviour
 
     private void ResolvePaper()
     {
-        if (paper != null)
-            return;
+        if (paper == null)
+        {
+            GameObject paperObject = GameObject.Find("Canvas/Typer/Paper");
+            if (paperObject != null)
+                paper = paperObject.GetComponent<RectTransform>();
+        }
 
-        GameObject paperObject = GameObject.Find("Canvas/Typer/Paper");
-        if (paperObject == null)
-            return;
-
-        paper = paperObject.GetComponent<RectTransform>();
-        if (paper != null)
+        if (paper != null && !hasResolvedPaperInitialPosition)
+        {
             paperInitialPosition = paper.anchoredPosition;
+            hasResolvedPaperInitialPosition = true;
+        }
     }
 
     private void SetPaperRaised(bool hasText)

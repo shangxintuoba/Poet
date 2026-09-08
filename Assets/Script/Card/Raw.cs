@@ -23,6 +23,9 @@ public class Raw : Card
     }
 
     public bool Useable;
+    public bool RefreshChoice;
+    [Min(0)] public int MaximumUse;
+    [Min(0)] public int UsedTimes;
     [SerializeField] private bool isUsed;
     [SerializeField] private UseChoice[] choices;
     [SerializeField] private bool[] usedChoices;
@@ -45,6 +48,7 @@ public class Raw : Card
             return;
 
         UseChoice choice = choices[index];
+        UsedTimes++;
         usedChoices[index] = true;
         isUsed = true;
 
@@ -73,7 +77,7 @@ public class Raw : Card
         ConsumeTime(choice.TimeConsumed);
         UnlockNodes(choice.NodesUnlocked);
 
-        if (choice.DestroyWhenUsed)
+        if (choice.DestroyWhenUsed || (MaximumUse > 0 && UsedTimes >= MaximumUse))
         {
             cardManager?.DestroyCards(new List<Card> { this });
             return;
@@ -112,6 +116,26 @@ public class Raw : Card
             if (visibleIndex >= 0 && visibleIndex < choiceIndices.Count)
                 UseChoiceAt(choiceIndices[visibleIndex]);
         });
+    }
+
+    public static void RefreshAllDailyChoices()
+    {
+        foreach (Raw rawCard in FindObjectsByType<Raw>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (rawCard.RefreshChoice)
+                rawCard.RefreshChoices();
+        }
+    }
+
+    private void RefreshChoices()
+    {
+        EnsureChoiceState();
+        Array.Clear(usedChoices, 0, usedChoices.Length);
+        lockedChoiceIndex = -1;
+        isUsed = false;
+
+        if (IsSelected && textPanel != null)
+            ShowAvailableChoices();
     }
 
     private void EnsureChoiceState()

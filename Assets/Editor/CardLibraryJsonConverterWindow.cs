@@ -150,7 +150,9 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
                 name = Value(row, "Name"),
                 type = Value(row, "type"),
                 description = Value(row, "Description"),
-                canBeDropped = BoolValue(Value(row, "CanBeDropped"))
+                canBeDropped = BoolValue(Value(row, "CanBeDropped")),
+                maximumUse = IntValue(Value(row, "MaximumUse")),
+                refreshChoice = BoolValue(Value(row, "RefreshChoice"))
             };
 
             if (card.type == "Emotion")

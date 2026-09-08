@@ -25,6 +25,7 @@ public class Card : MonoBehaviour,
 
     private bool[] usedRawChoices;
     private int lockedRawChoiceIndex = -1;
+    private int usedRawTimes;
     protected CardManager cardManager;
 
     public enum CardOutlineType
@@ -90,7 +91,7 @@ public class Card : MonoBehaviour,
         if (mapViewport == null) mapViewport = GameObject.Find("Canvas/MapPanel/Scroll View/Viewport")?.GetComponent<RectTransform>();
         if (emotionCardContainer == null) emotionCardContainer = GameObject.Find("EmotionCardContainer")?.GetComponent<RectTransform>();
         forge = FindFirstObjectByType<Forge>();
-        missionManager = FindFirstObjectByType<MissionManager>();
+        missionManager = FindFirstObjectByType<MissionManager>(FindObjectsInactive.Include);
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
         liquidAmountIndicator = GetComponentInChildren<LiquidAmountIndicator>(true);
         restingScale = transform.localScale;
@@ -118,6 +119,11 @@ public class Card : MonoBehaviour,
         if (NameText != null)
             NameText.text = Name;
 
+        Raw raw = GetComponent<Raw>();
+        if (raw != null && data != null)
+            raw.MaximumUse = data.maximumUse;
+
+        usedRawTimes = 0;
         ResetRawChoiceState();
         AssignOutlineType();
     }
@@ -269,6 +275,7 @@ public class Card : MonoBehaviour,
 
         CardLibrary.RawChoiceData choice = Data.choices[index];
         usedRawChoices[index] = true;
+        usedRawTimes++;
 
         if (choice.hideOtherChoices)
             lockedRawChoiceIndex = index;
@@ -288,7 +295,7 @@ public class Card : MonoBehaviour,
         ConsumeTime(choice.timeConsumed);
         UnlockNodes(choice.unlockNodes);
 
-        if (choice.destroyWhenUsed)
+        if (choice.destroyWhenUsed || (Data.maximumUse > 0 && usedRawTimes >= Data.maximumUse))
         {
             cardManager?.DestroyCards(new List<Card> { this });
             return;
@@ -296,6 +303,25 @@ public class Card : MonoBehaviour,
 
         DeselectCard();
     }
+    public static void RefreshAllJsonRawChoices()
+    {
+        foreach (Card card in FindObjectsByType<Card>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (card.Data != null && card.Data.type == "Raw" && card.Data.refreshChoice)
+                card.RefreshJsonRawChoices();
+        }
+    }
+
+    private void RefreshJsonRawChoices()
+    {
+        ResetRawChoiceState();
+        System.Array.Clear(usedRawChoices, 0, usedRawChoices.Length);
+        lockedRawChoiceIndex = -1;
+
+        if (IsSelected && textPanel != null)
+            ShowRawChoices();
+    }
+
     private void ResetRawChoiceState()
     {
         int choiceCount = Data != null && Data.choices != null ? Data.choices.Length : 0;
@@ -440,11 +466,16 @@ public class Card : MonoBehaviour,
         }
 
         CardSlot missionSlot = null;
-        GameObject[] missionRoots = { missionManager.FinalMission, missionManager.DailyMission };
+        if (missionManager == null)
+            missionManager = FindFirstObjectByType<MissionManager>(FindObjectsInactive.Include);
+
+        GameObject[] missionRoots = missionManager == null
+            ? System.Array.Empty<GameObject>()
+            : new[] { missionManager.FinalMission, missionManager.DailyMission };
         for (int rootIndex = 0; rootIndex < missionRoots.Length && missionSlot == null; rootIndex++)
         {
             GameObject missionRoot = missionRoots[rootIndex];
-            if (!missionRoot.activeInHierarchy)
+            if (missionRoot == null || !missionRoot.activeInHierarchy)
                 continue;
 
             CardSlot[] slots = missionRoot.GetComponentsInChildren<CardSlot>(false);

@@ -1,9 +1,13 @@
+using TMPro;
 using UnityEngine;
 
 public class GameTime : Card
 {
+    [SerializeField] private TextMeshProUGUI timeTextInCard;
+
     private const int MinutesPerDay = 24 * 60;
     private const int LastDate = 14;
+    public TextMeshProUGUI TimetextInCard;
 
     [SerializeField, Range(0, MinutesPerDay - 1)] private int currentTime;
     [SerializeField, Range(1, LastDate)] private int date = 1;
@@ -11,6 +15,8 @@ public class GameTime : Card
     private void OnEnable()
     {
         GameManager.Instance.TimeCard = this;
+        RefreshCardTimeText();
+        RefreshCardTimeText();
     }
 
     public int CurrentTime => currentTime;
@@ -35,15 +41,36 @@ public class GameTime : Card
         if (minutes <= 0)
             return;
 
+        int previousDate = date;
         int totalMinutes = (date - 1) * MinutesPerDay + currentTime;
         int finalMinute = (LastDate - 1) * MinutesPerDay + (MinutesPerDay - 1);
         totalMinutes = Mathf.Min(totalMinutes + minutes, finalMinute);
 
         date = totalMinutes / MinutesPerDay + 1;
         currentTime = totalMinutes % MinutesPerDay;
+        RefreshCardTimeText();
+
+        if (date != previousDate)
+        {
+            Raw.RefreshAllDailyChoices();
+            Card.RefreshAllJsonRawChoices();
+        }
 
         if (IsSelected)
             ShowCardDetails();
+    }
+
+    private void RefreshCardTimeText()
+    {
+        if (timeTextInCard == null)
+        {
+            Transform textTransform = transform.Find("TimetextInCard") ?? transform.Find("Timetext");
+            if (textTransform != null)
+                timeTextInCard = textTransform.GetComponent<TextMeshProUGUI>();
+        }
+
+        if (timeTextInCard != null)
+            timeTextInCard.text = $"{currentTime / 60:00}：{currentTime % 60:00}";
     }
 
     // Keeps compatibility with the original method name.

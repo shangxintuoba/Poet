@@ -25,7 +25,6 @@ public class TextManager : MonoBehaviour
 
     private void Start()
     {
-        LoadStory(inkFile, null, string.Empty);
     }
 
     public string SaveStoryState()
