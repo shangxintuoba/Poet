@@ -10,6 +10,7 @@ public class InitialTest : MonoBehaviour
 {
     public TextMeshProUGUI TextArea;
     public TestChoice testChoicePrefab;
+    [SerializeField] private CardManager cardManager;
     [Min(0f)] public float CharacterDelay = 0.03f;
     private int currentQuestionIndex;
     private int[] selectedAnswers = new int[7];
@@ -252,6 +253,7 @@ public class InitialTest : MonoBehaviour
 
         ClearQuestionChoices();
         CalculateResult();
+        AddResultCards();
         gameObject.SetActive(false);
     }
 
@@ -306,6 +308,27 @@ public class InitialTest : MonoBehaviour
             _ => ThemeCards.Truth
         };
         AddRequiredCardIDs(themeCard);
+    }
+
+    /// <summary>
+    /// Creates the cards selected by the initial test. This is public so it can
+    /// also be called from a UnityEvent when the result flow changes.
+    /// </summary>
+    public void AddResultCards()
+    {
+        if (FinalMissionRequiredCardIDs.Count == 0)
+            return;
+
+        if (cardManager == null)
+            cardManager = FindFirstObjectByType<CardManager>();
+
+        if (cardManager == null)
+        {
+            Debug.LogWarning("InitialTest could not find a CardManager to create result cards.");
+            return;
+        }
+
+        cardManager.CreateCards(FinalMissionRequiredCardIDs);
     }
 
     private void AddRequiredCardIDs(string cardIDs)

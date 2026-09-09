@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MissionManager : MonoBehaviour
+public class MissionManager : MonoBehaviour, IPointerClickHandler
 {
     public CardSlot Slot1;
     public CardSlot Slot2;
@@ -24,12 +26,45 @@ public class MissionManager : MonoBehaviour
 
     public List<CardLibrary.DailyMissionData> CurrentMissionLists;
 
+    [Header("Panel Toggle")]
+    [SerializeField, Min(0f)] private float slideDownDistance = 200f;
+    [SerializeField, Min(0f)] private float slideDuration = 0.18f;
+
     private CardLibrary cardLibrary;
+    private RectTransform panelRect;
+    private Vector2 openPosition;
+    private Tween panelMoveTween;
+    private bool isPanelOpen = true;
 
     private void Awake()
     {
         cardLibrary = FindFirstObjectByType<CardLibrary>();
         CurrentMissionLists = new List<CardLibrary.DailyMissionData> { null, null };
+        panelRect = transform as RectTransform;
+        if (panelRect != null)
+            openPosition = panelRect.anchoredPosition;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+            TogglePanelPosition();
+    }
+
+    /// <summary>Slides the mission panel down, or restores it to its initial position.</summary>
+    public void TogglePanelPosition()
+    {
+        if (panelRect == null)
+            return;
+
+        isPanelOpen = !isPanelOpen;
+        Vector2 target = isPanelOpen
+            ? openPosition
+            : openPosition + Vector2.down * slideDownDistance;
+
+        panelMoveTween?.Kill();
+        panelMoveTween = panelRect.DOAnchorPos(target, slideDuration)
+            .SetEase(Ease.OutQuad);
     }
 
     public void InstantiateMission()
@@ -84,5 +119,10 @@ public class MissionManager : MonoBehaviour
     {
         FinalMission.SetActive(!FinalMission.activeInHierarchy);
         DailyMission.SetActive(!DailyMission.activeInHierarchy);
+    }
+
+    private void OnDestroy()
+    {
+        panelMoveTween?.Kill();
     }
 }

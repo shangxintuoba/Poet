@@ -14,102 +14,250 @@
     ],
     "cards": [
         {
-            "id": "f1",
-            "name": "EmotionCreatorTest",
-            "type": "Raw",
-            "description": "Raw Card Test",
+            "id": "Brad",
+            "name": "Brad Pitt",
+            "type": "Character",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
-            "useable": true,
-            "canBeDropped": true,
+            "useable": false,
+            "canBeDropped": false,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
+            "choices": [],
+            "characterProgress": [
                 {
-                    "id": "c1",
-                    "choiceText": "Create Hapiness",
-                    "usedText": "e1 Created",
-                    "cardsAdded": [
-                        "f2",
-                        "f3"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": false
+                    "progress": 0,
+                    "text": "progress0",
+                    "node": "m2",
+                    "choices": [
+                        {
+                            "id": "cc1",
+                            "text": "goto1",
+                            "reusable": false,
+                            "targetProgress": 1,
+                            "cardsAdded": [
+                                "LiXing"
+                            ],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 1,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc2",
+                            "text": "goto2",
+                            "reusable": false,
+                            "targetProgress": 2,
+                            "cardsAdded": [
+                                "LiXing"
+                            ],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 1
+                        },
+                        {
+                            "id": "cc11",
+                            "text": "reuse",
+                            "reusable": true,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 5
+                        }
+                    ]
                 },
                 {
-                    "id": "c2",
-                    "choiceText": "CreatePain",
-                    "usedText": "e2 Created",
-                    "cardsAdded": [
-                        "f2"
-                    ],
-                    "cardsDestroyed": [
-                        "f3"
-                    ],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": false
+                    "progress": 1,
+                    "text": "progress1",
+                    "node": "m4",
+                    "choices": [
+                        {
+                            "id": "cc3",
+                            "text": "goto4",
+                            "reusable": false,
+                            "targetProgress": 4,
+                            "cardsAdded": [],
+                            "cardsRemoved": [
+                                "LiXing"
+                            ],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc4",
+                            "text": "goto3",
+                            "reusable": false,
+                            "targetProgress": 3,
+                            "cardsAdded": [],
+                            "cardsRemoved": [
+                                "LiXing"
+                            ],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc11",
+                            "text": "reuse",
+                            "reusable": true,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 5
+                        }
+                    ]
                 },
                 {
-                    "id": "c3",
-                    "choiceText": "HideOther Choice",
-                    "usedText": "Hided",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": false
+                    "progress": 2,
+                    "text": "progress2",
+                    "node": "m2",
+                    "choices": [
+                        {
+                            "id": "cc5",
+                            "text": "cc5",
+                            "reusable": false,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc6",
+                            "text": "cc6",
+                            "reusable": false,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc11",
+                            "text": "reuse",
+                            "reusable": true,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 5
+                        }
+                    ]
                 },
                 {
-                    "id": "c4",
-                    "choiceText": "Destroy",
-                    "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": true
+                    "progress": 3,
+                    "text": "progress3",
+                    "node": "m4",
+                    "choices": [
+                        {
+                            "id": "cc7",
+                            "text": "cc7",
+                            "reusable": false,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc8",
+                            "text": "cc8",
+                            "reusable": false,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc11",
+                            "text": "reuse",
+                            "reusable": true,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 5
+                        }
+                    ]
+                },
+                {
+                    "progress": 4,
+                    "text": "progress4",
+                    "node": "m2",
+                    "choices": [
+                        {
+                            "id": "cc9",
+                            "text": "cc9",
+                            "reusable": false,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc10",
+                            "text": "cc10",
+                            "reusable": false,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 0
+                        },
+                        {
+                            "id": "cc11",
+                            "text": "reuse",
+                            "reusable": true,
+                            "targetProgress": 0,
+                            "cardsAdded": [],
+                            "cardsRemoved": [],
+                            "deltaWillPower": 0,
+                            "deltaMoney": 5
+                        }
+                    ]
                 }
-            ],
-            "characterProgress": []
+            ]
         },
         {
-            "id": "f2",
-            "name": "PainTest",
-            "type": "Emotion",
-            "description": "Eternal",
-            "willPowerDelta": -2,
+            "id": "Lawyer",
+            "name": "Lawyer Gin",
+            "type": "Character",
+            "description": "",
+            "willPowerDelta": 0,
             "materialType": "",
             "useable": false,
-            "canBeDropped": true,
+            "canBeDropped": false,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
             "characterProgress": []
         },
         {
-            "id": "f3",
-            "name": "HapinessTest",
-            "type": "Emotion",
-            "description": "A mirracle",
-            "willPowerDelta": 2,
+            "id": "Editor",
+            "name": "Your Editor",
+            "type": "Character",
+            "description": "",
+            "willPowerDelta": 0,
             "materialType": "",
             "useable": false,
-            "canBeDropped": true,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Kid",
+            "name": "Kids in Park",
+            "type": "Character",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "useable": false,
+            "canBeDropped": false,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -928,7 +1076,7 @@
         },
         {
             "id": "m19",
-            "name": "Gallery"
+            "name": "Shipyard"
         },
         {
             "id": "m20",

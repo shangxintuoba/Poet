@@ -6,11 +6,15 @@ public class Map : MonoBehaviour
     [SerializeField] private Node startingNode;
     [SerializeField] private TextManager textManager;
     [SerializeField] private CardManager cardManager;
+    [SerializeField, Min(1f)] private float connectionThickness = 4f;
+    [SerializeField] private Color connectionColor = Color.black;
 
     private Node currentNode;
     public Node CurrentNode => currentNode;
     private readonly Dictionary<Node, NodeState> nodeStates = new Dictionary<Node, NodeState>();
+    private readonly List<NodeConnection> connections = new List<NodeConnection>();
     private Node[] allNodes;
+    private RectTransform connectionRoot;
 
     private class NodeState
     {
@@ -26,6 +30,7 @@ public class Map : MonoBehaviour
             cardManager = FindFirstObjectByType<CardManager>();
 
         allNodes = GetComponentsInChildren<Node>(true);
+        CreateConnections();
         currentNode = startingNode;
         if (currentNode != null)
         {
@@ -132,6 +137,56 @@ public class Map : MonoBehaviour
             node.gameObject.SetActive(visible);
         }
 
+        foreach (NodeConnection connection in connections)
+            connection?.Refresh();
+    }
+
+    private void CreateConnections()
+    {
+        if (allNodes == null || allNodes.Length == 0)
+            return;
+
+        GameObject rootObject = new GameObject("Node Connections", typeof(RectTransform));
+        connectionRoot = rootObject.GetComponent<RectTransform>();
+        connectionRoot.SetParent(transform, false);
+        connectionRoot.anchorMin = Vector2.zero;
+        connectionRoot.anchorMax = Vector2.one;
+        connectionRoot.offsetMin = Vector2.zero;
+        connectionRoot.offsetMax = Vector2.zero;
+        connectionRoot.SetAsFirstSibling();
+
+        HashSet<string> createdPairs = new HashSet<string>();
+        foreach (Node from in allNodes)
+        {
+            if (from == null || from.NearbyNodes == null)
+                continue;
+
+            foreach (Node to in from.NearbyNodes)
+            {
+                if (to == null || to == from)
+                    continue;
+
+                int fromId = from.GetInstanceID();
+                int toId = to.GetInstanceID();
+                string pairKey = fromId < toId
+                    ? fromId + ":" + toId
+                    : toId + ":" + fromId;
+                if (!createdPairs.Add(pairKey))
+                    continue;
+
+                GameObject lineObject = new GameObject(
+                    "Connection " + from.Index + " - " + to.Index,
+                    typeof(RectTransform),
+                    typeof(CanvasRenderer),
+                    typeof(UnityEngine.UI.Image),
+                    typeof(NodeConnection));
+                lineObject.transform.SetParent(connectionRoot, false);
+
+                NodeConnection connection = lineObject.GetComponent<NodeConnection>();
+                connection.Initialize(from, to, connectionRoot, connectionThickness, connectionColor);
+                connections.Add(connection);
+            }
+        }
     }
 
     private void SaveCurrentNodeState()
