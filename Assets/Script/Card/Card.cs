@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -12,11 +13,12 @@ public class Card : MonoBehaviour,
 {
     public TextMeshProUGUI NameText;
     [SerializeField] private RectTransform shadow;
-    public GameObject NaureOutline;
-    public GameObject PoliticsOutline;
+    [SerializeField] private GameObject defaultCardBack;
+    public GameObject RawOutline;
     public GameObject EmotionOutline;
-    public GameObject UniversalOutline;
-    public GameObject EventOutline;
+    public GameObject MaterialOutline;
+    public GameObject FuelOutline;
+    public GameObject CharacterOutline;
     public string Description;
     public string Name;
     public bool CanBeDropped;
@@ -28,19 +30,6 @@ public class Card : MonoBehaviour,
     private int lockedRawChoiceIndex = -1;
     private int usedRawTimes;
     protected CardManager cardManager;
-
-    public enum CardOutlineType
-    {
-        OEmotion,
-        OPolitics,
-        ONature,
-        ONone,
-        OUniversal,
-        OEvent
-    }
-
-    public CardOutlineType OutlineType;
-
     private RectTransform cardContainer;
     private RectTransform cardPanel;
     private RectTransform mapContent;
@@ -94,6 +83,7 @@ public class Card : MonoBehaviour,
         forge = FindFirstObjectByType<Forge>();
         missionManager = FindFirstObjectByType<MissionManager>(FindObjectsInactive.Include);
         if (shadow == null) shadow = transform.Find("Shadow") as RectTransform;
+        if (defaultCardBack == null) defaultCardBack = transform.Find("Image")?.gameObject;
         liquidAmountIndicator = GetComponentInChildren<LiquidAmountIndicator>(true);
         restingScale = transform.localScale;
         if (shadow != null) restingShadowPosition = shadow.anchoredPosition;
@@ -139,51 +129,24 @@ public class Card : MonoBehaviour,
 
     public void AssignOutlineType()
     {
-        OutlineType = CardOutlineType.ONone;
+        string cardType = Data != null ? Data.type : string.Empty;
+        bool isFuel = string.Equals(cardType, "Fuel", StringComparison.OrdinalIgnoreCase);
 
-        if (Data != null)
-        {
-            switch (Data.type)
-            {
-                case "Emotion":
-                    OutlineType = CardOutlineType.OEmotion;
-                    break;
+        SetActiveOutline(RawOutline, string.Equals(cardType, "Raw", StringComparison.OrdinalIgnoreCase));
+        SetActiveOutline(FuelOutline, isFuel);
+        SetActiveOutline(MaterialOutline, string.Equals(cardType, "Material", StringComparison.OrdinalIgnoreCase));
+        SetActiveOutline(EmotionOutline, string.Equals(cardType, "Emotion", StringComparison.OrdinalIgnoreCase));
+        SetActiveOutline(CharacterOutline, string.Equals(cardType, "Character", StringComparison.OrdinalIgnoreCase));
+        SetActiveOutline(defaultCardBack, !isFuel);
 
-                case "Material":
-                    switch (Data.materialType)
-                    {
-                        case "Nature":
-                            OutlineType = CardOutlineType.ONature;
-                            break;
-
-                        case "Politics":
-                            OutlineType = CardOutlineType.OPolitics;
-                            break;
-
-                        case "Universal":
-                            OutlineType = CardOutlineType.OUniversal;
-                            break;
-                    }
-                    break;
-            }
-        }
-
-        SetActiveOutline();
+        if (shadow != null)
+            shadow.gameObject.SetActive(!isFuel);
     }
 
-    private void SetActiveOutline()
+    private static void SetActiveOutline(GameObject outline, bool isActive)
     {
-        if (NaureOutline != null)
-            NaureOutline.SetActive(OutlineType == CardOutlineType.ONature);
-
-        if (PoliticsOutline != null)
-            PoliticsOutline.SetActive(OutlineType == CardOutlineType.OPolitics);
-
-        if (EmotionOutline != null)
-            EmotionOutline.SetActive(OutlineType == CardOutlineType.OEmotion);
-
-        if (UniversalOutline != null)
-            UniversalOutline.SetActive(OutlineType == CardOutlineType.OUniversal);
+        if (outline != null)
+            outline.SetActive(isActive);
     }
 
     private void Update()
@@ -450,28 +413,7 @@ public class Card : MonoBehaviour,
         forgeDropRect.yMax += forge.DropPadding;
         if (forgeDropRect.Contains(forgeLocalPoint))
         {
-            bool isForgeIngredient = IsEmotionCard ||
-                                     Data.type == "Material" && !string.IsNullOrWhiteSpace(Data.materialType) ||
-                                     this is Material;
-            CardSlot forgeSlot = null;
-            if (isForgeIngredient)
-            {
-                CardSlot[] forgeSlots = { forge.ComponentSlot1, forge.ComponentSlot2 };
-                float nearestDistance = float.MaxValue;
-                for (int i = 0; i < forgeSlots.Length; i++)
-                {
-                    CardSlot slot = forgeSlots[i];
-                    if (slot.CurrentCard != null)
-                        continue;
-
-                    float distance = Vector3.Distance(transform.position, slot.transform.position);
-                    if (distance < nearestDistance)
-                    {
-                        nearestDistance = distance;
-                        forgeSlot = slot;
-                    }
-                }
-            }
+            CardSlot forgeSlot = GetCompatibleForgeSlot();
 
             if (forgeSlot != null)
                 forgeSlot.PlaceCard(this);
@@ -603,6 +545,20 @@ public class Card : MonoBehaviour,
         }
 
         ReturnToPreviousPosition();
+    }
+
+    private CardSlot GetCompatibleForgeSlot()
+    {
+        if (forge == null)
+            return null;
+
+        if (Forge.IsMaterialSlotCard(this) && forge.MaterialSlot != null && forge.MaterialSlot.CurrentCard == null)
+            return forge.MaterialSlot;
+
+        if (Forge.IsFuelSlotCard(this) && forge.FuelSlot != null && forge.FuelSlot.CurrentCard == null)
+            return forge.FuelSlot;
+
+        return null;
     }
 
 

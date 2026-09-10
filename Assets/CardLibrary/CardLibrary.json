@@ -1,5 +1,5 @@
 {
-    "schemaVersion": 8,
+    "schemaVersion": 9,
     "sourceSheets": [
         "FullLibrary",
         "Raw_Choice",
@@ -7,12 +7,99 @@
         "CharacterChoices",
         "Node",
         "DailyMission",
-        "ForgeLibrary_Universal",
-        "ForgeLibrary_Nature",
-        "ForgeLibrary_Politics",
-        "ForgeLibrary_Emotion"
+        "ForgeLibrary"
     ],
     "cards": [
+        {
+            "id": "flame",
+            "name": "Flame",
+            "type": "Fuel",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "moisture",
+            "name": "Moisture",
+            "type": "Fuel",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "thought",
+            "name": "Thought",
+            "type": "Fuel",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "enthropy",
+            "name": "Enthropy",
+            "type": "Fuel",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "air",
+            "name": "Air",
+            "type": "Fuel",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "yeast",
+            "name": "Yeast",
+            "type": "Fuel",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": false,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
         {
             "id": "Brad",
             "name": "Brad Pitt",
@@ -20,6 +107,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": false,
             "refreshChoice": false,
@@ -228,6 +316,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": false,
             "refreshChoice": false,
@@ -242,6 +331,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": false,
             "refreshChoice": false,
@@ -256,6 +346,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": false,
             "refreshChoice": false,
@@ -270,6 +361,7 @@
             "description": "你的大学文凭，全世界最没用的东西\n\n你学的是什么？",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -280,7 +372,12 @@
                     "choiceText": "哲学",
                     "usedText": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。\n(今天已经回忆过了)",
                     "cardsAdded": [
-                        "Philosophy"
+                        "Philosophy",
+                        "flame",
+                        "air",
+                        "moisture",
+                        "LiXing",
+                        "Hui"
                     ],
                     "cardsDestroyed": [],
                     "randomCardList": [],
@@ -330,6 +427,7 @@
             "description": "为短片攥写剧本,  一份勉强能糊口的编剧工作，自然也谈不上什么文学追求。",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -344,6 +442,7 @@
             "description": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": true,
@@ -375,6 +474,7 @@
             "description": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": true,
@@ -406,6 +506,7 @@
             "description": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\n\n显然这对找到一份工作没有什么帮助。",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": true,
@@ -437,6 +538,7 @@
             "description": "每天不能喝太多。",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -470,6 +572,7 @@
             "description": "世界局势，蔬菜价格，失业，指甲颜色，新电影，婚外情。\n\n你可以试着将它压缩成灵感,但请不要抱有太多期待",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -498,6 +601,7 @@
             "description": "可以让你清醒一点，但对身体不太好。\n\n每天不能抽太多。",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": true,
@@ -529,6 +633,7 @@
             "description": "上学的时候，你最幸福的事情就是翻墙到学校后面的超市买柠檬茶喝。\n对于成年人来说有些太甜了。",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": true,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -559,6 +664,7 @@
             "description": "",
             "willPowerDelta": -1,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -573,6 +679,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -587,6 +694,7 @@
             "description": "世界上唯一的万能药。\n意志力+3",
             "willPowerDelta": 3,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -601,6 +709,7 @@
             "description": "我们必须想象西西弗斯是幸福的。\n意志力-2",
             "willPowerDelta": -2,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -615,6 +724,7 @@
             "description": "或许在不久的将来你会意识到这不过是一种幻觉，但至少此刻它还不是。它正坚实地躺在你的胃的下方，像个安睡的孩子。\n意志力+5",
             "willPowerDelta": 5,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -629,6 +739,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -643,6 +754,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -657,6 +769,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -671,6 +784,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -685,6 +799,7 @@
             "description": "那些冰冷而坚硬的泥土总是让你想到冻得太过的冰激凌。",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -699,6 +814,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -713,6 +829,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -727,6 +844,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -741,6 +859,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -755,6 +874,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -769,6 +889,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Nature",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -783,6 +904,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -797,6 +919,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Politics",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -811,6 +934,7 @@
             "description": "正题：你能用它来解决任何问题。\n反题：解决完之后那些问题会变得没用。\n合题：但是你能用它来解决任何问题",
             "willPowerDelta": 0,
             "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -825,6 +949,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": false,
             "refreshChoice": false,
@@ -839,6 +964,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Politics",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -853,6 +979,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -867,20 +994,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Politics",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Shang",
-            "name": "熵",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -895,6 +1009,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Politics",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -909,6 +1024,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Politics",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -923,20 +1039,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Politics",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "DongTu",
-            "name": "冬",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -951,6 +1054,7 @@
             "description": "？！？",
             "willPowerDelta": 0,
             "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -965,20 +1069,7 @@
             "description": "",
             "willPowerDelta": 0,
             "materialType": "Politics",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Huo",
-            "name": "火",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -993,6 +1084,7 @@
             "description": "10岁的时候你找到了妈妈藏在衣柜里的1万块钱。100张颜色鲜艳的纸片，每次想吃麦当劳了你就会偷偷去拿出来几张。\\n一个暑假过去，你也不知道你到底偷拿了多少张。不过你清晰地记得妈妈发现时看着你的眼神。",
             "willPowerDelta": 0,
             "materialType": "Universal",
+            "fuelType": "",
             "useable": false,
             "canBeDropped": true,
             "refreshChoice": false,
@@ -1115,157 +1207,42 @@
     ],
     "forgeLibraries": [
         {
-            "type": "Universal",
-            "sourceSheet": "ForgeLibrary_Universal",
+            "type": "ForgeLibrary",
+            "sourceSheet": "ForgeLibrary",
             "ingredients": [
                 {
-                    "id": "f12",
-                    "name": "辩证法"
+                    "id": "SiWang",
+                    "name": "死亡"
                 },
                 {
-                    "id": "f13",
-                    "name": "谜"
-                },
-                {
-                    "id": "f29",
+                    "id": "LiXing",
                     "name": "理性"
                 },
                 {
-                    "id": "f30",
-                    "name": "灰"
+                    "id": "DiGuo",
+                    "name": "帝国"
+                },
+                {
+                    "id": "Zui",
+                    "name": "罪"
+                },
+                {
+                    "id": "Mi",
+                    "name": "谜"
+                },
+                {
+                    "id": "QiJi",
+                    "name": "奇迹"
+                },
+                {
+                    "id": "Ai",
+                    "name": "爱"
+                },
+                {
+                    "id": "BianZhengFa",
+                    "name": "辩证法"
                 }
             ],
-            "formulas": [
-                {
-                    "firstIngredientId": "f12",
-                    "firstIngredientName": "辩证法",
-                    "secondIngredientId": "f12",
-                    "secondIngredientName": "辩证法",
-                    "resultCardName": "辩证法"
-                },
-                {
-                    "firstIngredientId": "f13",
-                    "firstIngredientName": "谜",
-                    "secondIngredientId": "f12",
-                    "secondIngredientName": "辩证法",
-                    "resultCardName": "沙漠"
-                },
-                {
-                    "firstIngredientId": "f29",
-                    "firstIngredientName": "理性",
-                    "secondIngredientId": "f12",
-                    "secondIngredientName": "辩证法",
-                    "resultCardName": "战争"
-                },
-                {
-                    "firstIngredientId": "f30",
-                    "firstIngredientName": "灰",
-                    "secondIngredientId": "f12",
-                    "secondIngredientName": "辩证法",
-                    "resultCardName": "冻土"
-                },
-                {
-                    "firstIngredientId": "f12",
-                    "firstIngredientName": "辩证法",
-                    "secondIngredientId": "f13",
-                    "secondIngredientName": "谜",
-                    "resultCardName": "沙漠"
-                },
-                {
-                    "firstIngredientId": "f13",
-                    "firstIngredientName": "谜",
-                    "secondIngredientId": "f13",
-                    "secondIngredientName": "谜",
-                    "resultCardName": "谜"
-                },
-                {
-                    "firstIngredientId": "f29",
-                    "firstIngredientName": "理性",
-                    "secondIngredientId": "f13",
-                    "secondIngredientName": "谜",
-                    "resultCardName": "辩证法"
-                },
-                {
-                    "firstIngredientId": "f30",
-                    "firstIngredientName": "灰",
-                    "secondIngredientId": "f13",
-                    "secondIngredientName": "谜",
-                    "resultCardName": "痛苦"
-                },
-                {
-                    "firstIngredientId": "f12",
-                    "firstIngredientName": "辩证法",
-                    "secondIngredientId": "f29",
-                    "secondIngredientName": "理性",
-                    "resultCardName": "战争"
-                },
-                {
-                    "firstIngredientId": "f13",
-                    "firstIngredientName": "谜",
-                    "secondIngredientId": "f29",
-                    "secondIngredientName": "理性",
-                    "resultCardName": "辩证法"
-                },
-                {
-                    "firstIngredientId": "f29",
-                    "firstIngredientName": "理性",
-                    "secondIngredientId": "f29",
-                    "secondIngredientName": "理性",
-                    "resultCardName": "理性"
-                },
-                {
-                    "firstIngredientId": "f30",
-                    "firstIngredientName": "灰",
-                    "secondIngredientId": "f29",
-                    "secondIngredientName": "理性",
-                    "resultCardName": "烦躁"
-                },
-                {
-                    "firstIngredientId": "f12",
-                    "firstIngredientName": "辩证法",
-                    "secondIngredientId": "f30",
-                    "secondIngredientName": "灰",
-                    "resultCardName": "冻土"
-                },
-                {
-                    "firstIngredientId": "f13",
-                    "firstIngredientName": "谜",
-                    "secondIngredientId": "f30",
-                    "secondIngredientName": "灰",
-                    "resultCardName": "痛苦"
-                },
-                {
-                    "firstIngredientId": "f29",
-                    "firstIngredientName": "理性",
-                    "secondIngredientId": "f30",
-                    "secondIngredientName": "灰",
-                    "resultCardName": "烦躁"
-                },
-                {
-                    "firstIngredientId": "f30",
-                    "firstIngredientName": "灰",
-                    "secondIngredientId": "f30",
-                    "secondIngredientName": "灰",
-                    "resultCardName": "灰"
-                }
-            ]
-        },
-        {
-            "type": "Nature",
-            "sourceSheet": "ForgeLibrary_Nature",
-            "ingredients": [],
-            "formulas": []
-        },
-        {
-            "type": "Politics",
-            "sourceSheet": "ForgeLibrary_Politics",
-            "ingredients": [],
-            "formulas": []
-        },
-        {
-            "type": "Emotion",
-            "sourceSheet": "ForgeLibrary_Emotion",
-            "ingredients": [],
             "formulas": []
         }
     ]

@@ -24,6 +24,7 @@ public class CardLibrary : MonoBehaviour
         [TextArea] public string description;
         public int willPowerDelta;
         public string materialType;
+        public string fuelType;
         public bool useable;
         public bool canBeDropped;
         public bool refreshChoice;
@@ -106,10 +107,8 @@ public class CardLibrary : MonoBehaviour
     public class ForgeFormulaData
     {
         public string firstIngredientId;
-        public string firstIngredientName;
         public string secondIngredientId;
-        public string secondIngredientName;
-        public string resultCardName;
+        public string resultCardId;
     }
 
     [SerializeField] private TextAsset cardLibraryJson;

@@ -280,8 +280,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1.7551994, y: 134.20438}
-  m_SizeDelta: {x: -13.7224, y: 28.4908}
+  m_AnchoredPosition: {x: -0.4897995, y: 134.20438}
+  m_SizeDelta: {x: -44.0953, y: 28.4908}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &626820201889575312
 CanvasRenderer:
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.35
+  m_fontSize: 18.25
   m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -601,10 +601,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Resource
   NameText: {fileID: 4512816174034348166}
+  shadow: {fileID: 2565466363994885794}
   NaureOutline: {fileID: 0}
   PoliticsOutline: {fileID: 0}
   EmotionOutline: {fileID: 0}
   UniversalOutline: {fileID: 0}
+  EventOutline: {fileID: 0}
   Description: "\u4E16\u754C\u7684\u71C3\u6599"
   Name: "\u610F\u5FD7\u529B"
   CanBeDropped: 1
@@ -614,7 +616,6 @@ MonoBehaviour:
   selectionScale: 1.08
   scaleDuration: 0.12
   snapDuration: 0.15
-  shadow: {fileID: 2565466363994885794}
   dragShadowOffset: {x: -8, y: -8}
   Amount_Indicator: {fileID: 4316701594855246488}
   resourceType: 1

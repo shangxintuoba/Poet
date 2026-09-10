@@ -15,11 +15,8 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
     {
         "FullLibrary", "Raw_Choice", "Character", "CharacterChoices", "Node", "DailyMission"
     };
-    private static readonly string[] ForgeSheets =
-    {
-        "ForgeLibrary_Universal", "ForgeLibrary_Nature", "ForgeLibrary_Politics", "ForgeLibrary_Emotion"
-    };
-    private static readonly string[] RequiredSheets = BaseSheets.Concat(ForgeSheets).ToArray();
+    private const string ForgeSheet = "ForgeLibrary";
+    private static readonly string[] RequiredSheets = BaseSheets.Concat(new[] { ForgeSheet }).ToArray();
 
     private const string DefaultWorkbookPath = "Assets/CardLibrary/CardLibrary.xlsx";
     private const string OutputJsonPath = "Assets/CardLibrary/CardLibrary.json";
@@ -176,6 +173,10 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             {
                 card.materialType = Value(row, "MaterialType");
             }
+            else if (card.type == "Fuel")
+            {
+                card.fuelType = Value(row, "FuelType");
+            }
             else if (card.type == "Raw")
             {
                 card.useable = BoolValue(Value(row, "Useable"));
@@ -257,13 +258,14 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             requiredCards = SplitIds(Value(row, "RequiredCards")).ToArray()
         }).ToArray();
 
-        CardLibrary.ForgeLibraryData[] forgeLibraries = ForgeSheets
-            .Select(sheetName => BuildForgeLibrary(sheetName, sheets[sheetName]))
-            .ToArray();
+        CardLibrary.ForgeLibraryData[] forgeLibraries =
+        {
+            BuildForgeLibrary(ForgeSheet, sheets[ForgeSheet])
+        };
 
         return new CardLibrary.CardLibraryData
         {
-            schemaVersion = 8,
+            schemaVersion = 9,
             sourceSheets = RequiredSheets,
             cards = cards.ToArray(),
             nodes = nodes,
@@ -277,14 +279,15 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
         if (rows.Count < 2)
             throw new InvalidDataException($"Forge sheet '{sheetName}' must contain an index row and a name row.");
 
-        List<string> ingredientIds = RowFrom(rows, 0).Skip(2).Select(Clean).ToList();
-        List<string> ingredientNames = RowFrom(rows, 1).Skip(2).Select(Clean).ToList();
+        // Row 1 lists Material indexes, row 2 lists their display names, and column A lists Fuel indexes.
+        List<string> ingredientIds = RowFrom(rows, 0).Skip(1).Select(Clean).ToList();
+        List<string> ingredientNames = RowFrom(rows, 1).Skip(1).Select(Clean).ToList();
         List<CardLibrary.ForgeIngredientData> ingredients = new List<CardLibrary.ForgeIngredientData>();
         for (int index = 0; index < ingredientIds.Count; index++)
         {
             string id = ingredientIds[index];
             string name = index < ingredientNames.Count ? ingredientNames[index] : string.Empty;
-            if (!string.IsNullOrEmpty(id) && !string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(id))
                 ingredients.Add(new CardLibrary.ForgeIngredientData { id = id, name = name });
         }
 
@@ -293,32 +296,28 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
         {
             List<string> row = RowFrom(rows, rowIndex);
             string secondId = Cell(row, 0);
-            string secondName = Cell(row, 1);
-            if (string.IsNullOrEmpty(secondId) || string.IsNullOrEmpty(secondName))
+            if (string.IsNullOrEmpty(secondId))
                 continue;
 
             for (int columnIndex = 0; columnIndex < ingredientIds.Count; columnIndex++)
             {
                 string firstId = ingredientIds[columnIndex];
-                string firstName = columnIndex < ingredientNames.Count ? ingredientNames[columnIndex] : string.Empty;
-                string resultName = Cell(row, columnIndex + 2);
-                if (string.IsNullOrEmpty(firstId) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(resultName))
+                string resultId = Cell(row, columnIndex + 1);
+                if (string.IsNullOrEmpty(firstId) || string.IsNullOrEmpty(resultId))
                     continue;
 
                 formulas.Add(new CardLibrary.ForgeFormulaData
                 {
                     firstIngredientId = firstId,
-                    firstIngredientName = firstName,
                     secondIngredientId = secondId,
-                    secondIngredientName = secondName,
-                    resultCardName = resultName
+                    resultCardId = resultId
                 });
             }
         }
 
         return new CardLibrary.ForgeLibraryData
         {
-            type = sheetName.Replace("ForgeLibrary_", string.Empty),
+            type = sheetName,
             sourceSheet = sheetName,
             ingredients = ingredients.ToArray(),
             formulas = formulas.ToArray()

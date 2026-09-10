@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 478087511}
   - component: {fileID: 478087512}
   m_Layer: 5
-  m_Name: Slot
+  m_Name: MaterrialSlot
   m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7129,8 +7129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7baff480fe5a5c45b91b26f2c9fab28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Forge
-  ComponentSlot1: {fileID: 478087512}
-  ComponentSlot2: {fileID: 1239120548}
+  MaterialSlot: {fileID: 478087512}
+  FuelSlot: {fileID: 1239120548}
   ResultSlot: {fileID: 1769109904}
   cardLibrary: {fileID: 1566352998}
   cardManager: {fileID: 1566352997}
@@ -12152,7 +12152,7 @@ GameObject:
   - component: {fileID: 1239120547}
   - component: {fileID: 1239120548}
   m_Layer: 5
-  m_Name: Slot (1)
+  m_Name: FuelSlot
   m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18739,8 +18739,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076293945, y: -0.0000019073486}
-  m_SizeDelta: {x: 136.9771, y: 195.46}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0.000002861023}
+  m_SizeDelta: {x: 126.6459, y: 147.7517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1760829555
 MonoBehaviour:
@@ -18762,7 +18762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9755cc23696db4b41938f84dec4579ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06075664be547de4e96d702b27aa5a34, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
