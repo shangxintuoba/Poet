@@ -87,6 +87,8 @@ public class CardLibrary : MonoBehaviour
         public string[] choicesSunset;
         public string[] choicesNight;
         public string[] choicesMidnight;
+        public string[] childNodes;
+        public string[] childNodeHidingTimes;
     }
 
     [Serializable]
@@ -98,6 +100,7 @@ public class CardLibrary : MonoBehaviour
         public string[] cardsRemoved;
         public int deltaWillPower;
         public int deltaMoney;
+        public int moneyRequired;
         public bool oncePerDay;
         public bool useOnlyOnce;
         public string goToFarNode;

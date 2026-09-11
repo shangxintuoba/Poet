@@ -8,6 +8,7 @@ public class Map : MonoBehaviour
     [SerializeField] private Node startingNode;
     [SerializeField] private TextManager textManager;
     [SerializeField] private CardManager cardManager;
+    [SerializeField] private CardLibrary cardLibrary;
     [SerializeField] private ScrollRect mapScrollView;
     [SerializeField, Min(0f)] private float farNodeCenterDuration = 0.4f;
     [SerializeField, Min(1f)] private float connectionThickness = 4f;
@@ -19,6 +20,7 @@ public class Map : MonoBehaviour
     private Node[] allNodes;
     private RectTransform connectionRoot;
     private Tween mapScrollTween;
+    private int lastChildNodeVisibilityPeriod = -1;
 
     private void Start()
     {
@@ -26,10 +28,13 @@ public class Map : MonoBehaviour
             textManager = FindFirstObjectByType<TextManager>();
         if (cardManager == null)
             cardManager = FindFirstObjectByType<CardManager>();
+        if (cardLibrary == null)
+            cardLibrary = FindFirstObjectByType<CardLibrary>();
         if (mapScrollView == null)
             mapScrollView = GetComponentInParent<ScrollRect>();
 
         allNodes = GetComponentsInChildren<Node>(true);
+        EnsureNodeArrows();
         CreateConnections();
         currentNode = startingNode;
         if (currentNode != null)
@@ -41,6 +46,28 @@ public class Map : MonoBehaviour
             ShowCurrentNodeText();
             AudioManager.Instance?.PlayNode(currentNode.Index);
         }
+    }
+
+    private void EnsureNodeArrows()
+    {
+        GameObject arrowTemplate = null;
+        foreach (Node node in allNodes)
+        {
+            if (node != null && node.Arrow != null)
+            {
+                arrowTemplate = node.Arrow;
+                break;
+            }
+        }
+
+        if (arrowTemplate == null)
+        {
+            Debug.LogWarning("No node arrow template is assigned on the map.", this);
+            return;
+        }
+
+        foreach (Node node in allNodes)
+            node?.EnsureArrow(arrowTemplate);
     }
 
     public void TryGoTo(Node destination)
@@ -131,11 +158,8 @@ public class Map : MonoBehaviour
         if (currentNode == null)
             return destination == startingNode ? 1 : 0;
 
-        foreach (Node nearby in currentNode.NearbyNodes)
-        {
-            if (nearby == destination)
-                return 1;
-        }
+        if (IsNearbyNode(destination))
+            return 1;
 
         foreach (Node.FarConnectedNodes farNode in currentNode.FarNodes)
         {
@@ -151,8 +175,7 @@ public class Map : MonoBehaviour
         foreach (Node node in allNodes)
         {
             if (node == null) continue;
-            bool isNearby = currentNode != null && currentNode.NearbyNodes != null &&
-                            System.Array.IndexOf(currentNode.NearbyNodes, node) >= 0;
+            bool isNearby = IsNearbyNode(node);
             bool visible = node == currentNode || (node.isUnlocked && isNearby);
             node.gameObject.SetActive(visible);
         }
@@ -178,10 +201,10 @@ public class Map : MonoBehaviour
         HashSet<string> createdPairs = new HashSet<string>();
         foreach (Node from in allNodes)
         {
-            if (from == null || from.NearbyNodes == null)
+            if (from == null)
                 continue;
 
-            foreach (Node to in from.NearbyNodes)
+            foreach (Node to in GetConnectionTargets(from))
             {
                 if (to == null || to == from)
                     continue;
@@ -207,6 +230,102 @@ public class Map : MonoBehaviour
                 connections.Add(connection);
             }
         }
+    }
+
+    private bool IsNearbyNode(Node node)
+    {
+        if (currentNode == null || node == null)
+            return false;
+
+        if (currentNode.NearbyNodes != null && System.Array.IndexOf(currentNode.NearbyNodes, node) >= 0)
+            return true;
+
+        CardLibrary.NodeData currentNodeData = cardLibrary != null
+            ? cardLibrary.FindNodeData(currentNode.Index)
+            : null;
+        if (currentNodeData == null || currentNodeData.childNodes == null ||
+            System.Array.IndexOf(currentNodeData.childNodes, node.Index) < 0)
+            return false;
+
+        return !IsChildNodeHidden(currentNodeData, GetCurrentTime());
+    }
+
+    private List<Node> GetConnectionTargets(Node from)
+    {
+        List<Node> targets = new List<Node>();
+        if (from.NearbyNodes != null)
+        {
+            foreach (Node nearby in from.NearbyNodes)
+            {
+                if (nearby != null && !targets.Contains(nearby))
+                    targets.Add(nearby);
+            }
+        }
+
+        CardLibrary.NodeData nodeData = cardLibrary != null ? cardLibrary.FindNodeData(from.Index) : null;
+        foreach (string childNodeId in nodeData?.childNodes ?? System.Array.Empty<string>())
+        {
+            foreach (Node node in allNodes)
+            {
+                if (node != null && node.Index == childNodeId && !targets.Contains(node))
+                    targets.Add(node);
+            }
+        }
+
+        return targets;
+    }
+
+    private static bool IsChildNodeHidden(CardLibrary.NodeData nodeData, int currentTime)
+    {
+        if (nodeData.childNodeHidingTimes == null || nodeData.childNodeHidingTimes.Length == 0)
+            return false;
+
+        string period = GetChildNodeVisibilityPeriodName(currentTime);
+        foreach (string hiddenPeriod in nodeData.childNodeHidingTimes)
+        {
+            if (string.Equals(hiddenPeriod?.Trim(), period, System.StringComparison.OrdinalIgnoreCase))
+                return true;
+        }
+
+        return false;
+    }
+
+    private int GetCurrentTime()
+    {
+        GameTime timeCard = GameManager.Instance != null ? GameManager.Instance.TimeCard : null;
+        return timeCard != null ? timeCard.CurrentTime : 0;
+    }
+
+    private static int GetChildNodeVisibilityPeriod(int currentTime)
+    {
+        if (currentTime >= 6 * 60 && currentTime < 13 * 60) return 0;
+        if (currentTime >= 13 * 60 && currentTime < 16 * 60) return 1;
+        if (currentTime >= 16 * 60 && currentTime < 19 * 60) return 2;
+        if (currentTime >= 19 * 60) return 3;
+        return 4;
+    }
+
+    private static string GetChildNodeVisibilityPeriodName(int currentTime)
+    {
+        return GetChildNodeVisibilityPeriod(currentTime) switch
+        {
+            0 => "morning",
+            1 => "afternoon",
+            2 => "sunset",
+            3 => "night",
+            _ => "midnight"
+        };
+    }
+
+    private void Update()
+    {
+        int visibilityPeriod = GetChildNodeVisibilityPeriod(GetCurrentTime());
+        if (visibilityPeriod == lastChildNodeVisibilityPeriod)
+            return;
+
+        lastChildNodeVisibilityPeriod = visibilityPeriod;
+        if (currentNode != null)
+            RefreshVisibleNodes();
     }
 
     private void ShowCurrentNodeText()

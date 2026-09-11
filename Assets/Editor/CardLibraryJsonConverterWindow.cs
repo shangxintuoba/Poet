@@ -147,7 +147,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
         });
         List<Dictionary<string, string>> nodeChoiceRows = AsRows(sheets["NodeChoice"], new[]
         {
-            "Index", "Text", "CardAdded", "CardRemoved", "DeltaWillPower", "DeltaMoney", "OncePerDay", "UseOnlyOnce", "GoToFarNode"
+            "Index", "Text", "CardAdded", "CardRemoved", "DeltaWillPower", "DeltaMoney", "OncePerDay", "UseOnlyOnce", "GoToFarNode", "MoneyRequired"
         });
         List<Dictionary<string, string>> dailyMissionRows = AsRows(sheets["DailyMission"], new[]
         {
@@ -265,7 +265,9 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             choicesAfternoon = SplitIds(Value(row, "Choice_Afternoon")).ToArray(),
             choicesSunset = SplitIds(Value(row, "Choice_Sunset")).ToArray(),
             choicesNight = SplitIds(Value(row, "Choice_Night")).ToArray(),
-            choicesMidnight = SplitIds(Value(row, "Choice_Midnight")).ToArray()
+            choicesMidnight = SplitIds(Value(row, "Choice_Midnight")).ToArray(),
+            childNodes = SplitIds(FirstValue(row, "ChildNode", "HideChildNode")).ToArray(),
+            childNodeHidingTimes = SplitIds(FirstValue(row, "ChildNodeHidingtime", "ChildNodeHidingTime")).ToArray()
         }).ToArray();
 
         CardLibrary.NodeChoiceData[] nodeChoices = nodeChoiceRows.Select(row => new CardLibrary.NodeChoiceData
@@ -276,6 +278,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
             cardsRemoved = SplitIds(Value(row, "CardRemoved")).ToArray(),
             deltaWillPower = IntValue(Value(row, "DeltaWillPower")),
             deltaMoney = IntValue(Value(row, "DeltaMoney")),
+            moneyRequired = Mathf.Max(0, IntValue(Value(row, "MoneyRequired"))),
             oncePerDay = BoolValue(Value(row, "OncePerDay")),
             useOnlyOnce = BoolValue(Value(row, "UseOnlyOnce")),
             goToFarNode = Value(row, "GoToFarNode")
@@ -297,7 +300,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
 
         return new CardLibrary.CardLibraryData
         {
-            schemaVersion = 12,
+            schemaVersion = 14,
             sourceSheets = RequiredSheets,
             cards = cards.ToArray(),
             nodes = nodes,
@@ -385,6 +388,18 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
     private static string Value(Dictionary<string, string> row, string key)
     {
         return row.TryGetValue(key, out string value) ? value : string.Empty;
+    }
+
+    private static string FirstValue(Dictionary<string, string> row, params string[] keys)
+    {
+        foreach (string key in keys)
+        {
+            string value = Value(row, key);
+            if (!string.IsNullOrWhiteSpace(value))
+                return value;
+        }
+
+        return string.Empty;
     }
 
     private static List<string> SplitIds(string value)

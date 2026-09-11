@@ -16,6 +16,8 @@ public class CardManager : MonoBehaviour
     [Tooltip("调用 ShowInitialCard 时一并生成的初始卡牌预制体。")]
     public List<Card> InitialCardPrefabs = new List<Card>();
 
+    [HideInInspector]public bool HasInitialized;
+
     public void CreateCards(List<string> cardReferences)
     {
         if (cardReferences == null)
@@ -400,6 +402,7 @@ public class CardManager : MonoBehaviour
 
     public void ShowInitialCard()
     {
+        if (HasInitialized) return;
         if (InitialCards != null && InitialCards.Count > 0)
         {
             List<string> cardsToCreate = new List<string>(InitialCards);
@@ -411,6 +414,7 @@ public class CardManager : MonoBehaviour
 
         SettingPanel settingPanel = FindFirstObjectByType<SettingPanel>();
         settingPanel?.ShowMapPanelAfterInitialCards();
+        HasInitialized = true;
     }
 
 

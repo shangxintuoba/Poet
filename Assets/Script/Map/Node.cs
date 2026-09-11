@@ -7,6 +7,8 @@ public class Node : MonoBehaviour, IPointerClickHandler
     public bool isUnlocked;
     public string Index;
     public string NodeName;
+    public GameObject Arrow;
+    public Node[] ChildNodes;
     public Node[] NearbyNodes;
     [System.Serializable]
     public class FarConnectedNodes
@@ -28,6 +30,8 @@ public class Node : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         restingScale = transform.localScale;
+        if (Arrow != null)
+            Arrow.SetActive(false);
         if (shadow == null)
             shadow = transform.Find("Shadow") as RectTransform;
         if (shadow != null)
@@ -42,6 +46,9 @@ public class Node : MonoBehaviour, IPointerClickHandler
 
     public void SetCurrent(bool current)
     {
+        if (Arrow != null)
+            Arrow.SetActive(current);
+
         scaleTween?.Kill();
         scaleTween = transform.DOScale(current ? restingScale * currentScale : restingScale, scaleDuration)
             .SetEase(Ease.OutQuad);
@@ -53,6 +60,18 @@ public class Node : MonoBehaviour, IPointerClickHandler
                 current ? restingShadowPosition + currentShadowOffset : restingShadowPosition,
                 scaleDuration).SetEase(Ease.OutQuad);
         }
+    }
+
+    public void EnsureArrow(GameObject arrowTemplate)
+    {
+        if (Arrow == null && arrowTemplate != null)
+        {
+            Arrow = Instantiate(arrowTemplate, transform, false);
+            Arrow.name = "Arrow";
+        }
+
+        if (Arrow != null)
+            Arrow.SetActive(false);
     }
 
     private void OnDestroy()

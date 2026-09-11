@@ -42,7 +42,10 @@ public class TextManager : MonoBehaviour
                 choices.Add(choice);
         }
 
-        List<string> choiceTexts = choices.ConvertAll(choice => choice.text);
+        List<string> choiceTexts = choices.ConvertAll(choice =>
+            choice.moneyRequired > 0
+                ? $"{choice.text} ($ {choice.moneyRequired})"
+                : choice.text);
         textPanel.ShowTextWithChoices(text, choiceTexts, selectedIndex =>
         {
             if (selectedIndex >= 0 && selectedIndex < choices.Count)
@@ -91,9 +94,19 @@ public class TextManager : MonoBehaviour
                (!choice.useOnlyOnce || GameManager.Instance.CanUseOnce(key));
     }
 
+    private static bool CanAffordNodeChoice(CardLibrary.NodeChoiceData choice)
+    {
+        if (choice == null || choice.moneyRequired <= 0)
+            return true;
+
+        return GameManager.Instance != null &&
+               GameManager.Instance.Money != null &&
+               GameManager.Instance.Money.Value >= choice.moneyRequired;
+    }
+
     private void UseNodeChoice(CardLibrary.NodeChoiceData choice)
     {
-        if (!CanUseNodeChoice(choice))
+        if (!CanUseNodeChoice(choice) || !CanAffordNodeChoice(choice))
             return;
 
         ResolveDependencies();

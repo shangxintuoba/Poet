@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Resource : Card
 {
+    private const int MaximumValue = 20;
+
     public GameObject Amount_Indicator;
 
     public enum ResourceType
@@ -12,8 +14,8 @@ public class Resource : Card
     }
 
     [SerializeField] private ResourceType resourceType;
-    [SerializeField, Range(0, 10)] private int value = 1;
-    [SerializeField] private string[] changingText = new string[11];
+    [SerializeField, Range(0, MaximumValue)] private int value = 1;
+    [SerializeField] private string[] changingText = new string[MaximumValue + 1];
     [SerializeField, Min(0f)] private float minimumIndicatorHeight = 7f;
     [SerializeField, Min(0f)] private float indicatorHeightDuration = 0.18f;
 
@@ -44,7 +46,7 @@ public class Resource : Card
     public void SetValue(int newValue)
     {
         int previousValue = value;
-        value = Mathf.Clamp(newValue, 0, 10);
+        value = Mathf.Clamp(newValue, 0, MaximumValue);
         RefreshAmountIndicator(true);
 
         if (resourceType == ResourceType.WillPower && previousValue > 0 && value == 0)
@@ -85,7 +87,7 @@ public class Resource : Card
         if (maximumIndicatorHeight <= 0f)
             maximumIndicatorHeight = amountIndicatorRect.sizeDelta.y;
 
-        float normalizedValue = value / 10f;
+        float normalizedValue = value / (float)MaximumValue;
         float height = Mathf.Lerp(minimumIndicatorHeight, maximumIndicatorHeight, normalizedValue);
         Vector2 targetSize = new Vector2(amountIndicatorRect.sizeDelta.x, height);
 
@@ -106,7 +108,7 @@ public class Resource : Card
 
     private void OnValidate()
     {
-        value = Mathf.Clamp(value, 0, 10);
+        value = Mathf.Clamp(value, 0, MaximumValue);
         RefreshAmountIndicator(false);
     }
 

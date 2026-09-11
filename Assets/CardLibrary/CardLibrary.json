@@ -15,7 +15,7 @@
             "id": "flame",
             "name": "Flame",
             "type": "Fuel",
-            "description": "",
+            "description": "Fuel. Can be used to forge new material",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -87,127 +87,6 @@
             "characterProgress": []
         },
         {
-            "id": "Brad",
-            "name": "Brad Pitt",
-            "type": "Character",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": [
-                {
-                    "progress": 0,
-                    "text": "",
-                    "node": "",
-                    "choices": []
-                },
-                {
-                    "progress": 1,
-                    "text": "",
-                    "node": "",
-                    "choices": []
-                },
-                {
-                    "progress": 2,
-                    "text": "",
-                    "node": "",
-                    "choices": []
-                },
-                {
-                    "progress": 3,
-                    "text": "",
-                    "node": "",
-                    "choices": []
-                },
-                {
-                    "progress": 4,
-                    "text": "",
-                    "node": "",
-                    "choices": []
-                }
-            ]
-        },
-        {
-            "id": "Lawyer",
-            "name": "Lawyer Gin",
-            "type": "Character",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Editor",
-            "name": "Your Editor",
-            "type": "Character",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Kid",
-            "name": "Kids in Park",
-            "type": "Character",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Diploma",
-            "name": "你的文凭",
-            "type": "Raw",
-            "description": "你的大学文凭，全世界最没用的东西\n\n你学的是什么？",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": true,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Work",
-            "name": "你的工作",
-            "type": "Raw",
-            "description": "为短片攥写剧本, 一份勉强能糊口的编剧工作，自然也谈不上什么文学追求。",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": true,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
             "id": "fabric",
             "name": "Feel of fabric",
             "type": "Raw",
@@ -219,7 +98,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "fabric1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -234,7 +127,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "alcohol1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -249,7 +156,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "electronic1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -264,7 +185,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "abyss1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -279,7 +214,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "chatter1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -294,7 +243,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "sun1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -309,7 +272,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "lemontea1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -324,7 +301,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "childsmile1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -339,7 +330,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "cigarette1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -354,7 +359,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "echoes1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -369,7 +388,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "mall1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -384,7 +417,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "neolithic1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -399,7 +446,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "roman1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -414,7 +475,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "victoria1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -429,7 +504,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "hamburger1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -444,12 +533,26 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "acorn1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
             "id": "pulse",
-            "name": "The pulse of the city",
+            "name": "Heartbeat of the city",
             "type": "Raw",
             "description": "",
             "willPowerDelta": 0,
@@ -459,7 +562,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "pulse1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -474,7 +591,21 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "sea1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -489,14 +620,57 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "iron1",
+                    "choiceText": "",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
             "id": "detective",
-            "name": "Detective novel",
+            "name": "Detective novel collection",
             "type": "Raw",
             "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [
+                {
+                    "id": "detective1",
+                    "choiceText": "Read",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "timeConsumed": 60,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "logic",
+            "name": "science of logic",
+            "type": "Raw",
+            "description": "Hegel's *Science of Logic*. basically can't make heads or tails of it.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -508,10 +682,10 @@
             "characterProgress": []
         },
         {
-            "id": "",
-            "name": "哲学书",
+            "id": "historyofearth",
+            "name": "A Brief History of Earth",
             "type": "Raw",
-            "description": "",
+            "description": "A popular science book on geology that explains the theory of plate tectonics.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -523,10 +697,10 @@
             "characterProgress": []
         },
         {
-            "id": "",
-            "name": "自然历史",
+            "id": "sellyourself",
+            "name": "How to Sell Yourself",
             "type": "Raw",
-            "description": "",
+            "description": "A book that teaches you how to talk yourself up and package yourself for sale to a company.\n\nYou always have a price, no matter how much the thought of it might disgust you. Perhaps your wretched fate was sealed 5,000 years ago, at the moment when that person picked up the very first seashell.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -538,10 +712,10 @@
             "characterProgress": []
         },
         {
-            "id": "",
-            "name": "畅销书",
+            "id": "stalker",
+            "name": "Imaginary Magnitude",
             "type": "Raw",
-            "description": "",
+            "description": "A collection of science fiction short stories by Stanisław Lem, featuring tales about robots and the future.\nDon't even think about it—you will never possess that kind of talent and imagination in your lifetime.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -553,10 +727,10 @@
             "characterProgress": []
         },
         {
-            "id": "",
-            "name": "科幻小说",
+            "id": "Karamazov",
+            "name": "The Brothers Karamazov",
             "type": "Raw",
-            "description": "",
+            "description": "A novel by Dostoevsky. Reading it feels like having afever.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -568,10 +742,10 @@
             "characterProgress": []
         },
         {
-            "id": "",
-            "name": "严肃文学",
+            "id": "artfilm",
+            "name": "A nonsense art film",
             "type": "Raw",
-            "description": "",
+            "description": "An incomprehensible french art film. The three main characters are having sex almost during the entire movie.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -583,10 +757,10 @@
             "characterProgress": []
         },
         {
-            "id": "",
-            "name": "文艺片",
+            "id": "horrorfilm",
+            "name": "A horror film",
             "type": "Raw",
-            "description": "",
+            "description": "A horror movie set in an old plantation house in the American South. To be honest, you’re a bit too scared to watch it.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -598,25 +772,10 @@
             "characterProgress": []
         },
         {
-            "id": "",
-            "name": "恐怖片",
+            "id": "superherofilm",
+            "name": "A superhero film",
             "type": "Raw",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": true,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "",
-            "name": "商业大片",
-            "type": "Raw",
-            "description": "",
+            "description": "A cliché superhero movie.\nThe hero is an ordinary nobody; the hero gains powers; the hero encounters an enemy; the hero faces a desperate situation; the hero defeats the enemy; a post-credits scene for the sequel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -631,7 +790,7 @@
             "id": "YuWang",
             "name": "Desire",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -646,7 +805,7 @@
             "id": "ZaoDong",
             "name": "Restlessness",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -661,7 +820,7 @@
             "id": "YinMou",
             "name": "Conspiracy",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -676,7 +835,7 @@
             "id": "ShuiMian",
             "name": "Sleep",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -691,7 +850,7 @@
             "id": "SeYu",
             "name": "Lust",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -706,7 +865,7 @@
             "id": "Meng",
             "name": "Dream",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -721,7 +880,7 @@
             "id": "BaoLi",
             "name": "Violence",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -736,7 +895,7 @@
             "id": "YouMu",
             "name": "Nomad",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -751,7 +910,7 @@
             "id": "Li",
             "name": "Plow",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -766,7 +925,7 @@
             "id": "DiGuo",
             "name": "Empire",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -781,7 +940,7 @@
             "id": "GongHeGuo",
             "name": "Republic",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -796,7 +955,7 @@
             "id": "WuChanJieJi",
             "name": "Proletariat",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -811,7 +970,7 @@
             "id": "ZiYouShiChang",
             "name": "Free market",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -826,7 +985,7 @@
             "id": "GeMing",
             "name": "Revolution",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -841,7 +1000,7 @@
             "id": "Zhai",
             "name": "Debt",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -856,7 +1015,7 @@
             "id": "FuChou",
             "name": "Revenge",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -871,7 +1030,7 @@
             "id": "LvFa",
             "name": "Law",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -886,7 +1045,7 @@
             "id": "JiQi",
             "name": "Machine",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -901,7 +1060,7 @@
             "id": "ZhanZheng",
             "name": "War",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -916,7 +1075,7 @@
             "id": "Zhou",
             "name": "Boat",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -931,7 +1090,7 @@
             "id": "JingZi",
             "name": "Mirror",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -946,7 +1105,7 @@
             "id": "BaoLei",
             "name": "Fortress",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -961,7 +1120,7 @@
             "id": "WuQi",
             "name": "Weapon",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -976,7 +1135,7 @@
             "id": "ZhiWu",
             "name": "Fabric",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -991,7 +1150,7 @@
             "id": "PingYuan",
             "name": "Plain",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1006,7 +1165,7 @@
             "id": "GaoYuan",
             "name": "Plateau",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1021,7 +1180,7 @@
             "id": "Shan",
             "name": "Mountain",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1036,7 +1195,7 @@
             "id": "HuangYuan",
             "name": "Wasteland",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1051,7 +1210,7 @@
             "id": "CongLin",
             "name": "Jungle",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1066,7 +1225,7 @@
             "id": "QunDao",
             "name": "Archipelago",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1081,7 +1240,7 @@
             "id": "Dao",
             "name": "Island",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1096,7 +1255,7 @@
             "id": "Hai",
             "name": "Sea",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1111,7 +1270,7 @@
             "id": "DongTu",
             "name": "Tundra",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1126,7 +1285,7 @@
             "id": "ShaMo",
             "name": "Desert",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1141,7 +1300,7 @@
             "id": "ZhaoZe",
             "name": "Swamp",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1156,7 +1315,7 @@
             "id": "ChengShi",
             "name": "City",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1171,7 +1330,7 @@
             "id": "Ai",
             "name": "Love",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1186,7 +1345,7 @@
             "id": "QiJi",
             "name": "Miracle",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1201,7 +1360,7 @@
             "id": "ZhenLi",
             "name": "Truth",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1216,7 +1375,7 @@
             "id": "LiangZhi",
             "name": "Conscience",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1231,7 +1390,7 @@
             "id": "Mei",
             "name": "Aesthetics",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1246,7 +1405,7 @@
             "id": "BianZhengFa",
             "name": "Dialectics",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1261,7 +1420,7 @@
             "id": "LiXing",
             "name": "Reason",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1276,7 +1435,7 @@
             "id": "Hui",
             "name": "dust",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1291,7 +1450,7 @@
             "id": "Mi",
             "name": "Enigma",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1306,7 +1465,7 @@
             "id": "Zui",
             "name": "Sin",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1321,7 +1480,7 @@
             "id": "Guang",
             "name": "Light",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1336,7 +1495,7 @@
             "id": "XuWu",
             "name": "Nothingness",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1351,7 +1510,7 @@
             "id": "XuWuZhuYi",
             "name": "Nihilism",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1366,7 +1525,7 @@
             "id": "SiWang",
             "name": "Death",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1381,7 +1540,7 @@
             "id": "FuHuo",
             "name": "Resurrection",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1396,7 +1555,7 @@
             "id": "ZiYou",
             "name": "Freedom",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1411,7 +1570,7 @@
             "id": "ZhengYi",
             "name": "Justice",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1426,7 +1585,7 @@
             "id": "FanFeng",
             "name": "Irony",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1441,7 +1600,7 @@
             "id": "Shu",
             "name": "Tree",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1456,7 +1615,7 @@
             "id": "Gen",
             "name": "Root",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1471,7 +1630,7 @@
             "id": "ShiTou",
             "name": "Stone",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1486,7 +1645,7 @@
             "id": "NiTu",
             "name": "Soil",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1501,7 +1660,7 @@
             "id": "Mei2",
             "name": "Coal",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1516,7 +1675,7 @@
             "id": "GuTou",
             "name": "Bone",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1531,7 +1690,7 @@
             "id": "Rou",
             "name": "Flesh",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1546,7 +1705,7 @@
             "id": "XingXing",
             "name": "Star",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1561,7 +1720,7 @@
             "id": "YueLiang",
             "name": "Moon",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1576,7 +1735,7 @@
             "id": "Yu",
             "name": "Rain",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1591,7 +1750,7 @@
             "id": "FengBao",
             "name": "Storm",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1606,7 +1765,7 @@
             "id": "ChaoXi",
             "name": "Tide",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1621,7 +1780,7 @@
             "id": "Feng",
             "name": "Breeze",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1636,7 +1795,7 @@
             "id": "Hua",
             "name": "Flower",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1651,7 +1810,7 @@
             "id": "YeShou",
             "name": "Beast",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1664,9 +1823,9 @@
         },
         {
             "id": "JiYi",
-            "name": "Madness",
+            "name": "Craft",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1679,9 +1838,9 @@
         },
         {
             "id": "Shi",
-            "name": "Pain",
+            "name": "Poetry",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1694,9 +1853,9 @@
         },
         {
             "id": "ChenMo",
-            "name": "Sorrow",
+            "name": "Silence",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1709,9 +1868,9 @@
         },
         {
             "id": "HeiAn",
-            "name": "Calm",
+            "name": "Darkness",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1724,9 +1883,9 @@
         },
         {
             "id": "Ye",
-            "name": "Joy",
+            "name": "Night",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1739,9 +1898,9 @@
         },
         {
             "id": "Zhou2",
-            "name": "Ecstasy",
+            "name": "Day",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1754,9 +1913,9 @@
         },
         {
             "id": "MeiSu",
-            "name": "Anger",
+            "name": "Kitsch",
             "type": "material",
-            "description": "",
+            "description": "Material. New materials can be created by forging them together with fuel.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1769,9 +1928,9 @@
         },
         {
             "id": "FengKuang",
-            "name": "Rage",
+            "name": "Madness",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1784,9 +1943,9 @@
         },
         {
             "id": "TongKu",
-            "name": "Shame",
+            "name": "Pain",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1799,9 +1958,9 @@
         },
         {
             "id": "BeiShang",
-            "name": "Remorse",
+            "name": "Sorrow",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1814,9 +1973,9 @@
         },
         {
             "id": "PingJing",
-            "name": "Sublime",
+            "name": "Calm",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1829,9 +1988,9 @@
         },
         {
             "id": "XinXi",
-            "name": "Fear",
+            "name": "Joy",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1844,9 +2003,9 @@
         },
         {
             "id": "KuangXi",
-            "name": "Oblivion",
+            "name": "Ecstasy",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1859,9 +2018,9 @@
         },
         {
             "id": "FenNu",
-            "name": "Happiness",
+            "name": "Anger",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1874,9 +2033,9 @@
         },
         {
             "id": "KuangNu",
-            "name": "Illusion",
+            "name": "Rage",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1889,9 +2048,9 @@
         },
         {
             "id": "XiuKui",
-            "name": "Agitation",
+            "name": "Shame",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1904,9 +2063,9 @@
         },
         {
             "id": "HuiHen",
-            "name": "Craft",
+            "name": "Remorse",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1919,9 +2078,9 @@
         },
         {
             "id": "ChongGao",
-            "name": "Poetry",
+            "name": "Sublime",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1934,9 +2093,9 @@
         },
         {
             "id": "KongJu",
-            "name": "Silence",
+            "name": "Fear",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1949,9 +2108,9 @@
         },
         {
             "id": "YiWang",
-            "name": "Darkness",
+            "name": "Oblivion",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1964,9 +2123,9 @@
         },
         {
             "id": "XingFu",
-            "name": "Night",
+            "name": "Happiness",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1979,9 +2138,9 @@
         },
         {
             "id": "HuanJue",
-            "name": "Day",
+            "name": "Illusion",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1994,13 +2153,43 @@
         },
         {
             "id": "FanZao",
-            "name": "Kitsch",
+            "name": "Agitation",
             "type": "emotion",
-            "description": "",
+            "description": "Emotion. You can try to change your emotion by forge it with fuel",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Diploma",
+            "name": "你的文凭",
+            "type": "Raw",
+            "description": "你的大学文凭，全世界最没用的东西。\n\n你学的是什么？",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Work",
+            "name": "你的工作",
+            "type": "Raw",
+            "description": "为一些短片攥写剧本, 一份勉强能糊口的编剧工作，自然也谈不上什么文学追求。",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
@@ -2012,11 +2201,11 @@
         {
             "id": "m1",
             "name": "WestHill",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "The neighborhood below your apartment. Despite the name, it isn't actually on a hill.\nThe sunlight is making you a little sleepy.",
+            "textAfternoon": "The neighborhood below your apartment. Despite the name, it isn't actually on a hill.\nThe sunlight is making you a little sleepy.",
+            "textSunset": "The neighborhood below your apartment. Despite the name, it isn't actually on a hill.\nThe weather is nice. The clouds after a typhoon are always beautiful. Perhaps you could find somewhere to sit and do nothing for a while.",
+            "textNight": "The neighborhood below your apartment. Despite the name, it isn't actually on a hill.\nThe summer night breeze feels pleasant.",
+            "textMidnight": "The neighborhood below your apartment. Despite the name, it isn't actually on a hill.\nIt is late, and hardly anyone is still outside.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2026,11 +2215,11 @@
         {
             "id": "m2",
             "name": "Home",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "Your home, an apartment beside WestHill Road. The room faces east and gets wonderful morning light, though you are rarely awake early enough to enjoy it.",
+            "textAfternoon": "Your home, an apartment beside WestHill Road. The room faces east, so no sunlight reaches it in the afternoon. This often annoys you.",
+            "textSunset": "Your home, an apartment beside WestHill Road. The room faces east, so no sunlight reaches it in the afternoon. This often annoys you.",
+            "textNight": "Your home, an apartment beside WestHill Road. You have lived here throughout the year since you moved to this city.",
+            "textMidnight": "Your home, an apartment beside WestHill Road. You have lived here throughout the year since you moved to this city.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2040,32 +2229,42 @@
         {
             "id": "m3",
             "name": "Yourbed",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
-            "choicesMorning": [],
-            "choicesAfternoon": [],
-            "choicesSunset": [],
-            "choicesNight": [],
-            "choicesMidnight": []
+            "textMorning": "Your bed. Nothing special about it.",
+            "textAfternoon": "Your bed. Nothing special about it.",
+            "textSunset": "Your bed. Nothing special about it.",
+            "textNight": "Your bed. Nothing special about it. Your bedside table is an unopened cardboard box containing your actual bedside table. After buying it, you realized that unpacking it would make very little difference.",
+            "textMidnight": "Your bed. Nothing special about it. Your bedside table is an unopened cardboard box containing your actual bedside table. After buying it, you realized that unpacking it would make very little difference.",
+            "choicesMorning": [
+                "bed1"
+            ],
+            "choicesAfternoon": [
+                "bed1"
+            ],
+            "choicesSunset": [
+                "bed1"
+            ],
+            "choicesNight": [
+                "bed1"
+            ],
+            "choicesMidnight": [
+                "bed1"
+            ]
         },
         {
             "id": "m4",
             "name": "Bar",
-            "textMorning": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。\n\n还没有开门，七点之后再来吧。",
-            "textAfternoon": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。\n\n还没有开门，七点之后再来吧。",
-            "textSunset": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。\n\n还没有开门，七点之后再来吧。",
-            "textNight": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。",
-            "textMidnight": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。",
+            "textMorning": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.\n\nIt is too early. The bar is not open yet.",
+            "textAfternoon": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.\n\nIt is too early. The bar is not open yet.",
+            "textSunset": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.\n\nIt is too early. The bar is not open yet.",
+            "textNight": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.",
+            "textMidnight": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.",
             "choicesMorning": [],
             "choicesAfternoon": [],
-            "choicesSunset": [
+            "choicesSunset": [],
+            "choicesNight": [
                 "bar1",
                 "bar2"
             ],
-            "choicesNight": [],
             "choicesMidnight": [
                 "bar1",
                 "bar2"
@@ -2074,11 +2273,11 @@
         {
             "id": "m5",
             "name": "Park",
-            "textMorning": "你家楼下的公园。\n几天前的台风吹倒了靠街边的那棵树。",
-            "textAfternoon": "你家楼下的公园。\n几天前的台风吹倒了靠街边的那棵树。几个小孩儿正坐在树干上打牌。",
-            "textSunset": "你家楼下的公园\n几天前的台风吹倒了靠街边的那棵树。",
-            "textNight": "你家楼下的公园，暂时没什么人。\n几天前的台风吹倒了靠街边的那棵树。",
-            "textMidnight": "你家楼下的公园。\n夜很深了，公园里有些阴森。",
+            "textMorning": "The park below your apartment.\nThe typhoon a few days ago knocked down the tree beside the street.",
+            "textAfternoon": "The park below your apartment.\nThe typhoon a few days ago knocked down the tree beside the street. Several children are sitting on its trunk, playing cards.",
+            "textSunset": "The park below your apartment.\nThe typhoon a few days ago knocked down the tree beside the street.",
+            "textNight": "The park below your apartment. No one seems to be here at the moment.\nThe typhoon a few days ago knocked down the tree beside the street.",
+            "textMidnight": "The park below your apartment.\nIt is late, and the park feels rather eerie.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2088,25 +2287,37 @@
         {
             "id": "m6",
             "name": "Supermarket",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
-            "choicesMorning": [],
-            "choicesAfternoon": [],
-            "choicesSunset": [],
-            "choicesNight": [],
+            "textMorning": "The convenience store below your apartment. Open 24 hours.",
+            "textAfternoon": "The convenience store below your apartment. Open 24 hours.",
+            "textSunset": "The convenience store below your apartment. Open 24 hours.",
+            "textNight": "The convenience store below your apartment. Open 24 hours.",
+            "textMidnight": "The convenience store below your apartment. Open 24 hours.",
+            "choicesMorning": [
+                "supermarket1",
+                "supermarket2"
+            ],
+            "choicesAfternoon": [
+                "supermarket1",
+                "supermarket2"
+            ],
+            "choicesSunset": [
+                "supermarket1",
+                "supermarket2"
+            ],
+            "choicesNight": [
+                "supermarket1",
+                "supermarket2"
+            ],
             "choicesMidnight": []
         },
         {
             "id": "m7",
             "name": "Underground_Home",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "The underground is closed",
+            "textMorning": "WestHill Underground Station.",
+            "textAfternoon": "WestHill Underground Station.",
+            "textSunset": "WestHill Underground Station.",
+            "textNight": "WestHill Underground Station.",
+            "textMidnight": "The Underground is closed.",
             "choicesMorning": [
                 "Gdowntown",
                 "Gbook",
@@ -2132,7 +2343,7 @@
         {
             "id": "m8",
             "name": "Downtown",
-            "textMorning": "",
+            "textMorning": "The commercial district in the city center. It is always bustling.",
             "textAfternoon": "",
             "textSunset": "",
             "textNight": "",
@@ -2146,11 +2357,11 @@
         {
             "id": "m9",
             "name": "Abyss Club",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
+            "textAfternoon": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
+            "textSunset": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
+            "textNight": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
+            "textMidnight": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nA crowd of fashionably dressed young people stands outside. You cannot help feeling a little nervous.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2160,11 +2371,11 @@
         {
             "id": "m10",
             "name": "Cinema",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "The cinema in the city center.\n\nIt is too early. The cinema is not open yet.",
+            "textAfternoon": "The cinema in the city center.\n\nWhat should you watch?",
+            "textSunset": "The cinema in the city center.\n\nWhat should you watch?",
+            "textNight": "The cinema in the city center.\n\nWhat should you watch?",
+            "textMidnight": "The cinema in the city center.\n\nIt is too late. The cinema is already closed.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2174,11 +2385,11 @@
         {
             "id": "m11",
             "name": "McDonalds",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "The McDonald's in the city center. Open 24 hours.",
+            "textAfternoon": "The McDonald's in the city center. Open 24 hours.\nQuite a few parents are queuing with their children.",
+            "textSunset": "The McDonald's in the city center. Open 24 hours.",
+            "textNight": "The McDonald's in the city center. Open 24 hours.",
+            "textMidnight": "The McDonald's in the city center. Open 24 hours.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2188,11 +2399,11 @@
         {
             "id": "m12",
             "name": "Underground_Downtown",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "The underground is closed",
+            "textMorning": "The Underground station in the city center.",
+            "textAfternoon": "The Underground station in the city center.",
+            "textSunset": "The Underground station in the city center.\nOne of the lines appears to be under construction. You hear the dull clang of metal coming from deep inside the tracks.",
+            "textNight": "The Underground station in the city center.",
+            "textMidnight": "The Underground is closed.",
             "choicesMorning": [
                 "Ghome",
                 "Gbook",
@@ -2206,7 +2417,8 @@
             "choicesSunset": [
                 "Ghome",
                 "Gbook",
-                "Gsea"
+                "Gsea",
+                "impulse"
             ],
             "choicesNight": [
                 "Ghome",
@@ -2218,11 +2430,11 @@
         {
             "id": "m13",
             "name": "Oak Rd",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "A small road in the southeast of the city. Most of the city's bookshops and cafés are clustered around here. There really are quite a few oak trees.",
+            "textAfternoon": "A small road in the southeast of the city. Most of the city's bookshops and cafés are clustered around here. There really are quite a few oak trees.",
+            "textSunset": "A small road in the southeast of the city. Most of the city's bookshops and cafés are clustered around here. There really are quite a few oak trees.",
+            "textNight": "A small road in the southeast of the city. Most of the city's bookshops and cafés are clustered around here. There really are quite a few oak trees.",
+            "textMidnight": "A small road in the southeast of the city. Most of the city's bookshops and cafés are clustered around here. There really are quite a few oak trees.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2232,11 +2444,11 @@
         {
             "id": "m14",
             "name": "Museum",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "The museum on Oak Road.",
+            "textAfternoon": "The museum on Oak Road.",
+            "textSunset": "The museum on Oak Road.",
+            "textNight": "The museum on Oak Road.\n\nIt is too late. The museum is already closed.",
+            "textMidnight": "The museum on Oak Road.\n\nIt is too late. The museum is already closed.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2245,12 +2457,12 @@
         },
         {
             "id": "m15",
-            "name": "Edditor‘s Office",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "name": "Café",
+            "textMorning": "A café that is very popular online. Quite a few people are taking photographs inside.\n\nHonestly, the coffee is not even that good.",
+            "textAfternoon": "A café that is very popular online. Quite a few people are taking photographs inside.\n\nHonestly, the coffee is not even that good.",
+            "textSunset": "A café that is very popular online. Quite a few people are taking photographs inside.\n\nHonestly, the coffee is not even that good.",
+            "textNight": "A café that is very popular online. It is almost closing time, but quite a few people are still taking photographs inside.",
+            "textMidnight": "A café that is very popular online.\n\nIt is too late. The café is already closed.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2260,11 +2472,11 @@
         {
             "id": "m16",
             "name": "BookStore",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "A bookshop on Oak Road.\n\nIt is too early. The shop is not open yet.",
+            "textAfternoon": "A bookshop on Oak Road.",
+            "textSunset": "A bookshop on Oak Road.",
+            "textNight": "A bookshop on Oak Road.",
+            "textMidnight": "A bookshop on Oak Road.\n\nIt is too late. The shop is already closed.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2274,11 +2486,11 @@
         {
             "id": "m17",
             "name": "Underground_Book",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "The underground is closed",
+            "textMorning": "The Underground station on Oak Road.",
+            "textAfternoon": "The Underground station on Oak Road.",
+            "textSunset": "The Underground station on Oak Road.",
+            "textNight": "The Underground station on Oak Road.",
+            "textMidnight": "The Underground is closed.",
             "choicesMorning": [
                 "Ghome",
                 "Gdowntown",
@@ -2304,11 +2516,11 @@
         {
             "id": "m18",
             "name": "NewDistrict",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "A new district near the sea. Apart from its factories, it contains only a few recently built residential complexes where hardly anyone lives.",
+            "textAfternoon": "A new district near the sea. Apart from its factories, it contains only a few recently built residential complexes where hardly anyone lives.",
+            "textSunset": "A new district near the sea. Apart from its factories, it contains only a few recently built residential complexes where hardly anyone lives.",
+            "textNight": "A new district near the sea. Apart from its factories, it contains only a few recently built residential complexes where hardly anyone lives.",
+            "textMidnight": "A new district near the sea. Apart from its factories, it contains only a few recently built residential complexes where hardly anyone lives.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2318,11 +2530,11 @@
         {
             "id": "m19",
             "name": "Shipyard",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "The shipyard by the sea.\n\nThe gate is locked, so you cannot get inside.",
+            "textAfternoon": "The shipyard by the sea.\n\nThe gate is locked, so you cannot get inside.",
+            "textSunset": "The shipyard by the sea.\n\nThe gate is locked, so you cannot get inside.",
+            "textNight": "The shipyard by the sea.\n\nThe gate is locked, so you cannot get inside.",
+            "textMidnight": "The shipyard by the sea.\n\nThe gate is locked, so you cannot get inside.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2332,11 +2544,11 @@
         {
             "id": "m20",
             "name": "Sea",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "",
+            "textMorning": "The sea beside this city is rather ugly. The shore is mostly mudflats, with no sand to play on.\nStill, the sea is the sea. Simply looking out at the horizon is enough to satisfy you.",
+            "textAfternoon": "The sea beside this city is rather ugly. The shore is mostly mudflats, with no sand to play on.\nStill, the sea is the sea. Simply looking out at the horizon is enough to satisfy you.",
+            "textSunset": "The sunset by the sea is beautiful.",
+            "textNight": "The sea looks frightening at night. Sometimes you feel that if you stand here too long, you may be unable to resist this vast and silent darkness.",
+            "textMidnight": "The sea looks frightening at night. Sometimes you feel that if you stand here too long, you may be unable to resist this vast and silent darkness.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
@@ -2346,11 +2558,11 @@
         {
             "id": "m21",
             "name": "OverGround",
-            "textMorning": "",
-            "textAfternoon": "",
-            "textSunset": "",
-            "textNight": "",
-            "textMidnight": "The underground is closed",
+            "textMorning": "The Underground station in the new district.",
+            "textAfternoon": "The Underground station in the new district.",
+            "textSunset": "The Underground station in the new district.",
+            "textNight": "The Underground station in the new district.",
+            "textMidnight": "The Underground is closed.",
             "choicesMorning": [
                 "Ghome",
                 "Gdowntown",
@@ -2446,9 +2658,25 @@
             "goToFarNode": "m21"
         },
         {
-            "id": "echo",
-            "text": "",
-            "cardsAdded": [],
+            "id": "impulse",
+            "text": "感受这个声音",
+            "cardsAdded": [
+                "pulse"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "bed1",
+            "text": "睡上一觉",
+            "cardsAdded": [
+                "fabric",
+                "ShuiMian"
+            ],
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
@@ -2457,125 +2685,415 @@
             "goToFarNode": ""
         },
         {
-            "id": "impulse",
-            "text": "",
-            "cardsAdded": [],
+            "id": "supermarket1",
+            "text": "买柠檬茶",
+            "cardsAdded": [
+                "lemontea"
+            ],
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "supermarket2",
+            "text": "买烟",
+            "cardsAdded": [
+                "cigarette"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Dance",
+            "text": "跳舞",
+            "cardsAdded": [
+                "electronic"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Abyss",
+            "text": "看一眼深渊",
+            "cardsAdded": [
+                "abyss"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Sunset",
+            "text": "坐着看一会儿日落",
+            "cardsAdded": [
+                "sun"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Play",
+            "text": "赔孩子玩一会儿",
+            "cardsAdded": [
+                "childsmile"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Mall",
+            "text": "找一家商城逛逛",
+            "cardsAdded": [
+                "mall"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "neolithic_node",
+            "text": "回忆",
+            "cardsAdded": [
+                "neolithic"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "roman_node",
+            "text": "回忆",
+            "cardsAdded": [
+                "roman"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "victoria_node",
+            "text": "回忆",
+            "cardsAdded": [
+                "victoria"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "hamburger_node",
+            "text": "Order a hamburger",
+            "cardsAdded": [
+                "hamburger"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "acorn_node",
+            "text": "Try to find an acorn near the street",
+            "cardsAdded": [
+                "acorn"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "sea_node",
+            "text": "看着地平线",
+            "cardsAdded": [
+                "sea"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "iron_node",
+            "text": "把耳朵靠在铁门上",
+            "cardsAdded": [
+                "iron"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "detective_node",
+            "text": "Buy a Detective novel collection",
+            "cardsAdded": [
+                "detective"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "logic_node",
+            "text": "Buy <Science of logic>",
+            "cardsAdded": [
+                "logic"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "historyofearth_node",
+            "text": "Buy <A Brief History of Earth>",
+            "cardsAdded": [
+                "historyofearth"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "sellyourself_node",
+            "text": "Buy <How to Sell Yourself>",
+            "cardsAdded": [
+                "sellyourself"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "stalker_node",
+            "text": "Buy <Imaginary Magnitude>",
+            "cardsAdded": [
+                "stalker"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Karamazov_node",
+            "text": "Buy <The Brothers Karamazov>",
+            "cardsAdded": [
+                "Karamazov"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "artfilm_node",
+            "text": "See A art film",
+            "cardsAdded": [
+                "artfilm"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "horrorfilm_node",
+            "text": "See A horror film",
+            "cardsAdded": [
+                "horrorfilm"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "superherofilm_node",
+            "text": "See A superhero film",
+            "cardsAdded": [
+                "superherofilm"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": true,
             "goToFarNode": ""
         }
     ],
     "dailyMissions": [
         {
             "id": "dm1",
-            "name": "沙漠的第十二口井",
-            "description": "勘探队挖出一口会涌出清水的古井，井壁却每天浮现一个新的倒计时数字。",
-            "moneyReward": 3,
-            "requiredCards": [
-                "ShaMo",
-                "XinXi"
-            ]
-        },
-        {
-            "id": "dm2",
-            "name": "石头会记得",
-            "description": "老石匠发现城中每块石碑都在夜里改写碑文，替活人承认他们不肯说出的过错。",
+            "name": "Write a thriller novel",
+            "description": "",
             "moneyReward": 4,
             "requiredCards": [
-                "ShiTou",
-                "HuiHen"
-            ]
-        },
-        {
-            "id": "dm3",
-            "name": "沼泽临时法庭",
-            "description": "失踪多年的法官在沼泽搭起法庭，只审判那些从未被记录的罪行。",
-            "moneyReward": 3,
-            "requiredCards": [
-                "ZhaoZe",
-                "XiuKui"
-            ]
-        },
-        {
-            "id": "dm4",
-            "name": "最后一场风暴",
-            "description": "气象站预报百年最强风暴，整座海港却安静得连一面旗帜都没有晃动。",
-            "moneyReward": 4,
-            "requiredCards": [
-                "FengBao",
-                "PingJing"
-            ]
-        },
-        {
-            "id": "dm5",
-            "name": "骨头档案馆",
-            "description": "档案员整理一批无名遗骨时，发现每副骨架都附着一份尚未发生的死亡报告。",
-            "moneyReward": 3,
-            "requiredCards": [
-                "GuTou",
+                "YinMou",
                 "KongJu"
             ]
         },
         {
+            "id": "dm2",
+            "name": "Write a story about a robot",
+            "description": "",
+            "moneyReward": 5,
+            "requiredCards": [
+                "JiQi",
+                "LiXing"
+            ]
+        },
+        {
+            "id": "dm3",
+            "name": "Write a kitschy romance story",
+            "description": "",
+            "moneyReward": 4,
+            "requiredCards": [
+                "YuWang",
+                "MeiSu"
+            ]
+        },
+        {
+            "id": "dm4",
+            "name": "Write a supernatural horror story",
+            "description": "",
+            "moneyReward": 3,
+            "requiredCards": [
+                "Hai",
+                "KongJu"
+            ]
+        },
+        {
+            "id": "dm5",
+            "name": "Write a war story",
+            "description": "",
+            "moneyReward": 5,
+            "requiredCards": [
+                "ZhanZheng",
+                "TongKu"
+            ]
+        },
+        {
             "id": "dm6",
-            "name": "帝国熄灯令",
-            "description": "皇帝下令全国入夜后不得点灯，边境小镇却用漫山火把回应这道命令。",
+            "name": "Write a story set in ancient times",
+            "description": "",
             "moneyReward": 4,
             "requiredCards": [
                 "DiGuo",
-                "FenNu"
+                "Zhai"
             ]
         },
         {
             "id": "dm7",
-            "name": "月亮失踪案",
-            "description": "月亮从夜空消失后，一名退休警察收到匿名委托，要在七天内找回它。",
-            "moneyReward": 3,
+            "name": "Write a story set in the future",
+            "description": "",
+            "moneyReward": 5,
             "requiredCards": [
-                "YueLiang",
-                "BeiShang"
+                "JiQi",
+                "XingXing"
             ]
         },
         {
             "id": "dm8",
-            "name": "野兽选举日",
-            "description": "森林第一次举行选举，投票结束时，所有候选者都发现自己的名字被爪痕抹去。",
+            "name": "Write a story set at sea",
+            "description": "",
             "moneyReward": 4,
             "requiredCards": [
-                "YeShou",
-                "KuangNu"
+                "Hai",
+                "Zhou"
             ]
         },
         {
             "id": "dm9",
-            "name": "",
+            "name": "Write a story about a shepherd",
             "description": "",
-            "moneyReward": 0,
-            "requiredCards": []
+            "moneyReward": 3,
+            "requiredCards": [
+                "YouMu",
+                "YeShou"
+            ]
         },
         {
             "id": "dm10",
-            "name": "",
+            "name": "Write an urban romance story",
             "description": "",
-            "moneyReward": 0,
-            "requiredCards": []
+            "moneyReward": 4,
+            "requiredCards": [
+                "ChengShi",
+                "MeiSu"
+            ]
         },
         {
             "id": "dm11",
-            "name": "",
+            "name": "Write a story with neither beginning nor end",
             "description": "",
-            "moneyReward": 0,
-            "requiredCards": []
-        },
-        {
-            "id": "dm12",
-            "name": "",
-            "description": "",
-            "moneyReward": 0,
-            "requiredCards": []
+            "moneyReward": 3,
+            "requiredCards": [
+                "Mi",
+                "HuanJue"
+            ]
         }
     ],
     "forgeLibraries": [

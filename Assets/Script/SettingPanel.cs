@@ -17,12 +17,14 @@ public class SettingPanel : MonoBehaviour
     public GameObject MissionPanel;
     public GameObject ForgePanel;
     public GameObject MapPanel;
+    public GameObject HintPanel;
     public GameObject StartScene;
     public GameObject InitialTest;
     public GameObject StartSceneBg;
     public GameObject DefaultBg;
     [SerializeField] private TextPanelUI textPanelUI;
     [SerializeField] private AudioManager audioManager;
+    public CardManager cardmanager;
 
     [SerializeField, Min(0f)] private float otherUIHideDistance = 650f;
     [SerializeField, Min(0f)] private float otherUIMoveDuration = 0.25f;
@@ -74,6 +76,7 @@ public class SettingPanel : MonoBehaviour
         QuitButton.SetActive(Opened);
         BackButton.SetActive(Opened);
         ToggleButton.SetActive(!Opened);
+        if(cardmanager.HasInitialized == false)HintPanel.SetActive(!Opened);
         ShowOtherUI();
     }
 

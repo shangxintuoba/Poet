@@ -186,7 +186,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.3049, y: -73.719986}
-  m_SizeDelta: {x: 97.83, y: 21.300001}
+  m_SizeDelta: {x: 97.83, y: 64.200005}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8435589651147168104
 CanvasRenderer:
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WillPower
+  m_text: Willpower
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bbdf487596ec0840821977141b329eb, type: 2}
   m_sharedMaterial: {fileID: -8891481282619641425, guid: 8bbdf487596ec0840821977141b329eb, type: 2}
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.25
+  m_fontSize: 18.65
   m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -608,8 +608,9 @@ MonoBehaviour:
   MaterialOutline: {fileID: 0}
   FuelOutline: {fileID: 0}
   CharacterOutline: {fileID: 0}
-  Description: "\u4E16\u754C\u7684\u71C3\u6599"
-  Name: WillPower
+  Description: 'The most reliable fuel of your body. That heavy shell of yours has
+    been running on it for over twenty years. '
+  Name: Willpower
   CanBeDropped: 1
   cardPanelDropPadding: 80
   dragScale: 1.08
@@ -619,19 +620,29 @@ MonoBehaviour:
   dragShadowOffset: {x: -8, y: -8}
   Amount_Indicator: {fileID: 4316701594855246488}
   resourceType: 1
-  value: 1
+  value: 8
   changingText:
-  - A body
-  - 1/10
-  - '2/10 '
-  - '3/10 '
-  - '4/10 '
-  - '5/10 '
-  - '6/10 '
-  - '7/10 '
-  - '8 /10 '
-  - '9/10 '
-  - '10/10 '
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
   minimumIndicatorHeight: 7
   indicatorHeightDuration: 0.18
   maximumIndicatorHeight: 150

@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6219356508963278508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -921,6 +921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Card
   NameText: {fileID: 797042336863281754}
   shadow: {fileID: 1950097325829217044}
+  defaultCardBack: {fileID: 0}
   RawOutline: {fileID: 4236326866780487142}
   EmotionOutline: {fileID: 1527899212745890303}
   MaterialOutline: {fileID: 203503769501399468}

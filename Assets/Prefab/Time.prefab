@@ -566,21 +566,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Time
   NameText: {fileID: 6676104710940119004}
-  NaureOutline: {fileID: 0}
-  PoliticsOutline: {fileID: 0}
+  shadow: {fileID: 4411531688873802770}
+  defaultCardBack: {fileID: 0}
+  RawOutline: {fileID: 0}
   EmotionOutline: {fileID: 0}
-  UniversalOutline: {fileID: 0}
-  EventOutline: {fileID: 0}
-  Description: A River
+  MaterialOutline: {fileID: 0}
+  FuelOutline: {fileID: 0}
+  CharacterOutline: {fileID: 0}
+  Description: 
   Name: Time
   CanBeDropped: 1
-  OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08
   selectionScale: 1.08
   scaleDuration: 0.12
   snapDuration: 0.15
-  shadow: {fileID: 4411531688873802770}
   dragShadowOffset: {x: -8, y: -8}
   timeTextInCard: {fileID: 0}
   TimetextInCard: {fileID: 3184047756382842620}
