@@ -1,11 +1,12 @@
 {
-    "schemaVersion": 9,
+    "schemaVersion": 12,
     "sourceSheets": [
         "FullLibrary",
         "Raw_Choice",
         "Character",
         "CharacterChoices",
         "Node",
+        "NodeChoice",
         "DailyMission",
         "ForgeLibrary"
     ],
@@ -19,22 +20,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "moisture",
-            "name": "Moisture",
-            "type": "Fuel",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -49,7 +35,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -64,7 +50,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -79,7 +65,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -94,7 +80,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -109,203 +95,40 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
             "characterProgress": [
                 {
                     "progress": 0,
-                    "text": "progress0",
-                    "node": "m2",
-                    "choices": [
-                        {
-                            "id": "cc1",
-                            "text": "goto1",
-                            "reusable": false,
-                            "targetProgress": 1,
-                            "cardsAdded": [
-                                "LiXing"
-                            ],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 1,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc2",
-                            "text": "goto2",
-                            "reusable": false,
-                            "targetProgress": 2,
-                            "cardsAdded": [
-                                "LiXing"
-                            ],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 1
-                        },
-                        {
-                            "id": "cc11",
-                            "text": "reuse",
-                            "reusable": true,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 5
-                        }
-                    ]
+                    "text": "",
+                    "node": "",
+                    "choices": []
                 },
                 {
                     "progress": 1,
-                    "text": "progress1",
-                    "node": "m4",
-                    "choices": [
-                        {
-                            "id": "cc3",
-                            "text": "goto4",
-                            "reusable": false,
-                            "targetProgress": 4,
-                            "cardsAdded": [],
-                            "cardsRemoved": [
-                                "LiXing"
-                            ],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc4",
-                            "text": "goto3",
-                            "reusable": false,
-                            "targetProgress": 3,
-                            "cardsAdded": [],
-                            "cardsRemoved": [
-                                "LiXing"
-                            ],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc11",
-                            "text": "reuse",
-                            "reusable": true,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 5
-                        }
-                    ]
+                    "text": "",
+                    "node": "",
+                    "choices": []
                 },
                 {
                     "progress": 2,
-                    "text": "progress2",
-                    "node": "m2",
-                    "choices": [
-                        {
-                            "id": "cc5",
-                            "text": "cc5",
-                            "reusable": false,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc6",
-                            "text": "cc6",
-                            "reusable": false,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc11",
-                            "text": "reuse",
-                            "reusable": true,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 5
-                        }
-                    ]
+                    "text": "",
+                    "node": "",
+                    "choices": []
                 },
                 {
                     "progress": 3,
-                    "text": "progress3",
-                    "node": "m4",
-                    "choices": [
-                        {
-                            "id": "cc7",
-                            "text": "cc7",
-                            "reusable": false,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc8",
-                            "text": "cc8",
-                            "reusable": false,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc11",
-                            "text": "reuse",
-                            "reusable": true,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 5
-                        }
-                    ]
+                    "text": "",
+                    "node": "",
+                    "choices": []
                 },
                 {
                     "progress": 4,
-                    "text": "progress4",
-                    "node": "m2",
-                    "choices": [
-                        {
-                            "id": "cc9",
-                            "text": "cc9",
-                            "reusable": false,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc10",
-                            "text": "cc10",
-                            "reusable": false,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 0
-                        },
-                        {
-                            "id": "cc11",
-                            "text": "reuse",
-                            "reusable": true,
-                            "targetProgress": 0,
-                            "cardsAdded": [],
-                            "cardsRemoved": [],
-                            "deltaWillPower": 0,
-                            "deltaMoney": 5
-                        }
-                    ]
+                    "text": "",
+                    "node": "",
+                    "choices": []
                 }
             ]
         },
@@ -318,7 +141,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -333,7 +156,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -348,7 +171,7 @@
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -366,65 +189,14 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
-                {
-                    "id": "c5",
-                    "choiceText": "哲学",
-                    "usedText": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。\n(今天已经回忆过了)",
-                    "cardsAdded": [
-                        "Philosophy",
-                        "flame",
-                        "air",
-                        "moisture",
-                        "LiXing",
-                        "Hui"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                },
-                {
-                    "id": "c6",
-                    "choiceText": "比较文学",
-                    "usedText": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\n\n显然这对找到一份工作没有什么帮助。\n(今天已经回忆过了)",
-                    "cardsAdded": [
-                        "Literature"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                },
-                {
-                    "id": "c7",
-                    "choiceText": "社会学",
-                    "usedText": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\n\n显然这对找到一份工作没有什么帮助。\n(今天已经回忆过了)",
-                    "cardsAdded": [
-                        "Sociology"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                }
-            ],
+            "choices": [],
             "characterProgress": []
         },
         {
             "id": "Work",
             "name": "你的工作",
             "type": "Raw",
-            "description": "为短片攥写剧本,  一份勉强能糊口的编剧工作，自然也谈不上什么文学追求。",
+            "description": "为短片攥写剧本, 一份勉强能糊口的编剧工作，自然也谈不上什么文学追求。",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -436,106 +208,55 @@
             "characterProgress": []
         },
         {
-            "id": "Philosophy",
-            "name": "哲学学位",
+            "id": "fabric",
+            "name": "Feel of fabric",
             "type": "Raw",
-            "description": "你花了四年时间研究德国观念论，你能熟练使用范畴，感性确定性，统觉等一堆不知所云的概念解释人为什么能看到颜色。\n\n显然这对找到一份工作没有什么帮助。",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": true,
             "canBeDropped": true,
-            "refreshChoice": true,
+            "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
-                {
-                    "id": "c8",
-                    "choiceText": "Recall what you have learned",
-                    "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [
-                        "BianZhengFa",
-                        "Mi"
-                    ],
-                    "randomCardNumber": 1,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": false
-                }
-            ],
+            "choices": [],
             "characterProgress": []
         },
         {
-            "id": "Literature",
-            "name": "比较文学学位",
+            "id": "alcohol",
+            "name": "Alcohol",
             "type": "Raw",
-            "description": "你花了四年时间研究俄罗斯文学，你能熟练解释东正教传统和未来主义在白银时代的演变。\n\n显然这对找到一份工作没有什么帮助。",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": true,
             "canBeDropped": true,
-            "refreshChoice": true,
+            "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
-                {
-                    "id": "c9",
-                    "choiceText": "Recall what you have learned",
-                    "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [
-                        "DongTu",
-                        "Zui"
-                    ],
-                    "randomCardNumber": 1,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": false
-                }
-            ],
+            "choices": [],
             "characterProgress": []
         },
         {
-            "id": "Sociology",
-            "name": "社会学学位",
+            "id": "electronic",
+            "name": "Electronic music",
             "type": "Raw",
-            "description": "你花了四年时间研究黎巴嫩的近代历史，你能熟练叙述宗教冲突如何塑造这个国家里不同阶级的身份认同。\n\n显然这对找到一份工作没有什么帮助。",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": true,
             "canBeDropped": true,
-            "refreshChoice": true,
+            "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
-                {
-                    "id": "c10",
-                    "choiceText": "Recall what you have learned",
-                    "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [
-                        "ShaMo",
-                        "ZhanZheng"
-                    ],
-                    "randomCardNumber": 1,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": false,
-                    "destroyWhenUsed": false
-                }
-            ],
+            "choices": [],
             "characterProgress": []
         },
         {
-            "id": "Alcohol",
-            "name": "酒",
+            "id": "abyss",
+            "name": "A glimpse into the abyss",
             "type": "Raw",
-            "description": "每天不能喝太多。",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -543,33 +264,14 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
-                {
-                    "id": "c16",
-                    "choiceText": "喝",
-                    "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [
-                        "YiWang",
-                        "YiWang",
-                        "TongKu",
-                        "XingFu"
-                    ],
-                    "randomCardNumber": 2,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                }
-            ],
+            "choices": [],
             "characterProgress": []
         },
         {
-            "id": "Chat",
-            "name": "闲言",
+            "id": "chatter",
+            "name": "chatter",
             "type": "Raw",
-            "description": "世界局势，蔬菜价格，失业，指甲颜色，新电影，婚外情。\n\n你可以试着将它压缩成灵感,但请不要抱有太多期待",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -577,60 +279,29 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
-                {
-                    "id": "c17",
-                    "choiceText": "压缩",
-                    "usedText": "",
-                    "cardsAdded": [],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                }
-            ],
+            "choices": [],
             "characterProgress": []
         },
         {
-            "id": "Cigarette",
-            "name": "烟",
+            "id": "sun",
+            "name": "Warmth of the sun",
             "type": "Raw",
-            "description": "可以让你清醒一点，但对身体不太好。\n\n每天不能抽太多。",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": true,
             "canBeDropped": true,
-            "refreshChoice": true,
-            "maximumUse": 3,
-            "choices": [
-                {
-                    "id": "c18",
-                    "choiceText": "抽烟",
-                    "usedText": "",
-                    "cardsAdded": [
-                        "LiXing",
-                        "Hui"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                }
-            ],
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
             "characterProgress": []
         },
         {
-            "id": "Icetea",
-            "name": "维他柠檬茶",
+            "id": "lemontea",
+            "name": "Lemon tea",
             "type": "Raw",
-            "description": "上学的时候，你最幸福的事情就是翻墙到学校后面的超市买柠檬茶喝。\n对于成年人来说有些太甜了。",
+            "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -638,31 +309,330 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [
-                {
-                    "id": "c19",
-                    "choiceText": "喝",
-                    "usedText": "",
-                    "cardsAdded": [
-                        "XingFu"
-                    ],
-                    "cardsDestroyed": [],
-                    "randomCardList": [],
-                    "randomCardNumber": 0,
-                    "timeConsumed": 0,
-                    "unlockNodes": [],
-                    "hideOtherChoices": true,
-                    "destroyWhenUsed": true
-                }
-            ],
+            "choices": [],
             "characterProgress": []
         },
         {
-            "id": "FanZao",
-            "name": "烦躁",
-            "type": "Emotion",
+            "id": "childsmile",
+            "name": "A child's smile",
+            "type": "Raw",
             "description": "",
-            "willPowerDelta": -1,
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "cigarette",
+            "name": "Cigarette",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "echoes",
+            "name": "Echoes",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "mall",
+            "name": "Smell of disinfectant in a mall",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "neolithic",
+            "name": "Neolithic memories",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "roman",
+            "name": "Roman-era memories",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "victoria",
+            "name": "Victorian-era memories",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "hamburger",
+            "name": "Hamburger",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "acorn",
+            "name": "Acorn",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "pulse",
+            "name": "The pulse of the city",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "sea",
+            "name": "The feel of the sea breeze",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "iron",
+            "name": "The taste of iron",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "detective",
+            "name": "Detective novel",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "哲学书",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "自然历史",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "畅销书",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "科幻小说",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "严肃文学",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "文艺片",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "恐怖片",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "",
+            "name": "商业大片",
+            "type": "Raw",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "YuWang",
+            "name": "Desire",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -673,9 +643,9 @@
             "characterProgress": []
         },
         {
-            "id": "FengKuang",
-            "name": "疯狂",
-            "type": "Emotion",
+            "id": "ZaoDong",
+            "name": "Restlessness",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
@@ -688,11 +658,11 @@
             "characterProgress": []
         },
         {
-            "id": "YiWang",
-            "name": "遗忘",
-            "type": "Emotion",
-            "description": "世界上唯一的万能药。\n意志力+3",
-            "willPowerDelta": 3,
+            "id": "YinMou",
+            "name": "Conspiracy",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -703,11 +673,11 @@
             "characterProgress": []
         },
         {
-            "id": "TongKu",
-            "name": "痛苦",
-            "type": "Emotion",
-            "description": "我们必须想象西西弗斯是幸福的。\n意志力-2",
-            "willPowerDelta": -2,
+            "id": "ShuiMian",
+            "name": "Sleep",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -718,11 +688,11 @@
             "characterProgress": []
         },
         {
-            "id": "XingFu",
-            "name": "幸福",
-            "type": "Emotion",
-            "description": "或许在不久的将来你会意识到这不过是一种幻觉，但至少此刻它还不是。它正坚实地躺在你的胃的下方，像个安睡的孩子。\n意志力+5",
-            "willPowerDelta": 5,
+            "id": "SeYu",
+            "name": "Lust",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -733,12 +703,12 @@
             "characterProgress": []
         },
         {
-            "id": "LiXing",
-            "name": "理性",
-            "type": "Material",
+            "id": "Meng",
+            "name": "Dream",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Universal",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -748,12 +718,12 @@
             "characterProgress": []
         },
         {
-            "id": "Hui",
-            "name": "灰",
-            "type": "Material",
+            "id": "BaoLi",
+            "name": "Violence",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Universal",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -763,12 +733,12 @@
             "characterProgress": []
         },
         {
-            "id": "ZhaoZe",
-            "name": "沼泽",
-            "type": "Material",
+            "id": "YouMu",
+            "name": "Nomad",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Nature",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -778,12 +748,12 @@
             "characterProgress": []
         },
         {
-            "id": "HuangYuan",
-            "name": "荒原",
-            "type": "Material",
+            "id": "Li",
+            "name": "Plow",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Nature",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -793,27 +763,12 @@
             "characterProgress": []
         },
         {
-            "id": "DongTu",
-            "name": "冻土",
-            "type": "Material",
-            "description": "那些冰冷而坚硬的泥土总是让你想到冻得太过的冰激凌。",
-            "willPowerDelta": 0,
-            "materialType": "Nature",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Hai",
-            "name": "海",
-            "type": "Material",
+            "id": "DiGuo",
+            "name": "Empire",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Nature",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -823,12 +778,12 @@
             "characterProgress": []
         },
         {
-            "id": "PingYuan",
-            "name": "平原",
-            "type": "Material",
+            "id": "GongHeGuo",
+            "name": "Republic",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Nature",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -838,12 +793,12 @@
             "characterProgress": []
         },
         {
-            "id": "Shan",
-            "name": "山",
-            "type": "Material",
+            "id": "WuChanJieJi",
+            "name": "Proletariat",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Nature",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -853,12 +808,12 @@
             "characterProgress": []
         },
         {
-            "id": "QunDao",
-            "name": "群岛",
-            "type": "Material",
+            "id": "ZiYouShiChang",
+            "name": "Free market",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Nature",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -868,39 +823,9 @@
             "characterProgress": []
         },
         {
-            "id": "CongLin",
-            "name": "丛林",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Nature",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "ShaMo",
-            "name": "沙漠",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Nature",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "HuanJue",
-            "name": "幻觉",
-            "type": "Emotion",
+            "id": "GeMing",
+            "name": "Revolution",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
@@ -914,44 +839,14 @@
         },
         {
             "id": "Zhai",
-            "name": "债",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Politics",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "BianZhengFa",
-            "name": "辩证法",
-            "type": "Material",
-            "description": "正题：你能用它来解决任何问题。\n反题：解决完之后那些问题会变得没用。\n合题：但是你能用它来解决任何问题",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Guang",
-            "name": "光",
-            "type": "",
+            "name": "Debt",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
             "useable": false,
-            "canBeDropped": false,
+            "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
@@ -959,41 +854,11 @@
         },
         {
             "id": "FuChou",
-            "name": "复仇",
-            "type": "Material",
+            "name": "Revenge",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Politics",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "QiJi",
-            "name": "奇迹",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "DiGuo",
-            "name": "帝国",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Politics",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -1004,26 +869,11 @@
         },
         {
             "id": "LvFa",
-            "name": "律法",
-            "type": "Material",
+            "name": "Law",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Politics",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "GeMing",
-            "name": "革命",
-            "type": "Material",
-            "description": "",
-            "willPowerDelta": 0,
-            "materialType": "Politics",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -1034,26 +884,11 @@
         },
         {
             "id": "JiQi",
-            "name": "机器",
-            "type": "Material",
+            "name": "Machine",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Politics",
-            "fuelType": "",
-            "useable": false,
-            "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
-            "choices": [],
-            "characterProgress": []
-        },
-        {
-            "id": "Mi",
-            "name": "谜",
-            "type": "Material",
-            "description": "？！？",
-            "willPowerDelta": 0,
-            "materialType": "Universal",
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -1064,11 +899,401 @@
         },
         {
             "id": "ZhanZheng",
-            "name": "战争",
-            "type": "Material",
+            "name": "War",
+            "type": "material",
             "description": "",
             "willPowerDelta": 0,
-            "materialType": "Politics",
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Zhou",
+            "name": "Boat",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "JingZi",
+            "name": "Mirror",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "BaoLei",
+            "name": "Fortress",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "WuQi",
+            "name": "Weapon",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ZhiWu",
+            "name": "Fabric",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "PingYuan",
+            "name": "Plain",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "GaoYuan",
+            "name": "Plateau",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Shan",
+            "name": "Mountain",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "HuangYuan",
+            "name": "Wasteland",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "CongLin",
+            "name": "Jungle",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "QunDao",
+            "name": "Archipelago",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Dao",
+            "name": "Island",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Hai",
+            "name": "Sea",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "DongTu",
+            "name": "Tundra",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ShaMo",
+            "name": "Desert",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ZhaoZe",
+            "name": "Swamp",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ChengShi",
+            "name": "City",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Ai",
+            "name": "Love",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "QiJi",
+            "name": "Miracle",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ZhenLi",
+            "name": "Truth",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "LiangZhi",
+            "name": "Conscience",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Mei",
+            "name": "Aesthetics",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "BianZhengFa",
+            "name": "Dialectics",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "LiXing",
+            "name": "Reason",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Hui",
+            "name": "dust",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Mi",
+            "name": "Enigma",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -1079,11 +1304,701 @@
         },
         {
             "id": "Zui",
-            "name": "罪",
-            "type": "Material",
-            "description": "10岁的时候你找到了妈妈藏在衣柜里的1万块钱。100张颜色鲜艳的纸片，每次想吃麦当劳了你就会偷偷去拿出来几张。\\n一个暑假过去，你也不知道你到底偷拿了多少张。不过你清晰地记得妈妈发现时看着你的眼神。",
+            "name": "Sin",
+            "type": "material",
+            "description": "",
             "willPowerDelta": 0,
-            "materialType": "Universal",
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Guang",
+            "name": "Light",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "XuWu",
+            "name": "Nothingness",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "XuWuZhuYi",
+            "name": "Nihilism",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "SiWang",
+            "name": "Death",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "FuHuo",
+            "name": "Resurrection",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ZiYou",
+            "name": "Freedom",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ZhengYi",
+            "name": "Justice",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "FanFeng",
+            "name": "Irony",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Shu",
+            "name": "Tree",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Gen",
+            "name": "Root",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ShiTou",
+            "name": "Stone",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "NiTu",
+            "name": "Soil",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Mei2",
+            "name": "Coal",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "GuTou",
+            "name": "Bone",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Rou",
+            "name": "Flesh",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "XingXing",
+            "name": "Star",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "YueLiang",
+            "name": "Moon",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Yu",
+            "name": "Rain",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "FengBao",
+            "name": "Storm",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ChaoXi",
+            "name": "Tide",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Feng",
+            "name": "Breeze",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Hua",
+            "name": "Flower",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "YeShou",
+            "name": "Beast",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "JiYi",
+            "name": "Madness",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Shi",
+            "name": "Pain",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ChenMo",
+            "name": "Sorrow",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "HeiAn",
+            "name": "Calm",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Ye",
+            "name": "Joy",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "Zhou2",
+            "name": "Ecstasy",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "MeiSu",
+            "name": "Anger",
+            "type": "material",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "FengKuang",
+            "name": "Rage",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "TongKu",
+            "name": "Shame",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "BeiShang",
+            "name": "Remorse",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "PingJing",
+            "name": "Sublime",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "XinXi",
+            "name": "Fear",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "KuangXi",
+            "name": "Oblivion",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "FenNu",
+            "name": "Happiness",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "KuangNu",
+            "name": "Illusion",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "XiuKui",
+            "name": "Agitation",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "HuiHen",
+            "name": "Craft",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "ChongGao",
+            "name": "Poetry",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "KongJu",
+            "name": "Silence",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "YiWang",
+            "name": "Darkness",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "XingFu",
+            "name": "Night",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "HuanJue",
+            "name": "Day",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": false,
+            "canBeDropped": true,
+            "refreshChoice": false,
+            "maximumUse": 0,
+            "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "FanZao",
+            "name": "Kitsch",
+            "type": "emotion",
+            "description": "",
+            "willPowerDelta": 0,
+            "materialType": "",
             "fuelType": "",
             "useable": false,
             "canBeDropped": true,
@@ -1096,112 +2011,570 @@
     "nodes": [
         {
             "id": "m1",
-            "name": "WestHill"
+            "name": "WestHill",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m2",
-            "name": "Home"
+            "name": "Home",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m3",
-            "name": "Yourbed"
+            "name": "Yourbed",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m4",
-            "name": "Bar"
+            "name": "Bar",
+            "textMorning": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。\n\n还没有开门，七点之后再来吧。",
+            "textAfternoon": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。\n\n还没有开门，七点之后再来吧。",
+            "textSunset": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。\n\n还没有开门，七点之后再来吧。",
+            "textNight": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。",
+            "textMidnight": "你家楼下的酒吧，一家生意很差的社区店。老实说你都不知道他们为什么还没有倒闭。",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [
+                "bar1",
+                "bar2"
+            ],
+            "choicesNight": [],
+            "choicesMidnight": [
+                "bar1",
+                "bar2"
+            ]
         },
         {
             "id": "m5",
-            "name": "Park"
+            "name": "Park",
+            "textMorning": "你家楼下的公园。\n几天前的台风吹倒了靠街边的那棵树。",
+            "textAfternoon": "你家楼下的公园。\n几天前的台风吹倒了靠街边的那棵树。几个小孩儿正坐在树干上打牌。",
+            "textSunset": "你家楼下的公园\n几天前的台风吹倒了靠街边的那棵树。",
+            "textNight": "你家楼下的公园，暂时没什么人。\n几天前的台风吹倒了靠街边的那棵树。",
+            "textMidnight": "你家楼下的公园。\n夜很深了，公园里有些阴森。",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m6",
-            "name": "Supermarket"
+            "name": "Supermarket",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m7",
-            "name": "Underground_Home"
+            "name": "Underground_Home",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "The underground is closed",
+            "choicesMorning": [
+                "Gdowntown",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesAfternoon": [
+                "Gdowntown",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesSunset": [
+                "Gdowntown",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesNight": [
+                "Gdowntown",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesMidnight": []
         },
         {
             "id": "m8",
-            "name": "Downtown"
+            "name": "Downtown",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m9",
-            "name": "Abyss Club"
+            "name": "Abyss Club",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m10",
-            "name": "Cinema"
+            "name": "Cinema",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m11",
-            "name": "McDonalds"
+            "name": "McDonalds",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m12",
-            "name": "Underground_Downtown"
+            "name": "Underground_Downtown",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "The underground is closed",
+            "choicesMorning": [
+                "Ghome",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesAfternoon": [
+                "Ghome",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesSunset": [
+                "Ghome",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesNight": [
+                "Ghome",
+                "Gbook",
+                "Gsea"
+            ],
+            "choicesMidnight": []
         },
         {
             "id": "m13",
-            "name": "Oak Rd"
+            "name": "Oak Rd",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m14",
-            "name": "Museum"
+            "name": "Museum",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m15",
-            "name": "Edditor‘s Office"
+            "name": "Edditor‘s Office",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m16",
-            "name": "BookStore"
+            "name": "BookStore",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m17",
-            "name": "Underground_Book"
+            "name": "Underground_Book",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "The underground is closed",
+            "choicesMorning": [
+                "Ghome",
+                "Gdowntown",
+                "Gsea"
+            ],
+            "choicesAfternoon": [
+                "Ghome",
+                "Gdowntown",
+                "Gsea"
+            ],
+            "choicesSunset": [
+                "Ghome",
+                "Gdowntown",
+                "Gsea"
+            ],
+            "choicesNight": [
+                "Ghome",
+                "Gdowntown",
+                "Gsea"
+            ],
+            "choicesMidnight": []
         },
         {
             "id": "m18",
-            "name": "NewDistrict"
+            "name": "NewDistrict",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m19",
-            "name": "Shipyard"
+            "name": "Shipyard",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m20",
-            "name": "Sea"
+            "name": "Sea",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": []
         },
         {
             "id": "m21",
-            "name": "OverGround"
+            "name": "OverGround",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "The underground is closed",
+            "choicesMorning": [
+                "Ghome",
+                "Gdowntown",
+                "Gbook"
+            ],
+            "choicesAfternoon": [
+                "Ghome",
+                "Gdowntown",
+                "Gbook"
+            ],
+            "choicesSunset": [
+                "Ghome",
+                "Gdowntown",
+                "Gbook"
+            ],
+            "choicesNight": [
+                "Ghome",
+                "Gdowntown",
+                "Gbook"
+            ],
+            "choicesMidnight": []
+        }
+    ],
+    "nodeChoices": [
+        {
+            "id": "bar1",
+            "text": "买酒",
+            "cardsAdded": [
+                "Alcohol"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "bar2",
+            "text": "闲聊",
+            "cardsAdded": [
+                "Chatter"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Ghome",
+            "text": "Take underground to WestHill",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": false,
+            "goToFarNode": "m7"
+        },
+        {
+            "id": "Gdowntown",
+            "text": "Take underground to downtown",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": false,
+            "goToFarNode": "m12"
+        },
+        {
+            "id": "Gbook",
+            "text": "Take underground to Oak Rd",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": false,
+            "goToFarNode": "m17"
+        },
+        {
+            "id": "Gsea",
+            "text": "Take underground to NewDistrict",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": false,
+            "goToFarNode": "m21"
+        },
+        {
+            "id": "echo",
+            "text": "",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "impulse",
+            "text": "",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
         }
     ],
     "dailyMissions": [
         {
             "id": "dm1",
-            "name": "理性灰",
-            "moneyReward": 1,
-            "requiredCards": []
+            "name": "沙漠的第十二口井",
+            "description": "勘探队挖出一口会涌出清水的古井，井壁却每天浮现一个新的倒计时数字。",
+            "moneyReward": 3,
+            "requiredCards": [
+                "ShaMo",
+                "XinXi"
+            ]
         },
         {
             "id": "dm2",
-            "name": "冻土沙漠",
-            "moneyReward": 2,
-            "requiredCards": []
+            "name": "石头会记得",
+            "description": "老石匠发现城中每块石碑都在夜里改写碑文，替活人承认他们不肯说出的过错。",
+            "moneyReward": 4,
+            "requiredCards": [
+                "ShiTou",
+                "HuiHen"
+            ]
         },
         {
             "id": "dm3",
-            "name": "辩证法理性",
+            "name": "沼泽临时法庭",
+            "description": "失踪多年的法官在沼泽搭起法庭，只审判那些从未被记录的罪行。",
             "moneyReward": 3,
-            "requiredCards": []
+            "requiredCards": [
+                "ZhaoZe",
+                "XiuKui"
+            ]
         },
         {
             "id": "dm4",
-            "name": "理性沙漠",
+            "name": "最后一场风暴",
+            "description": "气象站预报百年最强风暴，整座海港却安静得连一面旗帜都没有晃动。",
             "moneyReward": 4,
+            "requiredCards": [
+                "FengBao",
+                "PingJing"
+            ]
+        },
+        {
+            "id": "dm5",
+            "name": "骨头档案馆",
+            "description": "档案员整理一批无名遗骨时，发现每副骨架都附着一份尚未发生的死亡报告。",
+            "moneyReward": 3,
+            "requiredCards": [
+                "GuTou",
+                "KongJu"
+            ]
+        },
+        {
+            "id": "dm6",
+            "name": "帝国熄灯令",
+            "description": "皇帝下令全国入夜后不得点灯，边境小镇却用漫山火把回应这道命令。",
+            "moneyReward": 4,
+            "requiredCards": [
+                "DiGuo",
+                "FenNu"
+            ]
+        },
+        {
+            "id": "dm7",
+            "name": "月亮失踪案",
+            "description": "月亮从夜空消失后，一名退休警察收到匿名委托，要在七天内找回它。",
+            "moneyReward": 3,
+            "requiredCards": [
+                "YueLiang",
+                "BeiShang"
+            ]
+        },
+        {
+            "id": "dm8",
+            "name": "野兽选举日",
+            "description": "森林第一次举行选举，投票结束时，所有候选者都发现自己的名字被爪痕抹去。",
+            "moneyReward": 4,
+            "requiredCards": [
+                "YeShou",
+                "KuangNu"
+            ]
+        },
+        {
+            "id": "dm9",
+            "name": "",
+            "description": "",
+            "moneyReward": 0,
+            "requiredCards": []
+        },
+        {
+            "id": "dm10",
+            "name": "",
+            "description": "",
+            "moneyReward": 0,
+            "requiredCards": []
+        },
+        {
+            "id": "dm11",
+            "name": "",
+            "description": "",
+            "moneyReward": 0,
+            "requiredCards": []
+        },
+        {
+            "id": "dm12",
+            "name": "",
+            "description": "",
+            "moneyReward": 0,
             "requiredCards": []
         }
     ],
@@ -1211,39 +2584,2676 @@
             "sourceSheet": "ForgeLibrary",
             "ingredients": [
                 {
-                    "id": "SiWang",
-                    "name": "死亡"
+                    "id": "YuWang",
+                    "name": "Desire"
                 },
                 {
-                    "id": "LiXing",
-                    "name": "理性"
+                    "id": "ZaoDong",
+                    "name": "Restlessness"
+                },
+                {
+                    "id": "YinMou",
+                    "name": "Conspiracy"
+                },
+                {
+                    "id": "ShuiMian",
+                    "name": "Sleep"
+                },
+                {
+                    "id": "SeYu",
+                    "name": "Lust"
+                },
+                {
+                    "id": "Meng",
+                    "name": "Dream"
+                },
+                {
+                    "id": "BaoLi",
+                    "name": "Violence"
+                },
+                {
+                    "id": "MeiSu",
+                    "name": "Kitsch"
+                },
+                {
+                    "id": "YouMu",
+                    "name": "Nomad"
+                },
+                {
+                    "id": "Li",
+                    "name": "Plow"
                 },
                 {
                     "id": "DiGuo",
-                    "name": "帝国"
+                    "name": "Empire"
                 },
                 {
-                    "id": "Zui",
-                    "name": "罪"
+                    "id": "GongHeGuo",
+                    "name": "Republic"
                 },
                 {
-                    "id": "Mi",
-                    "name": "谜"
+                    "id": "WuChanJieJi",
+                    "name": "Proletariat"
                 },
                 {
-                    "id": "QiJi",
-                    "name": "奇迹"
+                    "id": "ZiYouShiChang",
+                    "name": "Free market"
+                },
+                {
+                    "id": "GeMing",
+                    "name": "Revolution"
+                },
+                {
+                    "id": "Zhai",
+                    "name": "Debt"
+                },
+                {
+                    "id": "FuChou",
+                    "name": "Revenge"
+                },
+                {
+                    "id": "LvFa",
+                    "name": "Law"
+                },
+                {
+                    "id": "JiQi",
+                    "name": "Machine"
+                },
+                {
+                    "id": "ZhanZheng",
+                    "name": "War"
+                },
+                {
+                    "id": "Zhou",
+                    "name": "Boat"
+                },
+                {
+                    "id": "JingZi",
+                    "name": "Mirror"
+                },
+                {
+                    "id": "BaoLei",
+                    "name": "Fortress"
+                },
+                {
+                    "id": "WuQi",
+                    "name": "Weapon"
+                },
+                {
+                    "id": "ZhiWu",
+                    "name": "Fabric"
+                },
+                {
+                    "id": "JiYi",
+                    "name": "Craft"
+                },
+                {
+                    "id": "PingYuan",
+                    "name": "Plain"
+                },
+                {
+                    "id": "GaoYuan",
+                    "name": "Plateau"
+                },
+                {
+                    "id": "Shan",
+                    "name": "Mountain"
+                },
+                {
+                    "id": "HuangYuan",
+                    "name": "Wasteland"
+                },
+                {
+                    "id": "CongLin",
+                    "name": "Jungle"
+                },
+                {
+                    "id": "QunDao",
+                    "name": "Archipelago"
+                },
+                {
+                    "id": "Dao",
+                    "name": "Island"
+                },
+                {
+                    "id": "Hai",
+                    "name": "Sea"
+                },
+                {
+                    "id": "DongTu",
+                    "name": "Tundra"
+                },
+                {
+                    "id": "ShaMo",
+                    "name": "Desert"
+                },
+                {
+                    "id": "ZhaoZe",
+                    "name": "Swamp"
+                },
+                {
+                    "id": "ChengShi",
+                    "name": "City"
+                },
+                {
+                    "id": "FengKuang",
+                    "name": "Madness"
+                },
+                {
+                    "id": "TongKu",
+                    "name": "Pain"
+                },
+                {
+                    "id": "BeiShang",
+                    "name": "Sorrow"
+                },
+                {
+                    "id": "PingJing",
+                    "name": "Calm"
+                },
+                {
+                    "id": "XinXi",
+                    "name": "Joy"
+                },
+                {
+                    "id": "KuangXi",
+                    "name": "Ecstasy"
+                },
+                {
+                    "id": "FenNu",
+                    "name": "Anger"
+                },
+                {
+                    "id": "KuangNu",
+                    "name": "Rage"
+                },
+                {
+                    "id": "XiuKui",
+                    "name": "Shame"
+                },
+                {
+                    "id": "HuiHen",
+                    "name": "Remorse"
+                },
+                {
+                    "id": "ChongGao",
+                    "name": "Sublime"
+                },
+                {
+                    "id": "KongJu",
+                    "name": "Fear"
+                },
+                {
+                    "id": "YiWang",
+                    "name": "Oblivion"
+                },
+                {
+                    "id": "XingFu",
+                    "name": "Happiness"
+                },
+                {
+                    "id": "HuanJue",
+                    "name": "Illusion"
+                },
+                {
+                    "id": "FanZao",
+                    "name": "Agitation"
                 },
                 {
                     "id": "Ai",
-                    "name": "爱"
+                    "name": "Love"
+                },
+                {
+                    "id": "QiJi",
+                    "name": "Miracle"
+                },
+                {
+                    "id": "ZhenLi",
+                    "name": "Truth"
+                },
+                {
+                    "id": "LiangZhi",
+                    "name": "Conscience"
+                },
+                {
+                    "id": "Mei",
+                    "name": "Aesthetics"
                 },
                 {
                     "id": "BianZhengFa",
-                    "name": "辩证法"
+                    "name": "Dialectics"
+                },
+                {
+                    "id": "LiXing",
+                    "name": "Reason"
+                },
+                {
+                    "id": "Hui",
+                    "name": "dust"
+                },
+                {
+                    "id": "Mi",
+                    "name": "Enigma"
+                },
+                {
+                    "id": "Zui",
+                    "name": "Sin"
+                },
+                {
+                    "id": "Guang",
+                    "name": "Light"
+                },
+                {
+                    "id": "XuWu",
+                    "name": "Nothingness"
+                },
+                {
+                    "id": "XuWuZhuYi",
+                    "name": "Nihilism"
+                },
+                {
+                    "id": "SiWang",
+                    "name": "Death"
+                },
+                {
+                    "id": "FuHuo",
+                    "name": "Resurrection"
+                },
+                {
+                    "id": "ZiYou",
+                    "name": "Freedom"
+                },
+                {
+                    "id": "ZhengYi",
+                    "name": "Justice"
+                },
+                {
+                    "id": "FanFeng",
+                    "name": "Irony"
+                },
+                {
+                    "id": "Shi",
+                    "name": "Poetry"
+                },
+                {
+                    "id": "ChenMo",
+                    "name": "Silence"
+                },
+                {
+                    "id": "HeiAn",
+                    "name": "Darkness"
+                },
+                {
+                    "id": "Shu",
+                    "name": "Tree"
+                },
+                {
+                    "id": "Gen",
+                    "name": "Root"
+                },
+                {
+                    "id": "ShiTou",
+                    "name": "Stone"
+                },
+                {
+                    "id": "NiTu",
+                    "name": "Soil"
+                },
+                {
+                    "id": "Mei2",
+                    "name": "Coal"
+                },
+                {
+                    "id": "GuTou",
+                    "name": "Bone"
+                },
+                {
+                    "id": "Rou",
+                    "name": "Flesh"
+                },
+                {
+                    "id": "XingXing",
+                    "name": "Star"
+                },
+                {
+                    "id": "YueLiang",
+                    "name": "Moon"
+                },
+                {
+                    "id": "Yu",
+                    "name": "Rain"
+                },
+                {
+                    "id": "FengBao",
+                    "name": "Storm"
+                },
+                {
+                    "id": "ChaoXi",
+                    "name": "Tide"
+                },
+                {
+                    "id": "Feng",
+                    "name": "Breeze"
+                },
+                {
+                    "id": "Hua",
+                    "name": "Flower"
+                },
+                {
+                    "id": "YeShou",
+                    "name": "Beast"
+                },
+                {
+                    "id": "Ye",
+                    "name": "Night"
+                },
+                {
+                    "id": "Zhou2",
+                    "name": "Day"
                 }
             ],
-            "formulas": []
+            "formulas": [
+                {
+                    "firstIngredientId": "YuWang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Restlessness"
+                },
+                {
+                    "firstIngredientId": "ZaoDong",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "YinMou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Violence"
+                },
+                {
+                    "firstIngredientId": "ShuiMian",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "SeYu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Kitsch"
+                },
+                {
+                    "firstIngredientId": "Meng",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Illusion"
+                },
+                {
+                    "firstIngredientId": "BaoLi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "MeiSu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "YouMu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "Li",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Machine"
+                },
+                {
+                    "firstIngredientId": "DiGuo",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "GongHeGuo",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "WuChanJieJi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "ZiYouShiChang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Debt"
+                },
+                {
+                    "firstIngredientId": "GeMing",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Love"
+                },
+                {
+                    "firstIngredientId": "Zhai",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "FuChou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "LvFa",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "JiQi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "ZhanZheng",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "Zhou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "JingZi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "BaoLei",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "WuQi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "ZhiWu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "JiYi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Weapon"
+                },
+                {
+                    "firstIngredientId": "PingYuan",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Plateau"
+                },
+                {
+                    "firstIngredientId": "GaoYuan",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Mountain"
+                },
+                {
+                    "firstIngredientId": "Shan",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "HuangYuan",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Desert"
+                },
+                {
+                    "firstIngredientId": "CongLin",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "QunDao",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Island"
+                },
+                {
+                    "firstIngredientId": "Dao",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Stone"
+                },
+                {
+                    "firstIngredientId": "Hai",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Archipelago"
+                },
+                {
+                    "firstIngredientId": "DongTu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Plain"
+                },
+                {
+                    "firstIngredientId": "ShaMo",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Desert"
+                },
+                {
+                    "firstIngredientId": "ZhaoZe",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Plain"
+                },
+                {
+                    "firstIngredientId": "ChengShi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "FengKuang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "TongKu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Anger"
+                },
+                {
+                    "firstIngredientId": "BeiShang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Pain"
+                },
+                {
+                    "firstIngredientId": "PingJing",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Thought"
+                },
+                {
+                    "firstIngredientId": "XinXi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Ecstasy"
+                },
+                {
+                    "firstIngredientId": "KuangXi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "FenNu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Rage"
+                },
+                {
+                    "firstIngredientId": "KuangNu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "XiuKui",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "HuiHen",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "ChongGao",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Ecstasy"
+                },
+                {
+                    "firstIngredientId": "KongJu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "YiWang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Illusion"
+                },
+                {
+                    "firstIngredientId": "XingFu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Ecstasy"
+                },
+                {
+                    "firstIngredientId": "HuanJue",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "FanZao",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Anger"
+                },
+                {
+                    "firstIngredientId": "Ai",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "QiJi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "ZhenLi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Justice"
+                },
+                {
+                    "firstIngredientId": "LiangZhi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Justice"
+                },
+                {
+                    "firstIngredientId": "Mei",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Lust"
+                },
+                {
+                    "firstIngredientId": "BianZhengFa",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "LiXing",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Conspiracy"
+                },
+                {
+                    "firstIngredientId": "Hui",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Coal"
+                },
+                {
+                    "firstIngredientId": "Mi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Conspiracy"
+                },
+                {
+                    "firstIngredientId": "Zui",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "Guang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Sublime"
+                },
+                {
+                    "firstIngredientId": "XuWu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "XuWuZhuYi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "SiWang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "FuHuo",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Miracle"
+                },
+                {
+                    "firstIngredientId": "ZiYou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "ZhengYi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "FanFeng",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Agitation"
+                },
+                {
+                    "firstIngredientId": "Shi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "ChenMo",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Anger"
+                },
+                {
+                    "firstIngredientId": "HeiAn",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "Shu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "Gen",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Coal"
+                },
+                {
+                    "firstIngredientId": "ShiTou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Mirror"
+                },
+                {
+                    "firstIngredientId": "NiTu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Desert"
+                },
+                {
+                    "firstIngredientId": "Mei2",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Flame"
+                },
+                {
+                    "firstIngredientId": "GuTou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "Rou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "XingXing",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "YueLiang",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "Yu",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Air"
+                },
+                {
+                    "firstIngredientId": "FengBao",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Violence"
+                },
+                {
+                    "firstIngredientId": "ChaoXi",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Sea"
+                },
+                {
+                    "firstIngredientId": "Feng",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Storm"
+                },
+                {
+                    "firstIngredientId": "Hua",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "YeShou",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Violence"
+                },
+                {
+                    "firstIngredientId": "Ye",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Day"
+                },
+                {
+                    "firstIngredientId": "Zhou2",
+                    "secondIngredientId": "flame",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "YuWang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Conspiracy"
+                },
+                {
+                    "firstIngredientId": "ZaoDong",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "YinMou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Dialectics"
+                },
+                {
+                    "firstIngredientId": "ShuiMian",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "SeYu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Kitsch"
+                },
+                {
+                    "firstIngredientId": "Meng",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Poetry"
+                },
+                {
+                    "firstIngredientId": "BaoLi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "MeiSu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Irony"
+                },
+                {
+                    "firstIngredientId": "YouMu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Plow"
+                },
+                {
+                    "firstIngredientId": "Li",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Machine"
+                },
+                {
+                    "firstIngredientId": "DiGuo",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "GongHeGuo",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Justice"
+                },
+                {
+                    "firstIngredientId": "WuChanJieJi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "ZiYouShiChang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Debt"
+                },
+                {
+                    "firstIngredientId": "GeMing",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Republic"
+                },
+                {
+                    "firstIngredientId": "Zhai",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Sin"
+                },
+                {
+                    "firstIngredientId": "FuChou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "LvFa",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "JiQi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Craft"
+                },
+                {
+                    "firstIngredientId": "ZhanZheng",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "Zhou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Craft"
+                },
+                {
+                    "firstIngredientId": "JingZi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Irony"
+                },
+                {
+                    "firstIngredientId": "BaoLei",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "WuQi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "ZhiWu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Craft"
+                },
+                {
+                    "firstIngredientId": "JiYi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Poetry"
+                },
+                {
+                    "firstIngredientId": "PingYuan",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Plow"
+                },
+                {
+                    "firstIngredientId": "GaoYuan",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Sublime"
+                },
+                {
+                    "firstIngredientId": "Shan",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Sublime"
+                },
+                {
+                    "firstIngredientId": "HuangYuan",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Nomad"
+                },
+                {
+                    "firstIngredientId": "CongLin",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Beast"
+                },
+                {
+                    "firstIngredientId": "QunDao",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Boat"
+                },
+                {
+                    "firstIngredientId": "Dao",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Boat"
+                },
+                {
+                    "firstIngredientId": "Hai",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Tide"
+                },
+                {
+                    "firstIngredientId": "DongTu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Death"
+                },
+                {
+                    "firstIngredientId": "ShaMo",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "ZhaoZe",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Death"
+                },
+                {
+                    "firstIngredientId": "ChengShi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "FengKuang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Conspiracy"
+                },
+                {
+                    "firstIngredientId": "TongKu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "BeiShang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "PingJing",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Thought"
+                },
+                {
+                    "firstIngredientId": "XinXi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Happiness"
+                },
+                {
+                    "firstIngredientId": "KuangXi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Joy"
+                },
+                {
+                    "firstIngredientId": "FenNu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "KuangNu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "XiuKui",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Sin"
+                },
+                {
+                    "firstIngredientId": "HuiHen",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Conscience"
+                },
+                {
+                    "firstIngredientId": "ChongGao",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Aesthetics"
+                },
+                {
+                    "firstIngredientId": "KongJu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Weapon"
+                },
+                {
+                    "firstIngredientId": "YiWang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "XingFu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Love"
+                },
+                {
+                    "firstIngredientId": "HuanJue",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "FanZao",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "Ai",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Conscience"
+                },
+                {
+                    "firstIngredientId": "QiJi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Truth"
+                },
+                {
+                    "firstIngredientId": "ZhenLi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "LiangZhi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "Mei",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Sublime"
+                },
+                {
+                    "firstIngredientId": "BianZhengFa",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Truth"
+                },
+                {
+                    "firstIngredientId": "LiXing",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Dialectics"
+                },
+                {
+                    "firstIngredientId": "Hui",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Death"
+                },
+                {
+                    "firstIngredientId": "Mi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "Zui",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "Guang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Truth"
+                },
+                {
+                    "firstIngredientId": "XuWu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Nihilism"
+                },
+                {
+                    "firstIngredientId": "XuWuZhuYi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Dialectics"
+                },
+                {
+                    "firstIngredientId": "SiWang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Truth"
+                },
+                {
+                    "firstIngredientId": "FuHuo",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "ZiYou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Justice"
+                },
+                {
+                    "firstIngredientId": "ZhengYi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "FanFeng",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Truth"
+                },
+                {
+                    "firstIngredientId": "Shi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Irony"
+                },
+                {
+                    "firstIngredientId": "ChenMo",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Poetry"
+                },
+                {
+                    "firstIngredientId": "HeiAn",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "Shu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Plow"
+                },
+                {
+                    "firstIngredientId": "Gen",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Truth"
+                },
+                {
+                    "firstIngredientId": "ShiTou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Fortress"
+                },
+                {
+                    "firstIngredientId": "NiTu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "City"
+                },
+                {
+                    "firstIngredientId": "Mei2",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Machine"
+                },
+                {
+                    "firstIngredientId": "GuTou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Weapon"
+                },
+                {
+                    "firstIngredientId": "Rou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "XingXing",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "YueLiang",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "Yu",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Plow"
+                },
+                {
+                    "firstIngredientId": "FengBao",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Fear"
+                },
+                {
+                    "firstIngredientId": "ChaoXi",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Truth"
+                },
+                {
+                    "firstIngredientId": "Feng",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "Hua",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Aesthetics"
+                },
+                {
+                    "firstIngredientId": "YeShou",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Fabric"
+                },
+                {
+                    "firstIngredientId": "Ye",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Star"
+                },
+                {
+                    "firstIngredientId": "Zhou2",
+                    "secondIngredientId": "thought",
+                    "resultCardId": "Reason"
+                },
+                {
+                    "firstIngredientId": "YuWang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sleep"
+                },
+                {
+                    "firstIngredientId": "ZaoDong",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "YinMou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Silence"
+                },
+                {
+                    "firstIngredientId": "ShuiMian",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "SeYu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "Meng",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "BaoLi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "MeiSu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "YouMu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "Li",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "DiGuo",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "GongHeGuo",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "WuChanJieJi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nomad"
+                },
+                {
+                    "firstIngredientId": "ZiYouShiChang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Debt"
+                },
+                {
+                    "firstIngredientId": "GeMing",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "Zhai",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "FuChou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Pain"
+                },
+                {
+                    "firstIngredientId": "LvFa",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sin"
+                },
+                {
+                    "firstIngredientId": "JiQi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "ZhanZheng",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "Zhou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "JingZi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "BaoLei",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "WuQi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "ZhiWu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Soil"
+                },
+                {
+                    "firstIngredientId": "JiYi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "PingYuan",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "GaoYuan",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Plain"
+                },
+                {
+                    "firstIngredientId": "Shan",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Plateau"
+                },
+                {
+                    "firstIngredientId": "HuangYuan",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Desert"
+                },
+                {
+                    "firstIngredientId": "CongLin",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Coal"
+                },
+                {
+                    "firstIngredientId": "QunDao",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Island"
+                },
+                {
+                    "firstIngredientId": "Dao",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sea"
+                },
+                {
+                    "firstIngredientId": "Hai",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Tundra"
+                },
+                {
+                    "firstIngredientId": "DongTu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "ShaMo",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "ZhaoZe",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "ChengShi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "FengKuang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "TongKu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "BeiShang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sleep"
+                },
+                {
+                    "firstIngredientId": "PingJing",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sleep"
+                },
+                {
+                    "firstIngredientId": "XinXi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Calm"
+                },
+                {
+                    "firstIngredientId": "KuangXi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Joy"
+                },
+                {
+                    "firstIngredientId": "FenNu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Shame"
+                },
+                {
+                    "firstIngredientId": "KuangNu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Anger"
+                },
+                {
+                    "firstIngredientId": "XiuKui",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "HuiHen",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "ChongGao",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "KongJu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sleep"
+                },
+                {
+                    "firstIngredientId": "YiWang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sleep"
+                },
+                {
+                    "firstIngredientId": "XingFu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Calm"
+                },
+                {
+                    "firstIngredientId": "HuanJue",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "FanZao",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sleep"
+                },
+                {
+                    "firstIngredientId": "Ai",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sorrow"
+                },
+                {
+                    "firstIngredientId": "QiJi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "ZhenLi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "LiangZhi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sin"
+                },
+                {
+                    "firstIngredientId": "Mei",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "BianZhengFa",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Conspiracy"
+                },
+                {
+                    "firstIngredientId": "LiXing",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sleep"
+                },
+                {
+                    "firstIngredientId": "Hui",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "Mi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "Zui",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "Guang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Darkness"
+                },
+                {
+                    "firstIngredientId": "XuWu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Death"
+                },
+                {
+                    "firstIngredientId": "XuWuZhuYi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "SiWang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "FuHuo",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Death"
+                },
+                {
+                    "firstIngredientId": "ZiYou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "ZhengYi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "FanFeng",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nihilism"
+                },
+                {
+                    "firstIngredientId": "Shi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Silence"
+                },
+                {
+                    "firstIngredientId": "ChenMo",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "HeiAn",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "Shu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "Gen",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Soil"
+                },
+                {
+                    "firstIngredientId": "ShiTou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Desert"
+                },
+                {
+                    "firstIngredientId": "NiTu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "Mei2",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "GuTou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "Rou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Bone"
+                },
+                {
+                    "firstIngredientId": "XingXing",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "YueLiang",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Night"
+                },
+                {
+                    "firstIngredientId": "Yu",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sea"
+                },
+                {
+                    "firstIngredientId": "FengBao",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Rain"
+                },
+                {
+                    "firstIngredientId": "ChaoXi",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Sea"
+                },
+                {
+                    "firstIngredientId": "Feng",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Air"
+                },
+                {
+                    "firstIngredientId": "Hua",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Soil"
+                },
+                {
+                    "firstIngredientId": "YeShou",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Bone"
+                },
+                {
+                    "firstIngredientId": "Ye",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Darkness"
+                },
+                {
+                    "firstIngredientId": "Zhou2",
+                    "secondIngredientId": "enthropy",
+                    "resultCardId": "Night"
+                },
+                {
+                    "firstIngredientId": "YuWang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "ZaoDong",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Calm"
+                },
+                {
+                    "firstIngredientId": "YinMou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "ShuiMian",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "SeYu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "Meng",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "BaoLi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Fear"
+                },
+                {
+                    "firstIngredientId": "MeiSu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Silence"
+                },
+                {
+                    "firstIngredientId": "YouMu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Free market"
+                },
+                {
+                    "firstIngredientId": "Li",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Nomad"
+                },
+                {
+                    "firstIngredientId": "DiGuo",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Republic"
+                },
+                {
+                    "firstIngredientId": "GongHeGuo",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Free market"
+                },
+                {
+                    "firstIngredientId": "WuChanJieJi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "ZiYouShiChang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Nomad"
+                },
+                {
+                    "firstIngredientId": "GeMing",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Proletariat"
+                },
+                {
+                    "firstIngredientId": "Zhai",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "FuChou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "LvFa",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "JiQi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Free market"
+                },
+                {
+                    "firstIngredientId": "ZhanZheng",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "Zhou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Nomad"
+                },
+                {
+                    "firstIngredientId": "JingZi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Illusion"
+                },
+                {
+                    "firstIngredientId": "BaoLei",
+                    "secondIngredientId": "air",
+                    "resultCardId": "City"
+                },
+                {
+                    "firstIngredientId": "WuQi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "ZhiWu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "JiYi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "PingYuan",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Archipelago"
+                },
+                {
+                    "firstIngredientId": "GaoYuan",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Plain"
+                },
+                {
+                    "firstIngredientId": "Shan",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Plateau"
+                },
+                {
+                    "firstIngredientId": "HuangYuan",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Desert"
+                },
+                {
+                    "firstIngredientId": "CongLin",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Tree"
+                },
+                {
+                    "firstIngredientId": "QunDao",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Island"
+                },
+                {
+                    "firstIngredientId": "Dao",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Sea"
+                },
+                {
+                    "firstIngredientId": "Hai",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Archipelago"
+                },
+                {
+                    "firstIngredientId": "DongTu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Plain"
+                },
+                {
+                    "firstIngredientId": "ShaMo",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Wasteland"
+                },
+                {
+                    "firstIngredientId": "ZhaoZe",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Sea"
+                },
+                {
+                    "firstIngredientId": "ChengShi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Free market"
+                },
+                {
+                    "firstIngredientId": "FengKuang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "TongKu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Sorrow"
+                },
+                {
+                    "firstIngredientId": "BeiShang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "PingJing",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "XinXi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Happiness"
+                },
+                {
+                    "firstIngredientId": "KuangXi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Joy"
+                },
+                {
+                    "firstIngredientId": "FenNu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Agitation"
+                },
+                {
+                    "firstIngredientId": "KuangNu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Anger"
+                },
+                {
+                    "firstIngredientId": "XiuKui",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "HuiHen",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Sorrow"
+                },
+                {
+                    "firstIngredientId": "ChongGao",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Sublime"
+                },
+                {
+                    "firstIngredientId": "KongJu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Agitation"
+                },
+                {
+                    "firstIngredientId": "YiWang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "XingFu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Joy"
+                },
+                {
+                    "firstIngredientId": "HuanJue",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "FanZao",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Calm"
+                },
+                {
+                    "firstIngredientId": "Ai",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "QiJi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Illusion"
+                },
+                {
+                    "firstIngredientId": "ZhenLi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Enigma"
+                },
+                {
+                    "firstIngredientId": "LiangZhi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "Mei",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "BianZhengFa",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "LiXing",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "Hui",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Air"
+                },
+                {
+                    "firstIngredientId": "Mi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "Zui",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "Guang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "XuWu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "XuWuZhuYi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "SiWang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Oblivion"
+                },
+                {
+                    "firstIngredientId": "FuHuo",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "ZiYou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Nomad"
+                },
+                {
+                    "firstIngredientId": "ZhengYi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "FanFeng",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "Shi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "ChenMo",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Breeze"
+                },
+                {
+                    "firstIngredientId": "HeiAn",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Night"
+                },
+                {
+                    "firstIngredientId": "Shu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "Gen",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Tree"
+                },
+                {
+                    "firstIngredientId": "ShiTou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Desert"
+                },
+                {
+                    "firstIngredientId": "NiTu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Plain"
+                },
+                {
+                    "firstIngredientId": "Mei2",
+                    "secondIngredientId": "air",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "GuTou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "dust"
+                },
+                {
+                    "firstIngredientId": "Rou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "XingXing",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Nothingness"
+                },
+                {
+                    "firstIngredientId": "YueLiang",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Tide"
+                },
+                {
+                    "firstIngredientId": "Yu",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Storm"
+                },
+                {
+                    "firstIngredientId": "FengBao",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Breeze"
+                },
+                {
+                    "firstIngredientId": "ChaoXi",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Sea"
+                },
+                {
+                    "firstIngredientId": "Feng",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Freedom"
+                },
+                {
+                    "firstIngredientId": "Hua",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "YeShou",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Breeze"
+                },
+                {
+                    "firstIngredientId": "Ye",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Moon"
+                },
+                {
+                    "firstIngredientId": "Zhou2",
+                    "secondIngredientId": "air",
+                    "resultCardId": "Light"
+                },
+                {
+                    "firstIngredientId": "YuWang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Lust"
+                },
+                {
+                    "firstIngredientId": "ZaoDong",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Anger"
+                },
+                {
+                    "firstIngredientId": "YinMou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "ShuiMian",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "SeYu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Kitsch"
+                },
+                {
+                    "firstIngredientId": "Meng",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "BaoLi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "MeiSu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "YouMu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "Li",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Proletariat"
+                },
+                {
+                    "firstIngredientId": "DiGuo",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Republic"
+                },
+                {
+                    "firstIngredientId": "GongHeGuo",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Free market"
+                },
+                {
+                    "firstIngredientId": "WuChanJieJi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "ZiYouShiChang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Empire"
+                },
+                {
+                    "firstIngredientId": "GeMing",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Law"
+                },
+                {
+                    "firstIngredientId": "Zhai",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "FuChou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "LvFa",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Republic"
+                },
+                {
+                    "firstIngredientId": "JiQi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Proletariat"
+                },
+                {
+                    "firstIngredientId": "ZhanZheng",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "Zhou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Free market"
+                },
+                {
+                    "firstIngredientId": "JingZi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Lust"
+                },
+                {
+                    "firstIngredientId": "BaoLei",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "City"
+                },
+                {
+                    "firstIngredientId": "WuQi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "ZhiWu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Flower"
+                },
+                {
+                    "firstIngredientId": "JiYi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Aesthetics"
+                },
+                {
+                    "firstIngredientId": "PingYuan",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "GaoYuan",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "Shan",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "HuangYuan",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Root"
+                },
+                {
+                    "firstIngredientId": "CongLin",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Swamp"
+                },
+                {
+                    "firstIngredientId": "QunDao",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "City"
+                },
+                {
+                    "firstIngredientId": "Dao",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "Hai",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Archipelago"
+                },
+                {
+                    "firstIngredientId": "DongTu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "ShaMo",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Swamp"
+                },
+                {
+                    "firstIngredientId": "ZhaoZe",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "ChengShi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Proletariat"
+                },
+                {
+                    "firstIngredientId": "FengKuang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "TongKu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Revenge"
+                },
+                {
+                    "firstIngredientId": "BeiShang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Aesthetics"
+                },
+                {
+                    "firstIngredientId": "PingJing",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Thought"
+                },
+                {
+                    "firstIngredientId": "XinXi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Ecstasy"
+                },
+                {
+                    "firstIngredientId": "KuangXi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "FenNu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Rage"
+                },
+                {
+                    "firstIngredientId": "KuangNu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "War"
+                },
+                {
+                    "firstIngredientId": "XiuKui",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Remorse"
+                },
+                {
+                    "firstIngredientId": "HuiHen",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Conscience"
+                },
+                {
+                    "firstIngredientId": "ChongGao",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Miracle"
+                },
+                {
+                    "firstIngredientId": "KongJu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "YiWang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Illusion"
+                },
+                {
+                    "firstIngredientId": "XingFu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Love"
+                },
+                {
+                    "firstIngredientId": "HuanJue",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Desire"
+                },
+                {
+                    "firstIngredientId": "FanZao",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Madness"
+                },
+                {
+                    "firstIngredientId": "Ai",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Happiness"
+                },
+                {
+                    "firstIngredientId": "QiJi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Sublime"
+                },
+                {
+                    "firstIngredientId": "ZhenLi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Conscience"
+                },
+                {
+                    "firstIngredientId": "LiangZhi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Love"
+                },
+                {
+                    "firstIngredientId": "Mei",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Love"
+                },
+                {
+                    "firstIngredientId": "BianZhengFa",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Revolution"
+                },
+                {
+                    "firstIngredientId": "LiXing",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Machine"
+                },
+                {
+                    "firstIngredientId": "Hui",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Plain"
+                },
+                {
+                    "firstIngredientId": "Mi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Conspiracy"
+                },
+                {
+                    "firstIngredientId": "Zui",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Shame"
+                },
+                {
+                    "firstIngredientId": "Guang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Miracle"
+                },
+                {
+                    "firstIngredientId": "XuWu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Death"
+                },
+                {
+                    "firstIngredientId": "XuWuZhuYi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Irony"
+                },
+                {
+                    "firstIngredientId": "SiWang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Resurrection"
+                },
+                {
+                    "firstIngredientId": "FuHuo",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Happiness"
+                },
+                {
+                    "firstIngredientId": "ZiYou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Free market"
+                },
+                {
+                    "firstIngredientId": "ZhengYi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Republic"
+                },
+                {
+                    "firstIngredientId": "FanFeng",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Aesthetics"
+                },
+                {
+                    "firstIngredientId": "Shi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Aesthetics"
+                },
+                {
+                    "firstIngredientId": "ChenMo",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "HeiAn",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "Shu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "Gen",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Tree"
+                },
+                {
+                    "firstIngredientId": "ShiTou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Soil"
+                },
+                {
+                    "firstIngredientId": "NiTu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Flower"
+                },
+                {
+                    "firstIngredientId": "Mei2",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Machine"
+                },
+                {
+                    "firstIngredientId": "GuTou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Flower"
+                },
+                {
+                    "firstIngredientId": "Rou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Beast"
+                },
+                {
+                    "firstIngredientId": "XingXing",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Night"
+                },
+                {
+                    "firstIngredientId": "YueLiang",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "Yu",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "FengBao",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Tide"
+                },
+                {
+                    "firstIngredientId": "ChaoXi",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Swamp"
+                },
+                {
+                    "firstIngredientId": "Feng",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Storm"
+                },
+                {
+                    "firstIngredientId": "Hua",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Tree"
+                },
+                {
+                    "firstIngredientId": "YeShou",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Jungle"
+                },
+                {
+                    "firstIngredientId": "Ye",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Dream"
+                },
+                {
+                    "firstIngredientId": "Zhou2",
+                    "secondIngredientId": "yeast",
+                    "resultCardId": "Flower"
+                }
+            ]
         }
     ]
 }

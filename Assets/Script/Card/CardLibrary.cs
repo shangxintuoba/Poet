@@ -11,6 +11,7 @@ public class CardLibrary : MonoBehaviour
         public string[] sourceSheets;
         public CardData[] cards;
         public NodeData[] nodes;
+        public NodeChoiceData[] nodeChoices;
         public DailyMissionData[] dailyMissions;
         public ForgeLibraryData[] forgeLibraries;
     }
@@ -76,6 +77,30 @@ public class CardLibrary : MonoBehaviour
     {
         public string id;
         public string name;
+        [TextArea] public string textMorning;
+        [TextArea] public string textAfternoon;
+        [TextArea] public string textSunset;
+        [TextArea] public string textNight;
+        [TextArea] public string textMidnight;
+        public string[] choicesMorning;
+        public string[] choicesAfternoon;
+        public string[] choicesSunset;
+        public string[] choicesNight;
+        public string[] choicesMidnight;
+    }
+
+    [Serializable]
+    public class NodeChoiceData
+    {
+        public string id;
+        public string text;
+        public string[] cardsAdded;
+        public string[] cardsRemoved;
+        public int deltaWillPower;
+        public int deltaMoney;
+        public bool oncePerDay;
+        public bool useOnlyOnce;
+        public string goToFarNode;
     }
 
     [Serializable]
@@ -83,6 +108,7 @@ public class CardLibrary : MonoBehaviour
     {
         public string id;
         public string name;
+        [TextArea] public string description;
         public int moneyReward;
         public string[] requiredCards;
     }
@@ -123,8 +149,16 @@ public class CardLibrary : MonoBehaviour
         : Array.Empty<ForgeLibraryData>();
 
     public IReadOnlyList<DailyMissionData> DailyMissions => Data.dailyMissions;
+    public IReadOnlyList<NodeData> Nodes => Data != null && Data.nodes != null
+        ? Data.nodes
+        : Array.Empty<NodeData>();
+    public IReadOnlyList<NodeChoiceData> NodeChoices => Data != null && Data.nodeChoices != null
+        ? Data.nodeChoices
+        : Array.Empty<NodeChoiceData>();
 
     private readonly Dictionary<string, CardData> cardsByReference = new Dictionary<string, CardData>();
+    private readonly Dictionary<string, NodeData> nodesById = new Dictionary<string, NodeData>();
+    private readonly Dictionary<string, NodeChoiceData> nodeChoicesById = new Dictionary<string, NodeChoiceData>();
 
     private void Awake()
     {
@@ -135,6 +169,8 @@ public class CardLibrary : MonoBehaviour
     {
         Data = null;
         cardsByReference.Clear();
+        nodesById.Clear();
+        nodeChoicesById.Clear();
 
         if (cardLibraryJson == null)
         {
@@ -158,6 +194,18 @@ public class CardLibrary : MonoBehaviour
             AddReference(card.name, card);
         }
 
+        foreach (NodeData node in Data.nodes ?? Array.Empty<NodeData>())
+        {
+            if (node != null && !string.IsNullOrWhiteSpace(node.id))
+                nodesById[node.id] = node;
+        }
+
+        foreach (NodeChoiceData choice in Data.nodeChoices ?? Array.Empty<NodeChoiceData>())
+        {
+            if (choice != null && !string.IsNullOrWhiteSpace(choice.id))
+                nodeChoicesById[choice.id] = choice;
+        }
+
         return true;
     }
 
@@ -179,6 +227,24 @@ public class CardLibrary : MonoBehaviour
     public CardData FindCardDataByName(string cardName)
     {
         return FindCardData(cardName);
+    }
+
+    public NodeData FindNodeData(string nodeId)
+    {
+        if (string.IsNullOrWhiteSpace(nodeId))
+            return null;
+
+        nodesById.TryGetValue(nodeId, out NodeData node);
+        return node;
+    }
+
+    public NodeChoiceData FindNodeChoiceData(string choiceId)
+    {
+        if (string.IsNullOrWhiteSpace(choiceId))
+            return null;
+
+        nodeChoicesById.TryGetValue(choiceId, out NodeChoiceData choice);
+        return choice;
     }
 
     private void AddReference(string reference, CardData card)

@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Ink.UnityIntegration;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,7 +15,6 @@ public class Node : MonoBehaviour, IPointerClickHandler
         [Min(1)] public int distance = 1;
     }
     public FarConnectedNodes[] FarNodes;
-    [SerializeField] private InkFile inkFile;
     [SerializeField, Min(1f)] private float currentScale = 1.08f;
     [SerializeField, Min(0f)] private float scaleDuration = 0.12f;
     [SerializeField] private RectTransform shadow;
@@ -26,8 +24,6 @@ public class Node : MonoBehaviour, IPointerClickHandler
     private Vector2 restingShadowPosition;
     private Tween scaleTween;
     private Tween shadowTween;
-
-    public InkFile InkFile => inkFile;
 
     private void Awake()
     {

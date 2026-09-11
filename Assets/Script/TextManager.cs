@@ -1,17 +1,14 @@
+using System;
 using System.Collections.Generic;
-using Ink.Runtime;
-using Ink.UnityIntegration;
 using UnityEngine;
 
 public class TextManager : MonoBehaviour
 {
-    [SerializeField] private InkFile inkFile;
     [SerializeField] private TextPanelUI textPanel;
-
-    private Story story;
+    [SerializeField] private CardLibrary cardLibrary;
+    [SerializeField] private CardManager cardManager;
 
     public bool IsTyping => textPanel != null && textPanel.IsTyping;
-    public bool IsStoryEnded => story != null && !story.canContinue && story.currentChoices.Count == 0;
 
     public void ShowDescription(string description)
     {
@@ -23,104 +20,107 @@ public class TextManager : MonoBehaviour
         textPanel?.RestoreDialogueAfterCardDescription();
     }
 
-    private void Start()
+    public void ShowNode(string nodeId, int currentTime)
     {
-    }
-
-    public string SaveStoryState()
-    {
-        return story != null ? story.state.ToJson() : null;
-    }
-
-    public string SaveDisplayedText()
-    {
-        return textPanel != null ? textPanel.DisplayedText : string.Empty;
-    }
-
-    public void LoadStory(InkFile newInkFile, string savedState, string savedText)
-    {
-        if (newInkFile == null || !newInkFile.isCompiled || textPanel == null)
+        if (textPanel == null)
             return;
 
-        inkFile = newInkFile;
-        story = new Story(inkFile.storyJson);
-        BindExternalFunctions();
-        if (!string.IsNullOrEmpty(savedState))
-            story.state.LoadJson(savedState);
-
-        textPanel.SetDisplayedText(savedText);
-        ContinueStory();
-    }
-
-    private void BindExternalFunctions()
-    {
-        story.BindExternalFunction("GetTime", () =>
+        ResolveDependencies();
+        CardLibrary.NodeData node = cardLibrary != null ? cardLibrary.FindNodeData(nodeId) : null;
+        if (node == null)
         {
-            return GameManager.Instance.TimeCard != null
-                ? GameManager.Instance.TimeCard.CurrentTime
-                : 0;
-        });
-
-        story.BindExternalFunction<string>("CreateCard", cardId =>
-        {
-            FindFirstObjectByType<CardManager>()?
-                .CreateCards(new List<string> { cardId });
-        });
-
-        story.BindExternalFunction<int>("ChangeMoney", amount =>
-        {
-            GameManager.Instance.Money.ChangeValue(amount);
-        });
-
-        story.BindExternalFunction<int>("ChangeWillPower", amount =>
-        {
-            GameManager.Instance.WillPower.ChangeValue(amount);
-        });
-        story.BindExternalFunction<string>(
-            "CanUseToday",
-            key => GameManager.Instance.CanUseToday(key)
-        );
-
-        story.BindExternalFunction<string>(
-            "MarkUsedToday",
-            key => GameManager.Instance.MarkUsedToday(key)
-        );
-
-        story.BindExternalFunction<string>(
-            "CanUseOnce",
-            key => GameManager.Instance.CanUseOnce(key)
-        );
-
-        story.BindExternalFunction<string>(
-              "MarkUsedOnce",
-              key => GameManager.Instance.MarkUsedOnce(key)
-        );
-
-
-
-
-    }
-
-    private void ContinueStory()
-    {
-        while (story != null && story.canContinue)
-        {
-            string text = story.Continue().Trim();
-            if (!string.IsNullOrWhiteSpace(text))
-                textPanel.ShowDialogueUI(text);
+            textPanel.SetDisplayedText(string.Empty);
+            return;
         }
 
-        if (story != null && story.currentChoices.Count > 0)
-            textPanel.ShowChoices(story.currentChoices, SelectChoice);
+        GetNodePeriodContent(node, currentTime, out string text, out string[] choiceIds);
+        List<CardLibrary.NodeChoiceData> choices = new List<CardLibrary.NodeChoiceData>();
+        foreach (string choiceId in choiceIds ?? Array.Empty<string>())
+        {
+            CardLibrary.NodeChoiceData choice = cardLibrary.FindNodeChoiceData(choiceId);
+            if (choice != null && CanUseNodeChoice(choice))
+                choices.Add(choice);
+        }
+
+        List<string> choiceTexts = choices.ConvertAll(choice => choice.text);
+        textPanel.ShowTextWithChoices(text, choiceTexts, selectedIndex =>
+        {
+            if (selectedIndex >= 0 && selectedIndex < choices.Count)
+                UseNodeChoice(choices[selectedIndex]);
+        });
     }
 
-    private void SelectChoice(Choice choice)
+    private static void GetNodePeriodContent(CardLibrary.NodeData node, int currentTime,
+        out string text, out string[] choiceIds)
     {
-        if (story == null || choice == null || !story.currentChoices.Contains(choice))
+        currentTime = Mathf.Clamp(currentTime, 0, 1439);
+        if (currentTime >= 6 * 60 && currentTime < 13 * 60)
+        {
+            text = node.textMorning;
+            choiceIds = node.choicesMorning;
+        }
+        else if (currentTime >= 13 * 60 && currentTime < 16 * 60)
+        {
+            text = node.textAfternoon;
+            choiceIds = node.choicesAfternoon;
+        }
+        else if (currentTime >= 16 * 60 && currentTime < 19 * 60)
+        {
+            text = node.textSunset;
+            choiceIds = node.choicesSunset;
+        }
+        else if (currentTime >= 19 * 60)
+        {
+            text = node.textNight;
+            choiceIds = node.choicesNight;
+        }
+        else
+        {
+            text = node.textMidnight;
+            choiceIds = node.choicesMidnight;
+        }
+    }
+
+    private bool CanUseNodeChoice(CardLibrary.NodeChoiceData choice)
+    {
+        if (GameManager.Instance == null || choice == null)
+            return false;
+
+        string key = "NodeChoice:" + choice.id;
+        return (!choice.oncePerDay || (GameManager.Instance.TimeCard != null && GameManager.Instance.CanUseToday(key))) &&
+               (!choice.useOnlyOnce || GameManager.Instance.CanUseOnce(key));
+    }
+
+    private void UseNodeChoice(CardLibrary.NodeChoiceData choice)
+    {
+        if (!CanUseNodeChoice(choice))
             return;
 
+        ResolveDependencies();
+        cardManager?.CreateCards(new List<string>(choice.cardsAdded ?? Array.Empty<string>()));
+        cardManager?.DestroyCardsByDataIds(new List<string>(choice.cardsRemoved ?? Array.Empty<string>()));
+        if (choice.deltaWillPower != 0 && GameManager.Instance.WillPower != null)
+            GameManager.Instance.WillPower.ChangeValue(choice.deltaWillPower);
+        if (choice.deltaMoney != 0 && GameManager.Instance.Money != null)
+            GameManager.Instance.Money.ChangeValue(choice.deltaMoney);
+
+        string key = "NodeChoice:" + choice.id;
+        if (choice.oncePerDay)
+            GameManager.Instance.MarkUsedToday(key);
+        if (choice.useOnlyOnce)
+            GameManager.Instance.MarkUsedOnce(key);
+
         textPanel.ClearChoices();
-        story.ChooseChoiceIndex(choice.index);
-        ContinueStory();
+
+        if (!string.IsNullOrWhiteSpace(choice.goToFarNode))
+            FindFirstObjectByType<Map>()?.TryGoToFarNode(choice.goToFarNode);
+    }
+
+    private void ResolveDependencies()
+    {
+        if (cardLibrary == null)
+            cardLibrary = FindFirstObjectByType<CardLibrary>();
+        if (cardManager == null)
+            cardManager = FindFirstObjectByType<CardManager>();
     }
 }

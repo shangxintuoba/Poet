@@ -13,7 +13,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
 {
     private static readonly string[] BaseSheets =
     {
-        "FullLibrary", "Raw_Choice", "Character", "CharacterChoices", "Node", "DailyMission"
+        "FullLibrary", "Raw_Choice", "Character", "CharacterChoices", "Node", "NodeChoice", "DailyMission"
     };
     private const string ForgeSheet = "ForgeLibrary";
     private static readonly string[] RequiredSheets = BaseSheets.Concat(new[] { ForgeSheet }).ToArray();
@@ -140,10 +140,18 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
         {
             "Index", "Text", "Targetprogress", "CardAdded", "CardRemoved", "DeltaWillPower", "DeltaMoney"
         });
-        List<Dictionary<string, string>> nodeRows = AsRows(sheets["Node"], new[] { "Index", "NodeName" });
+        List<Dictionary<string, string>> nodeRows = AsRows(sheets["Node"], new[]
+        {
+            "Index", "NodeName", "Text_morning", "Text_Afternoon", "Text_Sunset", "Text_Night", "Text_Midnight",
+            "Choice_morning", "Choice_Afternoon", "Choice_Sunset", "Choice_Night", "Choice_Midnight"
+        });
+        List<Dictionary<string, string>> nodeChoiceRows = AsRows(sheets["NodeChoice"], new[]
+        {
+            "Index", "Text", "CardAdded", "CardRemoved", "DeltaWillPower", "DeltaMoney", "OncePerDay", "UseOnlyOnce", "GoToFarNode"
+        });
         List<Dictionary<string, string>> dailyMissionRows = AsRows(sheets["DailyMission"], new[]
         {
-            "Index", "Name", "MoneyReward", "RequiredCards"
+            "Index", "Name", "MoneyReward", "RequiredCards", "Description"
         });
 
         Dictionary<string, Dictionary<string, string>> choicesById = rawChoices.ToDictionary(
@@ -247,13 +255,37 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
         CardLibrary.NodeData[] nodes = nodeRows.Select(row => new CardLibrary.NodeData
         {
             id = Value(row, "Index"),
-            name = Value(row, "NodeName")
+            name = Value(row, "NodeName"),
+            textMorning = Value(row, "Text_morning"),
+            textAfternoon = Value(row, "Text_Afternoon"),
+            textSunset = Value(row, "Text_Sunset"),
+            textNight = Value(row, "Text_Night"),
+            textMidnight = Value(row, "Text_Midnight"),
+            choicesMorning = SplitIds(Value(row, "Choice_morning")).ToArray(),
+            choicesAfternoon = SplitIds(Value(row, "Choice_Afternoon")).ToArray(),
+            choicesSunset = SplitIds(Value(row, "Choice_Sunset")).ToArray(),
+            choicesNight = SplitIds(Value(row, "Choice_Night")).ToArray(),
+            choicesMidnight = SplitIds(Value(row, "Choice_Midnight")).ToArray()
+        }).ToArray();
+
+        CardLibrary.NodeChoiceData[] nodeChoices = nodeChoiceRows.Select(row => new CardLibrary.NodeChoiceData
+        {
+            id = Value(row, "Index"),
+            text = Value(row, "Text"),
+            cardsAdded = SplitIds(Value(row, "CardAdded")).ToArray(),
+            cardsRemoved = SplitIds(Value(row, "CardRemoved")).ToArray(),
+            deltaWillPower = IntValue(Value(row, "DeltaWillPower")),
+            deltaMoney = IntValue(Value(row, "DeltaMoney")),
+            oncePerDay = BoolValue(Value(row, "OncePerDay")),
+            useOnlyOnce = BoolValue(Value(row, "UseOnlyOnce")),
+            goToFarNode = Value(row, "GoToFarNode")
         }).ToArray();
 
         CardLibrary.DailyMissionData[] dailyMissions = dailyMissionRows.Select(row => new CardLibrary.DailyMissionData
         {
             id = Value(row, "Index"),
             name = Value(row, "Name"),
+            description = Value(row, "Description"),
             moneyReward = IntValue(Value(row, "MoneyReward")),
             requiredCards = SplitIds(Value(row, "RequiredCards")).ToArray()
         }).ToArray();
@@ -265,10 +297,11 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
 
         return new CardLibrary.CardLibraryData
         {
-            schemaVersion = 9,
+            schemaVersion = 12,
             sourceSheets = RequiredSheets,
             cards = cards.ToArray(),
             nodes = nodes,
+            nodeChoices = nodeChoices,
             dailyMissions = dailyMissions,
             forgeLibraries = forgeLibraries
         };

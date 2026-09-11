@@ -602,15 +602,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Resource
   NameText: {fileID: 4512816174034348166}
   shadow: {fileID: 2565466363994885794}
-  NaureOutline: {fileID: 0}
-  PoliticsOutline: {fileID: 0}
+  defaultCardBack: {fileID: 0}
+  RawOutline: {fileID: 0}
   EmotionOutline: {fileID: 0}
-  UniversalOutline: {fileID: 0}
-  EventOutline: {fileID: 0}
+  MaterialOutline: {fileID: 0}
+  FuelOutline: {fileID: 0}
+  CharacterOutline: {fileID: 0}
   Description: "\u4E16\u754C\u7684\u71C3\u6599"
-  Name: "\u610F\u5FD7\u529B"
+  Name: WillPower
   CanBeDropped: 1
-  OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08
   selectionScale: 1.08
@@ -621,17 +621,17 @@ MonoBehaviour:
   resourceType: 1
   value: 1
   changingText:
-  - "\u5C38\u4F53"
-  - "1/10 \u4E0E\u4E00\u5177\u5C38\u4F53\u65E0\u5F02"
-  - "2/10 \u672B\u4EBA"
-  - "3/10 \u672B\u4EBA"
-  - "4/10 \u672B\u4EBA"
-  - "5/10 \u58EB\u5175"
-  - "6/10 \u58EB\u5175"
-  - "7/10 \u6597\u5FD7\u5145\u6C9B"
-  - "8 /10 \u6597\u5FD7\u5145\u6C9B"
-  - "9/10 \u8D85\u4EBA"
-  - "10/10 \u8D85\u4EBA"
+  - A body
+  - 1/10
+  - '2/10 '
+  - '3/10 '
+  - '4/10 '
+  - '5/10 '
+  - '6/10 '
+  - '7/10 '
+  - '8 /10 '
+  - '9/10 '
+  - '10/10 '
   minimumIndicatorHeight: 7
   indicatorHeightDuration: 0.18
   maximumIndicatorHeight: 150

@@ -20,6 +20,8 @@ public class MissionManager : MonoBehaviour, IPointerClickHandler
     public TextMeshProUGUI m2Title;
     public TextMeshProUGUI m2Reward;
 
+    public PanelDescription m1;
+    public PanelDescription m2;
 
     public GameObject FinalMission;
     public GameObject DailyMission;
@@ -92,11 +94,18 @@ public class MissionManager : MonoBehaviour, IPointerClickHandler
         TextMeshProUGUI reward = groupIndex == 0 ? m1Reward : m2Reward;
         TextMeshProUGUI firstRequirement = groupIndex == 0 ? Slot1text : Slot3text;
         TextMeshProUGUI secondRequirement = groupIndex == 0 ? Slot2text : Slot4text;
+        PanelDescription panelDescription = groupIndex == 0 ? m1 : m2;
 
         title.text = mission.name;
         reward.text = mission.moneyReward.ToString();
         firstRequirement.text = GetRequiredCardName(mission, 0);
         secondRequirement.text = GetRequiredCardName(mission, 1);
+
+        if (panelDescription != null)
+        {
+            panelDescription.PanelName = mission.name;
+            panelDescription.Description = mission.description;
+        }
     }
 
     private string GetRequiredCardName(CardLibrary.DailyMissionData mission, int index)

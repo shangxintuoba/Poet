@@ -1,26 +1,24 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
     [SerializeField] private Node startingNode;
     [SerializeField] private TextManager textManager;
     [SerializeField] private CardManager cardManager;
+    [SerializeField] private ScrollRect mapScrollView;
+    [SerializeField, Min(0f)] private float farNodeCenterDuration = 0.4f;
     [SerializeField, Min(1f)] private float connectionThickness = 4f;
     [SerializeField] private Color connectionColor = Color.black;
 
     private Node currentNode;
     public Node CurrentNode => currentNode;
-    private readonly Dictionary<Node, NodeState> nodeStates = new Dictionary<Node, NodeState>();
     private readonly List<NodeConnection> connections = new List<NodeConnection>();
     private Node[] allNodes;
     private RectTransform connectionRoot;
-
-    private class NodeState
-    {
-        public string storyState;
-        public string displayedText;
-    }
+    private Tween mapScrollTween;
 
     private void Start()
     {
@@ -28,6 +26,8 @@ public class Map : MonoBehaviour
             textManager = FindFirstObjectByType<TextManager>();
         if (cardManager == null)
             cardManager = FindFirstObjectByType<CardManager>();
+        if (mapScrollView == null)
+            mapScrollView = GetComponentInParent<ScrollRect>();
 
         allNodes = GetComponentsInChildren<Node>(true);
         CreateConnections();
@@ -38,6 +38,8 @@ public class Map : MonoBehaviour
             currentNode.SetCurrent(true);
             RefreshVisibleNodes();
             cardManager.RefreshCharactersAtNode(currentNode);
+            ShowCurrentNodeText();
+            AudioManager.Instance?.PlayNode(currentNode.Index);
         }
     }
 
@@ -51,7 +53,6 @@ public class Map : MonoBehaviour
         if (travelDistance <= 0)
             return;
 
-        SaveCurrentNodeState();
         currentNode.SetCurrent(false);
         currentNode = destination;
         currentNode.isUnlocked = true;
@@ -60,14 +61,31 @@ public class Map : MonoBehaviour
         cardManager.RefreshCharactersAtNode(currentNode);
         ProgressTime(travelDistance);
 
-        if (currentNode.InkFile != null && textManager != null)
+        ShowCurrentNodeText();
+        AudioManager.Instance?.PlayNode(currentNode.Index);
+    }
+
+    public bool TryGoToFarNode(string destinationIndex)
+    {
+        if (currentNode == null || string.IsNullOrWhiteSpace(destinationIndex) ||
+            (textManager != null && textManager.IsTyping))
+            return false;
+
+        if (currentNode.FarNodes == null)
+            return false;
+
+        foreach (Node.FarConnectedNodes farNode in currentNode.FarNodes)
         {
-            nodeStates.TryGetValue(currentNode, out NodeState state);
-            textManager.LoadStory(
-                currentNode.InkFile,
-                state != null ? state.storyState : null,
-                state != null ? state.displayedText : string.Empty);
+            if (farNode == null || farNode.node == null || farNode.node.Index != destinationIndex)
+                continue;
+
+            TryGoTo(farNode.node);
+            if (currentNode == farNode.node)
+                CenterMapOnCurrentNode();
+            return true;
         }
+
+        return false;
     }
 
     public void UnlockNodes(IEnumerable<string> nodeIndices)
@@ -133,7 +151,9 @@ public class Map : MonoBehaviour
         foreach (Node node in allNodes)
         {
             if (node == null) continue;
-            bool visible = node == currentNode || (node.isUnlocked && GetTravelDistance(node) > 0);
+            bool isNearby = currentNode != null && currentNode.NearbyNodes != null &&
+                            System.Array.IndexOf(currentNode.NearbyNodes, node) >= 0;
+            bool visible = node == currentNode || (node.isUnlocked && isNearby);
             node.gameObject.SetActive(visible);
         }
 
@@ -189,21 +209,38 @@ public class Map : MonoBehaviour
         }
     }
 
-    private void SaveCurrentNodeState()
+    private void ShowCurrentNodeText()
     {
         if (currentNode == null || textManager == null)
             return;
 
-        if (textManager.IsStoryEnded)
-        {
-            nodeStates.Remove(currentNode);
-            return;
-        }
+        GameTime timeCard = GameManager.Instance != null ? GameManager.Instance.TimeCard : null;
+        textManager.ShowNode(currentNode.Index, timeCard != null ? timeCard.CurrentTime : 0);
+    }
 
-        nodeStates[currentNode] = new NodeState
-        {
-            storyState = textManager.SaveStoryState(),
-            displayedText = textManager.SaveDisplayedText()
-        };
+    private void CenterMapOnCurrentNode()
+    {
+        if (mapScrollView == null || mapScrollView.content == null || mapScrollView.viewport == null || currentNode == null)
+            return;
+
+        RectTransform content = mapScrollView.content;
+        RectTransform viewport = mapScrollView.viewport;
+        RectTransform nodeRect = currentNode.transform as RectTransform;
+        if (nodeRect == null)
+            return;
+
+        Canvas.ForceUpdateCanvases();
+        Vector2 nodePosition = (Vector2)content.InverseTransformPoint(nodeRect.TransformPoint(nodeRect.rect.center));
+        Vector2 viewportCenter = (Vector2)content.InverseTransformPoint(viewport.TransformPoint(viewport.rect.center));
+        Vector2 targetPosition = content.anchoredPosition + viewportCenter - nodePosition;
+
+        mapScrollTween?.Kill();
+        mapScrollView.StopMovement();
+        mapScrollTween = content.DOAnchorPos(targetPosition, farNodeCenterDuration).SetEase(Ease.OutQuad);
+    }
+
+    private void OnDestroy()
+    {
+        mapScrollTween?.Kill();
     }
 }

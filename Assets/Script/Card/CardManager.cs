@@ -11,6 +11,10 @@ public class CardManager : MonoBehaviour
 
     public List<Card> CardsOwned = new List<Card>();
     public Queue<Card> EmotionsOwned = new Queue<Card>();
+    [Tooltip("等待 InitialTest 结束后显示的 Card ID。")]
+    public List<string> InitialCards = new List<string>();
+    [Tooltip("调用 ShowInitialCard 时一并生成的初始卡牌预制体。")]
+    public List<Card> InitialCardPrefabs = new List<Card>();
 
     public void CreateCards(List<string> cardReferences)
     {
@@ -19,6 +23,19 @@ public class CardManager : MonoBehaviour
 
         foreach (string cardReference in cardReferences)
             CreateCardByReference(cardReference);
+    }
+
+    /// <summary>Queues card IDs awarded by the initial test without creating them yet.</summary>
+    public void AddInitialCards(List<string> cardReferences)
+    {
+        if (cardReferences == null)
+            return;
+
+        foreach (string cardReference in cardReferences)
+        {
+            if (!string.IsNullOrWhiteSpace(cardReference))
+                InitialCards.Add(cardReference);
+        }
     }
 
     public void CreateRandomCard(List<string> cardReferences)
@@ -380,4 +397,21 @@ public class CardManager : MonoBehaviour
         if (container != null)
             emotionContainer = container.transform;
     }
+
+    public void ShowInitialCard()
+    {
+        if (InitialCards != null && InitialCards.Count > 0)
+        {
+            List<string> cardsToCreate = new List<string>(InitialCards);
+            InitialCards.Clear();
+            CreateCards(cardsToCreate);
+        }
+
+        CreateCardsFromPrefabs(InitialCardPrefabs);
+
+        SettingPanel settingPanel = FindFirstObjectByType<SettingPanel>();
+        settingPanel?.ShowMapPanelAfterInitialCards();
+    }
+
+
 }

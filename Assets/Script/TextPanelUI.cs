@@ -29,6 +29,12 @@ public class TextPanelUI : MonoBehaviour
     private Action<Choice> visibleChoiceSelected;
     private List<Choice> savedChoices;
     private Action<Choice> savedChoiceSelected;
+    private List<string> pendingTextChoices;
+    private Action<int> pendingTextChoiceSelected;
+    private List<string> visibleTextChoices;
+    private Action<int> visibleTextChoiceSelected;
+    private List<string> savedTextChoices;
+    private Action<int> savedTextChoiceSelected;
     private bool isTyping;
     private Coroutine typingCoroutine;
     private Coroutine choiceDelayCoroutine;
@@ -98,6 +104,38 @@ public class TextPanelUI : MonoBehaviour
             isTyping = true;
             typingCoroutine = StartCoroutine(TypeQueuedText());
         }
+    }
+
+    public void ShowTextWithChoices(string text, List<string> choices, Action<int> onSelected)
+    {
+        StopTyping();
+        StopChoiceDelay();
+        if (cardChoiceCoroutine != null)
+            StopCoroutine(cardChoiceCoroutine);
+
+        cardChoiceCoroutine = null;
+        ClearChoices();
+        pendingChoices = null;
+        pendingChoiceSelected = null;
+        visibleChoices = null;
+        visibleChoiceSelected = null;
+        pendingTextChoices = choices != null ? new List<string>(choices) : null;
+        pendingTextChoiceSelected = onSelected;
+        visibleTextChoices = null;
+        visibleTextChoiceSelected = null;
+        isShowingCardDescription = false;
+        EnsureTextBlock();
+        currentTextBlock.text = string.Empty;
+        currentTextBlock.maxVisibleCharacters = int.MaxValue;
+
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            SetPaperRaised(pendingTextChoices != null && pendingTextChoices.Count > 0);
+            StartTextChoiceDelay();
+            return;
+        }
+
+        ShowDialogueUI(text);
     }
 
     public void ShowCardDescription(string description)
@@ -216,6 +254,8 @@ public class TextPanelUI : MonoBehaviour
     {
         savedChoices = null;
         savedChoiceSelected = null;
+        savedTextChoices = null;
+        savedTextChoiceSelected = null;
 
         if (visibleChoices != null)
         {
@@ -227,24 +267,47 @@ public class TextPanelUI : MonoBehaviour
             savedChoices = new List<Choice>(pendingChoices);
             savedChoiceSelected = pendingChoiceSelected;
         }
+        else if (visibleTextChoices != null)
+        {
+            savedTextChoices = new List<string>(visibleTextChoices);
+            savedTextChoiceSelected = visibleTextChoiceSelected;
+        }
+        else if (pendingTextChoices != null)
+        {
+            savedTextChoices = new List<string>(pendingTextChoices);
+            savedTextChoiceSelected = pendingTextChoiceSelected;
+        }
 
         ClearChoices();
         pendingChoices = null;
         pendingChoiceSelected = null;
         visibleChoices = null;
         visibleChoiceSelected = null;
+        visibleTextChoices = null;
+        visibleTextChoiceSelected = null;
     }
 
     private void RestoreSavedChoices()
     {
-        if (savedChoices == null)
+        if (savedChoices == null && savedTextChoices == null)
             return;
 
-        pendingChoices = savedChoices;
-        pendingChoiceSelected = savedChoiceSelected;
-        savedChoices = null;
-        savedChoiceSelected = null;
-        ShowPendingChoices();
+        if (savedChoices != null)
+        {
+            pendingChoices = savedChoices;
+            pendingChoiceSelected = savedChoiceSelected;
+            savedChoices = null;
+            savedChoiceSelected = null;
+            ShowPendingChoices();
+        }
+        else
+        {
+            pendingTextChoices = savedTextChoices;
+            pendingTextChoiceSelected = savedTextChoiceSelected;
+            savedTextChoices = null;
+            savedTextChoiceSelected = null;
+            ShowPendingTextChoices();
+        }
     }
 
     private void EnsureTextBlock()
@@ -288,6 +351,7 @@ public class TextPanelUI : MonoBehaviour
         isTyping = false;
         typingCoroutine = null;
         StartChoiceDelay();
+        StartTextChoiceDelay();
     }
 
     private void StopTyping()
@@ -312,6 +376,15 @@ public class TextPanelUI : MonoBehaviour
         choiceDelayCoroutine = StartCoroutine(ShowChoicesAfterDelay());
     }
 
+    private void StartTextChoiceDelay()
+    {
+        if (pendingTextChoices == null || pendingTextChoices.Count == 0 || isShowingCardDescription)
+            return;
+
+        StopChoiceDelay();
+        choiceDelayCoroutine = StartCoroutine(ShowTextChoicesAfterDelay());
+    }
+
     private void StopChoiceDelay()
     {
         if (choiceDelayCoroutine != null)
@@ -325,6 +398,13 @@ public class TextPanelUI : MonoBehaviour
         yield return new WaitForSeconds(choiceDelay);
         choiceDelayCoroutine = null;
         ShowPendingChoices();
+    }
+
+    private IEnumerator ShowTextChoicesAfterDelay()
+    {
+        yield return new WaitForSeconds(choiceDelay);
+        choiceDelayCoroutine = null;
+        ShowPendingTextChoices();
     }
 
     private void ShowPendingChoices()
@@ -358,6 +438,37 @@ public class TextPanelUI : MonoBehaviour
         ScrollToBottom();
     }
 
+    private void ShowPendingTextChoices()
+    {
+        if (content == null || choiceButtonPrefab == null || pendingTextChoices == null)
+            return;
+
+        List<string> choicesToShow = pendingTextChoices;
+        Action<int> choiceSelected = pendingTextChoiceSelected;
+        pendingTextChoices = null;
+        pendingTextChoiceSelected = null;
+        visibleTextChoices = new List<string>(choicesToShow);
+        visibleTextChoiceSelected = choiceSelected;
+
+        for (int index = 0; index < choicesToShow.Count; index++)
+        {
+            int selectedIndex = index;
+            Button button = Instantiate(choiceButtonPrefab, content);
+            button.gameObject.SetActive(true);
+            button.name = "NodeChoice";
+
+            TextMeshProUGUI label = button.GetComponentInChildren<TextMeshProUGUI>(true);
+            if (label != null)
+                label.text = choicesToShow[selectedIndex];
+
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => choiceSelected?.Invoke(selectedIndex));
+            choiceObjects.Add(button.gameObject);
+        }
+
+        ScrollToBottom();
+    }
+
     public void ClearChoices()
     {
         eventCardChoiceSlot = null;
@@ -370,6 +481,8 @@ public class TextPanelUI : MonoBehaviour
         }
 
         choiceObjects.Clear();
+        pendingTextChoices = null;
+        pendingTextChoiceSelected = null;
     }
 
 
