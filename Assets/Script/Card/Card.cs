@@ -24,7 +24,8 @@ public class Card : MonoBehaviour,
     public bool CanBeDropped;
 
     public CardLibrary.CardData Data { get; private set; }
-    public bool IsEmotionCard => Data != null && Data.type == "Emotion";
+    public bool IsEmotionCard => Data != null &&
+                                 string.Equals(Data.type, "Emotion", System.StringComparison.OrdinalIgnoreCase);
 
     private bool[] usedRawChoices;
     private int lockedRawChoiceIndex = -1;
@@ -270,6 +271,9 @@ public class Card : MonoBehaviour,
                 cardManager.CreateRandomCard(new List<string>(choice.randomCardList ?? new string[0]));
         }
 
+        if (choice.willPowerDelta != 0 && GameManager.Instance != null && GameManager.Instance.WillPower != null)
+            GameManager.Instance.WillPower.ChangeValue(choice.willPowerDelta);
+
         ConsumeTime(choice.timeConsumed);
         UnlockNodes(choice.unlockNodes);
 
@@ -451,9 +455,14 @@ public class Card : MonoBehaviour,
 
         if (missionSlot != null)
         {
-            bool isMissionCard = Data.type == "Material" || Data.type == "Emotion";
-            if (isMissionCard && missionSlot.CurrentCard == null)
+            bool canPlaceInMission = missionManager != null
+                ? missionManager.CanPlaceCardInMissionSlot(this, missionSlot)
+                : string.Equals(Data.type, "Material", System.StringComparison.OrdinalIgnoreCase) || IsEmotionCard;
+            if (canPlaceInMission && missionSlot.CurrentCard == null)
+            {
                 missionSlot.PlaceCard(this);
+                missionManager?.OnMissionCardPlaced(missionSlot);
+            }
             else
                 ReturnToPreviousPosition();
             return;

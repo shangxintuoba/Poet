@@ -30,6 +30,7 @@ public sealed class GameManager : MonoBehaviour
 
     private readonly List<Card> breakDownCards = new();
     private bool isGameOver;
+    private bool isGameWon;
     private bool isRestarting;
 
 
@@ -159,6 +160,32 @@ public sealed class GameManager : MonoBehaviour
         foreach (GameObject gameOverCardPrefab in GameOverCards)
             cardManager.CreateCardFromPrefab(gameOverCardPrefab.GetComponent<Card>());
 
+    }
+
+    public void HandleGameWin()
+    {
+        if (isGameWon)
+            return;
+
+        isGameWon = true;
+        CardManager cardManager = FindFirstObjectByType<CardManager>();
+        if (cardManager == null)
+        {
+            Debug.LogWarning("GameManager could not find CardManager to resolve game victory.");
+            return;
+        }
+
+        cardManager.ClearAllCards();
+        mapPanel?.SetActive(false);
+        forgePanel?.SetActive(false);
+        missionPanel?.SetActive(false);
+
+        foreach (GameObject winCardPrefab in WinCards)
+        {
+            Card winCard = winCardPrefab != null ? winCardPrefab.GetComponent<Card>() : null;
+            if (winCard != null)
+                cardManager.CreateCardFromPrefab(winCard);
+        }
     }
 
 

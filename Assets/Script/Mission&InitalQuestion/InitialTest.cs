@@ -140,6 +140,7 @@ public class InitialTest : MonoBehaviour
         ClearQuestionChoices();
         CalculateResult();
         AddResultCards();
+        UpdateFinalMissionRequirements();
         CompleteTest();
     }
 
@@ -182,6 +183,18 @@ public class InitialTest : MonoBehaviour
         }
 
         cardManager.AddInitialCards(ResultCardIDs);
+    }
+
+    private void UpdateFinalMissionRequirements()
+    {
+        MissionManager missionManager = FindFirstObjectByType<MissionManager>(FindObjectsInactive.Include);
+        if (missionManager == null)
+        {
+            Debug.LogWarning("InitialTest could not find a MissionManager to update Final Mission requirements.");
+            return;
+        }
+
+        missionManager.SetFinalMissionRequiredCards(FinalMissionRequiredCardIDs);
     }
 
     private static void AddCardIDs(List<string> destination, string[] cardIDs)

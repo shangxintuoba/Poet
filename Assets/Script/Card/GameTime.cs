@@ -17,6 +17,7 @@ public class GameTime : Card
         GameManager.Instance.TimeCard = this;
         RefreshCardTimeText();
         RefreshCardTimeText();
+        FindFirstObjectByType<MissionManager>(FindObjectsInactive.Include)?.RefreshDailyMissions();
     }
 
     public int CurrentTime => currentTime;
@@ -54,6 +55,7 @@ public class GameTime : Card
         {
             Raw.RefreshAllDailyChoices();
             Card.RefreshAllJsonRawChoices();
+            FindFirstObjectByType<MissionManager>(FindObjectsInactive.Include)?.RefreshDailyMissions();
         }
 
         if (IsSelected)

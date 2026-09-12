@@ -62,18 +62,6 @@ public class Node : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void EnsureArrow(GameObject arrowTemplate)
-    {
-        if (Arrow == null && arrowTemplate != null)
-        {
-            Arrow = Instantiate(arrowTemplate, transform, false);
-            Arrow.name = "Arrow";
-        }
-
-        if (Arrow != null)
-            Arrow.SetActive(false);
-    }
-
     private void OnDestroy()
     {
         scaleTween?.Kill();

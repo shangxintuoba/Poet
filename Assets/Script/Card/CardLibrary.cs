@@ -44,6 +44,7 @@ public class CardLibrary : MonoBehaviour
         public string[] cardsDestroyed;
         public string[] randomCardList;
         public int randomCardNumber;
+        public int willPowerDelta;
         public int timeConsumed;
         public string[] unlockNodes;
         public bool hideOtherChoices;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -41,8 +42,8 @@ public class TextPanelUI : MonoBehaviour
     private bool isShowingCardDescription;
     private string savedDialogueText;
     private Coroutine cardChoiceCoroutine;
-    private CardSlot eventCardChoiceSlot;
-    private EventCard activeEventCard;
+    public CardSlot EventCardChoiceSlot { get; private set; }
+    public EventCard ActiveEventCard { get; private set; }
     private Vector2 paperInitialPosition;
     private bool hasResolvedPaperInitialPosition;
     private bool isPaperRaised;
@@ -52,8 +53,6 @@ public class TextPanelUI : MonoBehaviour
     public string DisplayedText => currentTextBlock != null ? currentTextBlock.text : string.Empty;
     public bool HasDisplayedText => !string.IsNullOrWhiteSpace(DisplayedText);
     public bool IsExpanded => isPaperRaised;
-    public CardSlot EventCardChoiceSlot => eventCardChoiceSlot;
-    public EventCard ActiveEventCard => activeEventCard;
 
     public void SetDisplayedText(string text)
     {
@@ -89,6 +88,14 @@ public class TextPanelUI : MonoBehaviour
             choiceButtonPrefab.gameObject.SetActive(false);
 
         ResolvePaper();
+    }
+
+    private void Update()
+    {
+        if (!isTyping || Mouse.current == null || !Mouse.current.leftButton.wasPressedThisFrame || !IsPointerOverTyper())
+            return;
+
+        SkipTyping();
     }
     public void ShowDialogueUI(string text)
     {
@@ -185,8 +192,8 @@ public class TextPanelUI : MonoBehaviour
         GameObject slotObject = Instantiate(choiceSlotPrefab, content);
         slotObject.SetActive(true);
         slotObject.name = "EventCardChoiceSlot";
-        eventCardChoiceSlot = slotObject.GetComponent<CardSlot>();
-        activeEventCard = eventCard;
+        EventCardChoiceSlot = slotObject.GetComponent<CardSlot>();
+        ActiveEventCard = eventCard;
         eventCard.ChoiceSlot = slotObject;
         choiceObjects.Add(slotObject);
         cardChoiceCoroutine = null;
@@ -354,6 +361,45 @@ public class TextPanelUI : MonoBehaviour
         StartTextChoiceDelay();
     }
 
+    private void SkipTyping()
+    {
+        if (currentTextBlock == null)
+            return;
+
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        while (textQueue.Count > 0)
+        {
+            string nextText = textQueue.Dequeue();
+            currentTextBlock.text += currentTextBlock.text.Length > 0 ? "\n\n" + nextText : nextText;
+        }
+
+        currentTextBlock.maxVisibleCharacters = int.MaxValue;
+        currentTextBlock.ForceMeshUpdate();
+        if (content is RectTransform contentRect)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(contentRect);
+        ScrollToBottom();
+
+        typingCoroutine = null;
+        isTyping = false;
+        StartChoiceDelay();
+        StartTextChoiceDelay();
+    }
+
+    private bool IsPointerOverTyper()
+    {
+        ResolvePaper();
+        if (paper == null)
+            return false;
+
+        Canvas canvas = paper.GetComponentInParent<Canvas>();
+        Camera eventCamera = canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? canvas.worldCamera
+            : null;
+        return RectTransformUtility.RectangleContainsScreenPoint(paper, Mouse.current.position.ReadValue(), eventCamera);
+    }
+
     private void StopTyping()
     {
         if (typingCoroutine != null)
@@ -471,8 +517,8 @@ public class TextPanelUI : MonoBehaviour
 
     public void ClearChoices()
     {
-        eventCardChoiceSlot = null;
-        activeEventCard = null;
+        EventCardChoiceSlot = null;
+        ActiveEventCard = null;
 
         foreach (GameObject choiceObject in choiceObjects)
         {

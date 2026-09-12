@@ -123,7 +123,7 @@ public class CardManager : MonoBehaviour
             return;
         }
 
-        if (data.type == "Emotion")
+        if (IsCardType(data, "Emotion"))
             CreateEmotion(data);
         else if (data.type == "Character")
         {
@@ -180,7 +180,7 @@ public class CardManager : MonoBehaviour
         card.Initialize(data);
         targetSlot.PlaceCard(card);
 
-        if (data.type == "Emotion")
+        if (IsCardType(data, "Emotion"))
         {
             while (EmotionsOwned.Count >= emotionCapacity)
                 DestroyEmotion(EmotionsOwned.Dequeue());
@@ -390,6 +390,12 @@ public class CardManager : MonoBehaviour
             cardLibrary = FindFirstObjectByType<CardLibrary>();
     }
 
+    private static bool IsCardType(CardLibrary.CardData data, string type)
+    {
+        return data != null &&
+               string.Equals(data.type, type, System.StringComparison.OrdinalIgnoreCase);
+    }
+
     private void ResolveEmotionContainer()
     {
         if (emotionContainer != null)
@@ -403,14 +409,32 @@ public class CardManager : MonoBehaviour
     public void ShowInitialCard()
     {
         if (HasInitialized) return;
-        if (InitialCards != null && InitialCards.Count > 0)
+
+        List<string> initialCardReferences = InitialCards != null
+            ? new List<string>(InitialCards)
+            : new List<string>();
+        bool initialCardsAssigned = initialCardReferences.Count == 0;
+
+        // Initial setup only creates the configured prefabs (Your Body, Time, Willpower).
+        // The IDs selected by InitialTest become rewards of Your Body's first Raw choice.
+        if (InitialCardPrefabs != null)
         {
-            List<string> cardsToCreate = new List<string>(InitialCards);
-            InitialCards.Clear();
-            CreateCards(cardsToCreate);
+            foreach (Card prefab in InitialCardPrefabs)
+            {
+                Card card = CreateCardFromPrefab(prefab);
+                HandleInitialCard initialCardHandler = card != null
+                    ? card.GetComponent<HandleInitialCard>()
+                    : null;
+
+                if (initialCardHandler != null)
+                    initialCardsAssigned |= initialCardHandler.AddInitialCards(initialCardReferences);
+            }
         }
 
-        CreateCardsFromPrefabs(InitialCardPrefabs);
+        if (initialCardsAssigned)
+            InitialCards.Clear();
+        else if (initialCardReferences.Count > 0)
+            Debug.LogWarning("Initial cards could not be assigned because no generated prefab has HandleInitialCard.");
 
         SettingPanel settingPanel = FindFirstObjectByType<SettingPanel>();
         settingPanel?.ShowMapPanelAfterInitialCards();

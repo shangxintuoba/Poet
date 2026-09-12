@@ -173,7 +173,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
                 refreshChoice = BoolValue(Value(row, "RefreshChoice"))
             };
 
-            if (card.type == "Emotion")
+            if (string.Equals(card.type, "Emotion", StringComparison.OrdinalIgnoreCase))
             {
                 card.willPowerDelta = IntValue(Value(row, "WillPowerDelta"));
             }
@@ -203,6 +203,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
                         cardsDestroyed = SplitIds(Value(choice, "CardsDestroyed")).ToArray(),
                         randomCardList = SplitIds(Value(choice, "RandomCardList")).ToArray(),
                         randomCardNumber = IntValue(Value(choice, "RandomCardNumber")),
+                        willPowerDelta = IntValue(Value(choice, "WillPowerDelta")),
                         timeConsumed = IntValue(Value(choice, "TimeConsumed")),
                         unlockNodes = SplitIds(Value(choice, "UnolockNode")).ToArray(),
                         hideOtherChoices = BoolValue(Value(choice, "HideOtherChoices")),
@@ -300,7 +301,7 @@ public sealed class CardLibraryJsonConverterWindow : EditorWindow
 
         return new CardLibrary.CardLibraryData
         {
-            schemaVersion = 14,
+            schemaVersion = 15,
             sourceSheets = RequiredSheets,
             cards = cards.ToArray(),
             nodes = nodes,

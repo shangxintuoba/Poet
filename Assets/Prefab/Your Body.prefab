@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 2510375068765498232}
   - component: {fileID: 7942285702321120892}
   - component: {fileID: 3487033384045353852}
+  - component: {fileID: 7433447081389677780}
   m_Layer: 5
   m_Name: Your Body
   m_TagString: Untagged
@@ -428,21 +429,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Raw
   NameText: {fileID: 6676104710940119004}
-  NaureOutline: {fileID: 0}
-  PoliticsOutline: {fileID: 0}
+  shadow: {fileID: 4411531688873802770}
+  defaultCardBack: {fileID: 0}
+  RawOutline: {fileID: 0}
   EmotionOutline: {fileID: 0}
-  UniversalOutline: {fileID: 0}
-  EventOutline: {fileID: 0}
+  MaterialOutline: {fileID: 0}
+  FuelOutline: {fileID: 0}
+  CharacterOutline: {fileID: 0}
   Description: 
   Name: Your Body
   CanBeDropped: 1
-  OutlineType: 3
   cardPanelDropPadding: 80
   dragScale: 1.08
   selectionScale: 1.08
   scaleDuration: 0.12
   snapDuration: 0.15
-  shadow: {fileID: 4411531688873802770}
   dragShadowOffset: {x: -8, y: -8}
   Useable: 1
   RefreshChoice: 0
@@ -453,9 +454,7 @@ MonoBehaviour:
   - ChoiceText: 'Touch your inside  '
     UsedText: 
     CardsAdded: []
-    CardsAddedPrefabs:
-    - {fileID: 2009180069343757963, guid: 985cde11873c6074c8239fd6372a9ef9, type: 3}
-    - {fileID: 5350834661324277761, guid: df12ab842488cf34f904d7b205be33e3, type: 3}
+    CardsAddedPrefabs: []
     CardsDestroyed: []
     RandomCardList: []
     RandomCardNumber: 0
@@ -467,7 +466,7 @@ MonoBehaviour:
     UsedText: 
     CardsAdded:
     - Work
-    - Diploma
+    - DesireWork
     CardsAddedPrefabs:
     - {fileID: 5350834661324277761, guid: d89bdad6a4054cc4d91b285304a5488c, type: 3}
     CardsDestroyed:
@@ -480,3 +479,15 @@ MonoBehaviour:
     DestroyWhenUsed: 0
   usedChoices: 0000
   lockedChoiceIndex: -3
+--- !u!114 &7433447081389677780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944154222717993756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd3f4aab1327214190239bc432e978f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandleInitialCard

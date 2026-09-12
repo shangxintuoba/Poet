@@ -31,6 +31,30 @@ public class Raw : Card
     [SerializeField] private bool[] usedChoices;
     [SerializeField] private int lockedChoiceIndex = -1;
 
+    /// <summary>Adds Card Library references to one Raw choice without replacing its existing rewards.</summary>
+    public bool AddCardsToChoice(int choiceIndex, IEnumerable<string> cardReferences)
+    {
+        if (choices == null || choiceIndex < 0 || choiceIndex >= choices.Length)
+            return false;
+
+        UseChoice choice = choices[choiceIndex];
+        List<string> cards = choice.CardsAdded != null
+            ? new List<string>(choice.CardsAdded)
+            : new List<string>();
+
+        if (cardReferences != null)
+        {
+            foreach (string cardReference in cardReferences)
+            {
+                if (!string.IsNullOrWhiteSpace(cardReference))
+                    cards.Add(cardReference);
+            }
+        }
+
+        choice.CardsAdded = cards.ToArray();
+        return true;
+    }
+
     protected override void ShowCardDetails()
     {
         base.ShowCardDetails();

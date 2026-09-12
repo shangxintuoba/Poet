@@ -1,5 +1,5 @@
 {
-    "schemaVersion": 12,
+    "schemaVersion": 15,
     "sourceSheets": [
         "FullLibrary",
         "Raw_Choice",
@@ -15,7 +15,7 @@
             "id": "flame",
             "name": "Flame",
             "type": "Fuel",
-            "description": "Fuel. Can be used to forge new material",
+            "description": "Type: <color=#633D3D>Fuel</color>. \n\nLight it on fire, give it some extra oomph, or just punch it in the face.\nCan be used to forge new <color=#A15C5A>material</color>",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -30,7 +30,7 @@
             "id": "thought",
             "name": "Thought",
             "type": "Fuel",
-            "description": "",
+            "description": "Type: <color=#633D3D>Fuel</color>. \n\nImbue your materials with structure, turn sand into glass, stack stones into towers.\nCan be used to forge new <color=#A15C5A>material</color>",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -45,7 +45,7 @@
             "id": "enthropy",
             "name": "Enthropy",
             "type": "Fuel",
-            "description": "",
+            "description": "Type: <color=#633D3D>Fuel</color>. \n\nCast your materials to the winds of time, and leave the rest to thermodynamics. In the end we will always be left with nothing.\nCan be used to forge new <color=#A15C5A>material</color>",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -60,7 +60,7 @@
             "id": "air",
             "name": "Air",
             "type": "Fuel",
-            "description": "",
+            "description": "Type: <color=#633D3D>Fuel</color>. \n\n\nRise, spread—imagine the universe as a giant balloon, with stars as the plankton floating inside.\nCan be used to forge new <color=#A15C5A>material</color>",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -75,7 +75,7 @@
             "id": "yeast",
             "name": "Yeast",
             "type": "Fuel",
-            "description": "",
+            "description": "Type: <color=#633D3D>Fuel</color>. \n\nSwallow all your bitter pills. Let something ferment and then grow roots.\nCan be used to forge new <color=#A15C5A>material</color>",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -84,6 +84,258 @@
             "refreshChoice": false,
             "maximumUse": 0,
             "choices": [],
+            "characterProgress": []
+        },
+        {
+            "id": "brain",
+            "name": "brain folds",
+            "type": "Raw",
+            "description": "Your willpower comes from your brain. \nCan use once everyday.\n+3 <color=#A15C9A>Willpower</color>",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "brain1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 3,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "tongue",
+            "name": "salivary gland",
+            "type": "Raw",
+            "description": "Your willpower comes from your tongue. \nCan use once everyday.\n+3 <color=#A15C9A>Willpower</color>",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "tongue1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 3,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "muscles",
+            "name": "red fibers",
+            "type": "Raw",
+            "description": "Your willpower comes from your muscles. \nCan use once everyday.\n+3 <color=#A15C9A>Willpower</color>",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "muscles1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 3,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "stomach",
+            "name": "bitter enzymes",
+            "type": "Raw",
+            "description": "Your willpower comes from your stomach. \nCan use once everyday.\n+3 <color=#A15C9A>Willpower</color>",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "stomach1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 3,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "Lglass",
+            "name": "Language like glass",
+            "type": "Raw",
+            "description": "Your words can provide you with the <color=#633D3D>Fuel</color> you need\n\nCan use once everyday",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "Lglass1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [
+                        "thought",
+                        "air"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "Lflame",
+            "name": "language like flame",
+            "type": "Raw",
+            "description": "Your words can provide you with the <color=#633D3D>Fuel</color> you need\n\nCan use once everyday",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "Lflame1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [
+                        "yeast",
+                        "flame"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "Ldirt",
+            "name": "language like dirt",
+            "type": "Raw",
+            "description": "Your words can provide you with the <color=#633D3D>Fuel</color> you need\n\nCan use once everyday",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "Ldirt1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [
+                        "yeast",
+                        "enthropy"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
+            "characterProgress": []
+        },
+        {
+            "id": "Lstone",
+            "name": "language like stone",
+            "type": "Raw",
+            "description": "Your words can provide you with the <color=#633D3D>Fuel</color> you need\n\nCan use once everyday",
+            "willPowerDelta": 0,
+            "materialType": "",
+            "fuelType": "",
+            "useable": true,
+            "canBeDropped": true,
+            "refreshChoice": true,
+            "maximumUse": 100,
+            "choices": [
+                {
+                    "id": "Lstone1",
+                    "choiceText": "Use",
+                    "usedText": "Used Today",
+                    "cardsAdded": [
+                        "thought",
+                        "enthropy"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -107,6 +359,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -136,6 +389,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -165,6 +419,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -194,6 +449,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -223,6 +479,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -252,6 +509,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -281,6 +539,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -310,6 +569,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -328,8 +588,8 @@
             "fuelType": "",
             "useable": true,
             "canBeDropped": true,
-            "refreshChoice": false,
-            "maximumUse": 0,
+            "refreshChoice": true,
+            "maximumUse": 3,
             "choices": [
                 {
                     "id": "cigarette1",
@@ -339,6 +599,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -368,6 +629,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -397,6 +659,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -426,6 +689,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -455,6 +719,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -484,6 +749,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -513,6 +779,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -542,6 +809,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -571,6 +839,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -600,6 +869,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -629,6 +899,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 0,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -658,6 +929,7 @@
                     "cardsDestroyed": [],
                     "randomCardList": [],
                     "randomCardNumber": 0,
+                    "willPowerDelta": 0,
                     "timeConsumed": 60,
                     "unlockNodes": [],
                     "hideOtherChoices": false,
@@ -678,7 +950,22 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "logic1",
+                    "choiceText": "Read",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 60,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -693,7 +980,22 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "historyofearth1",
+                    "choiceText": "Read",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 60,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -708,11 +1010,26 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "sellyourself1",
+                    "choiceText": "Read",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 60,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
-            "id": "stalker",
+            "id": "Lem",
             "name": "Imaginary Magnitude",
             "type": "Raw",
             "description": "A collection of science fiction short stories by Stanisław Lem, featuring tales about robots and the future.\nDon't even think about it—you will never possess that kind of talent and imagination in your lifetime.",
@@ -723,7 +1040,22 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "lem1",
+                    "choiceText": "Read",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 60,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -738,7 +1070,22 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "Karamazov1",
+                    "choiceText": "Read",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 60,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -753,7 +1100,22 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "artfilm1",
+                    "choiceText": "Watch",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 120,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": true
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -768,7 +1130,22 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "horrorfilm1",
+                    "choiceText": "Watch",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 90,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": true
+                }
+            ],
             "characterProgress": []
         },
         {
@@ -783,14 +1160,29 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "superherofilm1",
+                    "choiceText": "Watch",
+                    "usedText": "",
+                    "cardsAdded": [],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 120,
+                    "unlockNodes": [],
+                    "hideOtherChoices": false,
+                    "destroyWhenUsed": true
+                }
+            ],
             "characterProgress": []
         },
         {
             "id": "YuWang",
             "name": "Desire",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C5A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -804,8 +1196,8 @@
         {
             "id": "ZaoDong",
             "name": "Restlessness",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C6A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -819,8 +1211,8 @@
         {
             "id": "YinMou",
             "name": "Conspiracy",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C7A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -834,8 +1226,8 @@
         {
             "id": "ShuiMian",
             "name": "Sleep",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C8A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -849,8 +1241,8 @@
         {
             "id": "SeYu",
             "name": "Lust",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C9A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -864,8 +1256,8 @@
         {
             "id": "Meng",
             "name": "Dream",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C10A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -879,8 +1271,8 @@
         {
             "id": "BaoLi",
             "name": "Violence",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C11A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -894,8 +1286,8 @@
         {
             "id": "YouMu",
             "name": "Nomad",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C12A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -909,8 +1301,8 @@
         {
             "id": "Li",
             "name": "Plow",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C13A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -924,8 +1316,8 @@
         {
             "id": "DiGuo",
             "name": "Empire",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C14A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -939,8 +1331,8 @@
         {
             "id": "GongHeGuo",
             "name": "Republic",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C15A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -954,8 +1346,8 @@
         {
             "id": "WuChanJieJi",
             "name": "Proletariat",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C16A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -969,8 +1361,8 @@
         {
             "id": "ZiYouShiChang",
             "name": "Free market",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C17A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -984,8 +1376,8 @@
         {
             "id": "GeMing",
             "name": "Revolution",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C18A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -999,8 +1391,8 @@
         {
             "id": "Zhai",
             "name": "Debt",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C19A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1014,8 +1406,8 @@
         {
             "id": "FuChou",
             "name": "Revenge",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C20A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1029,8 +1421,8 @@
         {
             "id": "LvFa",
             "name": "Law",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C21A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1044,8 +1436,8 @@
         {
             "id": "JiQi",
             "name": "Machine",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C22A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1059,8 +1451,8 @@
         {
             "id": "ZhanZheng",
             "name": "War",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C23A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1074,8 +1466,8 @@
         {
             "id": "Zhou",
             "name": "Boat",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C24A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1089,8 +1481,8 @@
         {
             "id": "JingZi",
             "name": "Mirror",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C25A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1104,8 +1496,8 @@
         {
             "id": "BaoLei",
             "name": "Fortress",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C26A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1119,8 +1511,8 @@
         {
             "id": "WuQi",
             "name": "Weapon",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C27A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1134,8 +1526,8 @@
         {
             "id": "ZhiWu",
             "name": "Fabric",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C28A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1149,8 +1541,8 @@
         {
             "id": "PingYuan",
             "name": "Plain",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C29A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1164,8 +1556,8 @@
         {
             "id": "GaoYuan",
             "name": "Plateau",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C30A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1179,8 +1571,8 @@
         {
             "id": "Shan",
             "name": "Mountain",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C31A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1194,8 +1586,8 @@
         {
             "id": "HuangYuan",
             "name": "Wasteland",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C32A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1209,8 +1601,8 @@
         {
             "id": "CongLin",
             "name": "Jungle",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C33A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1224,8 +1616,8 @@
         {
             "id": "QunDao",
             "name": "Archipelago",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C34A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1239,8 +1631,8 @@
         {
             "id": "Dao",
             "name": "Island",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C35A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1254,8 +1646,8 @@
         {
             "id": "Hai",
             "name": "Sea",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C36A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1269,8 +1661,8 @@
         {
             "id": "DongTu",
             "name": "Tundra",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C37A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1284,8 +1676,8 @@
         {
             "id": "ShaMo",
             "name": "Desert",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C38A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1299,8 +1691,8 @@
         {
             "id": "ZhaoZe",
             "name": "Swamp",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C39A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1314,8 +1706,8 @@
         {
             "id": "ChengShi",
             "name": "City",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C40A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1329,8 +1721,8 @@
         {
             "id": "Ai",
             "name": "Love",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C41A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1344,8 +1736,8 @@
         {
             "id": "QiJi",
             "name": "Miracle",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C42A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1359,8 +1751,8 @@
         {
             "id": "ZhenLi",
             "name": "Truth",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C43A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1374,8 +1766,8 @@
         {
             "id": "LiangZhi",
             "name": "Conscience",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C44A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1389,8 +1781,8 @@
         {
             "id": "Mei",
             "name": "Aesthetics",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C45A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1404,8 +1796,8 @@
         {
             "id": "BianZhengFa",
             "name": "Dialectics",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C46A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1419,8 +1811,8 @@
         {
             "id": "LiXing",
             "name": "Reason",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C47A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1434,8 +1826,8 @@
         {
             "id": "Hui",
             "name": "dust",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C48A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1449,8 +1841,8 @@
         {
             "id": "Mi",
             "name": "Enigma",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C49A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1464,8 +1856,8 @@
         {
             "id": "Zui",
             "name": "Sin",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C50A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1479,8 +1871,8 @@
         {
             "id": "Guang",
             "name": "Light",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C51A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1494,8 +1886,8 @@
         {
             "id": "XuWu",
             "name": "Nothingness",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C52A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1509,8 +1901,8 @@
         {
             "id": "XuWuZhuYi",
             "name": "Nihilism",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C53A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1524,8 +1916,8 @@
         {
             "id": "SiWang",
             "name": "Death",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C54A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1539,8 +1931,8 @@
         {
             "id": "FuHuo",
             "name": "Resurrection",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C55A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1554,8 +1946,8 @@
         {
             "id": "ZiYou",
             "name": "Freedom",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C56A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1569,8 +1961,8 @@
         {
             "id": "ZhengYi",
             "name": "Justice",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C57A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1584,8 +1976,8 @@
         {
             "id": "FanFeng",
             "name": "Irony",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C58A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1599,8 +1991,8 @@
         {
             "id": "Shu",
             "name": "Tree",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C59A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1614,8 +2006,8 @@
         {
             "id": "Gen",
             "name": "Root",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C60A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1629,8 +2021,8 @@
         {
             "id": "ShiTou",
             "name": "Stone",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C61A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1644,8 +2036,8 @@
         {
             "id": "NiTu",
             "name": "Soil",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C62A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1659,8 +2051,8 @@
         {
             "id": "Mei2",
             "name": "Coal",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C63A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1674,8 +2066,8 @@
         {
             "id": "GuTou",
             "name": "Bone",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C64A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1689,8 +2081,8 @@
         {
             "id": "Rou",
             "name": "Flesh",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C65A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1704,8 +2096,8 @@
         {
             "id": "XingXing",
             "name": "Star",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C66A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1719,8 +2111,8 @@
         {
             "id": "YueLiang",
             "name": "Moon",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C67A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1734,8 +2126,8 @@
         {
             "id": "Yu",
             "name": "Rain",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C68A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1749,8 +2141,8 @@
         {
             "id": "FengBao",
             "name": "Storm",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C69A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1764,8 +2156,8 @@
         {
             "id": "ChaoXi",
             "name": "Tide",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C70A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1779,8 +2171,8 @@
         {
             "id": "Feng",
             "name": "Breeze",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C71A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1794,8 +2186,8 @@
         {
             "id": "Hua",
             "name": "Flower",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C72A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1809,8 +2201,8 @@
         {
             "id": "YeShou",
             "name": "Beast",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C73A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1824,8 +2216,8 @@
         {
             "id": "JiYi",
             "name": "Craft",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C74A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1839,8 +2231,8 @@
         {
             "id": "Shi",
             "name": "Poetry",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C75A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1854,8 +2246,8 @@
         {
             "id": "ChenMo",
             "name": "Silence",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C76A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1869,8 +2261,8 @@
         {
             "id": "HeiAn",
             "name": "Darkness",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C77A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1884,8 +2276,8 @@
         {
             "id": "Ye",
             "name": "Night",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C78A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1899,8 +2291,8 @@
         {
             "id": "Zhou2",
             "name": "Day",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C79A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1914,8 +2306,8 @@
         {
             "id": "MeiSu",
             "name": "Kitsch",
-            "type": "material",
-            "description": "Material. New materials can be created by forging them together with fuel.",
+            "type": "Material",
+            "description": "Type:<color=#A15C5A>material</color>\n\nNew materials can be created by forging them together with <color=#A15C80A>fuel</color>.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -1930,8 +2322,8 @@
             "id": "FengKuang",
             "name": "Madness",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-5 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -5,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -1945,8 +2337,8 @@
             "id": "TongKu",
             "name": "Pain",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-3 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -3,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -1960,8 +2352,8 @@
             "id": "BeiShang",
             "name": "Sorrow",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-1 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -1,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -1975,8 +2367,8 @@
             "id": "PingJing",
             "name": "Calm",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-1 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": 1,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -1990,8 +2382,8 @@
             "id": "XinXi",
             "name": "Joy",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n+2 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": 2,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2005,8 +2397,8 @@
             "id": "KuangXi",
             "name": "Ecstasy",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n+3 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": 3,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2020,8 +2412,8 @@
             "id": "FenNu",
             "name": "Anger",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n+1 <color=#A15C11A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": 1,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2035,8 +2427,8 @@
             "id": "KuangNu",
             "name": "Rage",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-1 <color=#A15C12A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -1,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2050,8 +2442,8 @@
             "id": "XiuKui",
             "name": "Shame",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-2 <color=#A15C13A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -2,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2065,8 +2457,8 @@
             "id": "HuiHen",
             "name": "Remorse",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-3 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -3,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2080,8 +2472,8 @@
             "id": "ChongGao",
             "name": "Sublime",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n+5 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": 5,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2095,8 +2487,8 @@
             "id": "KongJu",
             "name": "Fear",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-1 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -1,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2110,8 +2502,8 @@
             "id": "YiWang",
             "name": "Oblivion",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n+1 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": 1,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2125,8 +2517,8 @@
             "id": "XingFu",
             "name": "Happiness",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n+5 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": 5,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2140,8 +2532,8 @@
             "id": "HuanJue",
             "name": "Illusion",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-3 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -3,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2155,8 +2547,8 @@
             "id": "FanZao",
             "name": "Agitation",
             "type": "emotion",
-            "description": "Emotion. You can try to change your emotion by forge it with fuel",
-            "willPowerDelta": 0,
+            "description": "Type:<color=#A15C5A>Emotion</color>. \n-1 <color=#A15C5A>Willpower</color>\nYou can try to change your emotion by forge it with fuel.Emtion will affect your will power",
+            "willPowerDelta": -1,
             "materialType": "",
             "fuelType": "",
             "useable": false,
@@ -2167,10 +2559,10 @@
             "characterProgress": []
         },
         {
-            "id": "Diploma",
-            "name": "你的文凭",
+            "id": "DesireWork",
+            "name": "Your dream",
             "type": "Raw",
-            "description": "你的大学文凭，全世界最没用的东西。\n\n你学的是什么？",
+            "description": "You want to write some *real* literature; you want to leave behind something great. A certain narcissistic notion has been taking root in your heart for years, and now it can no longer be contained.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -2178,14 +2570,31 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "DesireWork1",
+                    "choiceText": "Think About Your Dream",
+                    "usedText": "",
+                    "cardsAdded": [
+                        "YuWang"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": true,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         },
         {
             "id": "Work",
-            "name": "你的工作",
+            "name": "Your job",
             "type": "Raw",
-            "description": "为一些短片攥写剧本, 一份勉强能糊口的编剧工作，自然也谈不上什么文学追求。",
+            "description": "a screenwriting job that barely pays the bills, which, of course, far from any literary pursuit.",
             "willPowerDelta": 0,
             "materialType": "",
             "fuelType": "",
@@ -2193,7 +2602,24 @@
             "canBeDropped": true,
             "refreshChoice": false,
             "maximumUse": 0,
-            "choices": [],
+            "choices": [
+                {
+                    "id": "Work1",
+                    "choiceText": "Think About Your Work",
+                    "usedText": "",
+                    "cardsAdded": [
+                        "FanZao"
+                    ],
+                    "cardsDestroyed": [],
+                    "randomCardList": [],
+                    "randomCardNumber": 0,
+                    "willPowerDelta": 0,
+                    "timeConsumed": 0,
+                    "unlockNodes": [],
+                    "hideOtherChoices": true,
+                    "destroyWhenUsed": false
+                }
+            ],
             "characterProgress": []
         }
     ],
@@ -2210,7 +2636,9 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m2",
@@ -2224,7 +2652,13 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [
+                "m3",
+                "m22",
+                "m23"
+            ],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m3",
@@ -2248,11 +2682,13 @@
             ],
             "choicesMidnight": [
                 "bed1"
-            ]
+            ],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m4",
-            "name": "Bar",
+            "name": "WestHill Bar",
             "textMorning": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.\n\nIt is too early. The bar is not open yet.",
             "textAfternoon": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.\n\nIt is too early. The bar is not open yet.",
             "textSunset": "The bar below your apartment, a neighborhood place with hardly any customers. Honestly, you have no idea how it has avoided going out of business.\n\nIt is too early. The bar is not open yet.",
@@ -2268,6 +2704,12 @@
             "choicesMidnight": [
                 "bar1",
                 "bar2"
+            ],
+            "childNodes": [],
+            "childNodeHidingTimes": [
+                "morning",
+                "afternoon",
+                "sunset"
             ]
         },
         {
@@ -2280,9 +2722,13 @@
             "textMidnight": "The park below your apartment.\nIt is late, and the park feels rather eerie.",
             "choicesMorning": [],
             "choicesAfternoon": [],
-            "choicesSunset": [],
+            "choicesSunset": [
+                "Sunset"
+            ],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m6",
@@ -2308,7 +2754,9 @@
                 "supermarket1",
                 "supermarket2"
             ],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m7",
@@ -2338,7 +2786,9 @@
                 "Gbook",
                 "Gsea"
             ],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m8",
@@ -2352,35 +2802,53 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m9",
             "name": "Abyss Club",
-            "textMorning": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
-            "textAfternoon": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
-            "textSunset": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
-            "textNight": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nIt is too early. The club is not open yet.",
-            "textMidnight": "A club hidden inside an office building. They say it has the best electronic music in the city.\n\nA crowd of fashionably dressed young people stands outside. You cannot help feeling a little nervous.",
+            "textMorning": "A club hidden inside an office building. You heard that it has the best electronic music in this city.\n\nIt is too early. The club is not open yet.",
+            "textAfternoon": "A club hidden inside an office building. You heard that it has the best electronic music in this city.\n\nIt is too early. The club is not open yet.",
+            "textSunset": "A club hidden inside an office building. You heard that it has the best electronic music in this city.\n\nIt is too early. The club is not open yet.",
+            "textNight": "A club hidden inside an office building. You heard that it has the best electronic music in this city.\n\nIt is too early. The club is not open yet.",
+            "textMidnight": "A club hidden inside an office building.  You heard that it has the best electronic music in the city.\n\nA crowd of fashionably dressed young people stands outside. You cannot help feeling a little nervous.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [
+                "m24",
+                "m25",
+                "m26"
+            ],
+            "childNodeHidingTimes": [
+                "morning",
+                "afternoon",
+                "sunset",
+                "night"
+            ]
         },
         {
             "id": "m10",
             "name": "Cinema",
-            "textMorning": "The cinema in the city center.\n\nIt is too early. The cinema is not open yet.",
+            "textMorning": "The cinema in downtown.\n\nWhat should you watch?",
             "textAfternoon": "The cinema in the city center.\n\nWhat should you watch?",
             "textSunset": "The cinema in the city center.\n\nWhat should you watch?",
             "textNight": "The cinema in the city center.\n\nWhat should you watch?",
-            "textMidnight": "The cinema in the city center.\n\nIt is too late. The cinema is already closed.",
+            "textMidnight": "The cinema in downtown\n\nIt is too late. The cinema is already closed.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": [
+                "night",
+                "midnight"
+            ]
         },
         {
             "id": "m11",
@@ -2394,7 +2862,9 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m12",
@@ -2425,7 +2895,9 @@
                 "Gbook",
                 "Gsea"
             ],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m13",
@@ -2439,7 +2911,9 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m14",
@@ -2453,7 +2927,12 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": [
+                "night",
+                "midnight"
+            ]
         },
         {
             "id": "m15",
@@ -2467,21 +2946,31 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": [
+                "night",
+                "midnight"
+            ]
         },
         {
             "id": "m16",
             "name": "BookStore",
-            "textMorning": "A bookshop on Oak Road.\n\nIt is too early. The shop is not open yet.",
+            "textMorning": "A bookshop on Oak Road.",
             "textAfternoon": "A bookshop on Oak Road.",
             "textSunset": "A bookshop on Oak Road.",
-            "textNight": "A bookshop on Oak Road.",
+            "textNight": "A bookshop on Oak Road.\n\nIt is too late. The shop is already closed.",
             "textMidnight": "A bookshop on Oak Road.\n\nIt is too late. The shop is already closed.",
             "choicesMorning": [],
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": [
+                "night",
+                "midnight"
+            ]
         },
         {
             "id": "m17",
@@ -2511,7 +3000,9 @@
                 "Gdowntown",
                 "Gsea"
             ],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m18",
@@ -2525,7 +3016,9 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m19",
@@ -2539,7 +3032,9 @@
             "choicesAfternoon": [],
             "choicesSunset": [],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m20",
@@ -2551,9 +3046,13 @@
             "textMidnight": "The sea looks frightening at night. Sometimes you feel that if you stand here too long, you may be unable to resist this vast and silent darkness.",
             "choicesMorning": [],
             "choicesAfternoon": [],
-            "choicesSunset": [],
+            "choicesSunset": [
+                "SunsetSea"
+            ],
             "choicesNight": [],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         },
         {
             "id": "m21",
@@ -2583,7 +3082,112 @@
                 "Gdowntown",
                 "Gbook"
             ],
-            "choicesMidnight": []
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
+        },
+        {
+            "id": "m22",
+            "name": "Your Balcony",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
+        },
+        {
+            "id": "m23",
+            "name": "Your Kitchen",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
+        },
+        {
+            "id": "m24",
+            "name": "Dance Floor",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": [
+                "Dance"
+            ],
+            "childNodes": [],
+            "childNodeHidingTimes": []
+        },
+        {
+            "id": "m25 ",
+            "name": "Bar",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": [
+                "Abyss",
+                "bar_abyss"
+            ],
+            "childNodes": [],
+            "childNodeHidingTimes": []
+        },
+        {
+            "id": "m26",
+            "name": "Toilet",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": [
+                "Abyss2"
+            ],
+            "childNodes": [],
+            "childNodeHidingTimes": []
+        },
+        {
+            "id": "m27 ",
+            "name": "New Estate",
+            "textMorning": "",
+            "textAfternoon": "",
+            "textSunset": "",
+            "textNight": "",
+            "textMidnight": "",
+            "choicesMorning": [],
+            "choicesAfternoon": [],
+            "choicesSunset": [],
+            "choicesNight": [],
+            "choicesMidnight": [],
+            "childNodes": [],
+            "childNodeHidingTimes": []
         }
     ],
     "nodeChoices": [
@@ -2596,6 +3200,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 2,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2609,6 +3214,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2620,6 +3226,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": false,
             "useOnlyOnce": false,
             "goToFarNode": "m7"
@@ -2631,6 +3238,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": false,
             "useOnlyOnce": false,
             "goToFarNode": "m12"
@@ -2642,6 +3250,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": false,
             "useOnlyOnce": false,
             "goToFarNode": "m17"
@@ -2653,6 +3262,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": false,
             "useOnlyOnce": false,
             "goToFarNode": "m21"
@@ -2666,6 +3276,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2680,6 +3291,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2693,6 +3305,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 1,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2706,6 +3319,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 2,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2719,6 +3333,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2732,6 +3347,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2745,6 +3361,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2758,6 +3375,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2771,6 +3389,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2784,6 +3403,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2797,6 +3417,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2810,6 +3431,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2823,6 +3445,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2836,6 +3459,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2849,6 +3473,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2862,6 +3487,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 0,
             "oncePerDay": true,
             "useOnlyOnce": false,
             "goToFarNode": ""
@@ -2875,6 +3501,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 3,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2888,6 +3515,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 3,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2901,6 +3529,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 4,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2914,6 +3543,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 3,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2927,6 +3557,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 3,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2940,6 +3571,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 5,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2953,6 +3585,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 3,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2966,6 +3599,7 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 4,
             "oncePerDay": false,
             "useOnlyOnce": true,
             "goToFarNode": ""
@@ -2979,8 +3613,47 @@
             "cardsRemoved": [],
             "deltaWillPower": 0,
             "deltaMoney": 0,
+            "moneyRequired": 4,
             "oncePerDay": false,
             "useOnlyOnce": true,
+            "goToFarNode": ""
+        },
+        {
+            "id": "bar_abyss",
+            "text": "买酒",
+            "cardsAdded": [
+                "Alcohol"
+            ],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "moneyRequired": 3,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "Abyss2",
+            "text": "看一眼*真正*的深渊",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "moneyRequired": 0,
+            "oncePerDay": true,
+            "useOnlyOnce": false,
+            "goToFarNode": ""
+        },
+        {
+            "id": "SunsetSea",
+            "text": "看一会儿日落",
+            "cardsAdded": [],
+            "cardsRemoved": [],
+            "deltaWillPower": 0,
+            "deltaMoney": 0,
+            "moneyRequired": 0,
+            "oncePerDay": false,
+            "useOnlyOnce": false,
             "goToFarNode": ""
         }
     ],
@@ -2988,7 +3661,7 @@
         {
             "id": "dm1",
             "name": "Write a thriller novel",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 4,
             "requiredCards": [
                 "YinMou",
@@ -2998,7 +3671,7 @@
         {
             "id": "dm2",
             "name": "Write a story about a robot",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 5,
             "requiredCards": [
                 "JiQi",
@@ -3008,7 +3681,7 @@
         {
             "id": "dm3",
             "name": "Write a kitschy romance story",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 4,
             "requiredCards": [
                 "YuWang",
@@ -3018,7 +3691,7 @@
         {
             "id": "dm4",
             "name": "Write a supernatural horror story",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 3,
             "requiredCards": [
                 "Hai",
@@ -3028,7 +3701,7 @@
         {
             "id": "dm5",
             "name": "Write a war story",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 5,
             "requiredCards": [
                 "ZhanZheng",
@@ -3038,7 +3711,7 @@
         {
             "id": "dm6",
             "name": "Write a story set in ancient times",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 4,
             "requiredCards": [
                 "DiGuo",
@@ -3048,7 +3721,7 @@
         {
             "id": "dm7",
             "name": "Write a story set in the future",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 5,
             "requiredCards": [
                 "JiQi",
@@ -3058,7 +3731,7 @@
         {
             "id": "dm8",
             "name": "Write a story set at sea",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 4,
             "requiredCards": [
                 "Hai",
@@ -3068,7 +3741,7 @@
         {
             "id": "dm9",
             "name": "Write a story about a shepherd",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 3,
             "requiredCards": [
                 "YouMu",
@@ -3078,7 +3751,7 @@
         {
             "id": "dm10",
             "name": "Write an urban romance story",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 4,
             "requiredCards": [
                 "ChengShi",
@@ -3088,7 +3761,7 @@
         {
             "id": "dm11",
             "name": "Write a story with neither beginning nor end",
-            "description": "",
+            "description": "Your screenwriting job. \nFinished it and get paid.",
             "moneyReward": 3,
             "requiredCards": [
                 "Mi",

@@ -14,8 +14,8 @@ public class Map : MonoBehaviour
     [SerializeField, Min(1f)] private float connectionThickness = 4f;
     [SerializeField] private Color connectionColor = Color.black;
 
-    private Node currentNode;
-    public Node CurrentNode => currentNode;
+    public Node CurrentNode { get; private set; }
+    public Node HomeNode;
     private readonly List<NodeConnection> connections = new List<NodeConnection>();
     private Node[] allNodes;
     private RectTransform connectionRoot;
@@ -34,80 +34,71 @@ public class Map : MonoBehaviour
             mapScrollView = GetComponentInParent<ScrollRect>();
 
         allNodes = GetComponentsInChildren<Node>(true);
-        EnsureNodeArrows();
         CreateConnections();
-        currentNode = startingNode;
-        if (currentNode != null)
+        CurrentNode = startingNode;
+        if (CurrentNode != null)
         {
-            currentNode.isUnlocked = true;
-            currentNode.SetCurrent(true);
+            CurrentNode.isUnlocked = true;
+            CurrentNode.SetCurrent(true);
             RefreshVisibleNodes();
-            cardManager.RefreshCharactersAtNode(currentNode);
+            cardManager.RefreshCharactersAtNode(CurrentNode);
             ShowCurrentNodeText();
-            AudioManager.Instance?.PlayNode(currentNode.Index);
+            AudioManager.Instance?.PlayNode(CurrentNode.Index);
         }
-    }
-
-    private void EnsureNodeArrows()
-    {
-        GameObject arrowTemplate = null;
-        foreach (Node node in allNodes)
-        {
-            if (node != null && node.Arrow != null)
-            {
-                arrowTemplate = node.Arrow;
-                break;
-            }
-        }
-
-        if (arrowTemplate == null)
-        {
-            Debug.LogWarning("No node arrow template is assigned on the map.", this);
-            return;
-        }
-
-        foreach (Node node in allNodes)
-            node?.EnsureArrow(arrowTemplate);
     }
 
     public void TryGoTo(Node destination)
     {
-        if (destination == null || destination == currentNode)
+        if (CurrentNode == null)
+        {
+            if (HomeNode == null)
+            {
+                Debug.LogWarning("Map has no Home Node assigned.");
+                return;
+            }
+
+            CurrentNode = HomeNode;
+            CurrentNode.isUnlocked = true;
+            CurrentNode.SetCurrent(true);
+            RefreshVisibleNodes();
+            cardManager?.RefreshCharactersAtNode(CurrentNode);
+            ShowCurrentNodeText();
+            AudioManager.Instance?.PlayNode(CurrentNode.Index);
             return;
-        if (textManager != null && textManager.IsTyping)
+        }
+        if (destination == null || destination == CurrentNode)
             return;
         int travelDistance = GetTravelDistance(destination);
         if (travelDistance <= 0)
             return;
 
-        currentNode.SetCurrent(false);
-        currentNode = destination;
-        currentNode.isUnlocked = true;
-        currentNode.SetCurrent(true);
+        CurrentNode.SetCurrent(false);
+        CurrentNode = destination;
+        CurrentNode.isUnlocked = true;
+        CurrentNode.SetCurrent(true);
         RefreshVisibleNodes();
-        cardManager.RefreshCharactersAtNode(currentNode);
+        cardManager.RefreshCharactersAtNode(CurrentNode);
         ProgressTime(travelDistance);
 
         ShowCurrentNodeText();
-        AudioManager.Instance?.PlayNode(currentNode.Index);
+        AudioManager.Instance?.PlayNode(CurrentNode.Index);
     }
 
     public bool TryGoToFarNode(string destinationIndex)
     {
-        if (currentNode == null || string.IsNullOrWhiteSpace(destinationIndex) ||
-            (textManager != null && textManager.IsTyping))
+        if (CurrentNode == null || string.IsNullOrWhiteSpace(destinationIndex))
             return false;
 
-        if (currentNode.FarNodes == null)
+        if (CurrentNode.FarNodes == null)
             return false;
 
-        foreach (Node.FarConnectedNodes farNode in currentNode.FarNodes)
+        foreach (Node.FarConnectedNodes farNode in CurrentNode.FarNodes)
         {
             if (farNode == null || farNode.node == null || farNode.node.Index != destinationIndex)
                 continue;
 
             TryGoTo(farNode.node);
-            if (currentNode == farNode.node)
+            if (CurrentNode == farNode.node)
                 CenterMapOnCurrentNode();
             return true;
         }
@@ -140,7 +131,7 @@ public class Map : MonoBehaviour
             }
         }
 
-        if (changed && currentNode != null)
+        if (changed && CurrentNode != null)
             RefreshVisibleNodes();
     }
     private void ProgressTime(int travelDistance)
@@ -155,13 +146,13 @@ public class Map : MonoBehaviour
 
     private int GetTravelDistance(Node destination)
     {
-        if (currentNode == null)
-            return destination == startingNode ? 1 : 0;
+        if (CurrentNode == null)
+            return 0;
 
         if (IsNearbyNode(destination))
             return 1;
 
-        foreach (Node.FarConnectedNodes farNode in currentNode.FarNodes)
+        foreach (Node.FarConnectedNodes farNode in CurrentNode.FarNodes)
         {
             if (farNode != null && farNode.node == destination)
                 return Mathf.Max(1, farNode.distance);
@@ -176,7 +167,7 @@ public class Map : MonoBehaviour
         {
             if (node == null) continue;
             bool isNearby = IsNearbyNode(node);
-            bool visible = node == currentNode || (node.isUnlocked && isNearby);
+            bool visible = node == CurrentNode || (node.isUnlocked && isNearby);
             node.gameObject.SetActive(visible);
         }
 
@@ -234,14 +225,14 @@ public class Map : MonoBehaviour
 
     private bool IsNearbyNode(Node node)
     {
-        if (currentNode == null || node == null)
+        if (CurrentNode == null || node == null)
             return false;
 
-        if (currentNode.NearbyNodes != null && System.Array.IndexOf(currentNode.NearbyNodes, node) >= 0)
+        if (CurrentNode.NearbyNodes != null && System.Array.IndexOf(CurrentNode.NearbyNodes, node) >= 0)
             return true;
 
         CardLibrary.NodeData currentNodeData = cardLibrary != null
-            ? cardLibrary.FindNodeData(currentNode.Index)
+            ? cardLibrary.FindNodeData(CurrentNode.Index)
             : null;
         if (currentNodeData == null || currentNodeData.childNodes == null ||
             System.Array.IndexOf(currentNodeData.childNodes, node.Index) < 0)
@@ -324,27 +315,27 @@ public class Map : MonoBehaviour
             return;
 
         lastChildNodeVisibilityPeriod = visibilityPeriod;
-        if (currentNode != null)
+        if (CurrentNode != null)
             RefreshVisibleNodes();
     }
 
     private void ShowCurrentNodeText()
     {
-        if (currentNode == null || textManager == null)
+        if (CurrentNode == null || textManager == null)
             return;
 
         GameTime timeCard = GameManager.Instance != null ? GameManager.Instance.TimeCard : null;
-        textManager.ShowNode(currentNode.Index, timeCard != null ? timeCard.CurrentTime : 0);
+        textManager.ShowNode(CurrentNode.Index, timeCard != null ? timeCard.CurrentTime : 0);
     }
 
     private void CenterMapOnCurrentNode()
     {
-        if (mapScrollView == null || mapScrollView.content == null || mapScrollView.viewport == null || currentNode == null)
+        if (mapScrollView == null || mapScrollView.content == null || mapScrollView.viewport == null || CurrentNode == null)
             return;
 
         RectTransform content = mapScrollView.content;
         RectTransform viewport = mapScrollView.viewport;
-        RectTransform nodeRect = currentNode.transform as RectTransform;
+        RectTransform nodeRect = CurrentNode.transform as RectTransform;
         if (nodeRect == null)
             return;
 
